@@ -95,52 +95,55 @@ const Login = styled.div`
   color: #fff;
   font-size: 1rem;
 `
+
+
 export default function LayoutHeader() {
-    const router = useRouter()
-  
-    const onClickMoveToHome = () => {
-      router.push('/')
-    }
-    const onClickMoveToClass = () => {
-      router.push('/class')
-    }
-    const onClickMoveToMentor = () => {
-      router.push('/mentor')
-    }
-    const onClickMoveToBoards = () => {
-      router.push('/boards')
-    }
-    const onClickMoveToLogin = () => {
-      router.push('/login/login')
-    }
-  
-    return (
-      <Header>
+  const router = useRouter()
+
+  const onClickMoveToHome = () => {
+    router.push('/')
+  }
+  const onClickMoveToClass = () => {
+    router.push('/class')
+  }
+  const onClickMoveToMentor = () => {
+    router.push('/mentor')
+  }
+  const onClickMoveToBoards = () => {
+    router.push('/boards')
+  }
+  const onClickMoveToLogin = () => {
+    router.push('/login/login')
+  }
+
+  return (
+    <Header>
+      <div>
+        <Logo>LOGO</Logo>
+
         <div>
-          <Logo>LOGO</Logo>
-  
-          <div>
-            <Menu>
-              <ul>
-                <li onClick={onClickMoveToHome}>홈</li>
-                <li onClick={onClickMoveToClass}>클래스</li>
-                <li onClick={onClickMoveToMentor}>멘토</li>
-                <li onClick={onClickMoveToBoards}>질문게시판</li>
-              </ul>
-            </Menu>
-  
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <SearchBar>
-                <input type="text" />
-                <button>
-                  <div className="search icon"></div>
-                </button>
-              </SearchBar>
-  
-              <Login onClick={onClickMoveToLogin}>로그인</Login>
-            </div>
+          <Menu>
+            <ul>
+              <li onClick={onClickMoveToHome}>홈</li>
+              <li onClick={onClickMoveToClass}>클래스</li>
+              <li onClick={onClickMoveToMentor}>멘토</li>
+              <li onClick={onClickMoveToBoards}>질문게시판</li>
+            </ul>
+          </Menu>
+
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <SearchBar>
+              <input type="text" />
+              <button>
+                <div className="search icon"></div>
+              </button>
+            </SearchBar>
+
+            <Login onClick={onClickMoveToLogin}>로그인</Login>
           </div>
         </div>
-      </Header>
-    )
-  }
+      </div>
+    </Header>
+  )
+}
+
