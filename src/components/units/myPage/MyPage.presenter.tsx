@@ -3,7 +3,7 @@ import * as CH from './MyPage.styles'
 
 export default function MyPageUI(props: IMyPageUIProps) {
   return (
-    <>
+    <CH.Wrapper>
       <CH.HeadWrapper>
         <CH.HeadLeft>
           <CH.Avatar>
@@ -48,6 +48,6 @@ export default function MyPageUI(props: IMyPageUIProps) {
         </CH.TabMenu>
         <CH.Contents>{props.menuArr[props.currentTab].content}</CH.Contents>
       </CH.BodyWrapper>
-    </>
+    </CH.Wrapper>
   )
 }
