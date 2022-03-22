@@ -1,7 +1,6 @@
+import MentorPermissionListUI from "./MentorPermissionList.presenter"
+
+
 export default function MentorPermissionList() {
-  return (
-    <div>
-      <h1>MentorPermissionListPage</h1>
-    </div>
-  )
+  return <MentorPermissionListUI />
 }

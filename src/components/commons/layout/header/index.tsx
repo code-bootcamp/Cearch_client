@@ -96,6 +96,7 @@ const Login = styled.div`
   font-size: 1rem;
 `
 
+
 export default function LayoutHeader() {
   const router = useRouter()
 
@@ -145,3 +146,4 @@ export default function LayoutHeader() {
     </Header>
   )
 }
+
