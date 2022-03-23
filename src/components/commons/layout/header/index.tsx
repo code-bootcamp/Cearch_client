@@ -10,7 +10,9 @@ const Header = styled.header`
     margin: 0 auto;
     padding: 10px 0;
 
+
     > div:nth-of-type(2) {
+
       height: 80px;
       display: flex;
       align-items: center;
@@ -38,7 +40,9 @@ const Menu = styled.nav`
       }
       a {
       }
+
       &:first-of-type {
+
         margin-left: 0;
       }
       &:last-child {
@@ -96,6 +100,7 @@ const Login = styled.div`
   font-size: 1rem;
 `
 
+
 export default function LayoutHeader() {
   const router = useRouter()
 
@@ -145,3 +150,4 @@ export default function LayoutHeader() {
     </Header>
   )
 }
+
