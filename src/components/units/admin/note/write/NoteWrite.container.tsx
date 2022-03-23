@@ -1,7 +1,5 @@
-export default function NoteWrite() {
-  return (
-    <div>
-      <h1>NoteWritePage</h1>
-    </div>
-  )
+import NoteWriteUI from './NoteWrite.presenter'
+
+export default function NoteWrite(props) {
+  return <NoteWriteUI onClickNoteList={props.onClickNoteList} />
 }

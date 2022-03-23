@@ -1,7 +1,16 @@
-export default function NoteList() {
+import NoteListUI from "./NoteList.presenter"
+import { useRouter } from "next/router";
+
+export default function NoteList(props) {
+  const router=useRouter()
+  const onClickMoveToNoteWrite=()=>{
+    router.push('/admin/note/new')
+  }
   return (
-    <div>
-      <h1>NoteListPage</h1>
-    </div>
+  <NoteListUI 
+  onClickMoveToNoteWrite={onClickMoveToNoteWrite}
+  onClickNoteWrite={props.onClickNoteWrite}
+  onClickNoteDetail={props.onClickNoteDetail}
+  />
   )
 }

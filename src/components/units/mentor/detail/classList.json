@@ -1,0 +1,57 @@
+[
+  {
+    "profileImg": "/images/mentor.jpeg",
+    "name": "◯◯◯ 멘토",
+    "company": "회사명",
+    "ratingAverage": "4.0",
+    "peopleNum": "121",
+    "classState": "진행",
+    "category": "HTML",
+    "title": "클래스 제목",
+    "createdAt": "2022. 03. 21"
+  },
+  {
+    "profileImg": "/images/mentor.jpeg",
+    "name": "◯◯◯ 멘토",
+    "company": "회사명",
+    "ratingAverage": "4.0",
+    "peopleNum": "121",
+    "classState": "진행",
+    "category": "HTML",
+    "title": "클래스 제목",
+    "createdAt": "2022. 03. 21"
+  },
+  {
+    "profileImg": "/images/mentor.jpeg",
+    "name": "◯◯◯ 멘토",
+    "company": "회사명",
+    "ratingAverage": "4.0",
+    "peopleNum": "121",
+    "classState": "진행",
+    "category": "HTML",
+    "title": "클래스 제목",
+    "createdAt": "2022. 03. 21"
+  },
+  {
+    "profileImg": "/images/mentor.jpeg",
+    "name": "◯◯◯ 멘토",
+    "company": "회사명",
+    "ratingAverage": "4.0",
+    "peopleNum": "121",
+    "classState": "진행",
+    "category": "HTML",
+    "title": "클래스 제목",
+    "createdAt": "2022. 03. 21"
+  },
+  {
+    "profileImg": "/images/mentor.jpeg",
+    "name": "◯◯◯ 멘토",
+    "company": "회사명",
+    "ratingAverage": "4.0",
+    "peopleNum": "121",
+    "classState": "진행",
+    "category": "HTML",
+    "title": "클래스 제목",
+    "createdAt": "2022. 03. 21"
+  }
+]

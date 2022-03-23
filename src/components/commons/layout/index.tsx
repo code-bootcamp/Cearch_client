@@ -17,21 +17,33 @@ interface IProps {
 export default function Layout(props: IProps) {
   const router = useRouter()
 
-  // const HIDDEN_HEADER = ['/login/', '/login/sign-up']
+
+  const HIDDEN_HEADER = ['/admin']
+
+
   const HIDDEN_FOOTER = [
     '/login/emailcertification',
     '/login/join',
     '/login/login',
     '/login/mentorrequest',
     '/login/passwordreset',
+    '/admin',
   ]
 
-  // const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath)
+
+  const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath)
+
+
   const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath)
 
   return (
     <>
-      {/* !isHiddenHeader && */ <LayoutHeader />}
+
+
+      {!isHiddenHeader &&  <LayoutHeader />}
+
+
+
       <LayoutBody>
         <Head>
           <meta charSet="UTF-8" />
@@ -47,4 +59,5 @@ export default function Layout(props: IProps) {
       {!isHiddenFooter && <LayoutFooter />}
     </>
   )
+
 }

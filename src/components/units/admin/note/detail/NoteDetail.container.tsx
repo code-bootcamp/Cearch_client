@@ -1,7 +1,5 @@
+import NoteDetailUI from './NoteDetail.presenter'
+
 export default function NoteDetail() {
-  return (
-    <div>
-      <h1>NoteDetailPage</h1>
-    </div>
-  )
+  return <NoteDetailUI />
 }
