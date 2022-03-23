@@ -20,6 +20,7 @@ export default function Layout(props: IProps) {
 
   const HIDDEN_HEADER = ['/admin']
 
+
   const HIDDEN_FOOTER = [
     '/login/emailcertification',
     '/login/join',
@@ -31,12 +32,14 @@ export default function Layout(props: IProps) {
 
   const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath)
 
+
   const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath)
 
   return (
     <>
 
       {!isHiddenHeader &&  <LayoutHeader />}
+
 
       <LayoutBody>
         <Head>
