@@ -1,7 +1,9 @@
-export default function MentorPermissionDetail() {
+import MentorPermissionDetailUI from './MentorPermissionDetail.presenter'
+
+export default function MentorPermissionDetail(props) {
   return (
-    <div>
-      <h1>MentorPermissionDetailPage</h1>
-    </div>
+    <MentorPermissionDetailUI
+      onClickMentorPermissionList={props.onClickMentorPermissionList}
+    />
   )
 }

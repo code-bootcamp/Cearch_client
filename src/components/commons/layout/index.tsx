@@ -24,6 +24,7 @@ export default function Layout(props: IProps) {
     '/login/login',
     '/login/mentorrequest',
     '/login/passwordreset',
+    '/admin',
   ]
 
   const isHiddenHeader = HIDDEN_HEADER.includes(router.asPath)
@@ -31,7 +32,7 @@ export default function Layout(props: IProps) {
 
   return (
     <>
-      {!isHiddenHeader &&  <LayoutHeader />}
+      {!isHiddenHeader && <LayoutHeader />}
       <LayoutBody>
         <Head>
           <meta charSet="UTF-8" />
