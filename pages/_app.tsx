@@ -3,7 +3,10 @@ import { Global } from '@emotion/react'
 import { globalStyles } from '../src/commons/styles/globalStyles'
 import Layout from '../src/components/commons/layout'
 
+
+
 function MyApp({ Component, pageProps }: AppProps) {
+
 
   return (
     <>

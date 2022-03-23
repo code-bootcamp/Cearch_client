@@ -5,7 +5,6 @@ import MyQAs from './myQAs/MyQAs.container'
 import MyFollowings from './myFollowings/MyFollowings.container'
 import MyPoints from './myPoints/MyPoints.container'
 import MyClasses from './myClasses/MyClasses.container'
-import MyInformation from './myInformation/MyInformation.container'
 
 export default function MyPage() {
   const [currentTab, setCurrentTab] = useState(0)
@@ -17,7 +16,7 @@ export default function MyPage() {
     { name: '나의포인트', content: <MyPoints /> },
   ]
 
-  const selectMenuHandler = (index) => {
+  const selectMenuHandler = (index: number) => {
     setCurrentTab(index)
   }
 
