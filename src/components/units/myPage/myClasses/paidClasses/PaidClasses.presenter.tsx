@@ -40,7 +40,7 @@ export default function PaidClassesUI(props: IPaidClassesProps) {
                   <CH.ClassDate>{el.date}</CH.ClassDate>
                 </CH.ClassContentsList>
               </CH.ClassContentsLeft>
-              <CH.ClassButton>후기작성</CH.ClassButton>
+              <CH.ClassButton>후기쓰기</CH.ClassButton>
             </CH.ClassContents>
           )
         })}
