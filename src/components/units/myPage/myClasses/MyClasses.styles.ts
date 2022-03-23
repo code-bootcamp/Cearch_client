@@ -38,3 +38,25 @@ export const Contents = styled.div`
   width: 100%;
   border-top: 2px solid black;
 `
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
+export const CreateButton = styled.div`
+  width: 151px;
+  height: 36px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #1e2744;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  :hover {
+    cursor: pointer;
+  }
+`

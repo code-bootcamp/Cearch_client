@@ -8,6 +8,7 @@ import { useState } from 'react'
 
 export default function MyClasses() {
   const [currentTab, setCurrentTab] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const menuArr = [
     { name: '수강신청한 클래스', content: <AppliedClasses /> },
@@ -19,11 +20,18 @@ export default function MyClasses() {
     setCurrentTab(index)
   }
 
+  const onClickModal = () => {
+    setIsModalOpen((prev) => !prev)
+    console.log(isModalOpen)
+  }
+
   return (
     <MyClassesUI
       menuArr={menuArr}
       currentTab={currentTab}
       selectMenuHandler={selectMenuHandler}
+      onClickModal={onClickModal}
+      isModalOpen={isModalOpen}
     />
   )
 }
