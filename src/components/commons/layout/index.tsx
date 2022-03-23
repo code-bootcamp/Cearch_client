@@ -27,6 +27,7 @@ export default function Layout(props: IProps) {
     '/login/login',
     '/login/mentorrequest',
     '/login/passwordreset',
+    '/admin',
   ]
 
 
@@ -38,7 +39,9 @@ export default function Layout(props: IProps) {
   return (
     <>
 
+
       {!isHiddenHeader &&  <LayoutHeader />}
+
 
 
       <LayoutBody>
@@ -58,4 +61,3 @@ export default function Layout(props: IProps) {
   )
 
 }
-
