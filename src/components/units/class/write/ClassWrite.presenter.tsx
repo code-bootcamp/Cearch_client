@@ -57,7 +57,7 @@ export default function ClassWriteUI() {
           <p>사전질문</p>
           <textarea></textarea>
         </div>
-        <button> 수강 신청</button>
+        <CH.ClassSubmit>수강 신청</CH.ClassSubmit>
       </div>
     </CH.Wrapper>
   )

@@ -1,7 +1,7 @@
 import * as CH from './BoardList.styles'
 import { v4 as uuidv4 } from 'uuid'
 
-export default function BoardListUI() {
+export default function BoardListUI(props) {
   const testCode = [
     {
       division: '공지',
@@ -98,11 +98,13 @@ export default function BoardListUI() {
     <CH.Wrapper>
       <CH.BoardListWrapper>
         <CH.InnerBodyHeader>
-          <div className="HeaderTitle">
+          <div className="headerTitle">
             총 <span>000</span> 건의 글이 있습니다.
           </div>
           <div>
-            <button className="WriteButton">글쓰기</button>
+            <button className="writeButton" onClick={props.onClickBoardWrite}>
+              글쓰기
+            </button>
           </div>
         </CH.InnerBodyHeader>
         <CH.BoardList>

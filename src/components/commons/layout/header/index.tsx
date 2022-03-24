@@ -3,16 +3,14 @@ import { useRouter } from 'next/router'
 
 const Header = styled.header`
   width: 100%;
-  box-shadow: 0px 30px 20px #eee;
+  box-shadow: 0px 10px 20px #eee;
 
   > div {
     width: 1200px;
     margin: 0 auto;
     padding: 10px 0;
 
-
     > div:nth-of-type(2) {
-
       height: 80px;
       display: flex;
       align-items: center;
@@ -34,15 +32,15 @@ const Menu = styled.nav`
       text-align: center;
       margin: 0 10px;
       border-radius: 20px;
-      padding: 8px 20px 5px;
+      padding: 8px 20px 6px;
+      cursor: pointer;
+
       :hover {
-        background: #eee;
-      }
-      a {
+        background: #1e2744;
+        color: #fff;
       }
 
       &:first-of-type {
-
         margin-left: 0;
       }
       &:last-child {
@@ -98,8 +96,8 @@ const Login = styled.div`
   border-radius: 18px;
   color: #fff;
   font-size: 1rem;
+  cursor: pointer;
 `
-
 
 export default function LayoutHeader() {
   const router = useRouter()
@@ -150,4 +148,3 @@ export default function LayoutHeader() {
     </Header>
   )
 }
-

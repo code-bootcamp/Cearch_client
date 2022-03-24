@@ -39,10 +39,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   '& .MuiAccordionSummary-content': {
     marginLeft: theme.spacing(1),
   },
-}))
-
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  // padding: theme.spacing(2),
+  padding: '10px 20px',
 }))
 
 export default function MentorDetailUI() {
@@ -170,7 +167,7 @@ export default function MentorDetailUI() {
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography>수강가능 클래스 목록</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <MuiAccordionDetails>
             <CH.ClassList>
               {classList
                 .map((el) => (
@@ -204,7 +201,7 @@ export default function MentorDetailUI() {
                   if (index < 3) return el
                 })}
             </CH.ClassList>
-          </AccordionDetails>
+          </MuiAccordionDetails>
         </Accordion>
 
         <Accordion
@@ -214,7 +211,7 @@ export default function MentorDetailUI() {
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography>멘토 이전 클래스</Typography>
           </AccordionSummary>
-          <AccordionDetails>
+          <MuiAccordionDetails>
             <CH.ClassList>
               {classList
                 .map((el) => (
@@ -248,7 +245,7 @@ export default function MentorDetailUI() {
                   if (index < 3) return el
                 })}
             </CH.ClassList>
-          </AccordionDetails>
+          </MuiAccordionDetails>
         </Accordion>
       </CH.MentorContent>
     </CH.Wrapper>
