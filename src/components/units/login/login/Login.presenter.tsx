@@ -2,6 +2,7 @@ import * as CH from '../Login.styled'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import MailRoundedIcon from '@mui/icons-material/MailRounded'
 
+<<<<<<< HEAD
 export default function LoginUI(props) {
   return (
     <CH.Wrapper>
@@ -1970,4 +1971,8 @@ export default function LoginUI(props) {
       </CH.ContentsWrapper>
     </CH.Wrapper>
   )
+=======
+export default function LoginUI() {
+  return <div>login</div>
+>>>>>>> 2a1680118ed889aefc32121da1ffcd7c50f8a223
 }

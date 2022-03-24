@@ -11,7 +11,7 @@ export const ClassPermission__Header = styled.div`
   justify-content: space-between;
   align-items: center;
   .NoteTitle {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 `
 

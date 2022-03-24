@@ -12,14 +12,36 @@ export default function MyPointsUI(props) {
         <CH.HeadDivBox>
           <CH.TitleLabel>포인트 충전하기</CH.TitleLabel>
           <CH.PointInputWrapper>
-            <input></input>
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
+              <InputLabel>금액을 선택해주세요.</InputLabel>
+              <Select
+                value={props.deposit}
+                onChange={props.onChangeDeposit}
+                label="금액을 선택해주세요."
+              >
+                <MenuItem value={10}>10,000원</MenuItem>
+                <MenuItem value={20}>50,000원</MenuItem>
+                <MenuItem value={30}>100,000원</MenuItem>
+              </Select>
+            </FormControl>
             <CH.PointButton>충전하기</CH.PointButton>
           </CH.PointInputWrapper>
         </CH.HeadDivBox>
         <CH.HeadDivBox>
           <CH.TitleLabel>포인트 인출하기</CH.TitleLabel>
           <CH.PointInputWrapper>
-            <input></input>
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
+              <InputLabel>금액을 선택해주세요.</InputLabel>
+              <Select
+                value={props.withdraw}
+                onChange={props.onChangeWithdraw}
+                label="금액을 선택해주세요."
+              >
+                <MenuItem value={10}>10,000원</MenuItem>
+                <MenuItem value={20}>50,000원</MenuItem>
+                <MenuItem value={30}>100,000원</MenuItem>
+              </Select>
+            </FormControl>
             <CH.PointButton>인출하기</CH.PointButton>
           </CH.PointInputWrapper>
         </CH.HeadDivBox>

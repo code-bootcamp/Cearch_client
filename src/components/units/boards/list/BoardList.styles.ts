@@ -79,7 +79,13 @@ export const InnerBodyHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+<<<<<<< HEAD:src/components/units/boards/list/BoardList.styles.ts
 
+=======
+  .HeaderTitle {
+    font-size: 1.125rem;
+  }
+>>>>>>> 2a1680118ed889aefc32121da1ffcd7c50f8a223:src/components/units/board/list/BoardList.styles.ts
   .WriteButton {
     width: 95px;
     height: 35px;

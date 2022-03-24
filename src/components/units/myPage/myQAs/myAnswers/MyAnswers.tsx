@@ -1,56 +1,17 @@
 import * as CH from '../MyQAs.styles'
 export default function MyAnswers() {
+  // prettier-ignore
   const answer = [
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '답변',
-      title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.',
-      createAt: '2022-03-21',
-    },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
+    { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },
   ]
   return (
     <CH.Table>

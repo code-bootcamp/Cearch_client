@@ -28,6 +28,7 @@ export const HeadDivBox = styled.div`
 export const PointInputWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `
 export const PointButton = styled.button`
   border: 0px none;
@@ -38,6 +39,7 @@ export const PointButton = styled.button`
   color: #ffffff;
   width: 109px;
   height: 36px;
+  margin: 13px 0px 0px 30px;
 `
 
 export const Table = styled.div`
