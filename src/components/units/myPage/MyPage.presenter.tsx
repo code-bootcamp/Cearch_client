@@ -1,15 +1,20 @@
 import { IMyPageUIProps } from './MyPage.types'
 import * as CH from './MyPage.styles'
+import MyInformation from './myInformation/MyInformation.container'
 
 export default function MyPageUI(props: IMyPageUIProps) {
   return (
     <CH.Wrapper>
       <CH.HeadWrapper>
-        <CH.HeadLeft>
+        <CH.HeadLeft onClick={() => props.selectMenuHandler(4)}>
           <CH.Avatar>
-            <img src="/avatar.png" />
+            <img width={134} src="/avatar.png" />
           </CH.Avatar>
-          <CH.Name>홍길동⚙️</CH.Name>
+          <CH.NameAndSetting>
+            <CH.Name>홍길동</CH.Name>
+            <img src="/images/setting.png" />
+            {/* <img onClick={props.onClickModal} src="/images/setting.png" /> */}
+          </CH.NameAndSetting>
         </CH.HeadLeft>
         <CH.HeadRight>
           <CH.HeadRightSection>
@@ -20,7 +25,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
               데이터 / 데이터 분석
             </CH.HeadRightSectionContents1>
           </CH.HeadRightSection>
-          <CH.HeadRightSection>
+          <CH.HeadRightSection onClick={() => props.selectMenuHandler(3)}>
             <CH.HeadRightSectionLabel>나의 포인트 〉</CH.HeadRightSectionLabel>
             <CH.HeadRightSectionContents2>
               150,800원

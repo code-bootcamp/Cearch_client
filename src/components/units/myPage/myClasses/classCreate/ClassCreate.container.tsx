@@ -34,7 +34,6 @@ const MenuProps = {
 
 export default function ClassCreate() {
   const [dateTime, setDateTime] = useState(new Date())
-  console.log(dateTime)
 
   const theme = useTheme()
   const [category, setCategory] = useState<string[]>([])
