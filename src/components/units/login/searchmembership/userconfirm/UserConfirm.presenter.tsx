@@ -1,9 +1,7 @@
-import * as CH from '../Login.styled'
-import LockRoundedIcon from '@mui/icons-material/LockRounded'
+import * as CH from '../../Login.styled'
 import MailRoundedIcon from '@mui/icons-material/MailRounded'
-import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 
-export default function JoinUI() {
+export default function UserConfirmUI(props) {
   return (
     <CH.Wrapper>
       <CH.ImgWrapper>
@@ -1937,6 +1935,7 @@ export default function JoinUI() {
         </svg>
       </CH.ImgWrapper>
       <CH.ContentsWrapper>
+        <div className="title">이메일 인증을 진행해주세요.</div>
         <div>
           <CH.InputBox>
             <span>이메일</span>
@@ -1944,42 +1943,29 @@ export default function JoinUI() {
               <MailRoundedIcon />
               <input type="text"></input>
             </div>
+            <CH.VerificationCode style={{ width: '100%', marginTop: '10px' }}>
+              인증코드 발송
+            </CH.VerificationCode>
           </CH.InputBox>
-          <CH.PhoneInputBox>
-            <span>핸드폰 번호</span>
+          <CH.EmailConfirm>
+            <span>이메일 인증코드</span>
             <div>
               <div>
-                <PhoneRoundedIcon />
+                <MailRoundedIcon />
                 <input type="password"></input>
               </div>
-              <CH.VerificationCode>인증번호 발송</CH.VerificationCode>
+              <div>인증번호 확인</div>
             </div>
-          </CH.PhoneInputBox>
-          <CH.PhoneInputBox>
-            <span>인증번호</span>
-            <div>
-              <div>
-                <PhoneRoundedIcon />
-                <input type="password"></input>
-              </div>
-              <CH.VerificationCode>인증번호 확인</CH.VerificationCode>
-            </div>
-          </CH.PhoneInputBox>
-          <CH.InputBox>
-            <span>비밀번호</span>
-            <div>
-              <LockRoundedIcon />
-              <input type="password"></input>
-            </div>
-          </CH.InputBox>
-          <CH.InputBox>
-            <span>비밀번호 확인</span>
-            <div>
-              <LockRoundedIcon />
-              <input type="password"></input>
-            </div>
-          </CH.InputBox>
-          <CH.CreateButton>JOIN</CH.CreateButton>
+          </CH.EmailConfirm>
+          <div className="ul">
+            <ul>
+              <li>메일이 오지 않는 경우, 메일을 재요청해주세요.</li>
+              <li>재발송 시, 기존 인증 번호는 만료됩니다.</li>
+            </ul>
+          </div>
+          <CH.CreateButton onClick={props.onClickMoveToPasswordReset}>
+            다음
+          </CH.CreateButton>
         </div>
       </CH.ContentsWrapper>
     </CH.Wrapper>

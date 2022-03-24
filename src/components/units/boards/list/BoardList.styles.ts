@@ -79,10 +79,12 @@ export const InnerBodyHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+
   .WriteButton {
-    width: 70px;
-    height: 34px;
-    border-radius: 8px;
+    width: 95px;
+    height: 35px;
+    border: 1px solid #000;
+    border-radius: 25px;
     background-color: white;
     cursor: pointer;
   }

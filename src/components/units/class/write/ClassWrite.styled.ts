@@ -57,12 +57,18 @@ export const Wrapper = styled.div`
         border-radius: 5px;
       }
     }
-    button {
-      width: 110px;
-      height: 35px;
-      border: 1px solid gray;
-      border-radius: 20px;
-      background: none;
-    }
+  }
+`
+
+export const ClassSubmit = styled.button`
+  width: 110px;
+  height: 35px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  background: none;
+  cursor: pointer;
+  :hover {
+    background: #1e2744;
+    color: #fff;
   }
 `

@@ -1,9 +1,7 @@
-import * as CH from '../Login.styled'
+import * as CH from '../../Login.styled'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
-import MailRoundedIcon from '@mui/icons-material/MailRounded'
-import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 
-export default function JoinUI() {
+export default function PasswordResetUI() {
   return (
     <CH.Wrapper>
       <CH.ImgWrapper>
@@ -1938,33 +1936,7 @@ export default function JoinUI() {
       </CH.ImgWrapper>
       <CH.ContentsWrapper>
         <div>
-          <CH.InputBox>
-            <span>이메일</span>
-            <div>
-              <MailRoundedIcon />
-              <input type="text"></input>
-            </div>
-          </CH.InputBox>
-          <CH.PhoneInputBox>
-            <span>핸드폰 번호</span>
-            <div>
-              <div>
-                <PhoneRoundedIcon />
-                <input type="password"></input>
-              </div>
-              <CH.VerificationCode>인증번호 발송</CH.VerificationCode>
-            </div>
-          </CH.PhoneInputBox>
-          <CH.PhoneInputBox>
-            <span>인증번호</span>
-            <div>
-              <div>
-                <PhoneRoundedIcon />
-                <input type="password"></input>
-              </div>
-              <CH.VerificationCode>인증번호 확인</CH.VerificationCode>
-            </div>
-          </CH.PhoneInputBox>
+          <div className="title">새로운 비밀번호를 입력해주세요.</div>
           <CH.InputBox>
             <span>비밀번호</span>
             <div>
@@ -1979,7 +1951,7 @@ export default function JoinUI() {
               <input type="password"></input>
             </div>
           </CH.InputBox>
-          <CH.CreateButton>JOIN</CH.CreateButton>
+          <CH.PasswordReset>비밀번호 변경</CH.PasswordReset>
         </div>
       </CH.ContentsWrapper>
     </CH.Wrapper>
