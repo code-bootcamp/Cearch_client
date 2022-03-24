@@ -1,4 +1,4 @@
-import * as CH from '../Login.styled'
+import * as CH from '../Login.styles'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import MailRoundedIcon from '@mui/icons-material/MailRounded'
 

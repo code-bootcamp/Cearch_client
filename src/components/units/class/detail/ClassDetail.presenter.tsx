@@ -1,4 +1,4 @@
-import * as CH from './ClassDetail.styled'
+import * as CH from './ClassDetail.styles'
 import StarRoundedIcon from '@mui/icons-material/StarRounded'
 
 export default function classNameDetailUI(props) {

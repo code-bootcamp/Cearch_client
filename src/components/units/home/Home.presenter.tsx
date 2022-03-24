@@ -1,4 +1,4 @@
-import * as CH from './Home.styled'
+import * as CH from './Home.styles'
 import { v4 as uuidv4 } from 'uuid'
 import { SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'

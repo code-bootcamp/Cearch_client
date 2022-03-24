@@ -1,4 +1,4 @@
-import * as CH from './ClassList.styled'
+import * as CH from './ClassList.styles'
 import { v4 as uuidv4 } from 'uuid'
 import classList from './classList.json'
 import StarRoundedIcon from '@mui/icons-material/StarRounded'
