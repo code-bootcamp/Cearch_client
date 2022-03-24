@@ -152,7 +152,7 @@ export default function AdminMain() {
               />
             )}
             {noteWrite && <NoteWrite onClickNoteList={onClickNoteList} />}
-            {noteDetail && <NoteDetailPage />}
+            {noteDetail && <NoteDetailPage onClickNoteList={onClickNoteList} />}
             {mentorPermissionDetail && (
               <MentorPermissionDetailPage
                 onClickMentorPermissionList={onClickMentorPermissionList}

@@ -228,6 +228,7 @@ export const BoardList = styled(Swiper)`
       left: 0;
     }
   }
+
   .button {
     width: 100%;
     position: absolute;
@@ -235,6 +236,7 @@ export const BoardList = styled(Swiper)`
     right: 0;
     width: 100%;
     border: 1px solid black;
+
     /* height: 30px; */
 
     .swiper-button-next {

@@ -12,7 +12,7 @@ export const MentorPermissionDetail__Header = styled.div`
   align-items: center;
 
   .NoteTitle {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .RefuseButton {
     width: 100px;

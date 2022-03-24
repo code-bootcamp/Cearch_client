@@ -1,3 +1,4 @@
+import ToastEditorPage from '../../../../../commons/libraries/toasteditor/editor'
 import * as CH from './NoteWrite.styles'
 
 export default function NoteWriteUI(props) {
@@ -12,10 +13,10 @@ export default function NoteWriteUI(props) {
       </CH.NoteWriteHeader>
       <CH.NoteWriteBody>
         <input className="NoteWriteTitle" placeholder="제목" />
-        <textarea
-          className="NoteWriteContents"
-          placeholder="본문 내용을 작성해주세요"
-        />
+
+        <div className="NoteWriteContents">
+          <ToastEditorPage />
+        </div>
       </CH.NoteWriteBody>
     </CH.Wrapper>
   )

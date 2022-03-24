@@ -79,6 +79,9 @@ export const InnerBodyHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  .HeaderTitle {
+    font-size: 1.125rem;
+  }
   .WriteButton {
     width: 70px;
     height: 34px;

@@ -98,7 +98,7 @@ export default function BoardListUI() {
     <CH.Wrapper>
       <CH.BoardListWrapper>
         <CH.InnerBodyHeader>
-          <div>
+          <div className="HeaderTitle">
             총 <span>000</span> 건의 글이 있습니다.
           </div>
           <div>

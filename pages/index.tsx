@@ -177,23 +177,22 @@ export default function Home() {
               onSwiper={(swiper) => console.log(swiper)}
             >
               <div className="button">
-                <div className="swiper-button-next"></div>
-              </div>
-              <div className="button">
                 <div className="swiper-button-prev"></div>
               </div>
+              <div className="button">
+                <div className="swiper-button-next"></div>
+              </div>
+
               {newBoardList}
             </CH.BoardList>
           </section>
 
           <section style={{ position: 'relative' }}>
             <p>최근 작성된 질문</p>
-
             <CH.BoardList
               spaceBetween={20}
               slidesPerView={3}
               modules={[Navigation]}
-              // navigation
               navigation={{
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
