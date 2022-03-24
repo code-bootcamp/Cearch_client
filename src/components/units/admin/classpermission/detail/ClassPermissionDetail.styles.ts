@@ -11,7 +11,7 @@ export const ClassPermissionDetail__Header = styled.div`
   grid-column-gap: 20px;
   align-items: center;
   .NoteTitle {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .RefuseButton {
     width: 100px;

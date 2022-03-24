@@ -12,7 +12,7 @@ export const NoteWriteHeader = styled.div`
 
   text-align: start;
   .NoteTitle {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .CancelButton {
     width: 100px;
@@ -37,7 +37,7 @@ export const NoteWriteBody = styled.div`
   padding: 20px;
 
   .NoteWriteTitle {
-    width: 90%;
+    width: 100%;
     height: 50px;
     text-align: start;
     padding: 20px;
@@ -49,7 +49,7 @@ export const NoteWriteBody = styled.div`
     }
   }
   .NoteWriteContents {
-    width: 90%;
+    width: 100%;
     text-align: start;
     min-height: 400px;
     padding: 20px;
