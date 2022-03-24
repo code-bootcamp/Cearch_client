@@ -42,50 +42,98 @@ export const Mentor = styled.div`
     box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
     border-radius: 10px;
     overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    .badge {
+      /* position: absolute;
+      top: 10px;
+      left: 10px; */
+      margin-bottom: 15px;
+      span {
+        /* font-size: 1.5rem; */
+        font-size: 7px;
+        margin-right: 5px;
+        padding: 3px 5px 2px;
+        background: #c2dceb;
+        border: 1px solid #83b3d6;
+        border-radius: 3px;
+        color: #417294;
+      }
+    }
     > * {
-      margin: 5px 0s;
+      margin: 5px auto;
     }
     .profileImg {
       width: 100%;
-      height: 150px;
-      background: #eee;
+      padding: 25px 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      img {
-        width: 45%;
+      > div {
+        width: 120px;
+        height: 120px;
+        margin: auto;
         border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
     }
   }
 `
 export const MentorInfo = styled.div`
-  padding: 15px;
+  /* padding: 0 20px 15px; */
+  padding-bottom: 10px;
+  width: 85%;
+  margin: 0 auto;
+  overflow: hidden;
   .workPart {
-    margin-bottom: 10px;
-
-    > div:nth-of-type(1) {
+    width: 100%;
+    > div:first-of-type {
       display: flex;
       align-items: end;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       p {
         font-size: 0.875em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       p:nth-of-type(2) {
         margin-left: 5px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
+    }
+    span {
+      overflow: hidden;
+      padding: 5px 10px 3px;
+      border-radius: 20px;
+      background-color: #1e2744;
+      color: #fff;
+      font-size: 0.875rem;
+      margin-right: 5px;
     }
   }
   .blank {
-    height: 40px;
+    height: 30px;
   }
   .mentorName {
     display: flex;
+    align-items: center;
     justify-content: right;
     margin-bottom: 5px;
 
     > p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
     }
     > div {

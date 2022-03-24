@@ -2,20 +2,36 @@ import * as CH from './MentorList.styles'
 import { v4 as uuidv4 } from 'uuid'
 import mentorList from './mentorList.json'
 
-export default function MentorListUI() {
-  const newMentorList = mentorList.map((el) => {
+export default function MentorListUI(props) {
+  const newMentorList = mentorList.map((el, index) => {
     return (
-      <div key={uuidv4()} /* onClick={onClickMoveToMentorDetail} */>
+      <div
+        key={uuidv4()}
+        id={String(index)}
+        onClick={props.onClickMoveToMentorDetail}
+      >
+        {/* <div className="badge">
+          <span>🏅</span>
+          <span>🎖</span>
+        </div> */}
         <div className="profileImg">
-          <img src={el.profileImg} />
+          <div>
+            <img src={el.profileImg} />
+          </div>
         </div>
         <CH.MentorInfo>
+          <div className="badge">
+            <span>30분이내 답변</span>
+            <span>답변률 90%</span>
+          </div>
           <div className="workPart">
             <div>
               <p>{el.company}</p>
               <p>{el.department}</p>
             </div>
-            <p>{el.part}</p>
+            {new Array(el.part.length).fill(el.part).map((el, index) => (
+              <span key={uuidv4()}>{el[index]}</span>
+            ))}
           </div>
           <div className="blank"></div>
           <div className="mentorName">
