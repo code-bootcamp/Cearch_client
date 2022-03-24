@@ -1,4 +1,4 @@
-import * as CH from './ClassWrite.styled'
+import * as CH from './ClassWrite.styles'
 
 export default function ClassWriteUI() {
   return (
