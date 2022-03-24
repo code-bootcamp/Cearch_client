@@ -5,7 +5,7 @@ export const EndedClasses = styled.div`
   margin-top: 55px;
 `
 export const TitleLabel = styled.div`
-  padding-top: 70px;
+  padding-top: 60px;
   font-style: normal;
   font-weight: 700;
   font-size: 18px;

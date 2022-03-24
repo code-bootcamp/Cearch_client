@@ -1,7 +1,19 @@
+import { useState } from 'react'
 import MyPointsUI from './MyPoints.presenter'
 import {} from './MyPoints.queries'
 
 export default function MyPoints() {
+  const [deposit, setDeposit] = useState(0)
+  const [withdraw, setWithdraw] = useState(0)
+
+  const onChangeDeposit = (event: SelectChangeEvent) => {
+    setDeposit(event.target.value)
+  }
+
+  const onChangeWithdraw = (event: SelectChangeEvent) => {
+    setWithdraw(event.target.value)
+  }
+
   // prettier-ignore
   const pointsMinus = [
     {date: '2022-03-23', division:'클래스 수강신청', detail:'초보자도 할 수 있는 html/css/javascript 완전정복 패키지' , price:150000 },
@@ -29,5 +41,12 @@ export default function MyPoints() {
     {date: '2022-03-23', division:'입금', detail:'타입스크립트 단기 마스터 특강' , price:60000 }
   ]
 
-  return <MyPointsUI pointsMinus={pointsMinus} pointsPlus={pointsPlus} />
+  return (
+    <MyPointsUI
+      pointsMinus={pointsMinus}
+      pointsPlus={pointsPlus}
+      onChangeDeposit={onChangeDeposit}
+      onChangeWithdraw={onChangeWithdraw}
+    />
+  )
 }

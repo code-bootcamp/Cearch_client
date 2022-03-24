@@ -21,6 +21,9 @@ export const HeadLeft = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  :hover {
+    cursor: pointer;
+  }
 `
 
 export const Avatar = styled.div`
@@ -30,11 +33,17 @@ export const Avatar = styled.div`
   overflow: hidden;
 `
 
+export const NameAndSetting = styled.div`
+  display: flex;
+  align-items: flex-start;
+`
+
 export const Name = styled.div`
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
+  margin-right: 7px;
 `
 
 export const HeadRight = styled.div`
