@@ -5,21 +5,32 @@ export const Wrapper = styled.div`
   margin: 0 auto;
   padding: 10px 0;
 `
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled.form`
   width: 90%;
   padding: 50px 80px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
   margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .errorMessage {
+    display: inline-block;
+    color: red;
+    font-size: 0.875rem;
+    width: 100%;
 
+    padding-left: 90px;
+  }
   .contentHeader {
+    width: 100%;
     padding: 20px 0;
     border-bottom: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     div {
       font-size: 1.5rem;
       font-weight: 700;
@@ -27,15 +38,15 @@ export const ContentWrapper = styled.div`
   }
   .contentBody {
     width: 90%;
-    margin: 30px auto;
+    margin: 30px auto 80px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    textarea {
+    align-items: flex-start;
+    justify-content: left;
+
+    .Contents {
       width: 100%;
       height: 400px;
-      resize: none;
-      padding: 20px;
       margin: 15px 0;
     }
     > div {
@@ -51,8 +62,14 @@ export const ContentWrapper = styled.div`
       select {
         width: 100%;
         height: 45px;
-        padding-left: 10px;
+        padding-left: 12px;
       }
+      > div {
+        height: 400px;
+      }
+    }
+    > span {
+      text-align: left;
     }
   }
   > div:last-of-type {
@@ -68,4 +85,5 @@ export const RegisterSubmit = styled.button`
   border: 1px solid gray;
   border-radius: 20px;
   background: none;
+  cursor: pointer;
 `

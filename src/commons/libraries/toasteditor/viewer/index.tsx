@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic'
 
-const BoardWriteViewer = dynamic(() => import('./viewer'), {
+const ToastViewer = dynamic(() => import('./viewer'), {
   ssr: false,
 })
 
-export default function BoardWriteViewerPage() {
+export default function ToastViewerPage() {
   const testCode = ''
-  return <BoardWriteViewer />
+  return <ToastViewer />
 }
