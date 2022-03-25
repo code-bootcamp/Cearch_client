@@ -10,25 +10,27 @@ import colorSyntax from '@toast-ui/editor-plugin-color-syntax'
 import { useRef, useState } from 'react'
 import uml from '@toast-ui/editor-plugin-uml'
 import { Editor } from '@toast-ui/react-editor'
+import styled from '@emotion/styled'
 
-export default function BoardWriteEditor() {
+const Wrapper = styled.div`
+  > div {
+    height: 400px !important;
+  }
+`
+
+export default function BoardWriteEditor(props) {
   const editorRef = useRef<Editor>(null)
-  const [contents, setContents] = useState('')
 
   const onClickConsole = () => {
     const editorInstance = editorRef.current.getInstance()
-    const getContentMarkdown = editorInstance.getMarkdown()
-    console.log(getContentMarkdown)
-    const getContentHTML = editorInstance.getHTML()
-    console.log(getContentHTML)
-    setContents(getContentMarkdown)
-  }
-  const onClicktest = () => {
-    alert(contents)
+    // const getContentMarkdown = editorInstance.getMarkdown()
+    // const getContentHTML = editorInstance.getHTML()
+    props.setContents(editorInstance.getHTML())
+    console.log(props.contents)
   }
 
   return (
-    <div>
+    <Wrapper>
       <Editor
         previewStyle="tab"
         plugins={[
@@ -39,7 +41,6 @@ export default function BoardWriteEditor() {
         onChange={onClickConsole}
         ref={editorRef}
       />
-      <button onClick={onClicktest}>click</button>
-    </div>
+    </Wrapper>
   )
 }

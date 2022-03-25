@@ -1,3 +1,4 @@
+import ToastViewerPage from '../../../../commons/libraries/toasteditor/viewer'
 import * as CH from './BoardDetail.styles'
 
 export default function BoardDetailUI() {
@@ -9,7 +10,8 @@ export default function BoardDetailUI() {
           <div>2022.03.15</div>
         </div>
         <div className="contentBody">
-          <div className="contents">
+          <ToastViewerPage />
+          {/* <div className="contents">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
             eum, eveniet in est odit dolorem officiis pariatur, quas ipsum quam
             eligendi, aperiam consequatur. Sequi amet eveniet accusamus omnis
@@ -44,7 +46,7 @@ export default function BoardDetailUI() {
             elit. Expedita molestiae ex consequuntur modi sequi, dolorum eos
             sint tempore nostrum labore ratione unde autem vero qui. Veniam qui
             eaque dolorum quisquam!
-          </div>
+          </div> */}
         </div>
         <div className="contentFooter">
           <button className="likeButton">

@@ -4,6 +4,8 @@ const ToastEditor = dynamic(() => import('./editor'), {
   ssr: false,
 })
 
-export default function ToastEditorPage() {
-  return <ToastEditor />
+export default function ToastEditorPage(props) {
+  return (
+    <ToastEditor contents={props.contents} setContents={props.setContents} />
+  )
 }
