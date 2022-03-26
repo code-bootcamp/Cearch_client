@@ -1,15 +1,50 @@
 import styled from '@emotion/styled'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
+import { breakPoints } from '../../../../commons/styles/media'
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  Input,
+  MenuItem,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  ChakraProvider,
+  extendTheme,
+} from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
+import { HamburgerIcon } from '@chakra-ui/icons'
+import LogoPage from '../../../../commons/libraries/Logo'
 
 const Header = styled.header`
   width: 100%;
   box-shadow: 0px 10px 20px #eee;
-
+  .MenuWrapper {
+    display: none;
+    @media ${breakPoints.tablet} {
+      display: flex;
+    }
+  }
   > div {
     width: 1200px;
     margin: 0 auto;
     padding: 10px 0;
-
+    @media ${breakPoints.tablet} {
+      width: 90%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
     > div:nth-of-type(2) {
       height: 50px;
       margin-bottom: 10px;
@@ -26,7 +61,12 @@ const Logo = styled.div`
   font-size: 2.5rem;
   margin-bottom: 10px;
 `
-const Menu = styled.nav`
+const MenuWrapper = styled.nav`
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    height: auto;
+    display: none;
+  }
   ul {
     li {
       display: inline-block;
@@ -57,11 +97,17 @@ const SearchBar = styled.div`
   text-align: right;
   padding: 5px 10px 5px 0px;
   margin-right: 20px;
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    height: auto;
+  }
+
   input {
     width: 150px;
     border: 0;
     background: none;
     outline: none;
+    padding-left: 10px;
   }
   button {
     border: 0;
@@ -98,10 +144,57 @@ const Login = styled.div`
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
 `
+
+const MenuButtonWrapper = styled(MenuButton)`
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    height: auto;
+    display: block;
+  }
+`
+const MenuItems = styled(MenuItem)`
+  width: 8rem;
+  height: 2rem;
+  background-color: white;
+  border: 1px solid gray;
+  margin-bottom: 3px;
+  cursor: pointer;
+  padding-left: 5px;
+  :hover {
+    color: white;
+    background-color: #1e2744;
+  }
+`
+
+const components = {
+  Drawer: {
+    variants: {
+      alwaysOpen: {
+        parts: ['dialog, dialogContainer'],
+        dialog: {
+          pointerEvents: 'auto',
+        },
+        dialogContainer: {
+          pointerEvents: 'none',
+        },
+      },
+    },
+  },
+}
+const theme = extendTheme({
+  components,
+})
 
 export default function LayoutHeader() {
   const router = useRouter()
+
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
 
   const onClickMoveToHome = () => {
     router.push('/')
@@ -118,21 +211,28 @@ export default function LayoutHeader() {
   const onClickMoveToLogin = () => {
     router.push('/login/login')
   }
+  const onClickMenuOpen = () => {
+    setMenuOpen(true)
+  }
+  const onClickMenuClose = () => {
+    setMenuOpen(false)
+  }
 
   return (
     <Header>
       <div>
-        <Logo>LOGO</Logo>
-
+        <Logo>
+          <LogoPage />
+        </Logo>
         <div>
-          <Menu>
+          <MenuWrapper>
             <ul>
               <li onClick={onClickMoveToHome}>홈</li>
               <li onClick={onClickMoveToClass}>클래스</li>
               <li onClick={onClickMoveToMentor}>멘토</li>
               <li onClick={onClickMoveToBoards}>질문게시판</li>
             </ul>
-          </Menu>
+          </MenuWrapper>
 
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <SearchBar>
@@ -141,8 +241,62 @@ export default function LayoutHeader() {
                 <div className="search icon"></div>
               </button>
             </SearchBar>
-
             <Login onClick={onClickMoveToLogin}>로그인</Login>
+          </div>
+          <div className="MenuWrapper">
+            {/* <Menu>
+              <MenuButtonWrapper
+                as={IconButton}
+                aria-label="Options"
+                icon={<HamburgerIcon w="2rem" h="2rem" />}
+                variant="outline"
+                color="black"
+                backgroundColor="#ffffff"
+                w={45}
+                h={30}
+                border="none"
+                cursor="pointer"
+                display="none"
+              />
+              <MenuList>
+                <MenuItems onClick={onClickMoveToHome}>홈</MenuItems>
+                <MenuItems onClick={onClickMoveToClass}>클래스</MenuItems>
+                <MenuItems onClick={onClickMoveToMentor}>멘토</MenuItems>
+                <MenuItems onClick={onClickMoveToBoards}>질문게시판</MenuItems>
+              </MenuList>
+            </Menu> */}
+            <ChakraProvider theme={theme}>
+              <Button ref={btnRef} bg="#1e2744" color="white" onClick={onOpen}>
+                Open
+              </Button>
+              <Drawer
+                variant="alwaysOpen"
+                // {...rest}
+                isOpen={isOpen}
+                placement="right"
+                onClose={onClose}
+                trapFocus={false}
+                closeOnOverlayClick={false}
+                blockScrollOnMount={false}
+              >
+                <DrawerOverlay />
+                <DrawerContent>
+                  <DrawerCloseButton />
+                  <DrawerHeader>Create your account</DrawerHeader>
+
+                  <DrawerBody>
+                    <Input placeholder="Type here..." />
+                  </DrawerBody>
+
+                  <DrawerFooter>
+                    <Button variant="outline" mr={3} onClick={onClose}>
+                      Cancel
+                    </Button>
+                    <Button colorScheme="blue">Save</Button>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
+            </ChakraProvider>
           </div>
         </div>
       </div>

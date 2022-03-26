@@ -1,9 +1,18 @@
 import styled from '@emotion/styled'
-
+import { breakPoints } from '../../../../commons/styles/media'
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 50px 0 100px;
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    height: auto;
+  }
+  > p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 50px;
+  }
 
   > div:first-of-type {
     span {
@@ -66,8 +75,8 @@ export const Wrapper = styled.div`
 `
 
 export const BoardListWrapper = styled.div`
-  width: 90%;
-  margin: 70px auto 50px;
+  width: 95%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 `
@@ -100,19 +109,65 @@ export const BoardList = styled.div`
   margin: 5px 0px;
   .Contents {
     border-bottom: 1px solid gray;
-    padding: 12px;
+    padding: 30px 10px;
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 10fr 2fr 2fr;
-  }
-  .ContentsTitle {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  .ContentsWriter {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    grid-template-columns: 1fr 8fr;
+    .ContentsLeftWrapper {
+      text-align: left;
+    }
+    .ContentsRightWrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      .ContentsTitle {
+        width: 100%;
+        font-weight: bold;
+        font-size: 1.25rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 5px;
+      }
+      .ContentsWriter,
+      .ContentsBody {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        color: black;
+      }
+      .RightWrapperFooter {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        text-align: left;
+        margin-top: 20px;
+        > div {
+          display: flex;
+          align-items: center;
+        }
+        .Categories {
+          color: #417294;
+          background-color: #c2dceb;
+          border-radius: 10px;
+          padding: 5px 10px 3px;
+          margin-right: 10px;
+        }
+        .CreatedAt {
+          color: grey;
+          margin-left: 10px;
+        }
+      }
+    }
   }
 `
