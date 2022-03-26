@@ -41,12 +41,59 @@ export default function MyPoints() {
     {date: '2022-03-23', division:'입금', detail:'타입스크립트 단기 마스터 특강' , price:60000 }
   ]
 
+  // 포인트충전
+  const onClickPayment = () => {
+    const IMP = window.IMP // 생략 가능
+    IMP.init('imp49910675') // Example: imp00000000
+
+    // IMP.request_pay(param, callback) 결제창 호출
+    IMP.request_pay(
+      {
+        // param
+        pg: 'html5_inicis',
+        pay_method: 'card',
+        // merchant_uid: "ORD20180131-0000011",
+        name: 'Cearch 포인트 충전',
+        amount: deposit,
+        buyer_email: 'codecamp@code.camp',
+        buyer_name: '홍길동',
+        buyer_tel: '999-9999-9999',
+        buyer_addr: '서울특별시 강남구 신사동',
+        buyer_postcode: '99999',
+        // m_redirect_url: 모바일 결제시 돌아갈 주소!!
+      },
+      (rsp) => {
+        // callback
+        if (rsp.success) {
+          // 결제 성공 시 로직,
+          console.log(rsp)
+
+          // 백엔드에 결제관련 데이터 넘겨주기
+          // => 즉, 뮤테이션 실행하기!!!
+          // ex, createPointTransactionsOfLoading
+
+          // const result = createPointTransactionOfLoading({
+          //   variables: { impUid: rsp.imp_uid },
+          // });
+          // console.log(result);
+          alert('포인트 충전이 완료되었습니다.')
+          window.location.reload()
+        } else {
+          // 결제 실패 시 로직,
+        }
+      }
+    )
+  }
+
   return (
-    <MyPointsUI
-      pointsMinus={pointsMinus}
-      pointsPlus={pointsPlus}
-      onChangeDeposit={onChangeDeposit}
-      onChangeWithdraw={onChangeWithdraw}
-    />
+    <>
+      <MyPointsUI
+        pointsMinus={pointsMinus}
+        pointsPlus={pointsPlus}
+        onChangeDeposit={onChangeDeposit}
+        onChangeWithdraw={onChangeWithdraw}
+        onClickPayment={onClickPayment}
+      />
+    </>
   )
 }

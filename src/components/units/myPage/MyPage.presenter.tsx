@@ -5,7 +5,7 @@ import MyInformation from './myInformation/MyInformation.container'
 export default function MyPageUI(props: IMyPageUIProps) {
   return (
     <CH.Wrapper>
-      <CH.HeadWrapper>
+      <CH.HeadWrapper className="desktop">
         <CH.HeadLeft onClick={() => props.selectMenuHandler(4)}>
           <CH.Avatar>
             <img width={134} src="/avatar.png" />

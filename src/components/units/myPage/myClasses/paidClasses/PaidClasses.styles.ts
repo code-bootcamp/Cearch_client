@@ -1,8 +1,31 @@
 import styled from '@emotion/styled'
 
-export const TakingClasses = styled.div``
+export const TakingClasses = styled.div`
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+`
 export const EndedClasses = styled.div`
   margin-top: 55px;
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
 `
 export const TitleLabel = styled.div`
   padding-top: 60px;
