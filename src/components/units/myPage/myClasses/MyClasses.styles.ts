@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
-  width: 957px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 `
@@ -10,9 +11,16 @@ export const HeadTitle = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `
 
 export const TabMenu = styled.div`
+  width: 900px;
   margin-top: 48px;
   margin-bottom: 25px;
   display: flex;
@@ -31,9 +39,45 @@ export const TabMenu = styled.div`
     font-size: 18px;
     color: #bdbdbd;
   }
+  @media ${breakPoints.tablet} {
+    margin-top: 0px;
+    .focused {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15.5px;
+    }
+
+    .submenu {
+      cursor: pointer;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15.5px;
+      color: #bdbdbd;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    .focused {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .submenu {
+      cursor: pointer;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      color: #bdbdbd;
+    }
+  }
 `
 export const Menu = styled.div`
   margin-right: 70px;
+  @media ${breakPoints.mobile} {
+    margin-right: 30px;
+  }
 `
 export const Contents = styled.div`
   width: 100%;
@@ -59,5 +103,11 @@ export const CreateButton = styled.div`
   align-items: center;
   :hover {
     cursor: pointer;
+  }
+  @media ${breakPoints.tablet} {
+    display: none;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `

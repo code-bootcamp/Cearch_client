@@ -18,11 +18,11 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 50px;
   }
 `
 
 export const HeadWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -127,17 +127,16 @@ export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
 
   @media ${breakPoints.tablet} {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
   @media ${breakPoints.mobile} {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -148,7 +147,8 @@ export const BodyWrapper = styled.div`
 export const TabMenu = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+
   .focused {
     font-style: normal;
     font-weight: 700;
@@ -165,7 +165,7 @@ export const TabMenu = styled.div`
   @media ${breakPoints.tablet} {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* margin: 0 auto; */
 
     .focused {
       font-style: normal;
@@ -183,32 +183,36 @@ export const TabMenu = styled.div`
   @media ${breakPoints.mobile} {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    width: 700px;
 
     .focused {
       font-style: normal;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 15.5px;
     }
     .submenu {
       cursor: pointer;
-      font-family: 'Noto Sans KR';
       font-style: normal;
       font-weight: 300;
-      font-size: 18px;
+      font-size: 15.5px;
     }
   }
 `
 export const Menu = styled.div`
-  width: 140px;
+  margin-right: 30px;
   margin-bottom: 48px;
+  @media ${breakPoints.mobile} {
+    margin-bottom: 30px;
+  }
 `
 export const Contents = styled.div`
   width: 957px;
   @media ${breakPoints.tablet} {
-    width: 90%;
+    width: 100%;
+    margin: 0 auto;
   }
   @media ${breakPoints.mobile} {
-    width: 90%;
+    width: 100%;
+    margin: 0 auto;
   }
 `
