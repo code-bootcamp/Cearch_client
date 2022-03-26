@@ -1935,8 +1935,8 @@ export default function PasswordResetUI() {
         </svg>
       </CH.ImgWrapper>
       <CH.ContentsWrapper>
+        <p className="title">새로운 비밀번호를 입력해주세요.</p>
         <div>
-          <div className="title">새로운 비밀번호를 입력해주세요.</div>
           <CH.InputBox>
             <span>비밀번호</span>
             <div>

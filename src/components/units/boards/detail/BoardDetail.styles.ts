@@ -31,7 +31,6 @@ export const Wrapper = styled.div`
 
     .codeBlock {
       width: 100%;
-      /* height: 400px; */
       background-color: #eee;
       border-radius: 20px;
       padding: 20px;
@@ -81,11 +80,21 @@ export const CommentsWrapper = styled.div`
     padding-bottom: 10px;
     font-weight: 600;
   }
-  .commentsWrite {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+`
+
+export const CommentsList = styled.div`
+  text-align: center;
+
+  > div {
+    padding: 10px;
+    border-bottom: 3px dotted gray;
+  }
+
+  .comment {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 1fr 10fr 1.5fr;
     align-items: center;
+
     margin: 20px 0;
     width: 100%;
 
@@ -112,15 +121,12 @@ export const CommentsWrapper = styled.div`
       object-fit: cover;
       border-radius: 50%;
       text-align: center;
+
+    }
+    &:last-of-type {
+      border: 0;
     }
   }
-  .commentsList {
-    text-align: center;
-
-    > div {
-      padding: 10px;
-      border-bottom: 3px dotted gray;
-    }
 
     .comment {
       display: grid;
@@ -151,6 +157,16 @@ export const CommentsWrapper = styled.div`
       &:last-of-type {
         border: 0;
       }
+
     }
+  }
+
+  .commentContentsInput {
+    width: 100%;
+    height: 40px;
+    margin: 0 10px;
+  }
+  .commentSubmit {
+    height: 40px;
   }
 `

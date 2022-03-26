@@ -14,20 +14,67 @@ export const Wrapper = styled.div`
       > p {
         font-size: 1.5rem;
         font-weight: 600;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
       }
     }
     // 카테고리
     section:nth-of-type(1) {
       margin: 30px 0 100px;
 
-      li {
-        text-align: center;
-        display: inline-block;
-        border: 1px solid black;
-        padding: 5px 50px;
-        margin: 0 20px 20px 0;
-        border-radius: 20px;
+      #mainCategory {
+        padding: 40px 30px 30px;
+        border: 1px solid gray;
+        border-radius: 10px;
+
+        .swiper-button-prev,
+        .swiper-button-next {
+          z-index: 99999;
+          color: #224fe1;
+          &:after {
+            font-size: 2rem;
+          }
+        }
+
+        .categoryColumn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          > svg {
+            height: 60px;
+          }
+          :hover {
+            color: #224fe1;
+            > svg {
+              transition: all linear 0.2s;
+              transform: translateY(-8px);
+              path {
+                stroke: #224fe1;
+              }
+              .circleFill {
+                fill: #224fe1;
+                stroke: none;
+              }
+              .pathFill {
+                fill: #224fe1;
+                stroke: none;
+              }
+              .circleStroke {
+                fill: none;
+                stroke: #224fe1;
+              }
+              .rectFill {
+                fill: #224fe1;
+                stroke: none;
+              }
+            }
+          }
+          > span {
+            margin-top: 10px;
+            font-size: 1rem;
+          }
+        }
       }
     }
   }
@@ -58,10 +105,21 @@ export const ClassImg = styled.div`
     background: rgba(0, 0, 0, 0.2);
   }
 
+  &:hover {
+    img {
+      width: 110%;
+      height: 110%;
+    }
+  }
   img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all linear 0.2s;
   }
   p {
     z-index: 99;

@@ -1,9 +1,14 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper } from 'swiper/react'
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    width: 90%;
+  }
 
   article {
     width: 100%;
@@ -22,13 +27,60 @@ export const Wrapper = styled.div`
     section:nth-of-type(1) {
       margin: 30px 0 100px;
 
-      li {
-        text-align: center;
-        display: inline-block;
-        border: 1px solid black;
-        padding: 5px 50px;
-        margin: 0 20px 20px 0;
-        border-radius: 20px;
+      #mainCategory {
+        padding: 40px 30px 30px;
+        border: 1px solid gray;
+        border-radius: 10px;
+
+        .swiper-button-prev,
+        .swiper-button-next {
+          z-index: 99999;
+          color: #224fe1;
+          &:after {
+            font-size: 2rem;
+          }
+        }
+
+        .categoryColumn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          > svg {
+            height: 60px;
+          }
+          :hover {
+            color: #224fe1;
+            > svg {
+              transition: all linear 0.2s;
+              transform: translateY(-8px);
+              path {
+                stroke: #224fe1;
+              }
+              .circleFill {
+                fill: #224fe1;
+                stroke: none;
+              }
+              .pathFill {
+                fill: #224fe1;
+                stroke: none;
+              }
+              .circleStroke {
+                fill: none;
+                stroke: #224fe1;
+              }
+              .rectFill {
+                fill: #224fe1;
+                stroke: none;
+              }
+            }
+          }
+          > span {
+            margin-top: 10px;
+            font-size: 1rem;
+          }
+        }
       }
     }
   }
@@ -39,20 +91,75 @@ export const Mentor = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 20px;
   grid-row-gap: 50px;
+
+  @media ${breakPoints.tablet} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media ${breakPoints.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   > div {
-    box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
-    border-radius: 10px;
-    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
     cursor: pointer;
     position: relative;
 
+    .mentorCardFront,
+    .mentorCardBack {
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      backface-visibility: hidden;
+    }
+
+    .mentorCardFront {
+      transform: rotateY(0deg);
+      transform-style: preserve-3d;
+      :after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+      }
+    }
+
+    .mentorCardBack {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transform: rotateY(180deg);
+      transform-style: preserve-3d;
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        display: none;
+      }
+    }
+
+    &:hover .mentorCardBack {
+      transform: rotateY(0deg);
+      transform-style: preserve-3d;
+    }
+    &:hover .mentorCardFront {
+      transform: rotateY(-180deg);
+      transform-style: preserve-3d;
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        transform: rotateY(0deg);
+      }
+    }
+
+    &:hover .mentorCardFront,
+    &:hover .mentorCardBack {
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
     .badge {
-      /* position: absolute;
-      top: 10px;
-      left: 10px; */
       margin-bottom: 15px;
       span {
-        /* font-size: 1.5rem; */
         font-size: 7px;
         margin-right: 5px;
         padding: 3px 5px 2px;
@@ -83,12 +190,20 @@ export const Mentor = styled.div`
           height: 100%;
           object-fit: cover;
         }
+
+        @media ${breakPoints.tablet} {
+          width: 100px;
+          height: 100px;
+        }
+        @media ${breakPoints.mobile} {
+          width: 25vw;
+          height: 25vw;
+        }
       }
     }
   }
 `
 export const MentorInfo = styled.div`
-  /* padding: 0 20px 15px; */
   padding-bottom: 10px;
   width: 85%;
   margin: 0 auto;
@@ -126,6 +241,12 @@ export const MentorInfo = styled.div`
   }
   .blank {
     height: 30px;
+    @media ${breakPoints.tablet} {
+      height: 5vw;
+    }
+    @media ${breakPoints.mobile} {
+      height: 8vw;
+    }
   }
   .mentorName {
     display: flex;
@@ -146,7 +267,6 @@ export const MentorInfo = styled.div`
     }
   }
 `
-
 export const Class = styled.div`
   width: 100%;
   display: grid;
@@ -176,10 +296,21 @@ export const ClassImg = styled.div`
     background: rgba(0, 0, 0, 0.2);
   }
 
+  &:hover {
+    img {
+      width: 110%;
+      height: 110%;
+    }
+  }
   img {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: all linear 0.2s;
   }
   p {
     z-index: 99;
@@ -217,12 +348,13 @@ export const InfoTop = styled.div`
     color: orange;
   }
 
-  /* .classState {
-    border-radius: 3px;
+  .classState {
+    border-radius: 5px;
     font-size: 0.875rem;
-    background: #c2dceb;
-    padding: 2px 5px;
-  } */
+    background: #f1f1f1;
+    color: #417294;
+    padding: 5px 7px 4px;
+  }
 `
 export const InfoBottom = styled.div`
   width: 100%;
@@ -234,7 +366,7 @@ export const InfoBottom = styled.div`
   .classCategory {
     margin: 15px 0;
     span {
-      background: #83b3d6;
+      background: #1e2744;
       padding: 5px 10px 3px;
       border-radius: 15px;
       color: #fff;
@@ -358,7 +490,7 @@ export const BoardTop = styled.div`
 `
 export const BoardBottom = styled.div`
   border-radius: 20px;
-  padding: 20px 10px;
+  padding: 20px 10px 10px;
 
   .title {
     font-size: 1.5rem;

@@ -1939,6 +1939,12 @@ export default function JoinUI() {
       <CH.ContentsWrapper>
         <div>
           <CH.InputBox>
+            <span>이름</span>
+            <div>
+              <input type="text" className="nameInput"></input>
+            </div>
+          </CH.InputBox>
+          <CH.InputBox>
             <span>이메일</span>
             <div>
               <MailRoundedIcon />

@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { breakPoints } from '../../../../commons/styles/media'
+
 import {
   Button,
   Menu,
@@ -24,6 +25,7 @@ import { IconButton } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import LogoPage from '../../../../commons/libraries/Logo'
 
+
 const Header = styled.header`
   width: 100%;
   box-shadow: 0px 10px 20px #eee;
@@ -44,6 +46,7 @@ const Header = styled.header`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
     }
     > div:nth-of-type(2) {
       height: 50px;
