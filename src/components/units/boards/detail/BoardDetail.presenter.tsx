@@ -1,7 +1,5 @@
-
 import ToastViewerPage from '../../../../commons/libraries/toasteditor/viewer'
 import { DateToString } from '../../../../commons/libraries/utils/utils'
-
 import * as CH from './BoardDetail.styles'
 
 export default function BoardDetailUI() {
@@ -13,9 +11,7 @@ export default function BoardDetailUI() {
           <div>2022.03.15</div>
         </div>
         <div className="contentBody">
-
           <ToastViewerPage />
-
         </div>
         <div className="contentFooter">
           <button className="likeButton">
@@ -26,7 +22,6 @@ export default function BoardDetailUI() {
         </div>
         <CH.CommentsWrapper>
           <div className="writerDetail">go_rAnii</div>
-
 
           <div className="commentsWrite">
             <div>
@@ -41,7 +36,6 @@ export default function BoardDetailUI() {
           </div>
 
           <div className="commentsList">
-
             <div className="comment">
               <input type="checkbox" />
               <div>
@@ -79,19 +73,7 @@ export default function BoardDetailUI() {
               <div>댓글 본문 입니다.</div>
               <div>2022.03.15</div>
             </div>
-          </CH.CommentsList>
-
-          <CH.CommentsWrite>
-            <div className="userImg">
-              <img src="/images/profileDefault.png" />
-            </div>
-            <input
-              type="text"
-              placeholder="내용을 입력하세요"
-              className="commentContentsInput"
-            />
-            <button className="commentSubmit">댓글등록</button>
-          </CH.CommentsWrite>
+          </div>
         </CH.CommentsWrapper>
       </CH.ContentWrapper>
     </CH.Wrapper>
