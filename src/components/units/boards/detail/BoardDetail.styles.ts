@@ -16,7 +16,6 @@ export const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     div {
       font-size: 1.5rem;
       font-weight: 700;
@@ -28,16 +27,15 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
     .codeBlock {
       width: 100%;
+      /* height: 400px; */
       background-color: #eee;
       border-radius: 20px;
       padding: 20px;
       word-wrap: break-word;
       white-space: pre-line;
     }
-
     .contents {
       width: 100%;
       text-align: start;
@@ -55,7 +53,6 @@ export const Wrapper = styled.div`
       border-radius: 50%;
       background: none;
       box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
-
       svg {
         padding: 5px 7px;
         width: 30px;
@@ -80,24 +77,13 @@ export const CommentsWrapper = styled.div`
     padding-bottom: 10px;
     font-weight: 600;
   }
-`
-
-export const CommentsList = styled.div`
-  text-align: center;
-
-  > div {
-    padding: 10px;
-    border-bottom: 3px dotted gray;
-  }
-
-  .comment {
-    display: grid;
-    grid-template-columns: 0.5fr 0.5fr 1fr 10fr 1.5fr;
+  .commentsWrite {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-
     margin: 20px 0;
     width: 100%;
-
     .commentContentsInput {
       width: 1000px;
       height: 60px;
@@ -121,13 +107,14 @@ export const CommentsList = styled.div`
       object-fit: cover;
       border-radius: 50%;
       text-align: center;
-
-    }
-    &:last-of-type {
-      border: 0;
     }
   }
-
+  .commentsList {
+    text-align: center;
+    > div {
+      padding: 10px;
+      border-bottom: 3px dotted gray;
+    }
     .comment {
       display: grid;
       grid-template-columns: 0.5fr 0.5fr 1.5fr 10fr 1.5fr;
@@ -157,16 +144,6 @@ export const CommentsList = styled.div`
       &:last-of-type {
         border: 0;
       }
-
     }
-  }
-
-  .commentContentsInput {
-    width: 100%;
-    height: 40px;
-    margin: 0 10px;
-  }
-  .commentSubmit {
-    height: 40px;
   }
 `
