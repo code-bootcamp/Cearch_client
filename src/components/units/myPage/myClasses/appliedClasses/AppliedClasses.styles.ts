@@ -117,7 +117,6 @@ export const ClassTitle = styled.div`
     width: 200px;
   }
 `
-
 export const ClassDate = styled.div`
   font-style: normal;
   font-weight: 400;
