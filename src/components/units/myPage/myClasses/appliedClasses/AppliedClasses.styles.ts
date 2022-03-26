@@ -90,7 +90,6 @@ export const ClassCategory = styled.div`
     margin-bottom: 5px;
   }
 `
-
 export const ClassTitle = styled.div`
   width: 100%;
   font-style: normal;
