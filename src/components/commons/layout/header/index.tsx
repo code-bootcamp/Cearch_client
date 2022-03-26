@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
+import { breakPoints } from '../../../../commons/styles/media'
 
 const Header = styled.header`
   width: 100%;
@@ -9,7 +10,12 @@ const Header = styled.header`
     width: 1200px;
     margin: 0 auto;
     padding: 10px 0;
-
+    @media ${breakPoints.tablet} {
+      width: 90%;
+    }
+    @media ${breakPoints.mobile} {
+      width: 90%;
+    }
     > div:nth-of-type(2) {
       height: 50px;
       margin-bottom: 10px;

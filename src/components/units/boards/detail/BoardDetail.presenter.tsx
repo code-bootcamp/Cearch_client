@@ -1,4 +1,3 @@
-import ToastViewerPage from '../../../../commons/libraries/toasteditor/viewer'
 import * as CH from './BoardDetail.styles'
 
 export default function BoardDetailUI() {
@@ -10,8 +9,7 @@ export default function BoardDetailUI() {
           <div>2022.03.15</div>
         </div>
         <div className="contentBody">
-          <ToastViewerPage />
-          {/* <div className="contents">
+          <div className="contents">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
             eum, eveniet in est odit dolorem officiis pariatur, quas ipsum quam
             eligendi, aperiam consequatur. Sequi amet eveniet accusamus omnis
@@ -46,7 +44,7 @@ export default function BoardDetailUI() {
             elit. Expedita molestiae ex consequuntur modi sequi, dolorum eos
             sint tempore nostrum labore ratione unde autem vero qui. Veniam qui
             eaque dolorum quisquam!
-          </div> */}
+          </div>
         </div>
         <div className="contentFooter">
           <button className="likeButton">
@@ -58,46 +56,49 @@ export default function BoardDetailUI() {
         <CH.CommentsWrapper>
           <div className="writerDetail">작성자</div>
 
-          <div className="commentsWrite">
+          <CH.CommentsList>
+            <div className="comment">
+              <input type="checkbox" />
+              <div>
+                <img src="/images/profileDefault.png" />
+              </div>
+              <div>작성자</div>
+              <div>댓글 본문 입니다.</div>
+              <div>2022.03.15</div>
+            </div>
+
+            <div className="comment">
+              <input type="checkbox" />
+              <div>
+                <img src="/images/profileDefault.png" />
+              </div>
+              <div>작성자</div>
+              <div>댓글 본문 입니다.</div>
+              <div>2022.03.15</div>
+            </div>
+
+            <div className="comment">
+              <input type="checkbox" />
+              <div>
+                <img src="/images/profileDefault.png" />
+              </div>
+              <div>작성자</div>
+              <div>댓글 본문 입니다.</div>
+              <div>2022.03.15</div>
+            </div>
+          </CH.CommentsList>
+
+          <CH.CommentsWrite>
+            <div className="userImg">
+              <img src="/images/profileDefault.png" />
+            </div>
             <input
               type="text"
               placeholder="내용을 입력하세요"
               className="commentContentsInput"
             />
-            <button className="commentSubmit">댓글 등록하기</button>
-          </div>
-
-          <div className="commentsList">
-            <div className="comment">
-              <input type="checkbox" />
-              <div>
-                <img src="/images/profileDefault.png" />
-              </div>
-              <div>작성자</div>
-              <div>댓글 본문 입니다.</div>
-              <div>2022.03.15</div>
-            </div>
-
-            <div className="comment">
-              <input type="checkbox" />
-              <div>
-                <img src="/images/profileDefault.png" />
-              </div>
-              <div>작성자</div>
-              <div>댓글 본문 입니다.</div>
-              <div>2022.03.15</div>
-            </div>
-
-            <div className="comment">
-              <input type="checkbox" />
-              <div>
-                <img src="/images/profileDefault.png" />
-              </div>
-              <div>작성자</div>
-              <div>댓글 본문 입니다.</div>
-              <div>2022.03.15</div>
-            </div>
-          </div>
+            <button className="commentSubmit">댓글등록</button>
+          </CH.CommentsWrite>
         </CH.CommentsWrapper>
       </CH.ContentWrapper>
     </CH.Wrapper>

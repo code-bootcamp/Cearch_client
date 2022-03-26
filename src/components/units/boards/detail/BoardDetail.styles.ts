@@ -27,7 +27,6 @@ export const Wrapper = styled.div`
 
     .codeBlock {
       width: 100%;
-      /* height: 400px; */
       background-color: #eee;
       border-radius: 20px;
       padding: 20px;
@@ -77,53 +76,71 @@ export const CommentsWrapper = styled.div`
     padding-bottom: 10px;
     font-weight: 600;
   }
-  .commentsWrite {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+`
+
+export const CommentsList = styled.div`
+  text-align: center;
+
+  > div {
+    padding: 10px;
+    border-bottom: 3px dotted gray;
+  }
+
+  .comment {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 1fr 10fr 1.5fr;
     align-items: center;
-    margin: 20px 0;
-    .commentContentsInput {
-      width: 1000px;
-      height: 40px;
+
+    > div:first-of-type {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
-    .commentSubmit {
-      width: 100px;
-      height: 40px;
+    > div:nth-of-type(3) {
+      text-align: left;
+      padding: 0 20px;
+    }
+    &:last-of-type {
+      border: 0;
     }
   }
-  .commentsList {
-    text-align: center;
+`
 
-    > div {
-      padding: 10px;
-      border-bottom: 3px dotted gray;
+export const CommentsWrite = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* display: grid; */
+  /* grid-template-columns: 1fr 15fr 1fr; */
+  margin: 20px 0;
+
+  .userImg {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
+  }
 
-    .comment {
-      display: grid;
-      grid-template-columns: 0.5fr 0.5fr 1fr 10fr 1.5fr;
-      align-items: center;
-
-      > div:first-of-type {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 0;
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      }
-      > div:nth-of-type(3) {
-        text-align: left;
-        padding: 0 20px;
-      }
-      &:last-of-type {
-        border: 0;
-      }
-    }
+  .commentContentsInput {
+    width: 100%;
+    height: 40px;
+    margin: 0 10px;
+  }
+  .commentSubmit {
+    height: 40px;
   }
 `

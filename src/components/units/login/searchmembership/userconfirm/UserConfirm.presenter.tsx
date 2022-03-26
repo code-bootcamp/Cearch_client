@@ -1935,7 +1935,7 @@ export default function UserConfirmUI(props) {
         </svg>
       </CH.ImgWrapper>
       <CH.ContentsWrapper>
-        <div className="title">이메일 인증을 진행해주세요.</div>
+        <p className="title">이메일 인증을 진행해주세요.</p>
         <div>
           <CH.InputBox>
             <span>이메일</span>
