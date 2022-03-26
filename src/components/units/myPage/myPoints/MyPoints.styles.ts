@@ -5,6 +5,17 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 100px;
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
 `
 export const TitleLabel = styled.div`
   font-family: 'Noto Sans KR';

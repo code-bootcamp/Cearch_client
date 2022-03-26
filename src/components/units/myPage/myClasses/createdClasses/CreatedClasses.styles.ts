@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
+  animation: fadein 1s ease-in-out;
 `
 
 export const ClassTitle = styled.div`

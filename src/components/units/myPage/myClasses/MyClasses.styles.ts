@@ -17,6 +17,7 @@ export const TabMenu = styled.div`
   margin-bottom: 25px;
   display: flex;
   flex-direction: row;
+
   .focused {
     font-style: normal;
     font-weight: 700;

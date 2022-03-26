@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 1200px;
   display: flex;
   flex-direction: column;
+  position: relative;
 `
 
 export const Head = styled.div`
@@ -47,6 +48,17 @@ export const Table = styled.div`
   flex-direction: column;
   margin-top: 30px;
   margin-bottom: 87px;
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
 `
 
 export const TableDivision = styled.div`
@@ -85,4 +97,8 @@ export const TableRow = styled.div`
   font-size: 16px;
   align-items: center;
   border-bottom: 1px solid #c4c4c4;
+  :hover {
+    cursor: pointer;
+    font-weight: 600;
+  }
 `

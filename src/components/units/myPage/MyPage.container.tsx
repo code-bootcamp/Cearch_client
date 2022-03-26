@@ -12,10 +12,10 @@ export default function MyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const menuArr = [
-    { name: '나의질문답변', content: <MyQAs /> },
-    { name: '나의클래스', content: <MyClasses /> },
-    { name: '팔로우', content: <MyFollowings /> },
-    { name: '나의포인트', content: <MyPoints /> },
+    { name: '나의 질문답변', content: <MyQAs /> },
+    { name: '나의 클래스', content: <MyClasses /> },
+    { name: '나의 팔로우', content: <MyFollowings /> },
+    { name: '나의 포인트', content: <MyPoints /> },
     { name: '', content: <MyInformation /> },
   ]
 

@@ -14,6 +14,17 @@ export const ClassContents = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #c4c4c4;
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
 `
 export const ClassContentsLeft = styled.div`
   display: flex;

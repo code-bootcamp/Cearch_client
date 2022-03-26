@@ -8,6 +8,7 @@ export const HeadTitle = styled.div`
 
 export const MentorInfo = styled.div`
   padding: 15px;
+
   .workPart {
     margin-bottom: 10px;
 
@@ -45,6 +46,17 @@ export const MentorInfo = styled.div`
   }
 `
 export const Mentor = styled.div`
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
   margin: 30px 0px 100px 0px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
