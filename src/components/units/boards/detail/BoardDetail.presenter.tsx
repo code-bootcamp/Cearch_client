@@ -1,4 +1,5 @@
 import ToastViewerPage from '../../../../commons/libraries/toasteditor/viewer'
+import { DateToString } from '../../../../commons/libraries/utils/utils'
 import * as CH from './BoardDetail.styles'
 
 export default function BoardDetailUI() {
@@ -11,42 +12,6 @@ export default function BoardDetailUI() {
         </div>
         <div className="contentBody">
           <ToastViewerPage />
-          {/* <div className="contents">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-            eum, eveniet in est odit dolorem officiis pariatur, quas ipsum quam
-            eligendi, aperiam consequatur. Sequi amet eveniet accusamus omnis
-            quisquam fuga. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Expedita molestiae ex consequuntur modi sequi, dolorum eos
-            sint tempore nostrum labore ratione unde autem vero qui. Veniam qui
-            eaque dolorum quisquam!
-          </div>
-          <pre className="codeBlock">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-            eum, eveniet in est odit dolorem officiis pariatur, quas ipsum quam
-            eligendi, aperiam consequatur. Sequi amet eveniet accusamus omnis
-            quisquam fuga. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Expedita molestiae ex consequuntur modi sequi, dolorum eos
-            sint tempore nostrum labore ratione unde autem vero qui. Veniam qui
-            eaque dolorum quisquam!
-            <br />
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-            eum, eveniet in est odit dolorem officiis pariatur, quas ipsum quam
-            eligendi, aperiam consequatur. Sequi amet eveniet accusamus omnis
-            quisquam fuga. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Expedita molestiae ex consequuntur modi sequi, dolorum eos
-            sint tempore nostrum labore ratione unde autem vero qui. Veniam qui
-            eaque dolorum quisquam!
-          </pre>
-
-          <div className="contents">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-            eum, eveniet in est odit dolorem officiis pariatur, quas ipsum quam
-            eligendi, aperiam consequatur. Sequi amet eveniet accusamus omnis
-            quisquam fuga. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Expedita molestiae ex consequuntur modi sequi, dolorum eos
-            sint tempore nostrum labore ratione unde autem vero qui. Veniam qui
-            eaque dolorum quisquam!
-          </div> */}
         </div>
         <div className="contentFooter">
           <button className="likeButton">
@@ -56,15 +21,18 @@ export default function BoardDetailUI() {
           </button>
         </div>
         <CH.CommentsWrapper>
-          <div className="writerDetail">작성자</div>
+          <div className="writerDetail">go_rAnii</div>
 
           <div className="commentsWrite">
+            <div>
+              <img src="/images/profileDefault.png" />
+            </div>
             <input
               type="text"
               placeholder="내용을 입력하세요"
               className="commentContentsInput"
             />
-            <button className="commentSubmit">댓글 등록하기</button>
+            <button className="commentSubmit">등록</button>
           </div>
 
           <div className="commentsList">
@@ -73,8 +41,11 @@ export default function BoardDetailUI() {
               <div>
                 <img src="/images/profileDefault.png" />
               </div>
-              <div>작성자</div>
-              <div>댓글 본문 입니다.</div>
+              <div className="commentWriter">chanpoong01@gmail.com</div>
+              <div>
+                댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글 본문
+                입니다.댓글 본문 입니다.
+              </div>
               <div>2022.03.15</div>
             </div>
 
@@ -83,8 +54,13 @@ export default function BoardDetailUI() {
               <div>
                 <img src="/images/profileDefault.png" />
               </div>
-              <div>작성자</div>
-              <div>댓글 본문 입니다.</div>
+              <div className="commentWriter">go_rAnii</div>
+              <div>
+                댓글 본문 입니다. 댓글 본문 입니다.댓글 본문 입니다.댓글 본문
+                입니다. 댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글
+                본문 입니다. 댓글 본문 입니다.댓글 본문 입니다.댓글 본문
+                입니다.댓글 본문 입니다.
+              </div>
               <div>2022.03.15</div>
             </div>
 
@@ -93,7 +69,7 @@ export default function BoardDetailUI() {
               <div>
                 <img src="/images/profileDefault.png" />
               </div>
-              <div>작성자</div>
+              <div className="commentWriter">작성자</div>
               <div>댓글 본문 입니다.</div>
               <div>2022.03.15</div>
             </div>
