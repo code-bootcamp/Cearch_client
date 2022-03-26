@@ -1,9 +1,14 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
   padding: 10px 0;
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    height: auto;
+  }
 `
 export const ContentWrapper = styled.form`
   width: 90%;
@@ -58,11 +63,14 @@ export const ContentWrapper = styled.form`
       > span {
         width: 90px;
       }
-      input,
-      select {
+      input {
         width: 100%;
         height: 45px;
         padding-left: 12px;
+      }
+      .tag__select {
+        width: 100%;
+        height: auto;
       }
       > div {
         height: 400px;

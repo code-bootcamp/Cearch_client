@@ -13,6 +13,7 @@ import { Editor } from '@toast-ui/react-editor'
 import styled from '@emotion/styled'
 
 const Wrapper = styled.div`
+  width: 100%;
   > div {
     height: 400px !important;
   }

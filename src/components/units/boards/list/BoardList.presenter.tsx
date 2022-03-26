@@ -1,5 +1,6 @@
 import * as CH from './BoardList.styles'
 import { v4 as uuidv4 } from 'uuid'
+import { DateToString } from '../../../../commons/libraries/utils/utils'
 
 export default function BoardListUI(props) {
   const testCode = [
@@ -10,7 +11,9 @@ export default function BoardListUI(props) {
       contents:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
-      createAt: '2022-03-21',
+      createAt: '2022-03-26',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 2,
     },
     {
       division: '공지',
@@ -20,6 +23,8 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 3,
     },
     {
       division: '공지',
@@ -29,6 +34,30 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 0,
+    },
+    {
+      division: '공지',
+      title:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien.',
+      contents:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
+      writer: 'goranii',
+      createAt: '2022-03-23',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 7,
+    },
+    {
+      division: '공지',
+      title:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien.',
+      contents:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
+      writer: 'goranii',
+      createAt: '2022-03-20',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 22,
     },
     {
       division: '공지',
@@ -38,6 +67,19 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 1,
+    },
+    {
+      division: '공지',
+      title:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien.',
+      contents:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
+      writer: 'goranii',
+      createAt: '2022-02-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 125,
     },
     {
       division: '공지',
@@ -47,6 +89,8 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 0,
     },
     {
       division: '공지',
@@ -56,6 +100,8 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 9,
     },
     {
       division: '공지',
@@ -65,37 +111,13 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien.',
-      contents:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
-      writer: 'goranii',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien.',
-      contents:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
-      writer: 'goranii',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien.',
-      contents:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
-      writer: 'goranii',
-      createAt: '2022-03-21',
+      categories: ['TS', 'JS', 'HTML'],
+      answersCount: 2,
     },
   ]
   return (
     <CH.Wrapper>
+      <p>질문 게시판</p>
       <CH.BoardListWrapper>
         <CH.InnerBodyHeader>
           <div className="headerTitle">
@@ -108,19 +130,41 @@ export default function BoardListUI(props) {
           </div>
         </CH.InnerBodyHeader>
         <CH.BoardList>
-          <div className="boardListContents">
+          {/* <div className="boardListContents">
             <div>번호</div>
             <div>제목</div>
             <div>글쓴이</div>
             <div>작성일</div>
-          </div>
+          </div> */}
           <div>
             {testCode.map((el, index) => (
               <div key={uuidv4()} className="Contents">
-                <div>{index + 1}</div>
-                <div className="ContentsTitle">{el.title}</div>
-                <div className="ContentsWriter">{el.writer}</div>
-                <div>{el.createAt}</div>
+                <div className="ContentsLeftWrapper">
+                  <div>No.{index + 1}</div>
+                  <div>
+                    {' '}
+                    <span>{el.answersCount}</span> answers
+                  </div>
+                </div>
+                <div className="ContentsRightWrapper">
+                  <div className="ContentsTitle">{el.title}</div>
+                  <div className="ContentsBody">{el.contents}</div>
+                  <div className="RightWrapperFooter">
+                    <div>
+                      {el.categories.map((el) => (
+                        <span className="Categories" key={uuidv4()}>
+                          {el}
+                        </span>
+                      ))}
+                    </div>
+                    <div>
+                      <span className="ContentsWriter">{el.writer}</span>
+                      <span className="CreatedAt">
+                        {DateToString(el.createAt)}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

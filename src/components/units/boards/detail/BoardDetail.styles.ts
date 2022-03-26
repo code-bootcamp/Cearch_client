@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
   padding: 10px 0;
-
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    height: auto;
+  }
   .contentHeader {
     padding: 20px 0;
     border-bottom: 1px solid black;
@@ -91,47 +95,69 @@ export const CommentsList = styled.div`
     grid-template-columns: 0.5fr 0.5fr 1fr 10fr 1.5fr;
     align-items: center;
 
-    > div:first-of-type {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 0;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+    margin: 20px 0;
+    width: 100%;
+
+    .commentContentsInput {
+      width: 1000px;
+      height: 60px;
+      background-color: #f2f2f2;
+      border: none;
+      border-radius: 15px;
+      margin-left: 10px;
+      padding-left: 10px;
     }
-    > div:nth-of-type(3) {
-      text-align: left;
-      padding: 0 20px;
+    .commentSubmit {
+      width: 80px;
+      height: 60px;
+      border: none;
+      border-radius: 15px;
+      background-color: #f2f2f2;
+      margin-left: 10px;
+    }
+    img {
+      width: 36px;
+      height: 38px;
+      object-fit: cover;
+      border-radius: 50%;
+      text-align: center;
+
     }
     &:last-of-type {
       border: 0;
     }
   }
-`
 
-export const CommentsWrite = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  /* display: grid; */
-  /* grid-template-columns: 1fr 15fr 1fr; */
-  margin: 20px 0;
+    .comment {
+      display: grid;
+      grid-template-columns: 0.5fr 0.5fr 1.5fr 10fr 1.5fr;
+      align-items: center;
+      .commentWriter {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding-left: 3px;
+      }
+      > div:first-of-type {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 0;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      > div:nth-of-type(3) {
+        text-align: left;
+        padding: 0 20px;
+      }
+      &:last-of-type {
+        border: 0;
+      }
 
-  .userImg {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 0;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   }
 
