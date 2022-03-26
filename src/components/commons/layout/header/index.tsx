@@ -11,7 +11,8 @@ const Header = styled.header`
     padding: 10px 0;
 
     > div:nth-of-type(2) {
-      height: 80px;
+      height: 50px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;

@@ -23,7 +23,7 @@ export default function ClassListUI() {
                 {el.ratingAverage} ({el.peopleNum})
               </span>
             </div>
-            <div>{el.classState}</div>
+            <div className="classState">{el.classState}</div>
           </CH.InfoTop>
           <CH.InfoBottom>
             <div className="classCategory">

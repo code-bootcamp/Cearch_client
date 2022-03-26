@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
       > p {
         font-size: 1.5rem;
         font-weight: 600;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
       }
     }
     // 카테고리
@@ -209,13 +209,20 @@ export const InfoTop = styled.div`
 
   > div:first-of-type {
     display: flex;
-    align-items: center;
+    align-items: end;
   }
 
   .checked {
     font-size: 15px;
     color: orange;
   }
+
+  /* .classState {
+    border-radius: 3px;
+    font-size: 0.875rem;
+    background: #c2dceb;
+    padding: 2px 5px;
+  } */
 `
 export const InfoBottom = styled.div`
   width: 100%;
@@ -227,9 +234,10 @@ export const InfoBottom = styled.div`
   .classCategory {
     margin: 15px 0;
     span {
-      background: #eee;
-      padding: 5px 10px;
+      background: #83b3d6;
+      padding: 5px 10px 3px;
       border-radius: 15px;
+      color: #fff;
     }
   }
 
@@ -247,13 +255,12 @@ export const InfoBottom = styled.div`
 
 export const BoardList = styled(Swiper)`
   width: 100%;
-  padding: 10px 10px 10px;
-  position: static;
+  padding: 10px !important;
 
   > div {
     width: 100%;
+
     .swiper-slide {
-      margin-right: 10px;
       box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
       border-radius: 20px;
       padding: 30px 25px 25px;
@@ -264,44 +271,76 @@ export const BoardList = styled(Swiper)`
       left: 0;
     }
   }
-  .button {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    border: 1px solid black;
-    /* height: 30px; */
+`
+export const ArrowButton = styled.div`
+  width: 120px;
+  height: 35px;
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    .swiper-button-next {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: brown;
-      border-radius: 10px;
-      padding: 10px 20px;
+  .swiper-button-prev-n1,
+  .swiper-button-prev-n2 {
+    padding-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    color: #fff !important;
+    background-color: #1e2744;
+    &.swiper-button-disabled {
+      opacity: 1;
+      background: #f1f1f1;
     }
+  }
+  .swiper-button-next-n1,
+  .swiper-button-next-n2 {
+    padding-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+    color: #fff !important;
+    background-color: #1e2744;
+    &.swiper-button-disabled {
+      opacity: 1;
+      background: #f1f1f1;
+    }
+  }
 
-    .swiper-button-prev {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: brown;
-      border-radius: 10px;
-      padding: 10px 20px;
-    }
+  .arrow-left.icon {
+    color: #fff;
+    width: 12px;
+    height: 12px;
+    border-top: solid 3px currentColor;
+    border-right: solid 3px currentColor;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
 
-    .swiper-button-prev::after,
-    .swiper-button-next::after {
-      font-size: 1.5rem;
-      /* font-weight: 900; */
-    }
+  .arrow-right.icon {
+    color: #fff;
+    width: 12px;
+    height: 12px;
+    border-top: solid 3px currentColor;
+    border-right: solid 3px currentColor;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
   }
 `
 export const BoardTop = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
+
   > div {
     width: 30px;
     height: 30px;
@@ -320,7 +359,7 @@ export const BoardTop = styled.div`
 export const BoardBottom = styled.div`
   border-radius: 20px;
   padding: 20px 10px;
-  /* background: #eee; */
+
   .title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -342,7 +381,7 @@ export const BoardBottom = styled.div`
   .icon {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin: 10px 0 15px;
     > div {
       display: flex;
       align-items: center;
