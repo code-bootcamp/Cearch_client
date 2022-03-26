@@ -91,7 +91,7 @@ export const InfoTop = styled.div`
 
   > div:first-of-type {
     display: flex;
-    align-items: center;
+    align-items: end;
   }
   .checked {
     font-size: 15px;
@@ -108,8 +108,9 @@ export const InfoBottom = styled.div`
   .classCategory {
     margin: 15px 0;
     span {
-      background: #eee;
-      padding: 5px 10px;
+      background: #83b3d6;
+      color: #fff;
+      padding: 5px 10px 3px;
       border-radius: 15px;
     }
   }

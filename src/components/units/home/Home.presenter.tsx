@@ -18,10 +18,6 @@ export default function HomeUI(props) {
         id={String(index)}
         onClick={props.onClickMoveToMentorDetail}
       >
-        {/* <div className="badge">
-          <span>🏅</span>
-          <span>🎖</span>
-        </div> */}
         <div className="profileImg">
           <div>
             <img src={el.profileImg} />
@@ -69,12 +65,12 @@ export default function HomeUI(props) {
         <CH.ClassInfo>
           <CH.InfoTop>
             <div>
-              <StarRoundedIcon />{' '}
+              <StarRoundedIcon style={{ color: 'gold' }} />{' '}
               <span>
                 {el.ratingAverage} ({el.peopleNum})
               </span>
             </div>
-            <div>{el.classState}</div>
+            <div className="classState">{el.classState}</div>
           </CH.InfoTop>
           <CH.InfoBottom>
             <div className="classCategory">
@@ -158,49 +154,50 @@ export default function HomeUI(props) {
 
         <section style={{ position: 'relative' }}>
           <p>좋아요가 많은 질문</p>
+          <CH.ArrowButton>
+            <div className="swiper-button-next-n1">
+              <div className="arrow-left icon"></div>
+            </div>
+            <div className="swiper-button-prev-n1">
+              <div className="arrow-right icon"></div>
+            </div>
+          </CH.ArrowButton>
           <CH.BoardList
-            spaceBetween={20}
+            spaceBetween={30}
             slidesPerView={3}
             modules={[Navigation]}
-            // navigation
             navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next-n1',
+              prevEl: '.swiper-button-prev-n1',
             }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            <div className="button">
-              <div className="swiper-button-next"></div>
-            </div>
-            <div className="button">
-              <div className="swiper-button-prev"></div>
-            </div>
             {newBoardList}
           </CH.BoardList>
         </section>
 
         <section style={{ position: 'relative' }}>
           <p>최근 작성된 질문</p>
-
+          <CH.ArrowButton>
+            <div className="swiper-button-next-n2">
+              <div className="arrow-left icon"></div>
+            </div>
+            <div className="swiper-button-prev-n2">
+              <div className="arrow-right icon"></div>
+            </div>
+          </CH.ArrowButton>
           <CH.BoardList
-            spaceBetween={20}
+            spaceBetween={30}
             slidesPerView={3}
             modules={[Navigation]}
-            // navigation
             navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next-n2',
+              prevEl: '.swiper-button-prev-n2',
             }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            <div className="button">
-              <div className="swiper-button-next"></div>
-            </div>
-            <div className="button">
-              <div className="swiper-button-prev"></div>
-            </div>
             {newBoardList}
           </CH.BoardList>
         </section>
