@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
     }
     > div {
       width: 85%;
-      margin: 0 auto 50px;
+      margin: 0 auto 30px;
       p {
         font-size: 1rem;
         margin-bottom: 10px;

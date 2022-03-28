@@ -30,16 +30,12 @@ export default function ClassWriteUI() {
             </option>
             <option>학생</option>
             <option>직장인</option>
-            <option>주부</option>
+            <option>구직자</option>
             <option>자영업자</option>
-            <option>무직</option>
+            <option>취업준비생</option>
+            <option>창업가/프리랜서</option>
+            <option>기타</option>
           </select>
-        </div>
-        <div>
-          <p>
-            나이 <span style={{ color: 'red' }}>*</span>
-          </p>
-          <input type="text" />
         </div>
         <div>
           <p>

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -11,6 +12,11 @@ export const Wrapper = styled.div`
   > div {
     width: 100%;
   }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 export const ClassDetail = styled.div`
@@ -18,23 +24,18 @@ export const ClassDetail = styled.div`
   > * {
     margin-bottom: 50px;
   }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    order: 2;
+  }
 `
 export const DetailTop = styled.div`
   display: flex;
   align-items: flex-start;
   margin-bottom: 80px;
 
-  > div:first-of-type {
-    width: 150px;
-    height: 200px;
-    border-radius: 15px;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    order: 1;
+    display: none;
   }
   > div:last-of-type {
     margin-left: 20px;
@@ -44,6 +45,34 @@ export const DetailTop = styled.div`
     }
     .title {
       font-size: 1.5rem;
+    }
+  }
+`
+export const ClassImg = styled.div`
+  width: 150px;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`
+export const ClassMobileImg = styled.div`
+  display: none;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    display: block;
+    width: 150px;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 `
@@ -119,44 +148,65 @@ export const DetailComment = styled.div`
 `
 
 export const ClassContent = styled.div`
-  > * {
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
-    margin-bottom: 30px;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    > div {
+      .classInfo {
+        display: flex;
+        justify-content: space-between;
+        > div:last-of-type {
+          width: 70%;
+          margin-left: 20px;
+        }
+      }
+      &:first-of-type {
+        margin-bottom: 30px;
+        /* padding: 45px 35px; */
+        box-shadow: none;
+        border: 1px solid #f1f1f1;
+        border-radius: 0px;
+      }
+    }
   }
 
-  > div:first-of-type {
+  > div {
     padding: 45px 35px;
-    .category,
-    .startDate {
-      font-size: 0.875rem;
-      margin-bottom: 15px;
-    }
-    .title {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-    }
-    .peopleBox {
-      width: 100%;
-      height: 150px;
-      margin: 20px 0;
-      border-radius: 20px;
-      background: #c2dceb;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .price {
-      width: 100%;
-      height: 80px;
-      margin: 20px 0;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      span:last-of-type {
-        color: #224fe1;
-        font-weight: 700;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
+    .classInfo {
+      > div:last-of-type {
+        .category,
+        .startDate {
+          font-size: 0.875rem;
+          margin-bottom: 15px;
+        }
+        .title {
+          font-size: 1.5rem;
+          margin-bottom: 5px;
+        }
+        .peopleBox {
+          width: 100%;
+          height: 150px;
+          margin: 20px 0;
+          border-radius: 20px;
+          background: #c2dceb;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .price {
+          width: 100%;
+          height: 80px;
+          margin: 20px 0;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          span:last-of-type {
+            color: #224fe1;
+            font-weight: 700;
+          }
+        }
       }
     }
     .button {
@@ -167,10 +217,18 @@ export const ClassContent = styled.div`
       height: 35px;
       line-height: 35px;
       margin: auto;
+      cursor: pointer;
+
+      &:hover {
+        font-weight: 700;
+        color: #fff;
+        background: #1e2643;
+      }
     }
   }
 
-  .mento {
+  .mentor {
+    box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
     padding: 30px;
     display: flex;
     align-items: center;

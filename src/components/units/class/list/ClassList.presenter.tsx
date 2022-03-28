@@ -7,12 +7,13 @@ import { Navigation } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-export default function ClassListUI() {
-  const newClassList = classList.map((el) => {
+export default function ClassListUI(props) {
+  const newClassList = classList.map((el, index) => {
     return (
       <div
         key={uuidv4()}
-        // onClick={onClickMoveToClassDetail}
+        id={String(index)}
+        onClick={props.onClickMoveToClassDetail}
       >
         <CH.ClassImg>
           <img src="/images/mentor.jpeg" />
@@ -22,7 +23,7 @@ export default function ClassListUI() {
         <CH.ClassInfo>
           <CH.InfoTop>
             <div>
-              <StarRoundedIcon />{' '}
+              <StarRoundedIcon style={{ color: 'gold' }} />{' '}
               <span>
                 {el.ratingAverage} ({el.peopleNum})
               </span>
