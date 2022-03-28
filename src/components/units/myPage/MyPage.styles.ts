@@ -4,9 +4,12 @@ import { breakPoints } from '../../../commons/styles/media'
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
-  padding-top: 100px;
+  padding: 100px 10px 0px 10px;
   display: flex;
   flex-direction: column;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 100%;
+  }
   @media ${breakPoints.tablet} {
     width: 90%;
     display: flex;
@@ -69,6 +72,8 @@ export const Name = styled.div`
 export const HeadRight = styled.div`
   width: 80%;
   background-color: #1e2744;
+  /* background-color: #f89b9e;
+  background-image: linear-gradient(315deg, #f89b9e 0%, #c9d9ff 74%); */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -93,6 +98,9 @@ export const HeadRightSection = styled.div`
       transform: none;
     }
   }
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 23%;
+  }
 `
 
 export const HeadRightSectionLabel = styled.div`
@@ -102,7 +110,8 @@ export const HeadRightSectionLabel = styled.div`
   font-size: 16px;
   line-height: 10px;
   text-transform: uppercase;
-  color: #bdbdbd;
+  /* color: #bdbdbd; */
+  color: white;
 `
 
 export const HeadRightSectionContents1 = styled.div`
@@ -127,6 +136,9 @@ export const BodyWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 100%;
+  }
 
   @media ${breakPoints.tablet} {
     width: 100%;
@@ -179,6 +191,9 @@ export const TabMenu = styled.div`
       font-weight: 300;
       font-size: 18px;
     }
+    @media (min-width: 992px) and (max-width: 1200px) {
+      width: 130px;
+    }
   }
   @media ${breakPoints.mobile} {
     display: flex;
@@ -201,12 +216,19 @@ export const TabMenu = styled.div`
 export const Menu = styled.div`
   margin-right: 30px;
   margin-bottom: 48px;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 130px;
+  }
   @media ${breakPoints.mobile} {
     margin-bottom: 30px;
   }
 `
 export const Contents = styled.div`
-  width: 957px;
+  width: 937px;
+  @media (min-width: 992px) and (max-width: 1200px) {
+    width: 80%;
+  }
+
   @media ${breakPoints.tablet} {
     width: 100%;
     margin: 0 auto;

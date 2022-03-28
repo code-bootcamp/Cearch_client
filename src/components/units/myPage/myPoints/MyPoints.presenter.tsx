@@ -60,6 +60,15 @@ export default function MyPointsUI(props) {
             </CH.PointInputWrapper>
           </CH.HeadDivBox>
         </CH.HeadWrapper>
+        <CH.MobilePointsBox>
+          나의 포인트
+          <CH.MobilePointLabel>150,800 원</CH.MobilePointLabel>
+          <CH.MobileButtonWrapper>
+            <CH.MobileButton>포인트충전</CH.MobileButton>
+            <CH.Divider />
+            <CH.MobileButton>포인트인출</CH.MobileButton>
+          </CH.MobileButtonWrapper>
+        </CH.MobilePointsBox>
         <CH.PointsWithdraw>
           <CH.TitleLabel>포인트 사용내역</CH.TitleLabel>
           <CH.Table>

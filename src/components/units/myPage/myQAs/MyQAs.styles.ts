@@ -65,6 +65,7 @@ export const HeadMenu = styled.div`
       font-size: 15.5px;
       color: #bdbdbd;
     }
+  }
   @media ${breakPoints.mobile} {
     .focused {
       font-style: normal;

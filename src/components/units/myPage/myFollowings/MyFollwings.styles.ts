@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const HeadTitle = styled.div`
   font-style: normal;
@@ -62,6 +63,12 @@ export const Mentor = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   grid-row-gap: 50px;
+  @media ${breakPoints.tablet} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media ${breakPoints.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
   > div {
     box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
     border-radius: 10px;
