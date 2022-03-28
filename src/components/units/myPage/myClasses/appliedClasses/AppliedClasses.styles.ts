@@ -45,7 +45,7 @@ export const ClassContentsLeft = styled.div`
     justify-content: flex-start;
   }
 `
-export const ClassImage = styled.div`
+export const ClassImage = styled.image`
   width: 180px;
   height: 120px;
   background: #f1f1f1;
@@ -69,6 +69,7 @@ export const ClassContentsList = styled.div`
     padding: 5px 0px 0px 10px;
   }
   @media ${breakPoints.mobile} {
+    width: 70%;
     padding: 5px 0px 5px 10px;
   }
 `
@@ -82,12 +83,36 @@ export const ClassCategory = styled.div`
   font-weight: 400;
   font-size: 16px;
   margin-bottom: 13px;
+  .Categories {
+    color: #417294;
+    background-color: #c2dceb;
+    border-radius: 10px;
+    padding: 5px 10px 3px;
+    margin-right: 10px;
+  }
   @media ${breakPoints.tablet} {
-    font-size: 15px;
+    margin-bottom: 5px;
+    .Categories {
+      font-size: 15px;
+      color: #417294;
+      background-color: #c2dceb;
+      border-radius: 10px;
+      padding: 5px 10px 3px;
+      margin-right: 10px;
+    }
   }
   @media ${breakPoints.mobile} {
-    font-size: 14px;
     margin-bottom: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    .Categories {
+      margin-right: 2px;
+      font-size: 12px;
+      color: #417294;
+      background-color: #c2dceb;
+      border-radius: 10px;
+    }
   }
 `
 export const ClassTitle = styled.div`
@@ -113,7 +138,6 @@ export const ClassTitle = styled.div`
   }
   @media ${breakPoints.mobile} {
     font-size: 14px;
-    width: 200px;
   }
 `
 export const ClassDate = styled.div`
@@ -138,7 +162,7 @@ export const ClassContentsRight = styled.div`
     text-align: right;
   }
   @media ${breakPoints.mobile} {
-    width: 90px;
+    width: 70px;
     font-size: 14px;
   }
 `
@@ -165,6 +189,6 @@ export const ClassPayButton = styled.button`
     width: 80px;
     height: 25px;
     font-size: 14px;
-    margin: 0px 20px 10px 0px;
+    margin: 0px 0px 10px 0px;
   }
 `

@@ -11,10 +11,18 @@ export default function PaidClassesUI(props: IPaidClassesProps) {
           return (
             <CH.ClassContents key={index}>
               <CH.ClassContentsLeft>
-                <CH.ClassImage></CH.ClassImage>
+                <CH.ClassImage>
+                  <img src="https://cloudspoint.xyz/wp-content/uploads/2020/02/CODE-1.jpg" />
+                </CH.ClassImage>
                 <CH.ClassContentsList>
                   <CH.ClassContentsListTop>
-                    <CH.ClassCategory>{el.category}</CH.ClassCategory>
+                    <CH.ClassCategory>
+                      {el.category.map((el, index) => (
+                        <span className="Categories" key={index}>
+                          {el}
+                        </span>
+                      ))}
+                    </CH.ClassCategory>
                     <CH.ClassTitle>{el.title}</CH.ClassTitle>
                   </CH.ClassContentsListTop>
                   <CH.ClassDate>{el.date}</CH.ClassDate>
@@ -31,10 +39,18 @@ export default function PaidClassesUI(props: IPaidClassesProps) {
           return (
             <CH.ClassContents key={index}>
               <CH.ClassContentsLeft>
-                <CH.ClassImage></CH.ClassImage>
+                <CH.ClassImage>
+                  <img src="https://cloudspoint.xyz/wp-content/uploads/2020/02/CODE-1.jpg" />
+                </CH.ClassImage>
                 <CH.ClassContentsList>
                   <CH.ClassContentsListTop>
-                    <CH.ClassCategory>{el.category}</CH.ClassCategory>
+                    <CH.ClassCategory>
+                      {el.category.map((el, index) => (
+                        <span className="Categories" key={index}>
+                          {el}
+                        </span>
+                      ))}
+                    </CH.ClassCategory>
                     <CH.ClassTitle>{el.title}</CH.ClassTitle>
                   </CH.ClassContentsListTop>
                   <CH.ClassDate>{el.date}</CH.ClassDate>
