@@ -3,7 +3,7 @@
     "profileImg": "images/profile.png",
     "company": "Samsung",
     "department": "SDS 디지털사업부",
-    "part": ["HTML", "aaa"],
+    "part": ["HTML", "JAVASCRIPT"],
     "name": "◯◯◯ 멘토",
     "title": "안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.",
     "createdAt": "2022-03-21"
@@ -12,7 +12,7 @@
     "profileImg": "images/profile.png",
     "company": "Samsung",
     "department": "SDS 디지털사업부",
-    "part": ["CSS"],
+    "part": ["TYPESCRIPT", "JAVASCRIPT"],
     "name": "◯◯◯ 멘토",
     "title": "안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.",
     "createdAt": "2022-03-21"
@@ -48,7 +48,7 @@
     "profileImg": "images/profile.png",
     "company": "Samsung",
     "department": "SDS 디지털사업부",
-    "part": ["java", "css", "html"],
+    "part": ["JAVA", "DOCKER", "PYTHON"],
     "name": "◯◯◯ 멘토",
     "title": "안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.",
     "createdAt": "2022-03-21"

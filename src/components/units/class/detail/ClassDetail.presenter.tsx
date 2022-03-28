@@ -6,9 +6,9 @@ export default function classNameDetailUI(props) {
     <CH.Wrapper>
       <CH.ClassDetail>
         <CH.DetailTop>
-          <div>
+          <CH.ClassImg>
             <img src="/images/mentor.jpeg" />
-          </div>
+          </CH.ClassImg>
 
           <div>
             <p className="category">카테고리</p>
@@ -52,7 +52,7 @@ export default function classNameDetailUI(props) {
           <div className="commentTop">
             <p>참여자들의 후기</p>
             <div className="star">
-              <StarRoundedIcon />
+              <StarRoundedIcon style={{ color: 'gold' }} />
               <span>4.5 (평가자 수)</span>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function classNameDetailUI(props) {
               <div className="profile">
                 <span>◯◯◯</span>
                 <div className="star">
-                  <StarRoundedIcon />
+                  <StarRoundedIcon style={{ color: 'gold' }} />
                   <span>4.5</span>
                 </div>
                 <span>2000. 02. 02</span>
@@ -85,7 +85,7 @@ export default function classNameDetailUI(props) {
               <div className="profile">
                 <span>◯◯◯</span>
                 <div className="star">
-                  <StarRoundedIcon />
+                  <StarRoundedIcon style={{ color: 'gold' }} />
                   <span>4.5</span>
                 </div>
                 <span>2000. 02. 02</span>
@@ -106,7 +106,7 @@ export default function classNameDetailUI(props) {
               <div className="profile">
                 <span>◯◯◯</span>
                 <div className="star">
-                  <StarRoundedIcon />
+                  <StarRoundedIcon style={{ color: 'gold' }} />
                   <span>4.5</span>
                 </div>
                 <span>2000. 02. 02</span>
@@ -124,23 +124,29 @@ export default function classNameDetailUI(props) {
 
       <CH.ClassContent>
         <div>
-          <p className="category">카테고리</p>
-          <p className="title">클래스 제목</p>
-          <p className="startDate">2000. 02. 02</p>
-          <div className="peopleBox">
-            <p>최대 수강 가능 인원</p>
-            <p>수강신청 가능인원</p>
-          </div>
-          <div className="price">
-            <span>수강료</span>
-            <span>99,999원</span>
+          <div className="classInfo">
+            <CH.ClassMobileImg>
+              <img src="/images/mentor.jpeg" />
+            </CH.ClassMobileImg>
+            <div>
+              <p className="category">카테고리</p>
+              <p className="title">클래스 제목</p>
+              <p className="startDate">2000. 02. 02</p>
+              <div className="peopleBox">
+                <p>최대 수강 가능 인원</p>
+                <p>수강신청 가능인원</p>
+              </div>
+              <div className="price">
+                <span>수강료</span>
+                <span>99,999원</span>
+              </div>
+            </div>
           </div>
           <div className="button" onClick={props.onClickClassRequest}>
             수강 신청
           </div>
         </div>
-
-        <div className="mento">
+        <div className="mentor">
           <div>
             <div>
               <img src="/images/profile.png" />

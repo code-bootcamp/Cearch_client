@@ -1,8 +1,13 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    width: 90%;
+  }
 
   article {
     width: 100%;
@@ -10,20 +15,34 @@ export const Wrapper = styled.div`
     section {
       width: 100%;
       margin-bottom: 150px;
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        margin-bottom: 50px;
+      }
 
       > p {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 30px;
+        @media ${breakPoints.tablet} {
+          font-size: 1.2rem;
+          margin-bottom: 3vw;
+        }
+        @media ${breakPoints.mobile} {
+          font-size: 1.2rem;
+          margin-bottom: 3vw;
+        }
       }
     }
     // 카테고리
     section:nth-of-type(1) {
       margin: 30px 0 100px;
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        margin-bottom: 50px;
+      }
 
       #mainCategory {
         padding: 40px 30px 30px;
-        border: 1px solid gray;
+        border: 1px solid #1e2744;
         border-radius: 10px;
 
         .swiper-button-prev,
@@ -41,6 +60,22 @@ export const Wrapper = styled.div`
           justify-content: center;
           align-items: center;
           cursor: pointer;
+          @media ${breakPoints.tablet} {
+            > svg {
+              height: 8vw !important;
+            }
+            > span {
+              font-size: 0.5rem;
+            }
+          }
+          @media ${breakPoints.mobile} {
+            > svg {
+              height: 8vw !important;
+            }
+            > span {
+              font-size: 0.8rem !important;
+            }
+          }
           > svg {
             height: 60px;
           }
@@ -99,27 +134,18 @@ export const Mentor = styled.div`
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
-      -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      -o-transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
-        -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
     }
 
     .mentorCardFront {
-      -webkit-transform: rotateY(0deg);
       transform: rotateY(0deg);
-      -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
       :after {
         width: 100%;
         height: 100%;
         content: '';
         display: block;
-        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: 10px;
       }
@@ -130,33 +156,22 @@ export const Mentor = styled.div`
       top: 0;
       left: 0;
       width: 100%;
-      -webkit-transform: rotateY(180deg);
       transform: rotateY(180deg);
-      -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
     }
 
     &:hover .mentorCardBack {
-      -webkit-transform: rotateY(0deg);
       transform: rotateY(0deg);
-      -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
     }
     &:hover .mentorCardFront {
-      -webkit-transform: rotateY(-180deg);
       transform: rotateY(-180deg);
-      -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
     }
 
     &:hover .mentorCardFront,
     &:hover .mentorCardBack {
-      -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      -o-transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
-        -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
     }
 
     .badge {
