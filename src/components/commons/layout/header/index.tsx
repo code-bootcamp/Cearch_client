@@ -25,7 +25,6 @@ import { IconButton } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import LogoPage from '../../../../commons/libraries/Logo'
 
-
 const Header = styled.header`
   width: 100%;
   box-shadow: 0px 10px 20px #eee;
@@ -46,7 +45,6 @@ const Header = styled.header`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
     }
     > div:nth-of-type(2) {
       height: 50px;
@@ -80,7 +78,7 @@ const MenuWrapper = styled.nav`
       cursor: pointer;
 
       :hover {
-        background: #1e2744;
+        background: #ffa24b;
         color: #fff;
       }
 
@@ -142,7 +140,7 @@ const SearchBar = styled.div`
 `
 const Login = styled.div`
   padding: 7px 18px 5px;
-  background: #1e2744;
+  background: #ffa24b;
   border-radius: 18px;
   color: #fff;
   font-size: 1rem;
@@ -169,7 +167,7 @@ const MenuItems = styled(MenuItem)`
   padding-left: 5px;
   :hover {
     color: white;
-    background-color: #1e2744;
+    background-color: #ffa24b;
   }
 `
 
@@ -269,7 +267,7 @@ export default function LayoutHeader() {
               </MenuList>
             </Menu> */}
             <ChakraProvider theme={theme}>
-              <Button ref={btnRef} bg="#1e2744" color="white" onClick={onOpen}>
+              <Button ref={btnRef} bg="#FFA24B" color="white" onClick={onOpen}>
                 Open
               </Button>
               <Drawer

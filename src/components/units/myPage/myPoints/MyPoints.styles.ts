@@ -56,7 +56,7 @@ export const PointInputWrapper = styled.div`
 export const PointButton = styled.button`
   border: 0px none;
   border-radius: 31px;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
@@ -207,7 +207,7 @@ export const MobilePointsBox = styled.div`
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #1e2744;
+    background-color: #ffa24b;
     color: #f2f2f2;
     margin-bottom: 30px;
     font-weight: 400;

@@ -76,6 +76,7 @@ export default function HomeUI(props) {
           <p>{el.name}</p>
           <p>{el.company}</p>
         </CH.ClassImg>
+
         <CH.ClassInfo>
           <CH.InfoTop>
             <div>

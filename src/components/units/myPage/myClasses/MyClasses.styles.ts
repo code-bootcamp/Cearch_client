@@ -96,7 +96,7 @@ export const CreateButton = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   display: flex;
   flex-direction: row;
   justify-content: center;

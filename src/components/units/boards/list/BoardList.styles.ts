@@ -66,7 +66,7 @@ export const Wrapper = styled.div`
       padding: 7px 10px 4px;
       border-radius: 5px;
       color: #fff;
-      background: #1e2744;
+      background: #ffa24b;
     }
     span:nth-of-type(2) {
       color: #224fe1;
