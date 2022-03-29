@@ -66,7 +66,7 @@ export const SubmitButton = styled.button`
   font-weight: 700;
   font-size: 24px;
   color: #ffffff;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   :hover {
     cursor: pointer;
   }
@@ -118,7 +118,7 @@ export const PasswordButton = styled.button`
   margin-top: 40px;
   width: 136px;
   height: 36px;
-  background: #1e2744;
+  background: #ffa24b;
   border-radius: 25px;
   border: none;
   color: #ffffff;

@@ -22,12 +22,11 @@ const Wrapper = styled.div`
 export default function BoardWriteEditor(props) {
   const editorRef = useRef<Editor>(null)
 
-  const onClickConsole = () => {
+  const onChangeContents = () => {
     const editorInstance = editorRef.current.getInstance()
     // const getContentMarkdown = editorInstance.getMarkdown()
     // const getContentHTML = editorInstance.getHTML()
     props.setContents(editorInstance.getHTML())
-    console.log(props.contents)
   }
 
   return (
@@ -39,7 +38,7 @@ export default function BoardWriteEditor(props) {
           colorSyntax,
           [codeSyntaxHighlight, { highlighter: Prism }],
         ]}
-        onChange={onClickConsole}
+        onChange={onChangeContents}
         ref={editorRef}
       />
     </Wrapper>

@@ -71,7 +71,7 @@ export const Name = styled.div`
 
 export const HeadRight = styled.div`
   width: 80%;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   /* background-color: #f89b9e;
   background-image: linear-gradient(315deg, #f89b9e 0%, #c9d9ff 74%); */
   display: flex;

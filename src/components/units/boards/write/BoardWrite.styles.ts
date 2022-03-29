@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
     width: 90%;
     height: auto;
   }
+  @media ${breakPoints.mobile} {
+    width: 90%;
+    height: auto;
+  }
 `
 export const ContentWrapper = styled.form`
   width: 90%;
@@ -20,12 +24,52 @@ export const ContentWrapper = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    padding: 0;
+    margin: 30px auto;
+    box-shadow: none;
+    .contentBody {
+      width: 100% !important;
+      margin: 10px auto 20px;
+      align-items: flex-start;
+      justify-content: left;
+      .errorMessage {
+        padding-left: 0;
+      }
+      > div {
+        width: 100%;
+        height: 60px !important;
+        margin: 15px 0 5px !important;
+        display: flex;
+        flex-direction: column;
+
+        > span {
+          margin-bottom: 5px;
+        }
+        input {
+          width: 100%;
+          height: 50px !important;
+          padding-left: 12px;
+        }
+        .tag__select {
+          width: 100%;
+          height: auto;
+        }
+      }
+      .Contents {
+        height: 400px !important;
+      }
+      > span {
+        text-align: left;
+      }
+    }
+  }
   .errorMessage {
     display: inline-block;
     color: red;
     font-size: 0.875rem;
     width: 100%;
-
     padding-left: 90px;
   }
   .contentHeader {
@@ -39,6 +83,9 @@ export const ContentWrapper = styled.form`
     div {
       font-size: 1.5rem;
       font-weight: 700;
+    }
+    @media ${breakPoints.mobile} {
+      padding: 0;
     }
   }
   .contentBody {
@@ -59,7 +106,7 @@ export const ContentWrapper = styled.form`
       height: 45px;
       margin: 15px 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       > span {
         width: 90px;
       }

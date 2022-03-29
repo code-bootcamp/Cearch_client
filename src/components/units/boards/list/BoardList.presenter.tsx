@@ -111,7 +111,7 @@ export default function BoardListUI(props) {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nibh, rutrum ut tortor ut, varius fringilla arcu. Suspendisse rutrum nec erat nec mollis. Quisque ex libero, fringilla at odio at, mollis condimentum felis. Sed sit amet facilisis dui. Vestibulum a pharetra turpis. In a rhoncus sapien. Ut ac rhoncus lacus, ac lacinia tortor.',
       writer: 'goranii',
       createAt: '2022-03-21',
-      categories: ['TS', 'JS', 'HTML'],
+      categories: ['HTML', 'CSS', 'HTML', 'HTML', 'HTML', 'HTML'],
       answersCount: 2,
     },
   ]
@@ -130,32 +130,33 @@ export default function BoardListUI(props) {
           </div>
         </CH.InnerBodyHeader>
         <CH.BoardList>
-          {/* <div className="boardListContents">
-            <div>번호</div>
-            <div>제목</div>
-            <div>글쓴이</div>
-            <div>작성일</div>
-          </div> */}
           <div>
             {testCode.map((el, index) => (
               <div key={uuidv4()} className="Contents">
                 <div className="ContentsLeftWrapper">
                   <div>No.{index + 1}</div>
                   <div>
-                    {' '}
                     <span>{el.answersCount}</span> answers
                   </div>
                 </div>
                 <div className="ContentsRightWrapper">
-                  <div className="ContentsTitle">{el.title}</div>
+                  <div
+                    className="ContentsTitle"
+                    onClick={props.onClickBoardDetail}
+                  >
+                    {el.title}
+                  </div>
                   <div className="ContentsBody">{el.contents}</div>
                   <div className="RightWrapperFooter">
-                    <div>
-                      {el.categories.map((el) => (
-                        <span className="Categories" key={uuidv4()}>
-                          {el}
-                        </span>
-                      ))}
+                    <div className="CategoriesWrapper">
+                      {new Array(el.categories.length)
+                        .fill(el.categories)
+                        .filter((filterEl, index) => {
+                          if (index < 2) return filterEl
+                        })
+                        .map((el, index) => (
+                          <span key={uuidv4()}>{el[index]}</span>
+                        ))}
                     </div>
                     <div>
                       <span className="ContentsWriter">{el.writer}</span>

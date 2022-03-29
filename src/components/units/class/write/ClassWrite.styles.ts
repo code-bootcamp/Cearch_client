@@ -68,7 +68,7 @@ export const ClassSubmit = styled.button`
   background: none;
   cursor: pointer;
   :hover {
-    background: #1e2744;
+    background: #ffa24b;
     color: #fff;
   }
 `

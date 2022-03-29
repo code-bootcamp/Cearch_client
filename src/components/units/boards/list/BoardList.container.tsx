@@ -7,6 +7,14 @@ export default function BoardList() {
   const onClickBoardWrite = () => {
     router.push('/boards/new')
   }
+  const onClickBoardDetail = () => {
+    router.push('/boards/[datail]')
+  }
 
-  return <BoardListUI onClickBoardWrite={onClickBoardWrite} />
+  return (
+    <BoardListUI
+      onClickBoardWrite={onClickBoardWrite}
+      onClickBoardDetail={onClickBoardDetail}
+    />
+  )
 }

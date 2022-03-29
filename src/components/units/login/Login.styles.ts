@@ -102,7 +102,7 @@ export const VerificationCode = styled.button`
   cursor: pointer;
 
   :hover {
-    background: #1e2744;
+    background: #ffa24b;
     color: #fff;
   }
 `
@@ -203,7 +203,7 @@ export const CreateButton = styled.button`
   width: 100%;
   height: 60px;
   text-align: center;
-  background: #1e2744;
+  background: #ffa24b;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
@@ -225,7 +225,7 @@ export const GoogleButton = styled.button`
   cursor: pointer;
 
   :hover {
-    background: #1e2744;
+    background: #ffa24b;
     color: #fff;
   }
   .socialIcon {
@@ -242,7 +242,7 @@ export const LoginButton = styled.button`
   height: 60px;
   margin: 15px 0 !important;
   text-align: center;
-  background: #1e2744;
+  background: #ffa24b;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
@@ -264,7 +264,7 @@ export const JoinButton = styled.div`
     background: none;
     cursor: pointer;
     :hover {
-      background: #1e2744;
+      background: #ffa24b;
       color: #fff;
     }
   }
@@ -273,7 +273,7 @@ export const PasswordReset = styled.button`
   width: 100%;
   height: 60px;
   text-align: center;
-  background: #1e2744;
+  background: #ffa24b;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.2rem;

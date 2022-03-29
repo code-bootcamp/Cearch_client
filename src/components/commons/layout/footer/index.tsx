@@ -9,9 +9,8 @@ const Footer = styled.footer`
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
-  @media ${breakPoints.tablet} {
-    width: 90%;
-    height: auto;
+  @media ${breakPoints.mobile}, ${breakPoints.tablet} {
+    width: 100%;
   }
 `
 

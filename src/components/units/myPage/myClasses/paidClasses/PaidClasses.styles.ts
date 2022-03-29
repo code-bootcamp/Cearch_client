@@ -179,7 +179,7 @@ export const ClassButton = styled.button`
   border-radius: 31px;
   width: 109px;
   height: 36px;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
