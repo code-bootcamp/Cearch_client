@@ -18,5 +18,6 @@ export const globalStyles = css`
   body {
     width: 100%;
     overflow-x: hidden;
+    padding-top: 100px;
   }
 `

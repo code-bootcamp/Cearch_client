@@ -1,8 +1,10 @@
 import styled from '@emotion/styled'
 import { AccordionPanel } from '@chakra-ui/react'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
+  height: auto;
   margin: 0 auto;
   padding: 80px 0;
   position: relative;
@@ -11,24 +13,88 @@ export const Wrapper = styled.div`
   > div {
     width: 100%;
   }
+  @media ${breakPoints.mobile}, ${breakPoints.tablet} {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
 `
 export const MentorCard = styled.div`
   position: sticky;
+  display: flex;
+  flex-direction: column-reverse;
   top: 50px;
   left: 0;
-  margin: 0 auto;
+
   padding: 50px;
   border-radius: 25px;
   text-align: center;
   box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
   height: 595px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    position: static;
+    margin-bottom: 10px;
+  }
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    height: auto;
+    position: static;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    .mentorTitle {
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 0 auto 20px;
+      p:nth-of-type(1) {
+        font-size: 1rem;
+        margin-bottom: 3px;
+      }
+      p:nth-of-type(2) {
+        font-size: 1.25rem;
+      }
+    }
+    .mentorBody {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 3fr 3fr;
+
+      .mentorImg {
+        display: flex;
+        align-items: center;
+        order: -1;
+      }
+      .mentorProfile {
+        > p {
+          font-size: 1.25rem;
+        }
+        > div {
+          > p {
+            font-size: 1.25rem;
+          }
+        }
+      }
+      .mentorTime {
+        > p {
+          font-size: 1.25rem;
+        }
+      }
+      .DMButton {
+      }
+    }
+  }
 
   > * {
     margin-bottom: 15px;
   }
-  > div:first-of-type {
+
+  .mentorTitle {
     display: flex;
     justify-content: space-between;
+    order: 2;
     > div:first-of-type {
       text-align: left;
       p:nth-of-type(1) {
@@ -49,7 +115,7 @@ export const MentorCard = styled.div`
 
   .mentorImg {
     width: 100%;
-
+    order: 1;
     > div {
       width: 150px;
       height: 150px;
@@ -120,6 +186,9 @@ export const MentorCard = styled.div`
     }
   }
   .mentorTime {
+    display: flex;
+    flex-direction: column;
+
     p {
       margin-bottom: 10px;
     }
@@ -133,6 +202,8 @@ export const MentorCard = styled.div`
   .DMButton {
     width: 100%;
     margin: 0;
+    display: flex;
+    justify-content: center;
 
     button:first-of-type {
       width: 120px;
@@ -151,12 +222,20 @@ export const MentorContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media ${breakPoints.mobile}, ${breakPoints.tablet} {
+    margin: 0;
+  }
 `
 export const ContentsText = styled.div`
   width: 100%;
   border-radius: 25px;
   box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
   padding: 40px;
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    max-height: 700px;
+    overflow: scroll;
+  }
 `
 export const ContentContainer = styled.div`
   /* display: block; */
@@ -171,6 +250,16 @@ export const ClassList = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 15px;
   padding: 15px 10px 10px;
+  @media ${breakPoints.mobile} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+  }
+  @media ${breakPoints.tablet} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+  }
 `
 
 export const ClassImg = styled.div`

@@ -2,8 +2,9 @@ import styled from '@emotion/styled'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { ReactChild } from 'react'
+import { breakPoints } from '../../../commons/styles/media'
 import LayoutFooter from './footer'
-import LayoutHeader from './header'
+import LayoutHeader from './header/Header.container'
 
 const LayoutBody = styled.div`
   width: 100%;

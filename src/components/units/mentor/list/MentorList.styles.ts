@@ -4,11 +4,9 @@ import { breakPoints } from '../../../../commons/styles/media'
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0 auto;
-
   @media ${breakPoints.tablet}, ${breakPoints.mobile} {
     width: 90%;
   }
-
   article {
     width: 100%;
     padding: 20px 0;
@@ -18,7 +16,6 @@ export const Wrapper = styled.div`
       @media ${breakPoints.tablet}, ${breakPoints.mobile} {
         margin-bottom: 50px;
       }
-
       > p {
         font-size: 1.5rem;
         font-weight: 600;
@@ -39,12 +36,10 @@ export const Wrapper = styled.div`
       @media ${breakPoints.tablet}, ${breakPoints.mobile} {
         margin-bottom: 50px;
       }
-
       #mainCategory {
         padding: 40px 30px 30px;
         border: 1px solid #ffa24b;
         border-radius: 10px;
-
         .swiper-button-prev,
         .swiper-button-next {
           z-index: 99999;
@@ -53,7 +48,6 @@ export const Wrapper = styled.div`
             font-size: 2rem;
           }
         }
-
         .categoryColumn {
           display: flex;
           flex-direction: column;
@@ -131,11 +125,13 @@ export const Mentor = styled.div`
   > div {
     transform-style: preserve-3d;
     perspective: 1000px;
+<<<<<<< HEAD
+=======
     /* overflow: hidden; */
 
+>>>>>>> de7e69c8e282827bca6d78c58cc91b286a9fa586
     cursor: pointer;
     position: relative;
-
     .mentorCardFront,
     .mentorCardBack {
       overflow: hidden;
@@ -144,7 +140,6 @@ export const Mentor = styled.div`
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
       backface-visibility: hidden;
     }
-
     .mentorCardFront {
       display: flex;
       flex-direction: column;
@@ -161,7 +156,6 @@ export const Mentor = styled.div`
         border-radius: 10px;
       }
     }
-
     .mentorCardBack {
       position: absolute;
       top: 0;
@@ -170,7 +164,6 @@ export const Mentor = styled.div`
       transform: rotateY(180deg);
       transform-style: preserve-3d;
     }
-
     &:hover .mentorCardBack {
       transform: rotateY(0deg);
       transform-style: preserve-3d;
@@ -179,12 +172,10 @@ export const Mentor = styled.div`
       transform: rotateY(-180deg);
       transform-style: preserve-3d;
     }
-
     &:hover .mentorCardFront,
     &:hover .mentorCardBack {
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
     }
-
     .badge {
       margin-bottom: 10px;
       display: flex;
@@ -224,7 +215,6 @@ export const Mentor = styled.div`
         margin: auto;
         border-radius: 50%;
         overflow: hidden;
-
         img {
           width: 100%;
           height: 100%;
@@ -349,7 +339,6 @@ export const MentorInfo = styled.div`
     align-items: center;
     justify-content: right;
     margin-bottom: 5px;
-
     > p {
       font-size: 1.1rem;
       font-weight: 700;

@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
     width: 90%;
     height: auto;
   }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    height: auto;
+  }
   > p {
     font-size: 1.5rem;
     font-weight: 600;
@@ -51,6 +55,9 @@ export const Wrapper = styled.div`
     width: 100%;
     text-align: center;
     padding-bottom: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     span {
       display: inline-block;
@@ -75,14 +82,14 @@ export const Wrapper = styled.div`
 `
 
 export const BoardListWrapper = styled.div`
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
 `
 
 export const InnerBodyHeader = styled.div`
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -113,6 +120,10 @@ export const BoardList = styled.div`
     text-align: center;
     display: grid;
     grid-template-columns: 1fr 8fr;
+    @media ${breakPoints.mobile} {
+      display: flex;
+      flex-direction: column;
+    }
     .ContentsLeftWrapper {
       text-align: left;
     }
@@ -162,6 +173,26 @@ export const BoardList = styled.div`
           border-radius: 10px;
           padding: 5px 10px 3px;
           margin-right: 10px;
+        }
+        .CategoriesWrapper {
+          padding: 0 5px;
+          width: 100%;
+          overflow: hidden;
+          word-break: keep-all;
+          height: 29px;
+          > span {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px 10px 3px;
+            border-radius: 20px;
+            background-color: #ffa24b;
+            color: #fff;
+            font-size: 0.79rem;
+            font-weight: 700;
+            margin-right: 5px;
+            margin-bottom: 5px;
+          }
         }
         .CreatedAt {
           color: grey;

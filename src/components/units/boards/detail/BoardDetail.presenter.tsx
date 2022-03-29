@@ -8,7 +8,7 @@ export default function BoardDetailUI() {
       <CH.ContentWrapper>
         <div className="contentHeader">
           <div>게시글 제목</div>
-          <div>2022.03.15</div>
+          <span>2022.03.15</span>
         </div>
         <div className="contentBody">
           <ToastViewerPage />
@@ -22,7 +22,6 @@ export default function BoardDetailUI() {
         </div>
         <CH.CommentsWrapper>
           <div className="writerDetail">go_rAnii</div>
-
           <div className="commentsWrite">
             <div>
               <img src="/images/profileDefault.png" />
@@ -37,40 +36,50 @@ export default function BoardDetailUI() {
 
           <div className="commentsList">
             <div className="comment">
-              <input type="checkbox" />
-              <div>
-                <img src="/images/profileDefault.png" />
+              <div className="CommentHeader">
+                <input type="checkbox" className="checkbox" />
+                <div>
+                  <img src="/images/profileDefault.png" />
+                </div>
+                <div className="commentWriter">chanpoong01</div>
               </div>
-              <div className="commentWriter">chanpoong01@gmail.com</div>
-              <div>
+
+              <div className="CommentContents">
                 댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글 본문
                 입니다.댓글 본문 입니다.
               </div>
+
               <div>2022.03.15</div>
             </div>
 
             <div className="comment">
-              <input type="checkbox" />
-              <div>
-                <img src="/images/profileDefault.png" />
+              <div className="CommentHeader">
+                <input type="checkbox" className="checkbox" />
+                <div>
+                  <img src="/images/profileDefault.png" />
+                </div>
+                <div className="commentWriter">go_rAnii</div>
               </div>
-              <div className="commentWriter">go_rAnii</div>
-              <div>
+              <div className="CommentContents">
                 댓글 본문 입니다. 댓글 본문 입니다.댓글 본문 입니다.댓글 본문
                 입니다. 댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글
                 본문 입니다. 댓글 본문 입니다.댓글 본문 입니다.댓글 본문
                 입니다.댓글 본문 입니다.
               </div>
+
               <div>2022.03.15</div>
             </div>
 
             <div className="comment">
-              <input type="checkbox" />
-              <div>
-                <img src="/images/profileDefault.png" />
+              <div className="CommentHeader">
+                <input type="checkbox" className="checkbox" />
+                <div>
+                  <img src="/images/profileDefault.png" />
+                </div>
+                <div className="commentWriter">작성자</div>
               </div>
-              <div className="commentWriter">작성자</div>
-              <div>댓글 본문 입니다.</div>
+              <div className="CommentContents">댓글 본문 입니다.</div>
+
               <div>2022.03.15</div>
             </div>
           </div>
