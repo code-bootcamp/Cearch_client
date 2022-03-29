@@ -32,24 +32,24 @@ export default function MyInformationUI(props) {
                 </CH.PasswordButton>
               </CH.Left>
               <CH.Right>
-                <div>
+                <CH.TopRow>
                   <CH.RowLabel>이름</CH.RowLabel>
-                  <CH.DefaultInput placeholder="이름을 입력해주세요."></CH.DefaultInput>
-                </div>
-                <div>
+                  <CH.TopInput placeholder="이름을 입력해주세요."></CH.TopInput>
+                </CH.TopRow>
+                <CH.TopRow>
                   <CH.RowLabel>이메일</CH.RowLabel>
-                  <CH.DefaultInput
+                  <CH.TopInput
                     type="text"
                     placeholder="이메일을 입력해주세요."
-                  ></CH.DefaultInput>
-                </div>
-                <div>
+                  ></CH.TopInput>
+                </CH.TopRow>
+                <CH.TopRow>
                   <CH.RowLabel>휴대전화 번호</CH.RowLabel>
-                  <CH.DefaultInput
+                  <CH.TopInput
                     type="text"
                     placeholder="휴대전화 번호를 입력해주세요."
-                  ></CH.DefaultInput>
-                </div>
+                  ></CH.TopInput>
+                </CH.TopRow>
               </CH.Right>
             </CH.Top>
             <CH.Bottom>
@@ -63,7 +63,7 @@ export default function MyInformationUI(props) {
               <CH.Row>
                 <CH.RowLabel>관심분야</CH.RowLabel>
                 <CH.InputBackground>
-                  <FormControl sx={{ width: 524 }}>
+                  <FormControl sx={{ width: 1, height: 1 }}>
                     <InputLabel>관심분야를 선택해주세요.</InputLabel>
                     <Select
                       multiple
@@ -72,7 +72,7 @@ export default function MyInformationUI(props) {
                       input={<OutlinedInput label="카테고리를 선택해주세요." />}
                       renderValue={(selected) => (
                         <Box
-                          sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
+                          sx={{ width: 1, display: 'flex', flexWrap: 'wrap' }}
                         >
                           {selected.map((value) => (
                             <Chip
@@ -110,7 +110,7 @@ export default function MyInformationUI(props) {
               <CH.Row>
                 <CH.RowLabel>업무파트</CH.RowLabel>
                 <CH.InputBackground>
-                  <FormControl sx={{ width: 524 }}>
+                  <FormControl sx={{ width: 1 }}>
                     <InputLabel>업무파트를 선택해주세요.</InputLabel>
                     <Select
                       multiple
@@ -118,9 +118,7 @@ export default function MyInformationUI(props) {
                       onChange={props.handleChangeDepartment}
                       input={<OutlinedInput label="업무파트를 선택해주세요." />}
                       renderValue={(selected) => (
-                        <Box
-                          sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}
-                        >
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
                           {selected.map((value) => (
                             <Chip
                               key={value}

@@ -42,7 +42,7 @@ export const Wrapper = styled.div`
 
       #mainCategory {
         padding: 40px 30px 30px;
-        border: 1px solid #1e2744;
+        border: 1px solid #ffa24b;
         border-radius: 10px;
 
         .swiper-button-prev,
@@ -242,7 +242,7 @@ export const MentorInfo = styled.div`
       overflow: hidden;
       padding: 5px 10px 3px;
       border-radius: 20px;
-      background-color: #1e2744;
+      background-color: #ffa24b;
       color: #fff;
       font-size: 0.875rem;
       margin-right: 5px;

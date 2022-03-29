@@ -35,6 +35,7 @@ export default function CreatedClassesUI(props) {
             label="클래스를 선택해주세요."
             value={selectedClass}
             onChange={handleChange}
+            sx={{ maxWidth: 1 }}
           >
             {props.createdClasses.map((el, index) => {
               return (

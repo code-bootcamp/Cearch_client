@@ -108,18 +108,19 @@ export const ClassCategory = styled.div`
   font-size: 16px;
   margin-bottom: 13px;
   .Categories {
-    color: #417294;
-    background-color: #c2dceb;
-    border-radius: 10px;
-    padding: 5px 10px 3px;
+    color: white;
     margin-right: 10px;
+    background: #ffa24b;
+    padding: 5px 10px 3px;
+    border-radius: 15px;
+    color: #fff;
   }
   @media ${breakPoints.tablet} {
     margin-bottom: 5px;
     .Categories {
       font-size: 15px;
-      color: #417294;
-      background-color: #c2dceb;
+      color: white;
+      background: #ffa24b;
       border-radius: 10px;
       padding: 5px 10px 3px;
       margin-right: 10px;
@@ -133,8 +134,8 @@ export const ClassCategory = styled.div`
     .Categories {
       margin-right: 2px;
       font-size: 12px;
-      color: #417294;
-      background-color: #c2dceb;
+      color: white;
+      background: #ffa24b;
       border-radius: 10px;
     }
   }
@@ -179,7 +180,7 @@ export const ClassButton = styled.button`
   border-radius: 31px;
   width: 109px;
   height: 36px;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;

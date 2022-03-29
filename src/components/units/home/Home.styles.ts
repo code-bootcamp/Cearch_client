@@ -43,7 +43,7 @@ export const Wrapper = styled.div`
 
       #mainCategory {
         padding: 40px 30px 30px;
-        border: 1px solid #1e2744;
+        border: 1px solid #ffa24b;
         border-radius: 10px;
 
         .swiper-button-prev,
@@ -288,7 +288,7 @@ export const MentorInfo = styled.div`
       overflow: hidden;
       padding: 5px 10px 3px;
       border-radius: 20px;
-      background-color: #1e2744;
+      background-color: #ffa24b;
       color: #fff;
       font-size: 0.79rem;
       font-weight: 700;
@@ -516,7 +516,7 @@ export const InfoBottom = styled.div`
       margin: 8px 0 5px;
     }
     span {
-      background: #1e2744;
+      background: #ffa24b;
       padding: 5px 10px 3px;
       border-radius: 15px;
       color: #fff;
@@ -583,7 +583,7 @@ export const ArrowButton = styled.div`
     height: 35px;
     border-radius: 10px;
     color: #fff !important;
-    background-color: #1e2744;
+    background-color: #ffa24b;
     &.swiper-button-disabled {
       opacity: 1;
       background: #f1f1f1;
@@ -599,7 +599,7 @@ export const ArrowButton = styled.div`
     height: 35px;
     border-radius: 10px;
     color: #fff !important;
-    background-color: #1e2744;
+    background-color: #ffa24b;
     &.swiper-button-disabled {
       opacity: 1;
       background: #f1f1f1;

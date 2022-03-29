@@ -1,20 +1,7 @@
 import styled from '@emotion/styled'
-import { breakPoints } from '../../../../../commons/styles/media'
+import { breakPoints } from '../../../../../../commons/styles/media'
 
-export const ClassWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`
-
-export const ClassContents = styled.div`
-  height: 240px;
-  display: flex;
-
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #c4c4c4;
+export const TakingClasses = styled.div`
   animation: fadein 1s ease-in-out;
   @keyframes fadein {
     0% {
@@ -26,6 +13,45 @@ export const ClassContents = styled.div`
       transform: none;
     }
   }
+`
+export const EndedClasses = styled.div`
+  margin-top: 55px;
+  animation: fadein 1s ease-in-out;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+`
+export const TitleLabel = styled.div`
+  padding-top: 60px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    font-size: 16px;
+    padding-top: 50px;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 15.5px;
+    padding-top: 20px;
+  }
+`
+
+export const ClassContents = styled.div`
+  padding: 60px 13px 60px 8px;
+  height: 240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c4c4c4;
   @media ${breakPoints.tablet} {
     height: 200px;
   }
@@ -33,11 +59,10 @@ export const ClassContents = styled.div`
     height: 180px;
     flex-direction: column;
     align-items: flex-end;
-    padding-top: 10px;
+    padding: 20px 0px;
   }
 `
 export const ClassContentsLeft = styled.div`
-  width: 75%;
   display: flex;
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -45,7 +70,7 @@ export const ClassContentsLeft = styled.div`
     justify-content: flex-start;
   }
 `
-export const ClassImage = styled.image`
+export const ClassImage = styled.div`
   width: 180px;
   height: 120px;
   background: #f1f1f1;
@@ -63,8 +88,7 @@ export const ClassContentsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 15px 0px 5px 20px;
-
+  padding: 15px 0px 5px 40px;
   @media ${breakPoints.tablet} {
     padding: 5px 0px 0px 10px;
   }
@@ -116,14 +140,11 @@ export const ClassCategory = styled.div`
     }
   }
 `
+
 export const ClassTitle = styled.div`
-  width: 100%;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  /* text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -141,10 +162,12 @@ export const ClassTitle = styled.div`
     font-size: 14px;
   }
 `
+
 export const ClassDate = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
+  line-height: 10px;
   @media ${breakPoints.tablet} {
     font-size: 14px;
   }
@@ -153,22 +176,7 @@ export const ClassDate = styled.div`
   }
 `
 
-export const ClassContentsRight = styled.div`
-  width: 10%;
-  font-weight: 700;
-  font-size: 18px;
-  @media ${breakPoints.tablet} {
-    font-size: 15.5px;
-    width: 11%;
-    text-align: right;
-  }
-  @media ${breakPoints.mobile} {
-    width: 70px;
-    font-size: 14px;
-  }
-`
-
-export const ClassPayButton = styled.button`
+export const ClassButton = styled.button`
   border-radius: 31px;
   width: 109px;
   height: 36px;
@@ -190,6 +198,6 @@ export const ClassPayButton = styled.button`
     width: 80px;
     height: 25px;
     font-size: 14px;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
   }
 `

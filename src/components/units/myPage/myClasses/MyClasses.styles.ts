@@ -56,21 +56,7 @@ export const TabMenu = styled.div`
     }
   }
   @media ${breakPoints.mobile} {
-    margin-top: 0px;
-    margin-bottom: 15px;
-    .focused {
-      font-style: normal;
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .submenu {
-      cursor: pointer;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 15px;
-      color: #bdbdbd;
-    }
+    display: none;
   }
 `
 export const Menu = styled.div`
@@ -96,7 +82,7 @@ export const CreateButton = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -109,5 +95,27 @@ export const CreateButton = styled.div`
   }
   @media ${breakPoints.mobile} {
     display: none;
+  }
+`
+export const MobileTab = styled.div`
+  display: none;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    .focused {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .submenu {
+      cursor: pointer;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      color: #bdbdbd;
+    }
   }
 `

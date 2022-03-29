@@ -1,4 +1,6 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 
 const Wrapper = styled.div`
   width: 957px;
@@ -10,10 +12,25 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
+  @media ${breakPoints.tablet} {
+    width: 100%;
+    background-color: white;
+    padding: 8% 10%;
+    box-shadow: none;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+    background-color: white;
+    padding: 8% 0%;
+    box-shadow: none;
+  }
 `
 const Contents = styled.div`
   display: flex;
   flex-direction: column;
+  @media ${breakPoints.mobile} {
+    width: 80%;
+  }
 `
 
 const TitleLabel = styled.div`
@@ -42,18 +59,30 @@ const Input = styled.input`
   border: 1px solid #9d9d9d;
   border-radius: 10px;
   margin-bottom: 15px;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
 `
 
 const Button = styled.button`
   margin-top: 55px;
   width: 524px;
   height: 67px;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   border-radius: 10px;
   border: none;
   font-weight: 700;
   font-size: 24px;
   color: #ffffff;
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`
+
+const CancelButton = styled.div`
+  :hover {
+    cursor: pointer;
+  }
 `
 
 export default function PasswordModal(props) {
@@ -62,7 +91,9 @@ export default function PasswordModal(props) {
       <Contents>
         <TitleLabel>
           <div>비밀번호 변경</div>
-          <div onClick={props.toggle}>x</div>
+          <CancelButton>
+            <CancelOutlinedIcon onClick={props.toggle} />
+          </CancelButton>
         </TitleLabel>
         <InputLabel>현재 비밀번호 입력</InputLabel>
         <Input type="password" />
