@@ -1,3 +1,4 @@
+import 'antd/dist/antd.css'
 import { css } from '@emotion/react'
 
 export const globalStyles = css`

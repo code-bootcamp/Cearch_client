@@ -5,46 +5,29 @@ import Modal from '@mui/material/Modal'
 //헤더 전체 wrapper
 export const Header = styled.header`
   position: relative;
-  width: 1200px;
+  width: 100%;
   box-shadow: 0px 10px 20px #eee;
 
   > div {
-    width: 100%;
+    width: 1200px;
     margin: 0 auto;
     padding: 10px 0;
-    @media ${breakPoints.tablet} {
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
       width: 100%;
-      padding: 10px;
-      height: 100px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999;
+      padding-left: 3%;
+      background-color: ${(props: { isTop: boolean }) =>
+        props.isTop ? 'white' : '#FFA24B'};
+    }
 
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 99999;
-      background-color: ${(props: { isTop: boolean }) =>
-        props.isTop ? 'white' : '#FFA24B'};
-    }
-    @media ${breakPoints.mobile} {
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 99999;
-      background-color: ${(props: { isTop: boolean }) =>
-        props.isTop ? 'white' : '#FFA24B'};
-    }
     > div:nth-of-type(2) {
-      margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -64,7 +47,6 @@ export const Logo = styled.div`
   align-items: center;
   height: 80px;
   font-size: 2.5rem;
-  margin-bottom: 10px;
 `
 
 // 메뉴 바
