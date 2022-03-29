@@ -36,10 +36,12 @@ export const Select = styled.div`
   display: flex;
   flex-direction: row;
   @media ${breakPoints.tablet} {
+    width: 100%;
     margin-top: 20px;
     font-size: 15.5px;
   }
   @media ${breakPoints.mobile} {
+    width: 100%;
     margin-top: 20px;
     font-size: 15px;
   }
