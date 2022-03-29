@@ -1,165 +1,397 @@
 import * as CH from './ClassDetail.styles'
 import StarRoundedIcon from '@mui/icons-material/StarRounded'
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
+import { Rate } from 'antd'
+import { Link } from 'react-scroll'
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
 
 export default function classNameDetailUI(props) {
+  const getPrice = (price) => {
+    return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
   return (
-    <CH.Wrapper>
-      <CH.ClassDetail>
-        <CH.DetailTop>
+    <>
+      <CH.ClassBanner>
+        <CH.BannerWrapper>
           <CH.ClassImg>
             <img src="/images/mentor.jpeg" />
           </CH.ClassImg>
-
-          <div>
-            <p className="category">카테고리</p>
-            <p className="title">클래스 제목</p>
-          </div>
-        </CH.DetailTop>
-
-        <CH.DetailClassIntro>
-          <p>클래스 소개</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-            quod consectetur molestias, earum aspernatur assumenda alias sequi
-            enim rem odio omnis repellat!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-            quod consectetur molestias, earum aspernatur assumenda alias sequi
-            enim rem odio omnis repellat!
-          </p>
-        </CH.DetailClassIntro>
-
-        <CH.DetailCurriculum>
-          <p>커리큘럼</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-            quod consectetur molestias, earum aspernatur assumenda alias sequi
-            enim rem odio omnis repellat!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-            quod consectetur molestias, earum aspernatur assumenda alias sequi
-            enim rem odio omnis repellat!
-          </p>
-        </CH.DetailCurriculum>
-
-        <CH.DetailComment>
-          <div className="commentTop">
-            <p>참여자들의 후기</p>
-            <div className="star">
-              <StarRoundedIcon style={{ color: 'gold' }} />
-              <span>4.5 (평가자 수)</span>
-            </div>
-          </div>
-          <div className="commentList">
-            <div className="commentDetail">
-              <div className="userImg">
-                <img src="/images/profile.png" />
-              </div>
-              <div className="profile">
-                <span>◯◯◯</span>
-                <div className="star">
-                  <StarRoundedIcon style={{ color: 'gold' }} />
-                  <span>4.5</span>
-                </div>
-                <span>2000. 02. 02</span>
-              </div>
-            </div>
-            <div className="contents">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam,
-              totam fuga sit delectus neque expedita, iusto reprehenderit
-              voluptatibus laboriosam quisquam obcaecati id minus assumenda
-              architecto rerum deserunt iure possimus reiciendis?
-            </div>
-          </div>
-          <div className="commentList">
-            <div className="commentDetail">
-              <div className="userImg">
-                <img src="/images/profile.png" />
-              </div>
-              <div className="profile">
-                <span>◯◯◯</span>
-                <div className="star">
-                  <StarRoundedIcon style={{ color: 'gold' }} />
-                  <span>4.5</span>
-                </div>
-                <span>2000. 02. 02</span>
-              </div>
-            </div>
-            <div className="contents">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam,
-              totam fuga sit delectus neque expedita, iusto reprehenderit
-              voluptatibus laboriosam quisquam obcaecati id minus assumenda
-              architecto rerum deserunt iure possimus reiciendis?
-            </div>
-          </div>
-          <div className="commentList">
-            <div className="commentDetail">
-              <div className="userImg">
-                <img src="/images/profile.png" />
-              </div>
-              <div className="profile">
-                <span>◯◯◯</span>
-                <div className="star">
-                  <StarRoundedIcon style={{ color: 'gold' }} />
-                  <span>4.5</span>
-                </div>
-                <span>2000. 02. 02</span>
-              </div>
-            </div>
-            <div className="contents">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam,
-              totam fuga sit delectus neque expedita, iusto reprehenderit
-              voluptatibus laboriosam quisquam obcaecati id minus assumenda
-              architecto rerum deserunt iure possimus reiciendis?
-            </div>
-          </div>
-        </CH.DetailComment>
-      </CH.ClassDetail>
-
-      <CH.ClassContent>
-        <div>
-          <div className="classInfo">
-            <CH.ClassMobileImg>
-              <img src="/images/mentor.jpeg" />
-            </CH.ClassMobileImg>
+          <CH.DetailTop>
             <div>
               <p className="category">카테고리</p>
-              <p className="title">클래스 제목</p>
-              <p className="startDate">2000. 02. 02</p>
-              <div className="peopleBox">
-                <p>최대 수강 가능 인원</p>
-                <p>수강신청 가능인원</p>
-              </div>
-              <div className="price">
-                <span>수강료</span>
-                <span>99,999원</span>
-              </div>
+              <p className="title">
+                클래스클래스클래스클래클래스클래스클래스클래스클래스
+              </p>
+              <CH.FlexEnd>
+                <CH.Star>
+                  <Rate allowHalf defaultValue={2.5} />
+                  <span>4.5 (평가자 수)</span>
+                </CH.Star>
+                <span>112개의 수강평</span>
+              </CH.FlexEnd>
+              <CH.FlexEnd>
+                <PersonOutlineIcon />
+                <span style={{ fontWeight: '600' }}>mentor</span>
+              </CH.FlexEnd>
+              <p style={{ marginBottom: '0px', fontWeight: '600' }}>
+                2000. 02. 02
+              </p>
             </div>
-          </div>
-          <div className="button" onClick={props.onClickClassRequest}>
-            수강 신청
-          </div>
-        </div>
-        <div className="mentor">
-          <div>
+          </CH.DetailTop>
+        </CH.BannerWrapper>
+
+        <div>
+          <CH.ClassInfo>
             <div>
-              <img src="/images/profile.png" />
+              <CH.PriceBox>
+                <div>
+                  <span>{getPrice(20000)}</span>
+                  <span>원</span>
+                </div>
+                <div className="priceDivision">
+                  <span>월 </span> <span> {getPrice(Number('20000') / 5)}</span>
+                  <span>원</span>
+                </div>
+                <div className="installment">
+                  <span>5개월 할부 시</span>
+                </div>
+              </CH.PriceBox>
+              <div className="peopleBox">
+                <span>🔥</span>
+                <div>
+                  <span>마감까지</span> <span>9</span>
+                  <span>자리 남음</span>
+                  <p>다시 오지 않은 최저가, 바로 지금이에요!</p>
+                </div>
+              </div>
             </div>
-            <div className="follow">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                <path d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z" />
-              </svg>
-            </div>
-          </div>
-          <div>멘토소개</div>
+          </CH.ClassInfo>
+          <CH.ClassButton onClick={props.onClickClassRequest}>
+            수강신청 하기
+          </CH.ClassButton>
         </div>
-      </CH.ClassContent>
-    </CH.Wrapper>
+      </CH.ClassBanner>
+      <CH.ClassMenu>
+        <div>
+          <Link to="classIntro" spy={true} smooth={true}>
+            <span>클래스소개</span>
+          </Link>
+          <Link to="classCurriculum" spy={true} smooth={true}>
+            <span>커리큘럼</span>
+          </Link>
+          <Link to="classReview" spy={true} smooth={true}>
+            <span>수강평</span>
+          </Link>
+        </div>
+      </CH.ClassMenu>
+      <CH.Wrapper>
+        <CH.MobileMentorWrapper>
+          <CH.FlexRow style={{ marginBottom: '10px' }}>
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.79083 6.8584L4.57178 8.11228L5.79083 9.29649"
+                stroke="#FFA24B"
+                strokeWidth="0.761905"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M10.3625 9.29687L11.5815 8.043L10.3625 6.85878"
+                stroke="#FFA24B"
+                strokeWidth="0.761905"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M8.83826 5.79199L7.31445 10.3634"
+                stroke="#FFA24B"
+                strokeWidth="0.761905"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle
+                cx="8"
+                cy="8"
+                r="7.08571"
+                stroke="#FFA24B"
+                strokeWidth="1.82857"
+              />
+              <path
+                d="M13.1055 13.1045L15.9245 15.9235"
+                stroke="#FFA24B"
+                strokeWidth="1.82857"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>멘토소개</span>
+          </CH.FlexRow>
+          <CH.FlexRow>
+            <CH.MentorImg>
+              <div>
+                <img src="/images/profile.png" />
+              </div>
+              <div className="follow">
+                <PersonAddAlt1Icon />
+              </div>
+            </CH.MentorImg>
+            <CH.MentorContent>
+              <div>
+                <p>멘토 이름</p>
+                <div>
+                  <span>회사명</span>
+                  <span> / </span>
+                  <span>부서</span>
+                </div>
+                <p>업무파트</p>
+              </div>
+            </CH.MentorContent>
+          </CH.FlexRow>
+        </CH.MobileMentorWrapper>
+        <CH.ClassDetail>
+          <CH.DetailClassIntro id="classIntro">
+            <CH.ClassCategoryBorder>
+              <div>
+                <span>✍️</span>
+                <span>이런 걸</span>
+                <span>배워요!</span>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div>
+                  <span>✓</span>
+                  <span>카테고리</span>
+                </div>
+                <div>
+                  <span>✓</span>
+                  <span>카테고리</span>
+                </div>
+              </div>
+            </CH.ClassCategoryBorder>
+            <p>클래스 소개</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
+              quod consectetur molestias, earum aspernatur assumenda alias sequi
+              enim rem odio omnis repellat!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
+              quod consectetur molestias, earum aspernatur assumenda alias sequi
+              enim rem odio omnis repellat!
+            </p>
+          </CH.DetailClassIntro>
+
+          <CH.DetailCurriculum id="classCurriculum">
+            <p>커리큘럼</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
+              quod consectetur molestias, earum aspernatur assumenda alias sequi
+              enim rem odio omnis repellat!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
+              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
+              quod consectetur molestias, earum aspernatur assumenda alias sequi
+              enim rem odio omnis repellat!
+            </p>
+          </CH.DetailCurriculum>
+
+          <CH.DetailReview id="classReview">
+            <div className="reviewTop">
+              <p>클래스 후기</p>
+              <div className="star" style={{ alignItems: 'flex-end' }}>
+                <StarRoundedIcon style={{ color: 'gold' }} />
+                <span>4.5 (평가자 수)</span>
+              </div>
+            </div>
+            <CH.ReviewWrapper>
+              <CH.ReviewUser>
+                <div className="userImg">
+                  <img src="/images/profile.png" />
+                </div>
+                <div className="userDetail">
+                  <div className="profile">
+                    <CH.Star>
+                      <Rate disabled defaultValue={3} />
+                      <span>4.5</span>
+                    </CH.Star>
+                    <span>◯◯◯</span>
+                  </div>
+                </div>
+              </CH.ReviewUser>
+              <div className="contents">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Veniam, totam fuga sit delectus neque expedita, iusto
+                reprehenderit voluptatibus laboriosam quisquam obcaecati id
+                minus assumenda architecto rerum deserunt iure possimus
+                reiciendis?
+              </div>
+              <span className="reviewName">2000-02-02</span>
+            </CH.ReviewWrapper>
+            <CH.ReviewWrapper>
+              <CH.ReviewUser>
+                <div className="userImg">
+                  <img src="/images/profile.png" />
+                </div>
+                <div className="userDetail">
+                  <div className="profile">
+                    <CH.Star>
+                      <Rate disabled defaultValue={3} />
+                      <span>4.5</span>
+                    </CH.Star>
+                    <span>◯◯◯</span>
+                  </div>
+                </div>
+              </CH.ReviewUser>
+              <div className="contents">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Veniam, totam fuga sit delectus neque expedita, iusto
+                reprehenderit voluptatibus laboriosam quisquam obcaecati id
+                minus assumenda architecto rerum deserunt iure possimus
+                reiciendis?
+              </div>
+              <span className="reviewName">2000-02-02</span>
+            </CH.ReviewWrapper>
+            <CH.ReviewWrapper>
+              <CH.ReviewUser>
+                <div className="userImg">
+                  <img src="/images/profile.png" />
+                </div>
+                <div className="userDetail">
+                  <div className="profile">
+                    <CH.Star>
+                      <Rate disabled defaultValue={3} />
+                      <span>4.5</span>
+                    </CH.Star>
+                    <span>◯◯◯</span>
+                  </div>
+                </div>
+              </CH.ReviewUser>
+              <div className="contents">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Veniam, totam fuga sit delectus neque expedita, iusto
+                reprehenderit voluptatibus laboriosam quisquam obcaecati id
+                minus assumenda architecto rerum deserunt iure possimus
+                reiciendis?
+              </div>
+              <span className="reviewName">2000-02-02</span>
+            </CH.ReviewWrapper>
+          </CH.DetailReview>
+        </CH.ClassDetail>
+
+        <CH.ClassContent>
+          <div>
+            <CH.ClassInfo>
+              <div>
+                <p className="title">클래스 제목</p>
+                <p className="startDate">2000. 02. 02</p>
+                <CH.PriceBox>
+                  <div>
+                    <span>{getPrice(20000)}</span>
+                    <span>원</span>
+                  </div>
+                  <div className="priceDivision">
+                    <span>월 </span>{' '}
+                    <span> {getPrice(Number('20000') / 5)}</span>
+                    <span>원</span>
+                  </div>
+                  <div className="installment">
+                    <span>5개월 할부 시</span>
+                  </div>
+                </CH.PriceBox>
+                <div className="peopleBox">
+                  <span>🔥</span>
+                  <div>
+                    <span>마감까지</span> <span>9</span>
+                    <span>자리 남음</span>
+                    <p>다시 오지 않은 최저가, 바로 지금이에요!</p>
+                  </div>
+                </div>
+              </div>
+            </CH.ClassInfo>
+            <CH.ClassButton onClick={props.onClickClassRequest}>
+              수강신청 하기
+            </CH.ClassButton>
+          </div>
+          <CH.MentorWrapper>
+            <CH.FlexRow style={{ marginBottom: '10px' }}>
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.79083 6.8584L4.57178 8.11228L5.79083 9.29649"
+                  stroke="#FFA24B"
+                  strokeWidth="0.761905"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10.3625 9.29687L11.5815 8.043L10.3625 6.85878"
+                  stroke="#FFA24B"
+                  strokeWidth="0.761905"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M8.83826 5.79199L7.31445 10.3634"
+                  stroke="#FFA24B"
+                  strokeWidth="0.761905"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="7.08571"
+                  stroke="#FFA24B"
+                  strokeWidth="1.82857"
+                />
+                <path
+                  d="M13.1055 13.1045L15.9245 15.9235"
+                  stroke="#FFA24B"
+                  strokeWidth="1.82857"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>멘토소개</span>
+            </CH.FlexRow>
+            <CH.FlexRow>
+              <CH.MentorImg>
+                <div>
+                  <img src="/images/profile.png" />
+                </div>
+                <div className="follow">
+                  <PersonAddAlt1Icon />
+                </div>
+              </CH.MentorImg>
+              <CH.MentorContent>
+                <div>
+                  <p>멘토 이름</p>
+                  <div>
+                    <span>회사명</span>
+                    <span> / </span>
+                    <span>부서</span>
+                  </div>
+                  <p>업무파트</p>
+                </div>
+              </CH.MentorContent>
+            </CH.FlexRow>
+          </CH.MentorWrapper>
+        </CH.ClassContent>
+      </CH.Wrapper>
+    </>
   )
 }

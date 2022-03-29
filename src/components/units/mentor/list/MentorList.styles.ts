@@ -120,11 +120,18 @@ export const Mentor = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 20px;
   grid-row-gap: 50px;
+  @media ${breakPoints.tablet} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media ${breakPoints.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 20px;
+  }
+
   > div {
-    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-perspective: 1000px;
     perspective: 1000px;
+    /* overflow: hidden; */
 
     cursor: pointer;
     position: relative;
@@ -139,13 +146,17 @@ export const Mentor = styled.div`
     }
 
     .mentorCardFront {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       transform: rotateY(0deg);
       transform-style: preserve-3d;
       :after {
-        width: 100%;
-        height: 100%;
         content: '';
         display: block;
+        width: 100%;
+        height: 100%;
         backface-visibility: hidden;
         border-radius: 10px;
       }
@@ -175,15 +186,21 @@ export const Mentor = styled.div`
     }
 
     .badge {
-      margin-bottom: 15px;
-      span {
-        font-size: 7px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      .MuiTooltip-tooltip {
+        margin-bottom: 8px;
+      }
+      img {
+        width: 25px;
         margin-right: 5px;
-        padding: 3px 5px 2px;
-        background: #c2dceb;
-        border: 1px solid #83b3d6;
-        border-radius: 3px;
-        color: #417294;
+      }
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        margin-bottom: 1vw !important;
+        img {
+          width: 20px;
+        }
       }
     }
     > * {
@@ -195,6 +212,12 @@ export const Mentor = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      @media ${breakPoints.tablet} {
+        padding: 2.5vw 0;
+      }
+      @media ${breakPoints.mobile} {
+        padding: 5vw 0;
+      }
       > div {
         width: 120px;
         height: 120px;
@@ -207,12 +230,20 @@ export const Mentor = styled.div`
           height: 100%;
           object-fit: cover;
         }
+
+        @media ${breakPoints.tablet} {
+          width: 11vw;
+          height: 11vw;
+        }
+        @media ${breakPoints.mobile} {
+          width: 20vw;
+          height: 20vw;
+        }
       }
     }
   }
 `
 export const MentorInfo = styled.div`
-  /* padding: 0 20px 15px; */
   padding-bottom: 10px;
   width: 85%;
   margin: 0 auto;
@@ -221,16 +252,22 @@ export const MentorInfo = styled.div`
     width: 100%;
     > div:first-of-type {
       display: flex;
-      align-items: end;
-      margin-bottom: 10px;
+      align-items: center;
+      margin-bottom: 8px;
       p {
-        font-size: 0.875em;
+        font-size: 0.875rem;
+        line-height: 18px;
         text-transform: uppercase;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
+      P:first-of-type {
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
       p:nth-of-type(2) {
+        font-size: 0.875rem;
         margin-left: 5px;
         text-transform: uppercase;
         white-space: nowrap;
@@ -238,18 +275,74 @@ export const MentorInfo = styled.div`
         overflow: hidden;
       }
     }
+    > div:last-of-type {
+      width: 100%;
+      overflow: hidden;
+      word-break: keep-all;
+      height: 29px;
+    }
     span {
+      display: inline-block;
+      white-space: nowrap;
       overflow: hidden;
       padding: 5px 10px 3px;
       border-radius: 20px;
       background-color: #ffa24b;
       color: #fff;
-      font-size: 0.875rem;
+      font-size: 0.79rem;
+      font-weight: 700;
       margin-right: 5px;
+      margin-bottom: 5px;
+      &:last-of-type {
+        margin-right: 0px;
+      }
+    }
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+      > div:first-of-type {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 5px !important;
+        p {
+          font-size: 0.8rem;
+          margin-bottom: 0px !important;
+        }
+        p:nth-of-type(2) {
+          margin-left: 0px !important;
+        }
+      }
+      span {
+        font-size: 0.7rem;
+        padding: 3px 7px 2px;
+      }
+      > div:last-of-type {
+        height: 25px;
+      }
+    }
+    @media ${breakPoints.mobile} {
+      > div:first-of-type {
+        p {
+          font-size: 1rem !important;
+          margin-bottom: 0px !important;
+          line-height: 20px;
+        }
+        p:nth-of-type(2) {
+          font-size: 0.9rem !important;
+        }
+      }
+      span {
+        font-size: 0.7rem;
+        padding: 3px 7px 2px;
+      }
     }
   }
   .blank {
     height: 30px;
+    @media ${breakPoints.tablet} {
+      height: 2vw;
+    }
+    @media ${breakPoints.mobile} {
+      height: 5vw;
+    }
   }
   .mentorName {
     display: flex;
@@ -260,13 +353,17 @@ export const MentorInfo = styled.div`
     > p {
       font-size: 1.1rem;
       font-weight: 700;
+      @media ${breakPoints.tablet} {
+        font-size: 0.875rem;
+      }
+      @media ${breakPoints.mobile} {
+        font-size: 0.9rem;
+      }
     }
-    > div {
+    svg {
       width: 13px;
       margin-left: 5px;
-      svg {
-        fill: blue;
-      }
+      fill: blue;
     }
   }
 `
