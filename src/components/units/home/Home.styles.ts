@@ -43,7 +43,7 @@ export const Wrapper = styled.div`
 
       #mainCategory {
         padding: 40px 30px 30px;
-        border: 1px solid #1e2744;
+        border: 1px solid #ffa24b;
         border-radius: 10px;
 
         .swiper-button-prev,
@@ -288,7 +288,7 @@ export const MentorInfo = styled.div`
       overflow: hidden;
       padding: 5px 10px 3px;
       border-radius: 20px;
-      background-color: #1e2744;
+      background-color: #ffa24b;
       color: #fff;
       font-size: 0.79rem;
       font-weight: 700;
@@ -408,10 +408,17 @@ export const ClassImg = styled.div`
     height: 270px;
     background: rgba(0, 0, 0, 0.2);
   }
+
   @media ${breakPoints.tablet} {
     height: 20.5vw;
     &:after {
       height: 20.5vw;
+    }
+    &:hover {
+      img {
+        width: 40vw !important;
+        height: 40vw !important;
+      }
     }
   }
   @media ${breakPoints.mobile} {
@@ -419,14 +426,14 @@ export const ClassImg = styled.div`
     &:after {
       height: 42.5vw;
     }
-  }
-
-  &:hover {
-    img {
-      width: 110%;
-      height: 110%;
+    &:hover {
+      img {
+        width: 90vw !important;
+        height: 90vw !important;
+      }
     }
   }
+
   img {
     position: relative;
     top: 50%;
@@ -435,8 +442,16 @@ export const ClassImg = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all linear 0.2s;
+    transition: all linear 0.3s;
   }
+
+  &:hover {
+    img {
+      width: 55vw;
+      height: 55vw;
+    }
+  }
+
   p {
     z-index: 99;
     position: absolute;
@@ -516,7 +531,7 @@ export const InfoBottom = styled.div`
       margin: 8px 0 5px;
     }
     span {
-      background: #1e2744;
+      background: #ffa24b;
       padding: 5px 10px 3px;
       border-radius: 15px;
       color: #fff;
@@ -583,7 +598,7 @@ export const ArrowButton = styled.div`
     height: 35px;
     border-radius: 10px;
     color: #fff !important;
-    background-color: #1e2744;
+    background-color: #ffa24b;
     &.swiper-button-disabled {
       opacity: 1;
       background: #f1f1f1;
@@ -599,7 +614,7 @@ export const ArrowButton = styled.div`
     height: 35px;
     border-radius: 10px;
     color: #fff !important;
-    background-color: #1e2744;
+    background-color: #ffa24b;
     &.swiper-button-disabled {
       opacity: 1;
       background: #f1f1f1;

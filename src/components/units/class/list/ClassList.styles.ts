@@ -42,7 +42,7 @@ export const Wrapper = styled.div`
 
       #mainCategory {
         padding: 40px 30px 30px;
-        border: 1px solid #1e2744;
+        border: 1px solid #ffa24b;
         border-radius: 10px;
 
         .swiper-button-prev,
@@ -262,7 +262,7 @@ export const InfoBottom = styled.div`
       margin: 8px 0 5px;
     }
     span {
-      background: #1e2744;
+      background: #ffa24b;
       padding: 5px 10px 3px;
       border-radius: 15px;
       color: #fff;

@@ -18,13 +18,13 @@ export const MentorPermissionDetail__Header = styled.div`
     width: 100px;
     height: 36px;
     background-color: #f1f1f1;
-    color: #1e2744;
+    color: #ffa24b;
     cursor: pointer;
   }
   .SubmitButton {
     width: 100px;
     height: 36px;
-    background-color: #1e2744;
+    background-color: #ffa24b;
     color: white;
     cursor: pointer;
   }
@@ -75,7 +75,7 @@ export const MentorPermissionDetail__Footer = styled.div`
     width: 100px;
     height: 36px;
     background-color: #f1f1f1;
-    color: #1e2744;
+    color: #ffa24b;
     cursor: pointer;
   }
 `

@@ -48,7 +48,7 @@ export const Select = styled.div`
 export const UpdateButton = styled.button`
   width: 150px;
   border: 0px none;
-  background-color: #1e2744;
+  background-color: #ffa24b;
   color: #f2f2f2;
   border-radius: 5px;
   @media ${breakPoints.tablet} {

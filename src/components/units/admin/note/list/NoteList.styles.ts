@@ -14,14 +14,14 @@ export const NoteHeader = styled.div`
   }
 `
 export const WriteNoteButton = styled.button`
-  background-color: #1e2744;
+  background-color: #ffa24b;
   color: white;
   width: 100px;
   height: 40px;
   cursor: pointer;
 
   :hover {
-    color: #1e2744;
+    color: #ffa24b;
     background-color: white;
     border: none;
   }
@@ -32,7 +32,7 @@ export const ContentsWrapper = styled.div`
 `
 
 export const ContentsHeader = styled.div`
-  background-color: #1e2744;
+  background-color: #ffa24b;
   color: white;
   padding: 10px;
   display: grid;
@@ -62,7 +62,7 @@ export const NoteWrapper = styled.div`
   text-align: center;
 
   :hover {
-    background-color: #1e2744;
+    background-color: #ffa24b;
     color: white;
   }
 `

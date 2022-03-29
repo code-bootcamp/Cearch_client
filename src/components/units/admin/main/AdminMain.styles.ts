@@ -21,7 +21,7 @@ export const Header = styled.div`
       width: 100px;
       height: 34px;
       cursor: pointer;
-      background-color: #1e2744;
+      background-color: #ffa24b;
       color: white;
       border: none;
     }

@@ -20,7 +20,7 @@ export const MentorPermission__Body = styled.div`
 `
 
 export const Body__Header = styled.div`
-  background-color: #1e2744;
+  background-color: #ffa24b;
   color: white;
   padding: 10px;
   display: grid;
@@ -51,7 +51,7 @@ export const ListWrapper = styled.div`
   cursor: pointer;
   :hover {
     color: white;
-    background-color: #1e2744;
+    background-color: #ffa24b;
   }
 `
 export const MentorName = styled.div`
