@@ -53,14 +53,10 @@ export const ContentsWrapper = styled.div`
     text-align: left;
     font-size: 1.25rem;
     font-weight: 700;
-
-    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-      margin-bottom: 30px;
-    }
   }
 
-  > div {
-    width: 100%;
+  > form {
+    width: 90%;
     margin: 20px auto;
     > div {
       margin: 25px auto;
@@ -68,16 +64,6 @@ export const ContentsWrapper = styled.div`
         margin-top: 0;
       }
     }
-    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-      margin: 0 auto !important;
-    }
-  }
-
-  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0px 0px 10px 2px #eee;
-    margin-top: 30px 0 !important;
   }
 
   .line {
@@ -89,6 +75,19 @@ export const ContentsWrapper = styled.div`
     padding: 0 20px;
     li {
       line-height: 25px;
+    }
+  }
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    margin: 30px 0 80px !important;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0px 0px 10px 2px #eee;
+    .title {
+      margin-bottom: 30px;
+    }
+    > form {
+      margin: 30px auto !important;
     }
   }
 `
@@ -144,6 +143,7 @@ export const EmailConfirm = styled.div`
 export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
   span {
     margin-bottom: 10px;
   }
@@ -171,6 +171,8 @@ export const InputBox = styled.div`
 export const PhoneInputBox = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
+
   span {
     margin-bottom: 10px;
   }
@@ -203,11 +205,9 @@ export const CreateButton = styled.button`
   width: 100%;
   height: 60px;
   text-align: center;
-  background: #ffa24b;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
-  color: #fff;
   border: 0;
   border-radius: 10px;
   cursor: pointer;
@@ -223,6 +223,7 @@ export const GoogleButton = styled.button`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  line-height: 50px;
 
   :hover {
     background: #ffa24b;
@@ -247,6 +248,7 @@ export const LoginButton = styled.button`
   font-weight: 700;
   letter-spacing: 0.2rem;
   color: #fff;
+  border: 0;
   border-radius: 10px;
   cursor: pointer;
 `
