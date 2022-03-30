@@ -1,6 +1,13 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 import LayoutHeaderUI from './Header.presenter'
+import { useMutation, useQuery } from '@apollo/client'
+import {
+  IMutation,
+  IQuery,
+  IUser,
+} from '../../../../commons/types/generated/types'
+import { FETCH_USER, LOGOUT } from './Header.queries'
 
 export default function LayoutHeader() {
   const router = useRouter()
@@ -8,6 +15,8 @@ export default function LayoutHeader() {
   // const [scrolled, setScrolled] = useState(false)
   const [isTop, setIsTop] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
+  const { data } = useQuery<Pick<IQuery, 'fetchUser'>, IUser>(FETCH_USER)
+  const [logout] = useMutation<Pick<IMutation, 'logout'>>(LOGOUT)
   const handleOpen = () => setModalOpen(true)
   const handleClose = () => setModalOpen(false)
 
@@ -26,20 +35,18 @@ export default function LayoutHeader() {
   const onClickMoveToLogin = () => {
     router.push('/login/login')
   }
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (!scrolled && window.scrollY > 30) {
-  //       setScrolled(true)
-  //     } else if (scrolled && window.scrollY <= 30) setScrolled(false)
-  //   }
-
-  //   window.addEventListener('scroll', handleScroll)
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [scrolled])
+  const onClickMoveToMyPage = () => {
+    router.push('/mypage')
+  }
+  const onClickLogout = async () => {
+    try {
+      const result = await logout()
+      alert('다음에 다시 만나요!.')
+      router.push(`/home`)
+    } catch (error) {
+      alert(`${error.message}`)
+    }
+  }
   const handleFollow = useCallback(() => {
     if (window.pageYOffset === 0) setIsTop(true)
     if (window.pageYOffset > 0) setIsTop(false)
@@ -58,17 +65,20 @@ export default function LayoutHeader() {
 
   return (
     <LayoutHeaderUI
+      data={data}
       modalOpen={modalOpen}
       value={value}
       isTop={isTop}
       setValue={setValue}
       handleOpen={handleOpen}
       handleClose={handleClose}
+      onClickLogout={onClickLogout}
       onClickMoveToHome={onClickMoveToHome}
       onClickMoveToClass={onClickMoveToClass}
       onClickMoveToMentor={onClickMoveToMentor}
       onClickMoveToBoards={onClickMoveToBoards}
       onClickMoveToLogin={onClickMoveToLogin}
+      onClickMoveToMyPage={onClickMoveToMyPage}
     />
   )
 }

@@ -74,6 +74,26 @@ export const Wrapper = styled.div`
       }
     }
   }
+  .contentsButtonWrapper {
+    display: flex;
+    justify-content: center;
+    button {
+      margin: 10px 5px;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      padding: 5px 10px;
+      color: gray;
+      /* color: #ffa24b; */
+      font-weight: 400;
+      cursor: pointer;
+      box-shadow: 0px 0px 5px 2px #eee;
+      :hover {
+        color: white;
+        background-color: #ffa24b;
+      }
+    }
+  }
 `
 
 export const ContentWrapper = styled.div`
@@ -85,104 +105,5 @@ export const ContentWrapper = styled.div`
   @media ${breakPoints.mobile} {
     box-shadow: none;
     padding: 0;
-  }
-`
-
-export const CommentsWrapper = styled.div`
-  .writerDetail {
-    width: 100%;
-    border-bottom: 1px solid gray;
-    padding-bottom: 10px;
-    font-weight: 600;
-  }
-  .commentsWrite {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    width: 100%;
-    @media ${breakPoints.mobile} {
-      width: 100%;
-      height: auto;
-    }
-    .commentContentsInput {
-      width: 1000px;
-      height: 60px;
-      background-color: #f2f2f2;
-      border: none;
-      border-radius: 15px;
-      margin-left: 10px;
-      padding-left: 10px;
-      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-        width: 80%;
-      }
-    }
-    .commentSubmit {
-      width: 80px;
-      height: 60px;
-      border: none;
-      border-radius: 15px;
-      background-color: #f2f2f2;
-      margin-left: 10px;
-    }
-    img {
-      width: 36px;
-      height: 38px;
-      object-fit: cover;
-      border-radius: 50%;
-      text-align: center;
-    }
-  }
-  .commentsList {
-    text-align: center;
-    > div {
-      padding: 10px;
-      border-bottom: 3px dotted gray;
-    }
-    .comment {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      .CommentHeader {
-        height: 50px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .commentWriter {
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          padding-left: 5px;
-        }
-        .checkbox {
-          margin-right: 10px;
-        }
-
-        > div:first-of-type {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 0;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        > div:nth-of-type(3) {
-          text-align: left;
-          padding: 0 20px;
-        }
-        &:last-of-type {
-          border: 0;
-        }
-      }
-      .CommentContents {
-        text-align: start;
-        margin-bottom: 10px;
-      }
-    }
   }
 `

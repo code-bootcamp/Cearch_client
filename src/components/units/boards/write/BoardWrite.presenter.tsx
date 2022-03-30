@@ -11,15 +11,24 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Chip from '@mui/material/Chip'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import ChakraModalHasType from '../../../../commons/libraries/chakramodal/chakraModalHasType'
 
 export default function BoardWriteUI(props) {
   return (
     <CH.Wrapper>
       <CH.ContentWrapper
-        onSubmit={props.handleSubmit(props.onClickSubmitBoard)}
+        onSubmit={
+          props.data
+            ? props.isEdit
+              ? props.handleSubmit(props.updateBoard)
+              : props.handleSubmit(props.submitBoard)
+            : props.isEdit
+            ? props.handleSubmit(props.updateBoardNonMember)
+            : props.handleSubmit(props.submitBoardNonMember)
+        }
       >
         <div className="contentHeader">
-          <div>게시글 등록</div>
+          <div>게시글 {props.isEdit ? '수정' : '등록'}</div>
         </div>
         <div className="contentBody">
           <div>
@@ -88,20 +97,25 @@ export default function BoardWriteUI(props) {
           <span className="errorMessage">
             {props.formState.errors?.writer?.message}
           </span>
-          <div>
-            <span>
-              비밀번호 <span style={{ color: 'red' }}>*</span>
-            </span>
-
-            <input
-              type="password"
-              placeholder="비밀번호를 입력해주세요"
-              {...props.register('password')}
-            />
-          </div>
-          <span className="errorMessage">
-            {props.formState.errors?.password?.message}
-          </span>
+          {props.isEdit ? (
+            ''
+          ) : (
+            <>
+              <div>
+                <span>
+                  비밀번호 <span style={{ color: 'red' }}>*</span>
+                </span>
+                <input
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  {...props.register('password')}
+                />
+              </div>
+              <span className="errorMessage">
+                {props.formState.errors?.password?.message}
+              </span>
+            </>
+          )}
 
           <div className="Contents">
             <ToastEditorPage
@@ -114,8 +128,24 @@ export default function BoardWriteUI(props) {
             {props.formState.errors?.contents?.message}
           </span>
         </div>
-
-        <CH.RegisterSubmit type="submit">등록하기</CH.RegisterSubmit>
+        <div className="boardDetailButtonWrapper">
+          <ChakraModalHasType
+            type="button"
+            onClick={props.onClickToList}
+            title="취소"
+          />
+          <ChakraModalHasType
+            isEdit={props.isEdit}
+            title={props.isEdit ? '수정' : '등록'}
+            onClick={props.onClickSubmit}
+            buttonRef={props.buttonRef}
+          />
+          <button
+            style={{ display: 'none' }}
+            ref={props.buttonRef}
+            type="submit"
+          ></button>
+        </div>
       </CH.ContentWrapper>
     </CH.Wrapper>
   )

@@ -63,7 +63,9 @@ export default function MentorListUI(props) {
       <article>
         <section>
           <p>멘토 카테고리</p>
+
           <SwiperCategory />
+
         </section>
 
         <section>

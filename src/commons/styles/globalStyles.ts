@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css'
 import { css } from '@emotion/react'
+import { breakPoints } from './media'
 
 export const globalStyles = css`
   @font-face {
@@ -18,6 +19,8 @@ export const globalStyles = css`
   body {
     width: 100%;
     overflow-x: hidden;
-    padding-top: 100px;
+    @media ${breakPoints.mobile}, ${breakPoints.tablet} {
+      padding-top: 60px;
+    }
   }
 `

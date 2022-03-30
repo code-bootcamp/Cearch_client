@@ -127,11 +127,11 @@ export const ContentWrapper = styled.form`
       text-align: left;
     }
   }
-  > div:last-of-type {
+  .boardDetailButtonWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px 0;
+    margin: 20px 0;
   }
 `
 export const RegisterSubmit = styled.button`
@@ -141,4 +141,5 @@ export const RegisterSubmit = styled.button`
   border-radius: 20px;
   background: none;
   cursor: pointer;
+  margin: 0 10px;
 `

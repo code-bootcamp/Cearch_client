@@ -125,11 +125,6 @@ export const Mentor = styled.div`
   > div {
     transform-style: preserve-3d;
     perspective: 1000px;
-<<<<<<< HEAD
-=======
-    /* overflow: hidden; */
-
->>>>>>> de7e69c8e282827bca6d78c58cc91b286a9fa586
     cursor: pointer;
     position: relative;
     .mentorCardFront,
