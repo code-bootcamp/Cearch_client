@@ -9,13 +9,22 @@ export default function NoteWriteUI(props) {
         <button className="CancelButton" onClick={props.onClickNoteList}>
           취소하기
         </button>
-        <button className="SubmitButton">작성하기</button>
+        <button className="SubmitButton" onClick={props.submitNotice}>
+          작성하기
+        </button>
       </CH.NoteWriteHeader>
       <CH.NoteWriteBody>
-        <input className="NoteWriteTitle" placeholder="제목" />
+        <input
+          className="NoteWriteTitle"
+          placeholder="제목"
+          onChange={props.onChangeNoticeTitle}
+        />
 
         <div className="NoteWriteContents">
-          <ToastEditorPage />
+          <ToastEditorPage
+            contents={props.contents}
+            setContents={props.setContents}
+          />
         </div>
       </CH.NoteWriteBody>
     </CH.Wrapper>

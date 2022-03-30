@@ -6,14 +6,15 @@ import Modal from '@mui/material/Modal'
 export const Header = styled.header`
   position: relative;
   width: 100%;
-  box-shadow: 0px 10px 20px #eee;
+  box-shadow: 0px 2px 5px #eee;
 
   > div {
     width: 1200px;
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 10px 20px;
     @media ${breakPoints.tablet}, ${breakPoints.mobile} {
       width: 100%;
+      height: 56px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -22,7 +23,7 @@ export const Header = styled.header`
       top: 0;
       left: 0;
       z-index: 99999;
-      padding-left: 3%;
+
       background-color: ${(props: { isTop: boolean }) =>
         props.isTop ? 'white' : '#FFA24B'};
     }
@@ -36,7 +37,8 @@ export const Header = styled.header`
   .ModalButton {
     display: none;
     @media ${breakPoints.mobile} {
-      display: block;
+      display: flex;
+      text-align: center;
     }
   }
 `
@@ -166,10 +168,21 @@ export const Login = styled.div`
   cursor: pointer;
   font-weight: 700;
   @media ${breakPoints.tablet} {
-    display: none;
+    margin-right: 5px;
+    width: 100px;
+    text-align: center;
+    padding: 7px 5px 5px;
   }
   @media ${breakPoints.mobile} {
-    display: none;
+    margin-right: 5px;
+    width: 80px;
+    text-align: center;
+    padding: 7px 0 5px;
+
+    color: ${(props: { isTop: boolean }) =>
+      props.isTop ? '#FFA24B' : 'white'};
+    background-color: ${(props: { isTop: boolean }) =>
+      props.isTop ? 'white' : '#FFA24B'};
   }
 `
 export const ModalStyle = styled(Box)`

@@ -4,5 +4,5 @@ import BoardWrite from '../../../../src/components/units/boards/write/BoardWrite
 export default function BoardEditPage() {
   const router = useRouter()
 
-  return <BoardWrite />
+  return <BoardWrite isEdit={true} />
 }

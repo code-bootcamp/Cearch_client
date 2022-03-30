@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import ClassPermissionList from '../classpermission/list/ClassPermissionList.container'
 import MentorPermissionList from '../mentopermission/list/MentorPermissionList.container'
 import NoteList from '../note/list/NoteList.container'
@@ -9,6 +9,7 @@ import NoteWrite from '../note/write/NoteWrite.container'
 import NoteDetailPage from '../../../../../pages/admin/note/[detail]'
 import MentorPermissionDetailPage from '../../../../../pages/admin/mentorpermission/[detail]'
 import ClassPermissionDetailPage from '../../../../../pages/admin/classpermission/[detail]'
+import LogoPage from '../../../../commons/libraries/Logo'
 
 export default function AdminMain() {
   const router = useRouter()
@@ -107,16 +108,18 @@ export default function AdminMain() {
     setMentorPermissionDetail(false)
     setClassPermissionDetail(true)
   }
-  const onClickShowCurrentPage = (e) => {
-    setCurrentPage(e.target.router.asPath)
-  }
+  // const onClickShowCurrentPage = (e: MouseEvent<HTMLButtonElement>) => {
+  //   setCurrentPage(e.target.router.asPath)
+  // }
 
   return (
     <>
       <CH.Back>
         <CH.Header>
           <div>
-            <div>Logo</div>
+            <div>
+              <LogoPage />
+            </div>
             <button className="LogoutBtn">로그아웃</button>
           </div>
         </CH.Header>

@@ -13,6 +13,7 @@ import Modal from '@mui/material/Modal'
 import SearchIcon from '@mui/icons-material/Search'
 import LogoPage from '../../../../commons/libraries/Logo'
 import WhiteLogoPage from '../../../../commons/libraries/WhiteLogo'
+import ContactPageIcon from '@mui/icons-material/ContactPage'
 
 export default function LayoutHeaderUI(props) {
   return (
@@ -57,6 +58,12 @@ export default function LayoutHeaderUI(props) {
                   onClick={props.onClickMoveToBoards}
                   sx={{ color: 'white' }}
                 />
+                <BottomNavigationAction
+                  label="myPage"
+                  icon={<ContactPageIcon />}
+                  onClick={props.onClickMoveToMyPage}
+                  sx={{ color: 'white' }}
+                />
               </BottomNavigation>
             </Box>
             <ul>
@@ -76,9 +83,9 @@ export default function LayoutHeaderUI(props) {
             </CH.SearchBar>
             <Button onClick={props.handleOpen} className="ModalButton">
               {props.isTop ? (
-                <SearchIcon fontSize="large" sx={{ color: '#FFA24B' }} />
+                <SearchIcon fontSize="medium" sx={{ color: '#FFA24B' }} />
               ) : (
-                <SearchIcon fontSize="large" sx={{ color: 'white' }} />
+                <SearchIcon fontSize="medium" sx={{ color: 'white' }} />
               )}
             </Button>
             <Modal
@@ -112,7 +119,14 @@ export default function LayoutHeaderUI(props) {
                 </Typography>
               </CH.ModalStyle>
             </Modal>
-            <CH.Login onClick={props.onClickMoveToLogin}>로그인</CH.Login>
+            <CH.Login
+              onClick={
+                props.data ? props.onClickLogout : props.onClickMoveToLogin
+              }
+              isTop={props.isTop}
+            >
+              {props.data ? '로그아웃' : '로그인'}
+            </CH.Login>
           </div>
         </div>
       </div>
