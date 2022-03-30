@@ -23,6 +23,7 @@ interface IGlobalContext {
   accessToken?: String
   setAccessToken?: Dispatch<SetStateAction<string>>
 }
+
 export const GlobalContext = createContext<IGlobalContext>({})
 
 function MyApp({ Component, pageProps }: AppProps) {

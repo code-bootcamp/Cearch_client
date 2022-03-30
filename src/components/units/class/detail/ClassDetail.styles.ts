@@ -419,13 +419,13 @@ export const MentorWrapper = styled.div`
   display: flex;
   flex-direction: column;
   display: block;
-  @media ${breakPoints.mobile} {
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
     display: none;
   }
 `
 export const MobileMentorWrapper = styled.div`
   display: none;
-  @media ${breakPoints.mobile} {
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
     display: block;
     padding-bottom: 30px;
     margin-bottom: 20px;

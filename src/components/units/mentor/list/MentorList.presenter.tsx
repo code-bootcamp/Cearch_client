@@ -2,6 +2,7 @@ import * as CH from './MentorList.styles'
 import { v4 as uuidv4 } from 'uuid'
 import mentorList from './mentorList.json'
 import Tooltip from '@mui/material/Tooltip'
+import SwiperCategory from '../../../commons/category/Category'
 
 export default function MentorListUI(props) {
   const newMentorList = mentorList.map((el, index) => {
@@ -62,6 +63,9 @@ export default function MentorListUI(props) {
       <article>
         <section>
           <p>멘토 카테고리</p>
+
+          <SwiperCategory />
+
         </section>
 
         <section>
