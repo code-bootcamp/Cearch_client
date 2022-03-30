@@ -10,6 +10,13 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Chip from '@mui/material/Chip'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
+import { EditorProps } from '@toast-ui/react-editor'
+import dynamic from 'next/dynamic'
+import '@toast-ui/editor/dist/toastui-editor.css'
+const Editor = dynamic<EditorProps>(
+  () => import('@toast-ui/react-editor').then((m) => m.Editor),
+  { ssr: false }
+)
 
 export default function ClassCreateUI(props) {
   return (
@@ -79,9 +86,13 @@ export default function ClassCreateUI(props) {
           <CH.DefaultInput placeholder="수강료를 입력해주세요."></CH.DefaultInput>
         </CH.Row>
         <CH.RowLabel>강의 소개</CH.RowLabel>
-        <CH.TextArea placeholder="강의 소개를 입력해주세요." />
+        <CH.EditorWrapper>
+          <Editor />
+        </CH.EditorWrapper>
         <CH.RowLabel>커리큘럼</CH.RowLabel>
-        <CH.TextArea placeholder="커리큘럼을 입력해주세요." />
+        <CH.EditorWrapper>
+          <Editor />
+        </CH.EditorWrapper>
         <CH.SubmitButton>등록하기</CH.SubmitButton>
       </CH.BodyWrapper>
     </CH.Wrapper>

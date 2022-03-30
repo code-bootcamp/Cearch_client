@@ -14,9 +14,7 @@ export default function ClosedClasses(props) {
   return (
     <CH.ClassContents>
       <CH.ClassContentsLeft>
-        <CH.ClassImage>
-          <img src="https://cloudspoint.xyz/wp-content/uploads/2020/02/CODE-1.jpg" />
-        </CH.ClassImage>
+        <CH.ClassImage></CH.ClassImage>
         <CH.ClassContentsList>
           <CH.ClassContentsListTop>
             <CH.ClassCategory>

@@ -20,7 +20,7 @@ export const HeadTitle = styled.div`
 `
 
 export const TabMenu = styled.div`
-  width: 900px;
+  width: 100%;
   margin-top: 48px;
   margin-bottom: 25px;
   display: flex;

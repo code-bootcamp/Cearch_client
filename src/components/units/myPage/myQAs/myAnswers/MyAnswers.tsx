@@ -1,5 +1,18 @@
 import * as CH from '../MyQAs.styles'
+import { FETCH_MY_COMMENTS } from '../MyQAs.queries'
+import { useQuery } from '@apollo/client'
+import {
+  IQuery,
+  IQueryFetchMyCommentsArgs,
+} from '../../../../../commons/types/generated/types'
+
 export default function MyAnswers() {
+  const { data: MyAnswerData } = useQuery<
+    Pick<IQuery, 'fetchMyComments'>,
+    IQueryFetchMyCommentsArgs
+  >(FETCH_MY_COMMENTS, { variables: { page: 1 } })
+  console.log(MyAnswerData)
+
   // prettier-ignore
   const answer = [
     { division: '답변', title: '안녕하세요. 답변드립니다. 안녕하세요. 답변드립니다.', createAt: '2022-03-21' },

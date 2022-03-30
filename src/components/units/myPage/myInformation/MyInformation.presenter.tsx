@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import Chip from '@mui/material/Chip'
 import OutlinedInput from '@mui/material/OutlinedInput'
+import { TimePicker } from 'antd'
 
 import PasswordModal from './PasswordModal'
 
@@ -149,7 +150,17 @@ export default function MyInformationUI(props) {
               </CH.Row>
               <CH.Row>
                 <CH.RowLabel>온라인 시간대</CH.RowLabel>
-                <CH.DefaultInput placeholder="온라인 시간대를 입력해주세요." />
+                <CH.InputBackground>
+                  <TimePicker.RangePicker
+                    style={{
+                      width: '100%',
+                      height: 60,
+                      borderColor: '#bdbdbd ',
+                    }}
+                  />
+                </CH.InputBackground>
+
+                {/* <CH.DefaultInput placeholder="온라인 시간대를 입력해주세요." /> */}
               </CH.Row>
 
               <CH.RowLabel>자기소개</CH.RowLabel>

@@ -218,7 +218,7 @@ export const MobilePointLabel = styled.div`
   font-size: 25px;
   font-weight: 700;
   color: #f2f2f2;
-  border-bottom: 1px solid #c4c4c4;
+  border-bottom: 1px solid #ffffff;
   padding-bottom: 20px;
 `
 
@@ -234,9 +234,11 @@ export const MobileButton = styled.button`
   width: 47%;
   border: none;
   font-weight: 700;
+  background-color: #ffa24b;
+  color: #ffffff;
 `
 
 export const Divider = styled.div`
-  border-right: 1px solid #bdbdbd;
+  border-right: 1px solid #ffffff;
   height: 37px;
 `

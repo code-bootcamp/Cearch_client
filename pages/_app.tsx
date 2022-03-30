@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   const uploadLink = createUploadLink({
-    uri: 'http://www.codesearch.shop:3000/graphql',
+    uri: 'http://api.localhost:3000/graphql',
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: 'include',
   })

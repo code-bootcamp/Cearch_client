@@ -1,6 +1,5 @@
 import { IPaidClassesProps } from './PaidClasses.types'
 import * as CH from './PaidClasses.styles'
-import ReviewModal from './paidClasses.modal'
 import ClosedClasses from './closed/ClosedClasses'
 
 export default function PaidClassesUI(props: IPaidClassesProps) {
@@ -11,9 +10,7 @@ export default function PaidClassesUI(props: IPaidClassesProps) {
         {props.paidClasses.map((el: any, index: number) => (
           <CH.ClassContents key={index}>
             <CH.ClassContentsLeft>
-              <CH.ClassImage>
-                <img src="https://cloudspoint.xyz/wp-content/uploads/2020/02/CODE-1.jpg" />
-              </CH.ClassImage>
+              <CH.ClassImage></CH.ClassImage>
               <CH.ClassContentsList>
                 <CH.ClassContentsListTop>
                   <CH.ClassCategory>
