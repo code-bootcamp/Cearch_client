@@ -11,8 +11,8 @@ export default function LoginUI(props) {
       </CH.ImgWrapper>
       <CH.ContentsWrapper
         style={{
-          paddingTop: '80px',
-          paddingBottom: '80px',
+          paddingTop: '50px',
+          paddingBottom: '50px',
           margin: '30px 0 100px',
         }}
       >
@@ -73,6 +73,7 @@ export default function LoginUI(props) {
               <input type="email" {...props.register('email')} />
             </div>
           </CH.InputBox>
+          <p>{props.formState?.error?.email?.message}</p>
           <CH.InputBox>
             <span>비밀번호</span>
             <div>
@@ -80,6 +81,7 @@ export default function LoginUI(props) {
               <input type="password" {...props.register('password')} />
             </div>
           </CH.InputBox>
+          <p>{props.formState?.error?.password?.message}</p>
           <div className="line"></div>
           <CH.GoogleButton type="button">
             <img className="socialIcon" src="/images/google.png" />
@@ -87,8 +89,10 @@ export default function LoginUI(props) {
           </CH.GoogleButton>
           <CH.LoginButton>LOGIN</CH.LoginButton>
           <CH.JoinButton>
-            <button onClick={props.onClickJoin}>회원가입</button>
-            <button onClick={props.onClickSearchMembership}>
+            <button type="button" onClick={props.onClickJoin}>
+              회원가입
+            </button>
+            <button type="button" onClick={props.onClickSearchMembership}>
               회원정보 찾기
             </button>
           </CH.JoinButton>

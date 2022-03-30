@@ -28,24 +28,27 @@ export default function Login() {
 
   const onClickLogin = async (data) => {
     const { email, password } = data
+    console.log(email, password)
 
-    if (email && password) {
-      try {
-        const result = await login({
-          variables: {
-            email,
-            password,
-          },
-        })
+    // if (email && password) {
+    try {
+      const result = await login({
+        variables: {
+          email,
+          password,
+        },
+      })
 
-        const accessToken = result.data?.login.accessToken || ''
-        if (setAccessToken) setAccessToken(accessToken)
-      } catch (error) {
-        console.log(error.message)
-      }
-    } else {
-      console.log('이메일과 비밀번호를 올바르게 입력해주세요')
+      const accessToken = result.data?.login || ''
+      if (setAccessToken) setAccessToken(accessToken)
+
+      router.push('/')
+    } catch (error) {
+      console.log(error.message)
     }
+    // } else {
+    //   console.log('이메일과 비밀번호를 올바르게 입력해주세요')
+    // }
   }
 
   const onClickJoin = () => {

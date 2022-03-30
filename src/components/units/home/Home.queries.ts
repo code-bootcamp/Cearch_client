@@ -18,9 +18,9 @@ export const FETCH_MENTOR = gql`
   }
 `
 
-export const FETCH_NEW_CLASSES = gql`
-  query fetchNewClasses {
-    fetchNewClasses {
+export const FETCH_LECTURE_PRODUCTS = gql`
+  query fetchlectureProducts {
+    fetchlectureProducts {
       id
       classTitle
       classDescription

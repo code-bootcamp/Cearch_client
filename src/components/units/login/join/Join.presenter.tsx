@@ -39,9 +39,9 @@ export default function JoinUI(props) {
                 <PhoneRoundedIcon />
                 <input
                   type="tel"
-                  id={props.autoHyphen}
+                  // id={props.autoHyphen}
                   {...props.register('phoneNumber')}
-                  onChange={props.setPhoneNumber}
+                  onChange={props.onChangePhoneNumber}
                 />
               </div>
               <CH.VerificationCode onClick={props.onclickSendPhoneNumber}>
@@ -55,7 +55,7 @@ export default function JoinUI(props) {
             <div>
               <div>
                 <PhoneRoundedIcon />
-                <input type="text" onChange={props.setInputToken}></input>
+                <input type="text" onChange={props.onChangeToken}></input>
               </div>
               <CH.VerificationCode>인증번호 확인</CH.VerificationCode>
             </div>
