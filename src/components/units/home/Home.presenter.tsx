@@ -13,7 +13,7 @@ import StarRoundedIcon from '@mui/icons-material/StarRounded'
 import SwiperCategory from '../../commons/category/Category'
 
 export default function HomeUI(props) {
-  const newMentorList = mentorList.map((el, index) => {
+  /* const newMentorList = mentorList.map((el, index) => {
     return (
       <div key={uuidv4()}>
         <div className="mentorCardFront">
@@ -61,8 +61,8 @@ export default function HomeUI(props) {
         </div>
       </div>
     )
-  })
-  /* const newMentorList = props.MentorListData?.fetchMentor
+  }) */
+  const newMentorList = props.MentorListData?.fetchMentor
     .map((el) => {
       return (
         <div key={el.id}>
@@ -113,8 +113,8 @@ export default function HomeUI(props) {
       )
     })
     .filter((filterEl, index) => {
-      if (index < 8) return filterEl
-    }) */
+      if (index < 10) return filterEl
+    })
   const newClassList = classList.map((el, index) => {
     return (
       <div
@@ -149,7 +149,7 @@ export default function HomeUI(props) {
       </div>
     )
   })
-  const newBoardList = boardList.map((el) => {
+  /* const newBoardList = boardList.map((el) => {
     return (
       <SwiperSlide key={uuidv4()}>
         <CH.BoardTop>
@@ -175,8 +175,8 @@ export default function HomeUI(props) {
         </CH.BoardBottom>
       </SwiperSlide>
     )
-  })
-  /* const newBoardList = props.LikeBoardsData?.fetchLikePost?.map((el) => {
+  }) */
+  const newBoardList = props.LikeBoardsData?.fetchLikePost?.map((el) => {
     return (
       <SwiperSlide key={el.id}>
         <CH.BoardTop>
@@ -191,7 +191,7 @@ export default function HomeUI(props) {
           <div className="icon">
             <div>
               <img src="/images/comment-dots-regular.svg" />
-              <span> {/* {el.comment}}</span>
+              <span> {/* {el.comment} */}</span>
             </div>
             <div>
               <img src="/images/heart-solid.svg" />
@@ -202,7 +202,7 @@ export default function HomeUI(props) {
         </CH.BoardBottom>
       </SwiperSlide>
     )
-  }) */
+  })
 
   return (
     <CH.Wrapper>

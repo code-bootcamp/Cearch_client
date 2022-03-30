@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
 export const CREATE_USER = gql`
-  mutation createUser($UserForm: UserForm) {
-    createUser(UserForm: $UserForm) {
+  mutation createUser($userForm: UserForm!) {
+    createUser(userForm: $userForm) {
       id
       email
       name

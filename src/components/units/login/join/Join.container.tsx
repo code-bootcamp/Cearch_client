@@ -19,6 +19,9 @@ import {
 } from '../../../../commons/types/generated/types'
 import { IFormValues } from './Join.types'
 
+import { useToast } from '@chakra-ui/react'
+import { ErrorOutlined } from '@mui/icons-material'
+
 const schema = yup.object().shape({
   name: yup.string().max(5).required('필수입력입니다.'),
   email: yup
@@ -51,6 +54,7 @@ const schema = yup.object().shape({
 
 export default function Join() {
   const router = useRouter()
+  const toast = useToast()
 
   const [createUser] = useMutation<
     Pick<IMutation, 'createUser'>,
@@ -75,11 +79,11 @@ export default function Join() {
     },
   })
 
-  const autoHyphen = (target) => {
+  /* const autoHyphen = (target) => {
     target.value = target.value
       .replace(/[^0-9]/, '')
       .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`)
-  }
+  } */
 
   const { register, formState, handleSubmit } = useForm<IFormValues>({
     mode: 'onChange',
@@ -107,10 +111,23 @@ export default function Join() {
         },
       })
 
+      toast({
+        title: `회원가입이 완료되었습니다.`,
+        status: 'success',
+        isClosable: true,
+      })
+
       router.push('/login/login')
     } catch (error) {
       console.log(error.message)
     }
+  }
+
+  const onChangePhoneNumber = (e) => {
+    setPhoneNumber(e.target.value)
+  }
+  const onChangeToken = (e) => {
+    setInputToken(e.target.value)
   }
 
   const onclickSendPhoneNumber = async () => {
@@ -120,6 +137,12 @@ export default function Join() {
           phoneNumber,
         },
       })
+
+      toast({
+        title: `인증번호가 발송되었습니다.`,
+        status: 'success',
+        isClosable: true,
+      })
     } catch (error) {
       console.log(error.message)
     }
@@ -127,14 +150,14 @@ export default function Join() {
 
   return (
     <JoinUI
-      autoHyphen={autoHyphen}
+      // autoHyphen={autoHyphen}
       onClickCreateUser={onClickCreateUser}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}
-      setPhoneNumber={setPhoneNumber}
+      onChangePhoneNumber={onChangePhoneNumber}
       onclickSendPhoneNumber={onclickSendPhoneNumber}
-      setInputToken={setInputToken}
+      onChangeToken={onChangeToken}
       isActive={isActive}
     />
   )
