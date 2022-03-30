@@ -49,14 +49,14 @@ export const DefaultInput = styled.input`
   padding: 0px 15px 0px 14px;
 `
 
-export const TextArea = styled.textarea`
+export const EditorWrapper = styled.div`
   width: 725px;
   height: 331px;
   border: 1px solid #bdbdbd;
   border-radius: 3px;
-  padding: 45px;
   margin-top: 15px;
   margin-bottom: 45px;
+  background-color: #ffffff;
 `
 export const SubmitButton = styled.button`
   width: 725px;

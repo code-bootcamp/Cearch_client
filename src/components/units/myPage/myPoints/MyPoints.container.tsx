@@ -1,18 +1,30 @@
+import { useQuery } from '@apollo/client'
+import { SelectChangeEvent } from '@mui/material'
 import { useState } from 'react'
+import { IQuery } from '../../../../commons/types/generated/types'
 import MyPointsUI from './MyPoints.presenter'
-import {} from './MyPoints.queries'
+import { FETCH_MY_MINUS_WALLET, FETCH_MY_PLUS_WALLET } from './MyPoints.queries'
 
 export default function MyPoints() {
   const [deposit, setDeposit] = useState(0)
   const [withdraw, setWithdraw] = useState(0)
 
   const onChangeDeposit = (event: SelectChangeEvent) => {
-    setDeposit(event.target.value)
+    setDeposit(Number(event.target.value))
   }
 
   const onChangeWithdraw = (event: SelectChangeEvent) => {
-    setWithdraw(event.target.value)
+    setWithdraw(Number(event.target.value))
   }
+
+  const { data: PointMinusData } = useQuery<Pick<IQuery, 'fetchMyMinusWallet'>>(
+    FETCH_MY_MINUS_WALLET
+  )
+  console.log('PointMinusData: ', PointMinusData)
+
+  const { data: PointPlusData } =
+    useQuery<Pick<IQuery, 'fetchMyPlusWallet'>>(FETCH_MY_PLUS_WALLET)
+  console.log('PointPlusData: ', PointPlusData)
 
   // prettier-ignore
   const pointsMinus = [

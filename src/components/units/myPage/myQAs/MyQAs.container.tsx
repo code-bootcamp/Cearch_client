@@ -2,7 +2,6 @@ import { useState } from 'react'
 import MyAllQA from './myAllQA/myAllQA'
 import MyAnswers from './myAnswers/MyAnswers'
 import MyQAsUI from './MyQAs.presenter'
-import {} from './MyQAs.queries'
 import MyQuestions from './myQuestions/MyQuestions'
 
 export default function MyQAs() {

@@ -1,7 +1,12 @@
+import { useQuery } from '@apollo/client'
 import CreatedClassesUI from './CreatedClasses.presenter'
-import {} from './CreatedClasses.queries'
+import { FETCH_LECTURE_WITH_MENTEE } from './CreatedClasses.queries'
 
 export default function CreatedClasses() {
+  //그래프큐엘 확인할 것. 타입불러올것.
+  const { data: CreatedClassesData } = useQuery(FETCH_LECTURE_WITH_MENTEE)
+  console.log(CreatedClassesData)
+
   // prettier-ignore
   const createdClasses = [
     {

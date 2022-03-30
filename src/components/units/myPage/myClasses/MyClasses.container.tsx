@@ -1,7 +1,6 @@
 import AppliedClasses from './appliedClasses/AppliedClasses.container'
 import CreatedClasses from './createdClasses/CreatedClasses.container'
 import MyClassesUI from './MyClasses.presenter'
-import {} from './MyClasses.queries'
 import PaidClasses from './paidClasses/PaidClasses.container'
 
 import { useState } from 'react'

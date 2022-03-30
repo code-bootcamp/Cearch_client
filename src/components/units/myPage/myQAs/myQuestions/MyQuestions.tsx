@@ -1,5 +1,18 @@
+import { useQuery } from '@apollo/client'
+import {
+  IQuery,
+  IQueryFetchMyQtArgs,
+} from '../../../../../commons/types/generated/types'
+import { FETCH_MY_QT } from '../MyQAs.queries'
 import * as CH from '../MyQAs.styles'
+
 export default function MyQuestions() {
+  const { data: MyQuestionData } = useQuery<
+    Pick<IQuery, 'fetchMyQt'>,
+    IQueryFetchMyQtArgs
+  >(FETCH_MY_QT, { variables: { page: 1 } })
+  console.log(MyQuestionData)
+
   // prettier-ignore
   const answer = [
     { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
