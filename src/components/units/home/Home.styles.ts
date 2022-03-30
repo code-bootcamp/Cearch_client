@@ -13,6 +13,9 @@ export const Wrapper = styled.div`
   article {
     width: 100%;
     padding: 20px 0;
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+      padding: 0;
+    }
     section {
       width: 100%;
       margin-bottom: 150px;
@@ -39,78 +42,6 @@ export const Wrapper = styled.div`
       margin: 30px 0 100px;
       @media ${breakPoints.tablet}, ${breakPoints.mobile} {
         margin-bottom: 50px;
-      }
-
-      #mainCategory {
-        padding: 40px 30px 30px;
-        border: 1px solid #ffa24b;
-        border-radius: 10px;
-
-        .swiper-button-prev,
-        .swiper-button-next {
-          z-index: 99999;
-          color: #224fe1;
-          &:after {
-            font-size: 2rem;
-          }
-        }
-
-        .categoryColumn {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          @media ${breakPoints.tablet} {
-            > svg {
-              height: 8vw !important;
-            }
-            > span {
-              font-size: 0.5rem;
-            }
-          }
-          @media ${breakPoints.mobile} {
-            > svg {
-              height: 8vw !important;
-            }
-            > span {
-              font-size: 0.8rem !important;
-            }
-          }
-          > svg {
-            height: 60px;
-          }
-          :hover {
-            color: #224fe1;
-            > svg {
-              transition: all linear 0.2s;
-              transform: translateY(-8px);
-              path {
-                stroke: #224fe1;
-              }
-              .circleFill {
-                fill: #224fe1;
-                stroke: none;
-              }
-              .pathFill {
-                fill: #224fe1;
-                stroke: none;
-              }
-              .circleStroke {
-                fill: none;
-                stroke: #224fe1;
-              }
-              .rectFill {
-                fill: #224fe1;
-                stroke: none;
-              }
-            }
-          }
-          > span {
-            margin-top: 10px;
-            font-size: 1rem;
-          }
-        }
       }
     }
   }
@@ -257,6 +188,7 @@ export const MentorInfo = styled.div`
       margin-bottom: 8px;
       p {
         font-size: 0.875rem;
+        margin-bottom: 0;
         line-height: 18px;
         text-transform: uppercase;
         white-space: nowrap;
@@ -352,6 +284,7 @@ export const MentorInfo = styled.div`
     margin-bottom: 5px;
 
     > p {
+      margin-bottom: 0;
       font-size: 1.1rem;
       font-weight: 700;
       @media ${breakPoints.tablet} {
@@ -380,6 +313,9 @@ export const Class = styled.div`
     grid-template-columns: repeat(4, calc((100% - 20px * 3) / 4));
     grid-gap: 20px;
     grid-row-gap: 40px;
+    p {
+      margin-bottom: 0;
+    }
   }
   @media ${breakPoints.mobile} {
     grid-template-columns: repeat(2, calc((100% - 15px) / 2));
@@ -414,24 +350,24 @@ export const ClassImg = styled.div`
     &:after {
       height: 20.5vw;
     }
-    &:hover {
+    /* &:hover {
       img {
         width: 40vw !important;
         height: 40vw !important;
       }
-    }
+    } */
   }
   @media ${breakPoints.mobile} {
     height: 42.5vw;
     &:after {
       height: 42.5vw;
     }
-    &:hover {
+    /* &:hover {
       img {
         width: 90vw !important;
         height: 90vw !important;
       }
-    }
+    } */
   }
 
   img {
@@ -447,24 +383,24 @@ export const ClassImg = styled.div`
 
   &:hover {
     img {
-      width: 55vw;
-      height: 55vw;
+      width: 120%;
+      height: 120%;
     }
   }
 
-  p {
+  span {
     z-index: 99;
     position: absolute;
-    bottom: 15px;
+    bottom: 10px;
     left: 15px;
     font-weight: 700;
     color: #fff;
   }
-  > p:first-of-type {
-    bottom: 40px;
+  > span:first-of-type {
+    bottom: 32px;
     font-size: 0.875rem;
   }
-  > p:last-of-type {
+  > span:last-of-type {
     font-size: 1rem;
   }
 `
@@ -495,7 +431,7 @@ export const InfoTop = styled.div`
   }
   > div:first-of-type {
     display: flex;
-    align-items: end;
+    align-items: flex-start;
   }
 
   .checked {

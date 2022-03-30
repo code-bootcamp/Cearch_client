@@ -4,11 +4,9 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import { Rate } from 'antd'
 import { Link } from 'react-scroll'
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
+import { getPrice } from '../../../../commons/libraries/utils/utils'
 
 export default function classNameDetailUI(props) {
-  const getPrice = (price) => {
-    return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  }
   return (
     <>
       <CH.ClassBanner>

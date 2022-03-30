@@ -36,3 +36,20 @@ export const getIndexFromMD = (mdString: string) => {
   console.log(indexArr)
   return indexArr
 }
+
+export const getMyDateTime = (myDate) => {
+  const aaa = new Date(myDate)
+  const yyyy = aaa.getFullYear()
+  const mm = aaa.getMonth() + 1
+  const dd = aaa.getDate()
+  const hh = aaa.getHours()
+  const mns = aaa.getMinutes()
+
+  return `${yyyy}. ${mm}. ${dd}. ${String(hh).padStart(2, '0')}:${String(
+    mns
+  ).padStart(2, '0')}`
+}
+
+export const getPrice = (price) => {
+  return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
