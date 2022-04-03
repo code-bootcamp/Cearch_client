@@ -1,15 +1,19 @@
 import { gql } from '@apollo/client'
 
 export const FETCH_NOTICES = gql`
-  query fetchNotices {
-    fetchNotices {
+  query fetchNotices($page: Float!) {
+    fetchNotices(page: $page) {
       id
       title
       contents
       isNotice
       createdAt
       updatedAt
-      deletedAt
     }
+  }
+`
+export const FETCH_ALL_NOTICE_COUNT = gql`
+  query fetchAllNoticeCount {
+    fetchAllNoticeCount
   }
 `

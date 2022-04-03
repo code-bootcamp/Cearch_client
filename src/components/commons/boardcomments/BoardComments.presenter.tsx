@@ -1,10 +1,12 @@
 import ChakraModalForComment from '../../../commons/libraries/chakramodal/ChakraModalForComment'
+import MobileCommentsMenuButton from '../../../commons/libraries/mobilecomments/MobileComments'
 import * as CH from './BoardComments.styles'
-
+import { v4 as uuidv4 } from 'uuid'
+import { DateToString } from '../../../commons/libraries/utils/utils'
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 export default function BoardCommentsUI(props) {
   return (
     <CH.CommentsWrapper>
-      <div className="writerDetail">go_rAnii</div>
       <div className="commentsWrite">
         <div>
           <img src="/images/profileDefault.png" />
@@ -21,96 +23,70 @@ export default function BoardCommentsUI(props) {
       </div>
 
       <div className="commentsList">
-        <div className="comment">
-          <div className="CommentHeader">
-            <div className="WrapperOne">
-              <input type="checkbox" className="checkbox" />
-              <div className="ImgWrapper">
-                <img src="/images/profileDefault.png" />
+        {props.commentsData?.fetchComments.map((el) => (
+          <div
+            className="comment"
+            key={uuidv4()}
+            id={el.id}
+            style={
+              el.isPick
+                ? { backgroundColor: '#eefadc' }
+                : { backgroundColor: 'white' }
+            }
+          >
+            <div className="CommentHeader">
+              <div className="WrapperOne">
+                {el.isPick ? (
+                  <CheckCircleOutlineIcon
+                    id={el.id}
+                    onClick={props.selectComment}
+                  />
+                ) : (
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    id={el.id}
+                    onClick={props.selectComment}
+                  />
+                )}
+                <div className="ImgWrapper">
+                  <img src="/images/profileDefault.png" />
+                </div>
+                <div className="commentWriter">{el.user.name}</div>
               </div>
-              <div className="commentWriter">chanpoong01</div>
-            </div>
-            <div className="buttonWrapper">
-              <ChakraModalForComment
-                className="commentButton"
-                id="reply"
-                editComment={props.editComment}
-              />
-              <ChakraModalForComment
-                className="commentButton"
-                isEdit={true}
-                updateComment={props.updateComment}
-              />
-              <ChakraModalForComment
-                className="commentButton"
-                deleteComment={props.deleteComment}
-              />
-            </div>
-          </div>
-
-          <div className="CommentContents">
-            댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글 본문
-            입니다.댓글 본문 입니다.
-          </div>
-
-          <div>2022.03.15</div>
-          <CH.ReplyComment commentEdit={props.commentEdit}>
-            <textarea placeholder="내용을 작성하세요" />
-            <button>등록</button>
-          </CH.ReplyComment>
-        </div>
-
-        <div className="comment">
-          <div className="CommentHeader">
-            <div className="WrapperOne">
-              <input type="checkbox" className="checkbox" />
-              <div className="ImgWrapper">
-                <img src="/images/profileDefault.png" />
+              <div className="buttonWrapper">
+                <ChakraModalForComment
+                  className="commentButton"
+                  id={el.id}
+                  name="reply"
+                  replyComment={props.replyComment}
+                />
+                <ChakraModalForComment
+                  className="commentButton"
+                  id={el.id}
+                  isEdit={true}
+                  setContents={props.setContents}
+                  onChangeCommentContents={props.onChangeCommentContents}
+                  onChangeEditComments={props.onChangeEditComments}
+                  updateComment={props.updateComment}
+                />
+                <ChakraModalForComment
+                  id={el.id}
+                  className="commentButton"
+                  deleteComment={props.deleteComment}
+                />
               </div>
-              <div className="commentWriter">chanpoong01</div>
             </div>
-            <div className="buttonWrapper">
-              <button className="commentButton"></button>
-              <button className="commentButton"></button>
-              <button className="commentButton"></button>
-            </div>
+
+            <div className="CommentContents">{el.contents}</div>
+            <div>{DateToString(el.createdAt)}</div>
+
+            <CH.ReplyComment commentEdit={props.commentEdit}>
+              <textarea placeholder="내용을 작성하세요" />
+              <button>등록</button>
+            </CH.ReplyComment>
           </div>
-
-          <div className="CommentContents">
-            댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글 본문
-            입니다.댓글 본문 입니다.
-          </div>
-
-          <div>2022.03.15</div>
-        </div>
-
-        <div className="comment">
-          <div className="CommentHeader">
-            <div className="WrapperOne">
-              <input type="checkbox" className="checkbox" />
-              <div className="ImgWrapper">
-                <img src="/images/profileDefault.png" />
-              </div>
-              <div className="commentWriter">chanpoong01</div>
-            </div>
-            <div className="buttonWrapper">
-              <button className="commentButton"></button>
-              <button className="commentButton"></button>
-              <button className="commentButton"></button>
-            </div>
-          </div>
-
-          <div className="CommentContents">
-            댓글 본문 입니다.댓글 본문 입니다.댓글 본문 입니다.댓글 본문
-            입니다.댓글 본문 입니다.
-          </div>
-
-          <div>2022.03.15</div>
-          <CH.ReplyComment commentEdit={props.commentEdit}>
-            <textarea placeholder="내용을 작성하세요" />
-            <button>등록</button>
-          </CH.ReplyComment>
-        </div>
+        ))}
       </div>
     </CH.CommentsWrapper>
   )

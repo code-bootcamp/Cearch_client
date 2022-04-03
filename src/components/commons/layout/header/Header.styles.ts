@@ -1,8 +1,10 @@
 import styled from '@emotion/styled'
 import { breakPoints } from '../../../../commons/styles/media'
 import Box from '@mui/material/Box'
-import Modal from '@mui/material/Modal'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+
 //헤더 전체 wrapper
+
 export const Header = styled.header`
   position: relative;
   width: 100%;
@@ -55,17 +57,7 @@ export const Logo = styled.div`
 export const MenuWrapper = styled.nav`
   .NavBox {
     display: none;
-    @media ${breakPoints.tablet} {
-      width: 100%;
-      height: auto;
-      display: block;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      margin: 0 auto;
-      z-index: 99999;
-    }
-    @media ${breakPoints.mobile} {
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
       width: 100%;
       height: auto;
       display: block;
@@ -76,6 +68,7 @@ export const MenuWrapper = styled.nav`
       z-index: 99999;
     }
   }
+
   ul {
     @media ${breakPoints.tablet} {
       display: none;
@@ -175,7 +168,6 @@ export const Login = styled.div`
   }
   @media ${breakPoints.mobile} {
     margin-right: 5px;
-    width: 80px;
     text-align: center;
     padding: 7px 0 5px;
 

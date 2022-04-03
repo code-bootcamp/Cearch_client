@@ -15,16 +15,6 @@ const FETCH_USER = gql`
       following
       answerCount
       imageUrl
-      createdAt
-      updatedAt
-      deleteDate
-      qtBoard
-      comments
-      mentor
-      likes
-      reviews
-      interest
-      registration
     }
   }
 `

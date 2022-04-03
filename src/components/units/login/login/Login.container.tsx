@@ -42,12 +42,14 @@ export default function Login() {
         const accessToken = result.data?.login || ''
         if (setAccessToken) setAccessToken(accessToken)
 
+
         message.success('This is a success message')
 
         router.push('/')
       } catch (error) {
         Modal.error({ content: error.message })
       }
+
     }
   }
 

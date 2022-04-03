@@ -25,8 +25,6 @@ export const Wrapper = styled.div`
     }
   }
   > div:last-of-type {
-    /* border: 1px solid gray;
-    border-radius: 20px; */
     padding: 7px 25px 5px;
   }
 
@@ -80,6 +78,53 @@ export const Wrapper = styled.div`
     }
   }
 `
+export const SearchBar = styled.div`
+  width: 200px;
+  height: 35px;
+  background: #eee;
+  border-radius: 20px;
+  text-align: right;
+  padding: 5px 10px 5px 0px;
+  margin-right: 20px;
+
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+
+  input {
+    width: 150px;
+    border: 0;
+    background: none;
+    outline: none;
+    padding-left: 5px;
+  }
+  button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+
+    .search.icon {
+      width: 12px;
+      height: 12px;
+      border: solid 2px currentColor;
+      border-radius: 100%;
+      margin-right: 5px;
+      margin-bottom: 3px;
+    }
+
+    .search.icon:before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 5px;
+      height: 6px;
+      width: 2px;
+      background-color: currentColor;
+    }
+  }
+`
 
 export const BoardListWrapper = styled.div`
   width: 100%;
@@ -117,7 +162,7 @@ export const BoardList = styled.div`
   .Contents {
     border-bottom: 1px solid gray;
     padding: 30px 10px;
-    text-align: center;
+    text-align: left;
     display: grid;
     grid-template-columns: 1fr 8fr;
     @media ${breakPoints.mobile} {
@@ -179,19 +224,18 @@ export const BoardList = styled.div`
           width: 100%;
           overflow: hidden;
           word-break: keep-all;
-          height: 29px;
+          height: 100%;
           > span {
             display: inline-block;
             white-space: nowrap;
             overflow: hidden;
-            padding: 5px 10px 3px;
-            border-radius: 20px;
+            padding: 5px 10px 5px;
+            border-radius: 10px;
             background-color: #ffa24b;
             color: #fff;
             font-size: 0.79rem;
             font-weight: 700;
             margin-right: 5px;
-            margin-bottom: 5px;
           }
         }
         .CreatedAt {
