@@ -1,18 +1,17 @@
 import * as CH from './Home.styles'
-import { v4 as uuidv4 } from 'uuid'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css'
 import Tooltip from '@mui/material/Tooltip'
 
-import mentorList from './mentorList.json'
-import classList from './classList.json'
-import boardList from './boardList.json'
-import StarRoundedIcon from '@mui/icons-material/StarRounded'
+import { DateToString } from '../../../commons/libraries/utils/utils'
 import SwiperCategory from '../../commons/category/Category'
+import PopularClass from './PopularClass'
+import NewClass from './NewClass'
 
 export default function HomeUI(props) {
+
   /* const newMentorList = mentorList.map((el, index) => {
     return (
       <div key={uuidv4()}>
@@ -202,6 +201,7 @@ export default function HomeUI(props) {
     )
   })
 
+
   return (
     <CH.Wrapper>
       <article>
@@ -212,90 +212,133 @@ export default function HomeUI(props) {
 
         <section>
           <p>인기 멘토</p>
-          <CH.Mentor>{newMentorList}</CH.Mentor>
+          <CH.Mentor>
+            {props.MentorRecommendData?.fetchMostRecommendMentor?.map((el) => (
+              <div key={el.id}>
+                <div className="mentorCardFront">
+                  <div className="profileImg">
+                    <div>
+                      <img src="/images/profile.png" />
+                    </div>
+                  </div>
+                  <CH.MentorInfo>
+                    <div className="workPart">
+                      <div>
+                        <p>{el.companyName}</p>
+                        <p>{el.department}</p>
+                      </div>
+                      <div>
+                        {el.work?.slice(0, 2).map((categoryEl) => (
+                          <span key={el.id}>
+                            {categoryEl.category.categoryname}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="blank"></div>
+                    <div className="mentorName">
+                      <p>{el.user?.name}</p>
+                    </div>
+                  </CH.MentorInfo>
+                </div>
+                <div
+                  className="mentorCardBack"
+                  id={el.id}
+                  onClick={props.onClickMoveToMentorDetail}
+                >
+                  <div className="badge">
+                    <Tooltip title="30분이내 답변" placement="top">
+                      <img src="/images/medal1.png" />
+                    </Tooltip>
+                    <Tooltip title="답변률 90%" placement="top">
+                      <img src="/images/medal2.png" />
+                    </Tooltip>
+                  </div>
+                  <div>{el.selfIntro}</div>
+                </div>
+              </div>
+            ))}
+          </CH.Mentor>
         </section>
 
         <section>
           <p>답변률 높은 멘토</p>
-          <CH.Mentor>{newMentorList}</CH.Mentor>
+          <CH.Mentor>
+            {props.MentorAnswerData?.fetchMostAnswerMentor?.map((el) => (
+              <div key={el.id}>
+                <div className="mentorCardFront">
+                  <div className="profileImg">
+                    <div>
+                      <img src="/images/profile.png" />
+                    </div>
+                  </div>
+                  <CH.MentorInfo>
+                    <div className="workPart">
+                      <div>
+                        <p>{el.companyName}</p>
+                        <p>{el.department}</p>
+                      </div>
+                      <div>
+                        {el.work?.slice(0, 2).map((categoryEl) => (
+                          <span key={el.id}>
+                            {categoryEl.category.categoryname}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="blank"></div>
+                    <div className="mentorName">
+                      <p>{el.user?.name}</p>
+                    </div>
+                  </CH.MentorInfo>
+                </div>
+                <div
+                  className="mentorCardBack"
+                  id={el.id}
+                  onClick={props.onClickMoveToMentorDetail}
+                >
+                  <div className="badge">
+                    <Tooltip title="30분이내 답변" placement="top">
+                      <img src="/images/medal1.png" />
+                    </Tooltip>
+                    <Tooltip title="답변률 90%" placement="top">
+                      <img src="/images/medal2.png" />
+                    </Tooltip>
+                  </div>
+                  <div>{el.selfIntro}</div>
+                </div>
+              </div>
+            ))}
+          </CH.Mentor>
         </section>
 
         <section>
           <p>최근 등록된 클래스</p>
           <CH.Class>
-            {newClassList}
-            {/* {props.NewClassData?.fetchNewClasses?.map((el) => (
-              <div
-                key={el.id}
-                id={el.id}
-                onClick={props.onClickMoveToClassDetail}
-              >
-                <CH.ClassImg>
-                  <img src="/images/mentor.jpeg" />
-                  <span>{el.MentoInfo.user.name}</span>
-                  <span>{el.MentoInfo.name}</span>
-                </CH.ClassImg>
-
-                <CH.ClassInfo>
-                  <CH.InfoTop>
-                    <div>
-                      <StarRoundedIcon style={{ color: 'gold' }} />{' '}
-                      <span>
-                        {el.rating} ({/* {el.peopleNum} }???)
-                      </span>
-                    </div>
-                    <div className="classState">
-                      {el.classOpen ? '진행' : '종료'}
-                    </div>
-                  </CH.InfoTop>
-                  <CH.InfoBottom>
-                    <div className="classCategory">
-                      <span>{el.classCategory}</span>
-                    </div>
-                    <div className="classTitle">{el.classTitle}</div>
-                    <div className="classDate">{el.classRunTime}</div>
-                  </CH.InfoBottom>
-                </CH.ClassInfo>
-              </div>
-            ))} */}
+            {props.NewClassData?.fetchNewClasses
+              ?.slice(0, 8)
+              .map((el, index) => (
+                <div
+                  key={el.id}
+                  id={el.id}
+                  onClick={props.onClickMoveToClassDetail}
+                >
+                  <NewClass index={index} el={el} />
+                </div>
+              ))}
           </CH.Class>
         </section>
 
         <section>
           <p>인기있는 클래스</p>
           <CH.Class>
-            {props.PopularClassData?.fetchLectureRating?.map((el) => (
+            {props.PopularClassData?.fetchPopularClass?.map((el) => (
               <div
                 key={el.id}
                 id={el.id}
                 onClick={props.onClickMoveToClassDetail}
               >
-                <CH.ClassImg>
-                  <img src="/images/mentor.jpeg" />
-                  <span>{el.MentoInfo.user.name}</span>
-                  <span>{el.MentoInfo.name}</span>
-                </CH.ClassImg>
-
-                <CH.ClassInfo>
-                  <CH.InfoTop>
-                    <div>
-                      <StarRoundedIcon style={{ color: 'gold' }} />{' '}
-                      <span>
-                        {el.rating} ({/* {el.peopleNum} */}???)
-                      </span>
-                    </div>
-                    <div className="classState">
-                      {el.classOpen ? '진행' : '종료'}
-                    </div>
-                  </CH.InfoTop>
-                  <CH.InfoBottom>
-                    <div className="classCategory">
-                      <span>{el.classCategory}</span>
-                    </div>
-                    <div className="classTitle">{el.classTitle}</div>
-                    <div className="classDate">{el.classRunTime}</div>
-                  </CH.InfoBottom>
-                </CH.ClassInfo>
+                <PopularClass el={el} />
               </div>
             ))}
           </CH.Class>
@@ -335,10 +378,36 @@ export default function HomeUI(props) {
               nextEl: '.swiper-button-next-n1',
               prevEl: '.swiper-button-prev-n1',
             }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            /* onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)} */
           >
-            {newBoardList}
+            {props.LikeBoardsData?.fetchLikePost?.map((el) => {
+              return (
+                <SwiperSlide key={el.id}>
+                  <CH.BoardTop>
+                    <div>
+                      <img src="images/profileDefault.png" />
+                    </div>
+                    <span>{el.name}</span>
+                  </CH.BoardTop>
+                  <CH.BoardBottom>
+                    <p className="title">{el.title}</p>
+                    <p className="contents">{el.contents}</p>
+                    <div className="icon">
+                      <div>
+                        <img src="/images/comment-dots-regular.svg" />
+                        <span> {el.commentsCount}</span>
+                      </div>
+                      <div>
+                        <img src="/images/heart-solid.svg" />
+                        <span> {el.likescount}</span>
+                      </div>
+                    </div>
+                    <div className="date">{DateToString(el.createdAt)}</div>
+                  </CH.BoardBottom>
+                </SwiperSlide>
+              )
+            })}
           </CH.BoardList>
         </section>
 
@@ -376,10 +445,36 @@ export default function HomeUI(props) {
               nextEl: '.swiper-button-next-n2',
               prevEl: '.swiper-button-prev-n2',
             }}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
+            /* onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)} */
           >
-            {newBoardList}
+            {props.NewBoardsData?.fetchQtBoards?.slice(0, 8).map((el) => {
+              return (
+                <SwiperSlide key={el.id}>
+                  <CH.BoardTop>
+                    <div>
+                      <img src="images/profileDefault.png" />
+                    </div>
+                    <span>{el.name}</span>
+                  </CH.BoardTop>
+                  <CH.BoardBottom>
+                    <p className="title">{el.title}</p>
+                    <p className="contents">{el.contents}</p>
+                    <div className="icon">
+                      <div>
+                        <img src="/images/comment-dots-regular.svg" />
+                        <span> {el.commentsCount}</span>
+                      </div>
+                      <div>
+                        <img src="/images/heart-solid.svg" />
+                        <span> {el.likescount}</span>
+                      </div>
+                    </div>
+                    <div className="date">{DateToString(el.createdAt)}</div>
+                  </CH.BoardBottom>
+                </SwiperSlide>
+              )
+            })}
           </CH.BoardList>
         </section>
       </article>

@@ -13,35 +13,38 @@ export const Wrapper = styled.div`
   article {
     width: 100%;
     padding: 20px 0;
-    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-      padding: 0;
-    }
     section {
       width: 100%;
       margin-bottom: 150px;
-      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-        margin-bottom: 50px;
-      }
 
       > p {
         font-size: 1.5rem;
         font-weight: 600;
         margin-bottom: 30px;
-        @media ${breakPoints.tablet} {
-          font-size: 1.2rem;
-          margin-bottom: 3vw;
-        }
-        @media ${breakPoints.mobile} {
-          font-size: 1.2rem;
-          margin-bottom: 3vw;
-        }
       }
     }
     // 카테고리
     section:nth-of-type(1) {
       margin: 30px 0 100px;
-      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-        margin-bottom: 50px;
+    }
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+      section {
+        margin-bottom: 50px !important;
+        &:nth-of-type(1) {
+          margin-top: 0 !important;
+        }
+        > p {
+          font-size: 1.2rem;
+          margin-bottom: 3vw;
+        }
+      }
+    }
+    @media ${breakPoints.mobile} {
+      section {
+        > p {
+          font-size: 1.2rem;
+          margin-bottom: 3vw;
+        }
       }
     }
   }
@@ -101,6 +104,7 @@ export const Mentor = styled.div`
       width: 100%;
       transform: rotateY(180deg);
       transform-style: preserve-3d;
+      padding: 20px;
     }
 
     &:hover .mentorCardBack {
@@ -128,12 +132,6 @@ export const Mentor = styled.div`
         width: 25px;
         margin-right: 5px;
       }
-      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-        margin-bottom: 1vw !important;
-        img {
-          width: 20px;
-        }
-      }
     }
     > * {
       margin: 5px auto;
@@ -144,12 +142,6 @@ export const Mentor = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      @media ${breakPoints.tablet} {
-        padding: 2.5vw 0;
-      }
-      @media ${breakPoints.mobile} {
-        padding: 5vw 0;
-      }
       > div {
         width: 120px;
         height: 120px;
@@ -162,14 +154,32 @@ export const Mentor = styled.div`
           height: 100%;
           object-fit: cover;
         }
+      }
+    }
 
-        @media ${breakPoints.tablet} {
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+      .badge {
+        margin-bottom: 1vw !important;
+        img {
+          width: 20px;
+        }
+      }
+    }
+    @media ${breakPoints.tablet} {
+      .profileImg {
+        padding: 2vw 0;
+        > div {
           width: 11vw;
           height: 11vw;
         }
-        @media ${breakPoints.mobile} {
-          width: 20vw;
-          height: 20vw;
+      }
+    }
+    @media ${breakPoints.mobile} {
+      .profileImg {
+        padding: 4vw 0;
+        > div {
+          width: 18vw;
+          height: 18vw;
         }
       }
     }
@@ -230,7 +240,30 @@ export const MentorInfo = styled.div`
         margin-right: 0px;
       }
     }
-    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+  }
+  .blank {
+    height: 30px;
+  }
+  .mentorName {
+    text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-bottom: 5px;
+
+    > p {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    svg {
+      width: 13px;
+      margin-left: 5px;
+      fill: blue;
+    }
+  }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    .workPart {
       > div:first-of-type {
         flex-direction: column;
         align-items: flex-start;
@@ -251,15 +284,28 @@ export const MentorInfo = styled.div`
         height: 25px;
       }
     }
-    @media ${breakPoints.mobile} {
+    .blank {
+      height: 1.5vw;
+    }
+    .mentorName {
+      margin-bottom: 0;
+      > p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  @media ${breakPoints.mobile} {
+    padding-bottom: 2vw;
+
+    .workPart {
       > div:first-of-type {
         p {
-          font-size: 1rem !important;
+          font-size: 0.875rem !important;
           margin-bottom: 0px !important;
           line-height: 20px;
         }
         p:nth-of-type(2) {
-          font-size: 0.9rem !important;
+          font-size: 0.8rem !important;
         }
       }
       span {
@@ -267,37 +313,11 @@ export const MentorInfo = styled.div`
         padding: 3px 7px 2px;
       }
     }
-  }
-  .blank {
-    height: 30px;
-    @media ${breakPoints.tablet} {
-      height: 2vw;
-    }
-    @media ${breakPoints.mobile} {
+    .blank {
       height: 5vw;
     }
-  }
-  .mentorName {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    margin-bottom: 5px;
-
-    > p {
+    .mentorName {
       margin-bottom: 0;
-      font-size: 1.1rem;
-      font-weight: 700;
-      @media ${breakPoints.tablet} {
-        font-size: 0.875rem;
-      }
-      @media ${breakPoints.mobile} {
-        font-size: 0.9rem;
-      }
-    }
-    svg {
-      width: 13px;
-      margin-left: 5px;
-      fill: blue;
     }
   }
 `
@@ -350,24 +370,12 @@ export const ClassImg = styled.div`
     &:after {
       height: 20.5vw;
     }
-    /* &:hover {
-      img {
-        width: 40vw !important;
-        height: 40vw !important;
-      }
-    } */
   }
   @media ${breakPoints.mobile} {
     height: 42.5vw;
     &:after {
       height: 42.5vw;
     }
-    /* &:hover {
-      img {
-        width: 90vw !important;
-        height: 90vw !important;
-      }
-    } */
   }
 
   img {
@@ -505,6 +513,9 @@ export const BoardList = styled(Swiper)`
       box-shadow: 0px 0px 10px 2px rgb(225, 225, 225);
       border-radius: 20px;
       padding: 30px 25px 25px;
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        padding: 30px 30px 20px;
+      }
     }
     > p {
       position: absolute;
@@ -600,7 +611,13 @@ export const BoardTop = styled.div`
 export const BoardBottom = styled.div`
   border-radius: 20px;
   padding: 20px 10px 10px;
-
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    padding: 0px 0px 10px;
+    .title {
+      font-size: 1.2rem !important;
+      margin-bottom: 5px !important;
+    }
+  }
   .title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -618,6 +635,7 @@ export const BoardBottom = styled.div`
     word-wrap: break-word;
     line-height: 1.5rem;
     height: calc(1.5rem * 8);
+    margin-bottom: 0;
   }
   .icon {
     display: flex;
@@ -639,5 +657,20 @@ export const BoardBottom = styled.div`
   .date {
     margin: 0 10px 5px;
     text-align: right;
+  }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    .contents {
+      -webkit-line-clamp: 6;
+      height: calc(1.5rem * 6);
+    }
+    .icon {
+      margin: 10px 0 0;
+      > div {
+        padding: 5px 15px 3px 0;
+      }
+    }
+    .date {
+      margin: 0;
+    }
   }
 `

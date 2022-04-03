@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import { breakPoints } from '../../../commons/styles/media'
 
+interface IProps {
+  isActive: boolean
+}
+
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0px auto;
@@ -35,9 +39,13 @@ export const ImgWrapper = styled.div`
 export const Logo = styled.div`
   width: 170px;
   text-align: center;
-  margin: 0 auto 30px;
+  margin: 0 auto 50px !important;
   svg {
     width: 170px;
+  }
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    margin: 0 auto 30px !important;
   }
 `
 export const ContentsWrapper = styled.div`
@@ -49,9 +57,9 @@ export const ContentsWrapper = styled.div`
   position: relative;
 
   .title {
-    width: 100%;
+    width: 90%;
     text-align: left;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
   }
 
@@ -59,7 +67,17 @@ export const ContentsWrapper = styled.div`
     width: 90%;
     margin: 20px auto;
     > div {
-      margin: 25px auto;
+      margin: 15px auto 0;
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+  > div {
+    width: 90%;
+    margin: 20px auto;
+    > div {
+      margin: 15px auto 0;
       &:first-of-type {
         margin-top: 0;
       }
@@ -72,7 +90,8 @@ export const ContentsWrapper = styled.div`
   }
 
   .ul {
-    padding: 0 20px;
+    padding: 20px 20px 0;
+    margin: 0;
     li {
       line-height: 25px;
     }
@@ -83,11 +102,32 @@ export const ContentsWrapper = styled.div`
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0px 0px 10px 2px #eee;
+
     .title {
-      margin-bottom: 30px;
+      width: 100%;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    > div {
+      width: 100%;
     }
     > form {
+      width: 100%;
       margin: 30px auto !important;
+    }
+  }
+  @media ${breakPoints.tablet} {
+    padding: 50px 50px;
+    width: 600px !important;
+  }
+  @media ${breakPoints.mobile} {
+    padding: 0 !important;
+    box-shadow: none;
+    width: 100% !important;
+
+    > form {
+      margin: 20px auto !important;
     }
   }
 `
@@ -133,10 +173,26 @@ export const EmailConfirm = styled.div`
         margin-left: 10px;
       }
     }
+    @media ${breakPoints.mobile} {
+      > div {
+        padding: 10px 15px;
+        margin-right: 10px;
+      }
+      > div:last-of-type {
+        width: 200px !important;
+      }
+    }
     > div:last-of-type {
       width: 220px;
       justify-content: center;
       margin-right: 0;
+      cursor: pointer;
+
+      :hover {
+        background: #ffa24b;
+        color: white;
+        border: 0;
+      }
     }
   }
 `
@@ -148,12 +204,15 @@ export const InputBox = styled.div`
     margin-bottom: 10px;
   }
   > div {
+    height: 50px;
     display: flex;
     align-items: center;
     border: 1px solid gray;
     border-radius: 10px;
-    /* height: 50px; */
     padding: 15px;
+    @media ${breakPoints.mobile} {
+      padding: 10px 15px !important;
+    }
     svg {
       width: 20px;
       fill: #c8c8c8;
@@ -210,7 +269,13 @@ export const CreateButton = styled.button`
   letter-spacing: 0.2rem;
   border: 0;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: ${(props) => (props.isActive === true ? 'pointer' : 'auto')};
+  background: ${(props: IProps) => (props.isActive === true ? '#ffa24b' : '')};
+  color: ${(props: IProps) => (props.isActive === true ? 'white' : '')};
+
+  @media ${breakPoints.mobile} {
+    height: 50px;
+  }
 `
 export const GoogleButton = styled.button`
   width: 300px;
@@ -251,6 +316,9 @@ export const LoginButton = styled.button`
   border: 0;
   border-radius: 10px;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    height: 50px;
+  }
 `
 export const JoinButton = styled.div`
   display: flex;
@@ -270,6 +338,12 @@ export const JoinButton = styled.div`
       color: #fff;
     }
   }
+
+  @media ${breakPoints.mobile} {
+    button {
+      width: 48%;
+    }
+  }
 `
 export const PasswordReset = styled.button`
   width: 100%;
@@ -280,7 +354,18 @@ export const PasswordReset = styled.button`
   font-weight: 700;
   letter-spacing: 0.2rem;
   color: #fff;
+  border: 0;
   border-radius: 10px;
   margin-top: 50px;
   cursor: pointer;
+
+  @media ${breakPoints.mobile} {
+    font-size: 1.2rem;
+    height: 50px;
+  }
+`
+
+export const ErrorMessage = styled.span`
+  font-size: 0.8rem;
+  color: red;
 `

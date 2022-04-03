@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { breakPoints } from '../../../../commons/styles/media'
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -22,8 +23,7 @@ export const Wrapper = styled.div`
       }
       .title {
         font-size: 1.5rem;
-        // margin-bottom: 30px;
-        color: #224fe1;
+        color: #ff7b00;
         font-weight: 700;
       }
     }
@@ -55,6 +55,39 @@ export const Wrapper = styled.div`
         padding: 0 10px;
         border: 1px solid gray;
         border-radius: 5px;
+      }
+    }
+  }
+
+  @media ${breakPoints.tablet} {
+    width: 90%;
+    padding: 50px 0;
+    .write {
+      width: 100%;
+      > div:first-of-type {
+        p:nth-of-type(1) {
+          margin-bottom: 10px !important;
+        }
+      }
+      > div {
+        width: 100%;
+      }
+    }
+  }
+  @media ${breakPoints.mobile} {
+    width: 90%;
+    padding: 20px 0 50px;
+    .write {
+      width: 100%;
+      box-shadow: none;
+      padding: 0;
+      > div:first-of-type {
+        p:nth-of-type(1) {
+          margin-bottom: 0px !important;
+        }
+      }
+      > div {
+        width: 100%;
       }
     }
   }

@@ -8,6 +8,7 @@ import { useMutation } from '@apollo/client'
 import { LOGIN } from './Login.queries'
 import { GlobalContext } from '../../../../../pages/_app'
 import { useContext } from 'react'
+import { message, Modal } from 'antd'
 
 const schema = yup.object().shape({
   email: yup.string().required('필수입력입니다.'),
@@ -28,29 +29,28 @@ export default function Login() {
 
   const onClickLogin = async (data) => {
     const { email, password } = data
-    console.log(email, password)
 
-    // if (email && password) {
-    try {
-      const result = await login({
-        variables: {
-          email,
-          password,
-        },
-      })
+    if (email !== '' && password !== '') {
+      try {
+        const result = await login({
+          variables: {
+            email,
+            password,
+          },
+        })
 
-      const accessToken = result.data?.login || ''
-      if (setAccessToken) setAccessToken(accessToken)
+        const accessToken = result.data?.login || ''
+        if (setAccessToken) setAccessToken(accessToken)
 
-      alert('로그인 성공')
-      console.log(accessToken)
-      router.push('/')
-    } catch (error) {
-      console.log(error.message)
+
+        message.success('This is a success message')
+
+        router.push('/')
+      } catch (error) {
+        Modal.error({ content: error.message })
+      }
+
     }
-    // } else {
-    //   console.log('이메일과 비밀번호를 올바르게 입력해주세요')
-    // }
   }
 
   const onClickJoin = () => {
