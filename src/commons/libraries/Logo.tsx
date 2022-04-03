@@ -9,6 +9,9 @@ export const Logo = styled.div`
   @media ${breakPoints.tablet}, ${breakPoints.mobile} {
     display: ${(props: { isTop: boolean }) => (props.isTop ? 'flex' : 'none')};
   }
+  @media ${breakPoints.mobile} {
+    width: 120px;
+  }
   svg {
     width: 170px;
   }

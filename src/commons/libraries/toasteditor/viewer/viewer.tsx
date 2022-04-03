@@ -9,23 +9,32 @@ import { Viewer } from '@toast-ui/react-editor'
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight'
 import colorSyntax from '@toast-ui/editor-plugin-color-syntax'
 import { useRef } from 'react'
+import styled from '@emotion/styled'
 
-export default function ToastViewer() {
+const Wrapper = styled.div`
+  width: 100%;
+  height: auto;
+`
+
+export default function ToastViewer(props) {
   const editorRef = useRef<Viewer>(null)
-  const testCode = '```<div> <p>HeadLine</p><div>``` 가나다라'
 
   const onClickConsole = () => {
     const editorInstance = editorRef.current.getInstance()
-    const getContentMarkdown = editorInstance.setMarkdown(testCode)
+    const getContentMarkdown = editorInstance.setMarkdown(props.contents)
     // const getContentHTML = editorInstance.getHTML()
     // props.setContents(editorInstance.getHTML())
     // console.log(props.contents)
     return getContentMarkdown
   }
   return (
-    <Viewer
-      initialValue={testCode}
-      plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
-    />
+    <Wrapper>
+      {props.contents && (
+        <Viewer
+          initialValue={props.contents}
+          plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+        />
+      )}
+    </Wrapper>
   )
 }

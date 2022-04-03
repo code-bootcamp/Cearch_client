@@ -9,7 +9,6 @@ export const CREATE_NOTICE = gql`
       isNotice
       createdAt
       updatedAt
-      deletedAt
     }
   }
 `
@@ -23,7 +22,6 @@ export const UPDATE_NOTICE = gql`
       isNotice
       createdAt
       updatedAt
-      deletedAt
     }
   }
 `

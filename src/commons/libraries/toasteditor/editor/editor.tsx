@@ -27,6 +27,8 @@ export default function BoardWriteEditor(props) {
     // const getContentMarkdown = editorInstance.getMarkdown()
     // const getContentHTML = editorInstance.getHTML()
     props.setContents(editorInstance.getHTML())
+
+    if (props.defaultValue) props.setContents(editorInstance.getHTML())
   }
 
   return (
@@ -40,6 +42,7 @@ export default function BoardWriteEditor(props) {
         ]}
         onChange={onChangeContents}
         ref={editorRef}
+        initialValue={props.defaultValue}
       />
     </Wrapper>
   )

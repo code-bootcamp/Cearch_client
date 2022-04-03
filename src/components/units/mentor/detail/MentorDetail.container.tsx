@@ -1,17 +1,28 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import {
   IMutation,
   IMutationFollowToggleArgs,
 } from '../../../../commons/types/generated/types'
 import MentorDetailUI from './MentorDetail.presenter'
-import { FOLLOW_TOGGLE } from './MentorDetail.queries'
-
+import { FETCH_MENTOR, FOLLOW_TOGGLE } from './MentorDetail.queries'
+import {
+  IQuery,
+  IQueryFetchMentorArgs,
+} from '../../../../commons/types/generated/types'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 export default function MentorDetail() {
+  const router = useRouter()
   const [followToggle] = useMutation<
     Pick<IMutation, 'followToggle'>,
     IMutationFollowToggleArgs
   >(FOLLOW_TOGGLE)
-
+  const currentPage = 1
+  const { data } = useQuery<Pick<IQuery, 'fetchMentor'>, IQueryFetchMentorArgs>(
+    FETCH_MENTOR,
+    { variables: { page: currentPage } }
+  )
+  const [mentorDetailData, setMentorDetailData] = useState({})
   const onClickFollowMentor = async () => {
     try {
       const result = await followToggle({
@@ -24,5 +35,24 @@ export default function MentorDetail() {
       alert(`${error.message}`)
     }
   }
-  return <MentorDetailUI onClickFollowMentor={onClickFollowMentor} />
+
+  const mentorDetail = () => {
+    for (let i = 0; i < 10; i++) {
+      if (data?.fetchMentor.length < i) return
+      if (data?.fetchMentor[i]?.id === String(router.query.detail)) {
+        const detailData = data?.fetchMentor[i]
+        setMentorDetailData(detailData)
+      }
+    }
+  }
+  useEffect(() => {
+    mentorDetail()
+  }, [data])
+  console.log(mentorDetailData)
+  return (
+    <MentorDetailUI
+      data={mentorDetailData}
+      onClickFollowMentor={onClickFollowMentor}
+    />
+  )
 }

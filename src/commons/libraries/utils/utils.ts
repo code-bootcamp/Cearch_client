@@ -53,3 +53,12 @@ export const getMyDateTime = (myDate) => {
 export const getPrice = (price) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
+
+export const getMyDate2 = (myDate) => {
+  const aaa = new Date(myDate)
+  const yyyy = aaa.getFullYear()
+  const mm = aaa.getMonth() + 1
+  const dd = aaa.getDate()
+
+  return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
+}

@@ -1,9 +1,5 @@
 import ToastEditorPage from '../../../../commons/libraries/toasteditor/editor'
 import * as CH from './BoardWrite.styles'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import DateTimePicker from '@mui/lab/DateTimePicker'
-import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputLabel from '@mui/material/InputLabel'
@@ -16,17 +12,7 @@ import ChakraModalHasType from '../../../../commons/libraries/chakramodal/chakra
 export default function BoardWriteUI(props) {
   return (
     <CH.Wrapper>
-      <CH.ContentWrapper
-        onSubmit={
-          props.data
-            ? props.isEdit
-              ? props.handleSubmit(props.updateBoard)
-              : props.handleSubmit(props.submitBoard)
-            : props.isEdit
-            ? props.handleSubmit(props.updateBoardNonMember)
-            : props.handleSubmit(props.submitBoardNonMember)
-        }
-      >
+      <CH.ContentWrapper onSubmit={props.handleSubmit(props.nonMemberWrite)}>
         <div className="contentHeader">
           <div>게시글 {props.isEdit ? '수정' : '등록'}</div>
         </div>
@@ -71,11 +57,15 @@ export default function BoardWriteUI(props) {
                   )}
                   MenuProps={props.MenuProps}
                 >
-                  {props.categories.map((el) => (
+                  {props.categories.map((el, index) => (
                     <MenuItem
                       key={el}
                       value={el}
                       style={props.getStyles(el, props.category, props.theme)}
+                      // defaultValue={
+                      //   props.qtBoardEditData?.fetchQtBoard.qtTags[index]
+                      //     .tagname
+                      // }
                     >
                       {el}
                     </MenuItem>
@@ -84,21 +74,27 @@ export default function BoardWriteUI(props) {
               </FormControl>
             </div>
           </div>
-          <div>
-            <span>
-              작성자 <span style={{ color: 'red' }}>*</span>
-            </span>
-            <input
-              type="test"
-              placeholder="작성자를 입력해주세요"
-              {...props.register('writer')}
-            />
-          </div>
-          <span className="errorMessage">
-            {props.formState.errors?.writer?.message}
-          </span>
-          {props.isEdit ? (
-            ''
+
+          {props.accessToken ? (
+            <></>
+          ) : (
+            <div>
+              <span>
+                작성자 <span style={{ color: 'red' }}>*</span>
+              </span>
+              <input
+                type="test"
+                placeholder="작성자를 입력해주세요"
+                {...props.register('writer')}
+              />
+              <span className="errorMessage">
+                {props.formState.errors?.writer?.message}
+              </span>
+            </div>
+          )}
+
+          {props.accessToken ? (
+            <></>
           ) : (
             <>
               <div>
@@ -121,7 +117,9 @@ export default function BoardWriteUI(props) {
             <ToastEditorPage
               contents={props.contents}
               setContents={props.setContents}
-              onClickSubmitBoard={props.onClickSubmitBoard}
+              defaultValue={
+                props.isEdit ? props.qtBoardEditData?.fetchQtBoard.contents : ''
+              }
             />
           </div>
           <span className="errorMessage" style={{ margin: '0' }}>

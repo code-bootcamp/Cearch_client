@@ -1,5 +1,5 @@
 import * as CH from './Header.styles'
-
+import MuiBottomNavigationAction from '@mui/material/BottomNavigationAction'
 import Box from '@mui/material/Box'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
@@ -14,8 +14,34 @@ import SearchIcon from '@mui/icons-material/Search'
 import LogoPage from '../../../../commons/libraries/Logo'
 import WhiteLogoPage from '../../../../commons/libraries/WhiteLogo'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
+import { useRouter } from 'next/router'
+import { useState, useEffect, useRef } from 'react'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+
+import { styled } from '@mui/material/styles'
+
+const NavButton = styled(BottomNavigationAction)(`
+  color: gray;
+  /* &.Mui-selected {
+    color: ${(props: { isSelected: boolean }) => props.isSelected && '#FFA24B'};
+  } */
+  &.Mui-selected {
+    color: #FFA24B;
+  }
+`)
 
 export default function LayoutHeaderUI(props) {
+  // const [selected, setSelected] = useState(false)
+  // const router = useRouter()
+  // const currentPage = router.asPath
+  // useEffect(() => {
+  //   const A = () => {
+  //     if (currentPage === localStorage.getItem('class')) setSelected(true)
+  //     else setSelected(false)
+  //   }
+  //   A()
+  // }, [selected])
+  // console.log(selected)
   return (
     <CH.Header isTop={props.isTop}>
       <div>
@@ -32,37 +58,36 @@ export default function LayoutHeaderUI(props) {
                 onChange={(event, newValue) => {
                   props.setValue(newValue)
                 }}
-                sx={{ bgcolor: '#FFA24B' }}
+                sx={{
+                  bgcolor: 'white',
+                  borderTop: '3px solid #FFA24B',
+                  paddingRight: '10px',
+                }}
               >
-                <BottomNavigationAction
+                <NavButton
                   label="Home"
                   icon={<HomeOutlinedIcon />}
                   onClick={props.onClickMoveToHome}
-                  sx={{ color: 'white' }}
                 />
-                <BottomNavigationAction
+                <NavButton
                   label="Class"
                   icon={<SchoolOutlinedIcon />}
                   onClick={props.onClickMoveToClass}
-                  sx={{ color: 'white' }}
                 />
-                <BottomNavigationAction
+                <NavButton
                   label="Mentor"
                   icon={<GroupsOutlinedIcon />}
                   onClick={props.onClickMoveToMentor}
-                  sx={{ color: 'white' }}
                 />
-                <BottomNavigationAction
+                <NavButton
                   label="Question"
                   icon={<LightbulbOutlinedIcon />}
                   onClick={props.onClickMoveToBoards}
-                  sx={{ color: 'white' }}
                 />
-                <BottomNavigationAction
+                <NavButton
                   label="myPage"
                   icon={<ContactPageIcon />}
                   onClick={props.onClickMoveToMyPage}
-                  sx={{ color: 'white' }}
                 />
               </BottomNavigation>
             </Box>
@@ -121,11 +146,13 @@ export default function LayoutHeaderUI(props) {
             </Modal>
             <CH.Login
               onClick={
-                props.data ? props.onClickLogout : props.onClickMoveToLogin
+                props.accessToken
+                  ? props.onClickLogout
+                  : props.onClickMoveToLogin
               }
               isTop={props.isTop}
             >
-              {props.data ? '로그아웃' : '로그인'}
+              {props.accessToken ? '로그아웃' : '로그인'}
             </CH.Login>
           </div>
         </div>

@@ -16,13 +16,14 @@ import styled from '@emotion/styled'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import ReplyIcon from '@mui/icons-material/Reply'
+import { breakPoints } from '../../styles/media'
 
 const ButtonReplyIcon = styled(ReplyIcon)`
-  margin-right: 5px;
+  /* margin-right: 5px; */
   color: #ffa24b;
 `
 const ButtonEditIcon = styled(EditIcon)`
-  margin-right: 5px;
+  /* margin-right: 5px; */
   color: #ffa24b;
 `
 const ButtonDeleteIcon = styled(DeleteIcon)`
@@ -33,8 +34,8 @@ export default function ChakraModalForComment(props) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <ChakraProvider>
-      <Button onClick={onOpen} bg="white">
-        {props.id ? (
+      <Button onClick={onOpen} bg="white" padding="0px !important" width="5px">
+        {props.name ? (
           <ButtonReplyIcon />
         ) : props.isEdit ? (
           <ButtonEditIcon />
@@ -47,14 +48,17 @@ export default function ChakraModalForComment(props) {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
-            {props.id ? '댓글 등록' : props.isEdit ? '수정하기' : '삭제하기'}
+            {props.name ? '답글 등록' : props.isEdit ? '수정하기' : '삭제하기'}
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {props.id ? (
-              '댓글을 등록하시겠습니까?'
+            {props.name ? (
+              '답글을 등록하시겠습니까?'
             ) : props.isEdit ? (
-              <Textarea placeholder="수정할 내용을 입력하세요" height="auto" />
+              <Textarea
+                placeholder="수정할 내용을 입력하세요"
+                onChange={props.onChangeEditComments}
+              />
             ) : (
               '댓글을 삭제하시겠습니까?'
             )}
@@ -64,11 +68,12 @@ export default function ChakraModalForComment(props) {
               취소
             </Button>
             <Button
+              id={props.id}
               variant="ghost"
               onClick={
-                props.id
+                props.name
                   ? () => {
-                      props.editComment()
+                      props.replyComment()
                       onClose()
                     }
                   : props.isEdit
@@ -76,7 +81,7 @@ export default function ChakraModalForComment(props) {
                   : props.deleteComment
               }
             >
-              {props.id ? '등록하기' : props.isEdit ? '수정하기' : '삭제하기'}
+              {props.name ? '등록하기' : props.isEdit ? '수정하기' : '삭제하기'}
             </Button>
           </ModalFooter>
         </ModalContent>

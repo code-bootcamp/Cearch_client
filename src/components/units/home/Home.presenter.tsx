@@ -180,9 +180,7 @@ export default function HomeUI(props) {
     return (
       <SwiperSlide key={el.id}>
         <CH.BoardTop>
-          <div>
-            <img src={el.user.imageUrl} />
-          </div>
+          <div>{/* <img src={el.user.imageUrl} /> */}</div>
           <span>{el.name}</span>
         </CH.BoardTop>
         <CH.BoardBottom>

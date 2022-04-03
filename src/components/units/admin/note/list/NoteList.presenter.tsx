@@ -1,89 +1,9 @@
 import * as CH from './NoteList.styles'
 import { v4 as uuidv4 } from 'uuid'
+import { DateToString } from '../../../../../commons/libraries/utils/utils'
+import Pagination from '../../../../commons/pagination/pagination'
 
 export default function NoteListUI(props) {
-  const testCode = [
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-    {
-      division: '공지',
-      title:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      contents:
-        '안녕하세요. C`earch 운영팀입니다. 안녕하세요. C`earch 운영팀입니다.',
-      createAt: '2022-03-21',
-    },
-  ]
   return (
     <CH.Wrapper>
       <CH.NoteHeader>
@@ -100,18 +20,29 @@ export default function NoteListUI(props) {
           <span>날짜</span>
         </CH.ContentsHeader>
         <CH.ContentsBody>
-          {testCode.map((el, index) => (
-            <CH.NoteWrapper key={uuidv4()} onClick={props.onClickNoteDetail}>
+          {props.data?.fetchNotices.map((el, index) => (
+            <CH.NoteWrapper
+              key={uuidv4()}
+              onClick={props.onClickNoticeDetail}
+              id={el.id}
+            >
               <div>{index + 1}</div>
               <CH.NoteTitle>{el.title}</CH.NoteTitle>
               <CH.NoteContents>{el.contents}</CH.NoteContents>
-              <CH.NoteCreatedAt>{el.createAt}</CH.NoteCreatedAt>
+              <CH.NoteCreatedAt>
+                {el.updatedAt !== el.createdAt
+                  ? `${DateToString(el.updatedAt)} (수정)`
+                  : `${DateToString(el.createdAt)}`}
+              </CH.NoteCreatedAt>
             </CH.NoteWrapper>
           ))}
         </CH.ContentsBody>
       </CH.ContentsWrapper>
       <CH.ContentsFooter>
-        <div> {`< 1 2 3 4 5 6 >`}</div>
+        <Pagination
+          refetch={props.refetch}
+          counts={props.noticeCount?.fetchAllNoticeCount}
+        />
       </CH.ContentsFooter>
     </CH.Wrapper>
   )
