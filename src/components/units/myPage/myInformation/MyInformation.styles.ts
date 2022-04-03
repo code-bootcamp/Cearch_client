@@ -46,6 +46,16 @@ export const TopRow = styled.div`
   padding-top: 20px;
 `
 
+export const TopRowLabel = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 16px;
+  align-items: center;
+  color: #333333;
+`
+
 export const RowLabel = styled.div`
   width: 136px;
   margin-right: 85px;
@@ -71,18 +81,37 @@ export const InputBackground = styled.div`
   }
 `
 
-export const TopInput = styled.input`
-  width: 524px;
-  height: 60px;
-  background-color: white;
-  border: 1px solid #bdbdbd;
-  border-radius: 3px;
-  padding: 0px 15px 0px 14px;
-  @media ${breakPoints.tablet} {
-    width: 100%;
+export const TopInput = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  > input {
+    width: 524px;
+    height: 60px;
+    background-color: white;
+    border: 1px solid #bdbdbd;
+    border-radius: 3px;
+    padding: 0px 15px 0px 14px;
+    @media ${breakPoints.tablet} {
+      width: 100%;
+    }
+    @media ${breakPoints.mobile} {
+      width: 100%;
+    }
   }
-  @media ${breakPoints.mobile} {
-    width: 100%;
+`
+
+export const CheckButton = styled.button`
+  width: 100%;
+  height: 60px;
+  border: 1px solid #ffa24b;
+  color: #ffa24b;
+  background-color: #ffffff;
+  font-weight: 700;
+  :hover {
+    cursor: pointer;
+    background-color: #ffa24b;
+    color: #ffffff;
   }
 `
 
@@ -110,6 +139,7 @@ export const TextArea = styled.textarea`
   }
   @media ${breakPoints.mobile} {
     width: 100%;
+    padding: 25px;
   }
 `
 export const SubmitButton = styled.button`
@@ -131,7 +161,29 @@ export const SubmitButton = styled.button`
     width: 100%;
   }
 `
-
+export const FileWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 50px;
+`
+export const MentorApplyButton = styled.button`
+  width: 745px;
+  height: 67px;
+  border: 0px none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #ffa24b;
+  :hover {
+    cursor: pointer;
+  }
+  @media ${breakPoints.tablet} {
+    width: 100%;
+  }
+  @media ${breakPoints.mobile} {
+    width: 100%;
+  }
+`
 export const Top = styled.div`
   display: flex;
   flex-direction: row;
@@ -154,7 +206,6 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   display: flex;
-
   flex-direction: column;
   > div {
     margin-bottom: 13px;
@@ -200,35 +251,52 @@ export const PasswordButton = styled.button`
   border-radius: 25px;
   border: none;
   color: #ffffff;
+  :hover {
+    cursor: pointer;
+  }
+`
+export const ApplyButton = styled.button`
+  margin-top: 20px;
+  width: 136px;
+  height: 36px;
+  background: #ffa24b;
+  border-radius: 25px;
+  border: none;
+  color: #ffffff;
+  :hover {
+    cursor: pointer;
+  }
 `
 
 export const Genders = styled.div`
   display: flex;
   justify-content: space-between;
   width: 524px;
+  padding: 0px 100px;
   @media ${breakPoints.mobile} {
     width: 100%;
   }
 `
-export const GenderButton = styled.button`
-  width: 240px;
-  height: 45px;
-  border: 1px solid #9d9d9d;
-  border-radius: 10px;
-  background-color: #ffffff;
-  :hover {
-    background: #c4c4c4;
-    color: #f2f2f2;
-  }
-  .selected {
-    background: #c4c4c4;
-    color: #f2f2f2;
-  }
-  @media ${breakPoints.tablet} {
-    width: 45%;
-  }
+// export const GenderButton = styled.button`
+//   width: 240px;
+//   height: 45px;
+//   border: 1px solid #bdbdbd;
+//   border-radius: 10px;
+//   background-color: #ffffff;
+//   :hover {
+//     background: #ffa24b;
+//     color: #ffffff;
+//   }
+//   .selected {
+//     background: #ffa24b;
+//     color: #ffffff;
+//   }
 
-  @media ${breakPoints.mobile} {
-    width: 45%;
-  }
-`
+//   @media ${breakPoints.tablet} {
+//     width: 45%;
+//   }
+
+//   @media ${breakPoints.mobile} {
+//     width: 45%;
+//   }
+// `

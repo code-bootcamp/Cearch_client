@@ -123,6 +123,7 @@ export default function LayoutFooter() {
     { menu: '클래스', push: '/class' },
     { menu: '멘토', push: '/mentor' },
     { menu: '질문게시판', push: '/boards' },
+    { menu: '마이페이지', push: '/mypage' },
   ]
 
   const onClickMoveMenu = (index: number) => {

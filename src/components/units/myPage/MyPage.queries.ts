@@ -3,12 +3,19 @@ import { gql } from '@apollo/client'
 export const FETCH_USER = gql`
   query fetchUser {
     fetchUser {
-      SearchInModal
+      id
+      email
       name
-      role
       point
       imageUrl
-      interest
+      role
+      following
+      phoneNumber
+      interest {
+        linkedToLectureProductCategory {
+          categoryname
+        }
+      }
     }
   }
 `

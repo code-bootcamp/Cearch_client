@@ -30,7 +30,7 @@ export const HeadWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   @media ${breakPoints.tablet} {
     display: none;
   }
@@ -224,7 +224,7 @@ export const Menu = styled.div`
   }
 `
 export const Contents = styled.div`
-  width: 937px;
+  width: 80%;
   @media (min-width: 1025px) and (max-width: 1200px) {
     width: 80%;
   }

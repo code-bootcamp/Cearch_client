@@ -9,10 +9,9 @@ const REFRESH_ACCESS_TOKEN = gql`
 
 export async function getAccessToken() {
   try {
-    const graphqlClient = new GraphQLClient(
-      'http://api.localhost:3000/graphql',
-      { credentials: 'include' }
-    )
+    const graphqlClient = new GraphQLClient('http://localhost:3000/graphql', {
+      credentials: 'include',
+    })
     const result = await graphqlClient.request(REFRESH_ACCESS_TOKEN)
     const newAccessToken = result.refreshAccessToken
 

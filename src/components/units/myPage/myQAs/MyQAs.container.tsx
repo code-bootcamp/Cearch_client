@@ -8,9 +8,9 @@ export default function MyQAs() {
   const [currentTab, setCurrentTab] = useState(0)
 
   const menuArr = [
-    { name: 'ALL', content: <MyAllQA /> },
-    { name: '질문', content: <MyQuestions /> },
-    { name: '답변', content: <MyAnswers /> },
+    // { name: 'ALL', content: <MyAllQA /> },
+    { name: '나의 질문', content: <MyQuestions /> },
+    { name: '나의 답변', content: <MyAnswers /> },
   ]
 
   const selectMenuHandler = (index: number) => {

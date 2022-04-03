@@ -5,10 +5,12 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Head from 'next/head'
+import { getMyDateTime } from '../../../../commons/libraries/utils/utils'
+import { Modal, Button } from 'antd'
 
 export default function MyPointsUI(props) {
   return (
-    <div>
+    <>
       <Head>
         <script
           type="text/javascript"
@@ -19,6 +21,7 @@ export default function MyPointsUI(props) {
           src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
         ></script>
       </Head>
+
       <CH.Wrapper>
         <CH.HeadWrapper>
           <CH.HeadDivBox>
@@ -31,6 +34,7 @@ export default function MyPointsUI(props) {
                   onChange={props.onChangeDeposit}
                   label="금액을 선택해주세요."
                 >
+                  <MenuItem value={200}>200원</MenuItem>
                   <MenuItem value={10000}>10,000원</MenuItem>
                   <MenuItem value={50000}>50,000원</MenuItem>
                   <MenuItem value={100000}>100,000원</MenuItem>
@@ -64,7 +68,35 @@ export default function MyPointsUI(props) {
           나의 포인트
           <CH.MobilePointLabel>150,800 원</CH.MobilePointLabel>
           <CH.MobileButtonWrapper>
-            <CH.MobileButton>포인트충전</CH.MobileButton>
+            <CH.MobileButton onClick={props.showModal}>
+              포인트충전
+            </CH.MobileButton>
+            <Modal
+              centered
+              width={350}
+              title="충전할 금액을 선택해주세요"
+              visible={props.isModalVisible}
+              footer={[]}
+              onCancel={props.handleCancel}
+              cancelText="닫기"
+            >
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 166 }}>
+                <InputLabel>금액을 선택해주세요.</InputLabel>
+                <Select
+                  value={props.deposit}
+                  onChange={props.onChangeDeposit}
+                  label="금액을 선택해주세요."
+                >
+                  <MenuItem value={200}>200원</MenuItem>
+                  <MenuItem value={10000}>10,000원</MenuItem>
+                  <MenuItem value={50000}>50,000원</MenuItem>
+                  <MenuItem value={100000}>100,000원</MenuItem>
+                </Select>
+              </FormControl>
+              <CH.PointButton onClick={props.onClickPayment}>
+                충전하기
+              </CH.PointButton>
+            </Modal>
             <CH.Divider />
             <CH.MobileButton>포인트인출</CH.MobileButton>
           </CH.MobileButtonWrapper>
@@ -78,14 +110,16 @@ export default function MyPointsUI(props) {
               <CH.TableDetail>상세내역</CH.TableDetail>
               <CH.TablePrice>금액</CH.TablePrice>
             </CH.TableHead>
-            {props.pointsMinus.map((el: any, index: number) => (
-              <CH.TableRow key={index}>
-                <CH.TableDate>{el.date}</CH.TableDate>
-                <CH.TableDivision>{el.division}</CH.TableDivision>
-                <CH.TableDetail>{el.detail}</CH.TableDetail>
-                <CH.TablePrice>{el.price}</CH.TablePrice>
-              </CH.TableRow>
-            ))}
+            {props.PointMinusData?.fetchMyMinusWallet.map(
+              (el: any, index: number) => (
+                <CH.TableRow key={el.id}>
+                  <CH.TableDate>{getMyDateTime(el.createdAt)}</CH.TableDate>
+                  <CH.TableDivision>{el.division}</CH.TableDivision>
+                  <CH.TableDetail>{el.description}</CH.TableDetail>
+                  <CH.TablePrice>{el.point}</CH.TablePrice>
+                </CH.TableRow>
+              )
+            )}
           </CH.Table>
         </CH.PointsWithdraw>
         <CH.PointsCharge>
@@ -97,17 +131,17 @@ export default function MyPointsUI(props) {
               <CH.TableDetail>상세내역</CH.TableDetail>
               <CH.TablePrice>금액</CH.TablePrice>
             </CH.TableHead>
-            {props.pointsPlus.map((el: any, index: number) => (
-              <CH.TableRow key={index}>
-                <CH.TableDate>{el.date}</CH.TableDate>
+            {props.PointPlusData?.fetchMyPlusWallet.map((el: any) => (
+              <CH.TableRow key={el.id}>
+                <CH.TableDate>{getMyDateTime(el.createdAt)}</CH.TableDate>
                 <CH.TableDivision>{el.division}</CH.TableDivision>
-                <CH.TableDetail>{el.detail}</CH.TableDetail>
-                <CH.TablePrice>{el.price}</CH.TablePrice>
+                <CH.TableDetail>{el.description}</CH.TableDetail>
+                <CH.TablePrice>{el.point}</CH.TablePrice>
               </CH.TableRow>
             ))}
           </CH.Table>
         </CH.PointsCharge>
       </CH.Wrapper>
-    </div>
+    </>
   )
 }

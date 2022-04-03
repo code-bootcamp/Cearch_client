@@ -1,12 +1,20 @@
 import { gql } from '@apollo/client'
 
-export const FETCH_LECTURE_WITH_MENTEE = gql`
-  query fetchLectureWithMentee {
-    fetchLectureWithMentee {
+export const FETCH_LECTURE_WITH_MENTOR = gql`
+  query fetchLectureWithMentor {
+    fetchLectureWithMentor {
       id
       classTitle
+      classStartDate
+      classStartTime
       classMaxUser
-      classAppliedUser
+      # registration {
+      #   name
+      #   age
+      #   job
+      #   selfIntroduction
+      #   preQuestion
+      # }
     }
   }
 `

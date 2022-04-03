@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client'
 import CreatedClassesUI from './CreatedClasses.presenter'
-import { FETCH_LECTURE_WITH_MENTEE } from './CreatedClasses.queries'
+import { FETCH_LECTURE_WITH_MENTOR } from './CreatedClasses.queries'
 
 export default function CreatedClasses() {
   //그래프큐엘 확인할 것. 타입불러올것.
-  const { data: CreatedClassesData } = useQuery(FETCH_LECTURE_WITH_MENTEE)
-  console.log(CreatedClassesData)
+  const { data: CreatedClassesData } = useQuery(FETCH_LECTURE_WITH_MENTOR)
+  console.log('개설한강의', CreatedClassesData)
 
   // prettier-ignore
   const createdClasses = [
@@ -168,5 +168,5 @@ export default function CreatedClasses() {
     },
   ]
 
-  return <CreatedClassesUI createdClasses={createdClasses} />
+  return <CreatedClassesUI CreatedClassesData={CreatedClassesData} />
 }
