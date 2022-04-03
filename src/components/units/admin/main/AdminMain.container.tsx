@@ -11,7 +11,7 @@ import MentorPermissionDetailPage from '../../../../../pages/admin/mentorpermiss
 import ClassPermissionDetailPage from '../../../../../pages/admin/classpermission/[detail]'
 import LogoPage from '../../../../commons/libraries/Logo'
 
-export default function AdminMain() {
+export default function AdminMain(props) {
   const router = useRouter()
   // console.log(router.asPath)
   const [userData, setUserData] = useState(true)

@@ -44,7 +44,7 @@ export const BannerWrapper = styled.div`
     }
     > div:last-of-type {
       order: 1;
-      margin-bottom: 5vw;
+      margin-bottom: 3vw;
     }
   }
 `
@@ -72,13 +72,26 @@ export const Star = styled.div`
   .ant-rate-star:not(:last-child) {
     margin-right: 0;
   }
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    > span {
+      font-size: 0.875rem;
+    }
+  }
 `
 export const FlexEnd = styled.div`
   display: flex;
   align-items: flex-end;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   > span {
     margin-left: 10px;
+  }
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    margin-bottom: 8px;
+    > span {
+      font-size: 0.875rem;
+    }
   }
 `
 export const FlexRow = styled.div`
@@ -131,6 +144,16 @@ export const DetailTop = styled.div`
     padding: 0;
     .title {
       font-size: 1.5rem;
+      margin-bottom: 0px;
+    }
+    .category {
+      margin-bottom: 5px;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    .title {
+      font-size: 1.2rem;
+      margin-bottom: 0px;
     }
   }
 `
@@ -185,7 +208,6 @@ export const ClassCategoryBorder = styled.div`
     }
     &:last-of-type {
       display: flex;
-      align-items: center;
       span:first-of-type {
         color: #ff6426;
         font-size: 1.5rem;
@@ -198,7 +220,7 @@ export const ClassCategoryBorder = styled.div`
     padding: 30px 0;
     > div {
       &:first-of-type {
-        padding: 0 40px;
+        padding: 0 60px;
         > span {
           font-size: 1.1rem;
         }
@@ -398,6 +420,14 @@ export const PriceBox = styled.div`
       }
     }
   }
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    .priceDivision {
+      span {
+        font-size: 1.3rem;
+      }
+    }
+  }
 `
 export const ClassContent = styled.div`
   @media ${breakPoints.tablet}, ${breakPoints.mobile} {
@@ -484,8 +514,6 @@ export const MentorContent = styled.div`
         font-size: 1rem;
         font-weight: 600;
       }
-      &:last-of-type {
-      }
     }
     > div {
       span {
@@ -509,5 +537,14 @@ export const ClassButton = styled.div`
 
   &:hover {
     background-color: #e09045;
+  }
+`
+
+export const MentorCategory = styled.div`
+  span {
+    font-weight: 600;
+    color: #222;
+    font-size: 0.875rem;
+    margin-right: 8px;
   }
 `

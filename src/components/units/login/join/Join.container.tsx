@@ -1,15 +1,15 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import JoinUI from './Join.presenter'
 import * as yup from 'yup'
-import { useMutation, useQuery } from '@apollo/client'
+import JoinUI from './Join.presenter'
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client'
 import {
   CREATE_USER,
   PHONE_CHECK_TOKEN,
   SEND_PHONE_NUMBER,
 } from './Join.queries'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import {
   IMutation,
   IMutationCreateUserArgs,
@@ -17,18 +17,28 @@ import {
   IQuery,
   IQueryPhoneCheckTokenArgs,
 } from '../../../../commons/types/generated/types'
-import { IFormValues } from './Join.types'
+// import { IFormValues } from './Join.types'
+import { message, Modal } from 'antd'
 
-import { useToast } from '@chakra-ui/react'
-import { ErrorOutlined } from '@mui/icons-material'
+export interface IFormValues {
+  email?: string
+  name?: string
+  phoneNumber?: string
+  password?: string
+  checkPassword?: string
+  gender?: string
+}
 
 const schema = yup.object().shape({
-  name: yup.string().max(5).required('필수입력입니다.'),
+  name: yup
+    .string()
+    .matches(/^[가-힣]+$/)
+    .required('필수입력입니다.'),
   email: yup
     .string()
     .matches(
-      /^\w[0-9a-zA-Z]+@\w[a-zA-Z]+\.[a-zA-Z]{2,3}$/,
-      '이메일 형식에 올바르지 않습니다'
+      /^([\w\.\_\-])*[a-zA-Z0-9]+([\w\.\_\-])*([a-zA-Z0-9])+([\w\.\_\-])+@([a-zA-Z0-9]+\.)+[a-zA-Z0-9]{2,8}$/,
+      '(.-_을 포함)이메일 형식에 올바르지 않습니다'
     )
     .required('필수입력입니다.'),
   phoneNumber: yup
@@ -54,7 +64,6 @@ const schema = yup.object().shape({
 
 export default function Join() {
   const router = useRouter()
-  const toast = useToast()
 
   const [createUser] = useMutation<
     Pick<IMutation, 'createUser'>,
@@ -65,25 +74,25 @@ export default function Join() {
     IMutationSendPhoneNumberArgs
   >(SEND_PHONE_NUMBER)
 
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [inputToken, setInputToken] = useState('')
-  const [isActive, setIsActive] = useState(false)
-
-  const { data: phoneCheckToken } = useQuery<
+  const [phoneCheckToken] = useLazyQuery<
     Pick<IQuery, 'phoneCheckToken'>,
     IQueryPhoneCheckTokenArgs
-  >(PHONE_CHECK_TOKEN, {
-    variables: {
-      phoneNumber,
-      inputToken,
-    },
-  })
+  >(PHONE_CHECK_TOKEN)
 
-  /* const autoHyphen = (target) => {
-    target.value = target.value
-      .replace(/[^0-9]/, '')
-      .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`)
-  } */
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [inputToken, setInputToken] = useState('')
+  const [trueToken, setTrueToken] = useState(false)
+  const [isActive, setIsActive] = useState(false)
+
+  /* 
+  useEffect(() => {
+    if (inputValue.length === 10) {
+      setInputValue(inputValue.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+    }
+    if (inputValue.length === 13) {
+      setInputValue(inputValue.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+    }
+  }, [inputValue]); */
 
   const { register, formState, handleSubmit } = useForm<IFormValues>({
     mode: 'onChange',
@@ -91,10 +100,58 @@ export default function Join() {
     resolver: yupResolver(schema),
   })
 
+  const onChangePhoneNumber = (e: ChangeEvent<HTMLInputElement>) => {
+    setPhoneNumber(e.target.value)
+  }
+  const onChangeToken = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputToken(e.target.value)
+  }
+
+  const onclickSendPhoneNumber = async () => {
+    console.log(phoneNumber)
+
+    const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/
+    if (checkNumber.test(phoneNumber)) {
+      try {
+        const result = await sendPhoneNumber({
+          variables: {
+            phoneNumber,
+          },
+        })
+
+        Modal.success({
+          content: '인증번호가 발송되었습니다.',
+        })
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+  }
+
+  const onClickTokenCheck = async () => {
+    const data = await phoneCheckToken({
+      variables: {
+        phoneNumber,
+        inputToken,
+      },
+    })
+
+    if (data.data.phoneCheckToken) {
+      Modal.success({
+        content: '인증이 완료되었습니다.',
+      })
+      setTrueToken(true)
+    } else {
+      Modal.error({
+        content: '인증번호가 일치하지 않습니다.',
+      })
+    }
+  }
+
   const onClickCreateUser = async (data) => {
     const { email, name, gender, phoneNumber, password } = data
 
-    if (email && password && name && phoneCheckToken) {
+    if (email && password && name && inputToken && trueToken) {
       setIsActive(true)
     }
 
@@ -111,53 +168,25 @@ export default function Join() {
         },
       })
 
-      toast({
-        title: `회원가입이 완료되었습니다.`,
-        status: 'success',
-        isClosable: true,
+      Modal.success({
+        content: '회원가입이 완료되었습니다.',
       })
-
       router.push('/login/login')
     } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  const onChangePhoneNumber = (e) => {
-    setPhoneNumber(e.target.value)
-  }
-  const onChangeToken = (e) => {
-    setInputToken(e.target.value)
-  }
-
-  const onclickSendPhoneNumber = async () => {
-    try {
-      await sendPhoneNumber({
-        variables: {
-          phoneNumber,
-        },
-      })
-
-      toast({
-        title: `인증번호가 발송되었습니다.`,
-        status: 'success',
-        isClosable: true,
-      })
-    } catch (error) {
-      console.log(error.message)
+      message.error(error.message)
     }
   }
 
   return (
     <JoinUI
-      // autoHyphen={autoHyphen}
       onClickCreateUser={onClickCreateUser}
       register={register}
       handleSubmit={handleSubmit}
       formState={formState}
-      onChangePhoneNumber={onChangePhoneNumber}
       onclickSendPhoneNumber={onclickSendPhoneNumber}
+      onChangePhoneNumber={onChangePhoneNumber}
       onChangeToken={onChangeToken}
+      onClickTokenCheck={onClickTokenCheck}
       isActive={isActive}
     />
   )

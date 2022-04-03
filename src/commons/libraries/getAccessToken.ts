@@ -15,8 +15,6 @@ export async function getAccessToken() {
     const result = await graphqlClient.request(REFRESH_ACCESS_TOKEN)
     const newAccessToken = result.refreshAccessToken
 
-    console.log(newAccessToken)
-
     return newAccessToken
   } catch (error: any) {
     console.log(error.message)

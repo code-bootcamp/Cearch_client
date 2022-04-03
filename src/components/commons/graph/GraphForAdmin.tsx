@@ -20,51 +20,6 @@ const getDate = {
   SevenDayBefore: getRecentDate('칠일전'),
 }
 
-const data = [
-  {
-    name: getDate.SevenDayBefore,
-    newUser: 33,
-    newQuestion: 79,
-    permittedMentor: 3,
-  },
-  {
-    name: getDate.SixDayBefore,
-    newUser: 24,
-    newQuestion: 45,
-    permittedMentor: 5,
-  },
-  {
-    name: getDate.FiveDayBefore,
-    newUser: 17,
-    newQuestion: 120,
-    permittedMentor: 8,
-  },
-  {
-    name: getDate.fourDayBefore,
-    newUser: 6,
-    newQuestion: 37,
-    permittedMentor: 4,
-  },
-  {
-    name: getDate.ThreeDayBefore,
-    newUser: 55,
-    newQuestion: 55,
-    permittedMentor: 7,
-  },
-  {
-    name: getDate.TwoDayBefore,
-    newUser: 49,
-    newQuestion: 23,
-    permittedMentor: 10,
-  },
-  {
-    name: getDate.OneDayBefore,
-    newUser: 72,
-    newQuestion: 46,
-    permittedMentor: 6,
-  },
-]
-
 const Wrapper = styled.div`
   width: 100%;
 `
@@ -72,7 +27,52 @@ const Chart = styled(LineChart)`
   margin: 20px auto;
 `
 
-export default function GraphForAdmin() {
+export default function GraphForAdmin(props) {
+  const data = [
+    {
+      name: getDate.SevenDayBefore,
+      // newUser: props.newUserCount?.fetchNewPostCount,
+      newQuestion: props.newUserCount?.fetchNewPostCount,
+      permittedMentor: 3,
+    },
+    {
+      name: getDate.SixDayBefore,
+      newUser: 24,
+      newQuestion: props.newUserCount?.fetchNewPostCount,
+      permittedMentor: 5,
+    },
+    {
+      name: getDate.FiveDayBefore,
+      newUser: 17,
+      newQuestion: 120,
+      permittedMentor: 8,
+    },
+    {
+      name: getDate.fourDayBefore,
+      newUser: 6,
+      newQuestion: props.newUserCount?.fetchNewPostCount,
+      permittedMentor: 4,
+    },
+    {
+      name: getDate.ThreeDayBefore,
+      newUser: 55,
+      newQuestion: props.newUserCount?.fetchNewPostCount,
+      permittedMentor: 7,
+    },
+    {
+      name: getDate.TwoDayBefore,
+      newUser: 49,
+      newQuestion: props.newUserCount?.fetchNewPostCount,
+      permittedMentor: 10,
+    },
+    {
+      name: getDate.OneDayBefore,
+      newUser: 72,
+      newQuestion: props.newUserCount?.fetchNewPostCount,
+      permittedMentor: 6,
+    },
+  ]
+
   return (
     <Wrapper>
       <Chart

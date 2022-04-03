@@ -7,16 +7,17 @@ export const CREATE_NON_MEMBERS_QT_BOARD = gql`
       title
       contents
       name
-      point
       likescount
       createdAt
       updatedAt
-      deletedAt
-      user
-      comments
-      likes
-      image
-      qtTags
+      commentsCount
+      likes {
+        isLike
+        createdAt
+      }
+      qtTags {
+        tagname
+      }
     }
   }
 `
@@ -33,16 +34,17 @@ export const UPDATE_NON_MEMBERS_QT_BOARD = gql`
       title
       contents
       name
-      point
       likescount
       createdAt
       updatedAt
-      deletedAt
-      user
-      comments
-      likes
-      image
-      qtTags
+      commentsCount
+      likes {
+        isLike
+        createdAt
+      }
+      qtTags {
+        tagname
+      }
     }
   }
 `
@@ -54,16 +56,17 @@ export const CREATE_QT_BOARD = gql`
       title
       contents
       name
-      point
       likescount
       createdAt
       updatedAt
-      deletedAt
-      user
-      comments
-      likes
-      image
-      qtTags
+      commentsCount
+      likes {
+        isLike
+        createdAt
+      }
+      qtTags {
+        tagname
+      }
     }
   }
 `
@@ -74,16 +77,17 @@ export const UPDATE_QT_BOARD = gql`
       title
       contents
       name
-      point
       likescount
       createdAt
       updatedAt
-      deletedAt
-      user
-      comments
-      likes
-      image
-      qtTags
+      commentsCount
+      likes {
+        isLike
+        createdAt
+      }
+      qtTags {
+        tagname
+      }
     }
   }
 `

@@ -1,73 +1,118 @@
 import { gql } from '@apollo/client'
 
-export const FETCH_MENTOR = gql`
-  query fetchMentor($page: Float!) {
-    fetchMentor(page: $page) {
+export const FETCH_MOST_ANSWER_MENTOR = gql`
+  query fetchMostAnswerMentor {
+    fetchMostAnswerMentor {
       id
       companyName
       department
+      selfIntro
       user {
         name
-        imageUrl
       }
       work {
-        id
-        category
+        category {
+          categoryname
+        }
       }
     }
   }
 `
-
-export const FETCH_LECTURE_PRODUCTS = gql`
-  query fetchlectureProducts {
-    fetchlectureProducts {
+export const FETCH_MOST_RECOMMEND_MENTOR = gql`
+  query fetchMostRecommendMentor {
+    fetchMostRecommendMentor {
       id
-      classTitle
-      classDescription
-      classRunTime
-      classOpen
-      rating
-      classCategory
-      image {
-        id
-        url
+      companyName
+      department
+      selfIntro
+      user {
+        name
       }
-      MentoInfo {
-        companyName
-        user {
-          id
-          name
+      work {
+        category {
+          categoryname
         }
       }
     }
   }
 `
 
-export const FETCH_LECTURE_RATING = gql`
-  query fetchLectureRating {
-    fetchLectureRating {
+export const FETCH_NEW_CLASSES = gql`
+  query fetchNewClasses {
+    fetchNewClasses {
       id
       classTitle
       classDescription
-      classRunTime
-      classOpen
+      classCurriculum
+      classPrice
+      classMaxUser
+      classStartDate
+      classStartTime
       rating
-      classCategory
-      image {
+      joinproductandproductcategory {
         id
-        url
+        lectureproductcategory {
+          categoryname
+        }
       }
-      MentoInfo {
+      mentor {
         companyName
         user {
-          id
           name
         }
       }
     }
   }
 `
+export const FETCH_POPULAR_CLASS = gql`
+  query fetchPopularClass {
+    fetchPopularClass {
+      id
+      classTitle
+      classDescription
+      classCurriculum
+      classPrice
+      classMaxUser
+      classStartDate
+      classStartTime
+      rating
+      joinproductandproductcategory {
+        id
+        lectureproductcategory {
+          categoryname
+        }
+      }
+      mentor {
+        companyName
+        user {
+          name
+        }
+      }
+    }
+  }
+`
+export const FETCH_LECTURE_REVIEWS = gql`
+  query fetchLectureReviews($lectureId: String!) {
+    fetchLectureReviews(lectureId: $lectureId) {
+      id
+      reviewContents
+    }
+  }
+`
 
+export const FETCH_QT_BOARDS = gql`
+  query fetchQtBoards($page: Float!) {
+    fetchQtBoards(page: $page) {
+      id
+      title
+      contents
+      name
+      likescount
+      commentsCount
+      createdAt
+    }
+  }
+`
 export const FETCH_LIKE_POST = gql`
   query fetchLikePost {
     fetchLikePost {
@@ -76,10 +121,8 @@ export const FETCH_LIKE_POST = gql`
       contents
       name
       likescount
+      commentsCount
       createdAt
-      user {
-        imageUrl
-      }
     }
   }
 `

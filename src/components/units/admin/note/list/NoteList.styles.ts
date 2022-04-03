@@ -13,6 +13,7 @@ export const NoteHeader = styled.div`
     font-size: 1.875rem;
   }
 `
+
 export const WriteNoteButton = styled.button`
   background-color: #ffa24b;
   color: white;

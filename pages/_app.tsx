@@ -22,16 +22,21 @@ import {
 interface IGlobalContext {
   accessToken?: String
   setAccessToken?: Dispatch<SetStateAction<string>>
+  checkedCategory?: String
+  setCheckedCategory?: Dispatch<SetStateAction<string>>
 }
 
 export const GlobalContext = createContext<IGlobalContext>({})
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
+  const [checkedCategory, setCheckedCategory] = useState('')
 
   const value = {
     accessToken,
     setAccessToken,
+    checkedCategory,
+    setCheckedCategory,
   }
 
   useEffect(() => {

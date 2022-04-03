@@ -4,7 +4,10 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline'
 import { Rate } from 'antd'
 import { Link } from 'react-scroll'
 import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1'
-import { getPrice } from '../../../../commons/libraries/utils/utils'
+import {
+  getPrice,
+  ratingRound,
+} from '../../../../commons/libraries/utils/utils'
 
 export default function classNameDetailUI(props) {
   return (
@@ -16,23 +19,56 @@ export default function classNameDetailUI(props) {
           </CH.ClassImg>
           <CH.DetailTop>
             <div>
-              <p className="category">카테고리</p>
+              <p className="category">
+                {props.data?.fetchLectureProduct?.joinproductandproductcategory.map(
+                  (el) => (
+                    <span key={el.id} style={{ marginRight: '8px' }}>
+                      {el.lectureproductcategory.categoryname}
+                    </span>
+                  )
+                )}
+              </p>
               <p className="title">
-                클래스클래스클래스클래클래스클래스클래스클래스클래스
+                {props.data?.fetchLectureProduct?.classTitle}
               </p>
               <CH.FlexEnd>
                 <CH.Star>
-                  <Rate allowHalf defaultValue={2.5} />
-                  <span>4.5 (평가자 수)</span>
+                  <Rate
+                    allowHalf
+                    value={props.data?.fetchLectureProduct?.rating}
+                    disabled
+                  />
+                  <span>
+                    {props.data?.fetchLectureProduct?.rating === 0
+                      ? 0
+                      : ratingRound(
+                          props.data?.fetchLectureProduct?.rating
+                        )}{' '}
+                    (
+                    {props.data?.fetchLectureProduct?.rating === 0
+                      ? 0
+                      : props.data?.fetchLectureReviews?.length}
+                    )
+                  </span>
                 </CH.Star>
-                <span>112개의 수강평</span>
+                <span>
+                  {props.data?.fetchLectureProduct?.rating === 0
+                    ? 0
+                    : props.data?.fetchLectureProduct?.reviews?.length}
+                  개의 수강평
+                </span>
               </CH.FlexEnd>
               <CH.FlexEnd>
                 <PersonOutlineIcon />
-                <span style={{ fontWeight: '600' }}>mentor</span>
+                <span style={{ fontWeight: '600' }}>
+                  {props.data?.fetchLectureProduct?.mentor.user.name}
+                </span>
               </CH.FlexEnd>
               <p style={{ marginBottom: '0px', fontWeight: '600' }}>
-                2000. 02. 02
+                <span style={{ marginRight: '8px' }}>
+                  {props.data?.fetchLectureProduct?.classStartDate}
+                </span>
+                <span>{props.data?.fetchLectureProduct?.classStartTime}</span>
               </p>
             </div>
           </CH.DetailTop>
@@ -43,11 +79,17 @@ export default function classNameDetailUI(props) {
             <div>
               <CH.PriceBox>
                 <div>
-                  <span>{getPrice(20000)}</span>
+                  <span>
+                    {getPrice(props.data?.fetchLectureProduct?.classPrice)}
+                  </span>
                   <span>원</span>
                 </div>
                 <div className="priceDivision">
-                  <span>월 </span> <span> {getPrice(Number('20000') / 5)}</span>
+                  <span>월 </span>{' '}
+                  <span>
+                    {' '}
+                    {getPrice(props.data?.fetchLectureProduct?.classPrice / 5)}
+                  </span>
                   <span>원</span>
                 </div>
                 <div className="installment">
@@ -57,7 +99,15 @@ export default function classNameDetailUI(props) {
               <div className="peopleBox">
                 <span>🔥</span>
                 <div>
-                  <span>마감까지</span> <span>9</span>
+                  <span>마감까지</span>{' '}
+                  <span>
+                    {console.log(
+                      props.data?.fetchLectureProduct?.classMaxUser - 10
+                    )}
+                    {console.log(props.data?.fetchLectureProduct?.appliedUser)}
+                    {props.data?.fetchLectureProduct?.classMaxUser -
+                      props.data?.fetchLectureProduct?.appliedUser}
+                  </span>
                   <span>자리 남음</span>
                   <p>다시 오지 않은 최저가, 바로 지금이에요!</p>
                 </div>
@@ -141,13 +191,21 @@ export default function classNameDetailUI(props) {
             </CH.MentorImg>
             <CH.MentorContent>
               <div>
-                <p>멘토 이름</p>
+                <p>{props.data?.fetchLectureProduct?.mentor.user.name}</p>
                 <div>
-                  <span>회사명</span>
+                  <span>
+                    {props.data?.fetchLectureProduct?.mentor.companyName}
+                  </span>
                   <span> / </span>
-                  <span>부서</span>
+                  <span>
+                    {props.data?.fetchLectureProduct?.mentor.department}
+                  </span>
                 </div>
-                <p>업무파트</p>
+                <CH.MentorCategory>
+                  {props.data?.fetchLectureProduct?.mentor.work.map((el) => (
+                    <span key={el.id}>{el.category.categoryname}</span>
+                  ))}
+                </CH.MentorCategory>
               </div>
             </CH.MentorContent>
           </CH.FlexRow>
@@ -160,46 +218,25 @@ export default function classNameDetailUI(props) {
                 <span>이런 걸</span>
                 <span>배워요!</span>
               </div>
+
               <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <div>
-                  <span>✓</span>
-                  <span>카테고리</span>
-                </div>
-                <div>
-                  <span>✓</span>
-                  <span>카테고리</span>
-                </div>
+                {props.data?.fetchLectureProduct?.joinproductandproductcategory.map(
+                  (el) => (
+                    <div key={el.id}>
+                      <span>✓</span>
+                      <span>{el.lectureproductcategory.categoryname}</span>
+                    </div>
+                  )
+                )}
               </div>
             </CH.ClassCategoryBorder>
             <p>클래스 소개</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-              quod consectetur molestias, earum aspernatur assumenda alias sequi
-              enim rem odio omnis repellat!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-              quod consectetur molestias, earum aspernatur assumenda alias sequi
-              enim rem odio omnis repellat!
-            </p>
+            <p>{props.data?.fetchLectureProduct?.classDescription}</p>
           </CH.DetailClassIntro>
 
           <CH.DetailCurriculum id="classCurriculum">
             <p>커리큘럼</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-              quod consectetur molestias, earum aspernatur assumenda alias sequi
-              enim rem odio omnis repellat!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-              blanditiis, eos obcaecati asperiores distinctio adipisci magni ad
-              quod consectetur molestias, earum aspernatur assumenda alias sequi
-              enim rem odio omnis repellat!
-            </p>
+            <p>{props.data?.fetchLectureProduct?.classCurriculum}</p>
           </CH.DetailCurriculum>
 
           <CH.DetailReview id="classReview">
@@ -207,81 +244,35 @@ export default function classNameDetailUI(props) {
               <p>클래스 후기</p>
               <div className="star" style={{ alignItems: 'flex-end' }}>
                 <StarRoundedIcon style={{ color: 'gold' }} />
-                <span>4.5 (평가자 수)</span>
+                <span>
+                  {props.data?.fetchLectureProduct?.rating} (
+                  {props.data?.fetchLectureProduct?.rating === 0
+                    ? 0
+                    : props.data?.fetchLectureReviews?.length}
+                  )
+                </span>
               </div>
             </div>
-            <CH.ReviewWrapper>
-              <CH.ReviewUser>
-                <div className="userImg">
-                  <img src="/images/profile.png" />
-                </div>
-                <div className="userDetail">
-                  <div className="profile">
-                    <CH.Star>
-                      <Rate disabled defaultValue={3} />
-                      <span>4.5</span>
-                    </CH.Star>
-                    <span>◯◯◯</span>
+            {props.data?.fetchLectureProduct?.reviews?.map((el) => (
+              <CH.ReviewWrapper key={el.id}>
+                <CH.ReviewUser>
+                  <div className="userImg">
+                    <img src="/images/profile.png" />
                   </div>
-                </div>
-              </CH.ReviewUser>
-              <div className="contents">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Veniam, totam fuga sit delectus neque expedita, iusto
-                reprehenderit voluptatibus laboriosam quisquam obcaecati id
-                minus assumenda architecto rerum deserunt iure possimus
-                reiciendis?
-              </div>
-              <span className="reviewName">2000-02-02</span>
-            </CH.ReviewWrapper>
-            <CH.ReviewWrapper>
-              <CH.ReviewUser>
-                <div className="userImg">
-                  <img src="/images/profile.png" />
-                </div>
-                <div className="userDetail">
-                  <div className="profile">
-                    <CH.Star>
-                      <Rate disabled defaultValue={3} />
-                      <span>4.5</span>
-                    </CH.Star>
-                    <span>◯◯◯</span>
+                  <div className="userDetail">
+                    <div className="profile">
+                      <CH.Star>
+                        <Rate disabled defaultValue={el.starRating} />
+                        <span>{el.starRating}</span>
+                      </CH.Star>
+                      <span>{el.user.name}</span>
+                    </div>
                   </div>
-                </div>
-              </CH.ReviewUser>
-              <div className="contents">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Veniam, totam fuga sit delectus neque expedita, iusto
-                reprehenderit voluptatibus laboriosam quisquam obcaecati id
-                minus assumenda architecto rerum deserunt iure possimus
-                reiciendis?
-              </div>
-              <span className="reviewName">2000-02-02</span>
-            </CH.ReviewWrapper>
-            <CH.ReviewWrapper>
-              <CH.ReviewUser>
-                <div className="userImg">
-                  <img src="/images/profile.png" />
-                </div>
-                <div className="userDetail">
-                  <div className="profile">
-                    <CH.Star>
-                      <Rate disabled defaultValue={3} />
-                      <span>4.5</span>
-                    </CH.Star>
-                    <span>◯◯◯</span>
-                  </div>
-                </div>
-              </CH.ReviewUser>
-              <div className="contents">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Veniam, totam fuga sit delectus neque expedita, iusto
-                reprehenderit voluptatibus laboriosam quisquam obcaecati id
-                minus assumenda architecto rerum deserunt iure possimus
-                reiciendis?
-              </div>
-              <span className="reviewName">2000-02-02</span>
-            </CH.ReviewWrapper>
+                </CH.ReviewUser>
+                <div className="contents">{el.reviewContents}</div>
+                <span className="reviewName">{el.createdAt}</span>
+              </CH.ReviewWrapper>
+            ))}
           </CH.DetailReview>
         </CH.ClassDetail>
 
@@ -289,16 +280,27 @@ export default function classNameDetailUI(props) {
           <div>
             <CH.ClassInfo>
               <div>
-                <p className="title">클래스 제목</p>
-                <p className="startDate">2000. 02. 02</p>
+                <p className="title">
+                  {props.data?.fetchLectureProduct.classTitle}
+                </p>
+                <p className="startDate">
+                  {props.data?.fetchLectureProduct.classStartDate}
+                </p>
                 <CH.PriceBox>
                   <div>
-                    <span>{getPrice(20000)}</span>
+                    <span>
+                      {getPrice(props.data?.fetchLectureProduct?.classPrice)}
+                    </span>
                     <span>원</span>
                   </div>
                   <div className="priceDivision">
                     <span>월 </span>{' '}
-                    <span> {getPrice(Number('20000') / 5)}</span>
+                    <span>
+                      {' '}
+                      {getPrice(
+                        props.data?.fetchLectureProduct?.classPrice / 5
+                      )}
+                    </span>
                     <span>원</span>
                   </div>
                   <div className="installment">
@@ -377,13 +379,21 @@ export default function classNameDetailUI(props) {
               </CH.MentorImg>
               <CH.MentorContent>
                 <div>
-                  <p>멘토 이름</p>
+                  <p>{props.data?.fetchLectureProduct?.mentor.user.name}</p>
                   <div>
-                    <span>회사명</span>
+                    <span>
+                      {props.data?.fetchLectureProduct?.mentor.companyName}
+                    </span>
                     <span> / </span>
-                    <span>부서</span>
+                    <span>
+                      {props.data?.fetchLectureProduct?.mentor.department}
+                    </span>
                   </div>
-                  <p>업무파트</p>
+                  <CH.MentorCategory>
+                    {props.data?.fetchLectureProduct?.mentor.work.map((el) => (
+                      <span key={el.id}>{el.category.categoryname}</span>
+                    ))}
+                  </CH.MentorCategory>
                 </div>
               </CH.MentorContent>
             </CH.FlexRow>

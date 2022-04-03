@@ -15,19 +15,19 @@ import {
   DELETE_NON_MEMBERS_QT_BOARD,
   DELETE_QT_BOARD,
   FETCH_QT_BOARD,
-  SELECT_BEST_COMMENTS,
   UPDATE_QT_LIKE,
 } from './BoardDetail.queries'
+import { notification } from 'antd'
 
 export default function BoardDetail(props) {
   const router = useRouter()
   const [password, setPassword] = useState('')
 
-  const { data: boardData } = useQuery<
+  const { data: boardData, refetch } = useQuery<
     Pick<IQuery, 'fetchQtBoard'>,
     IQueryFetchQtBoardArgs
-  >(FETCH_QT_BOARD)
-
+  >(FETCH_QT_BOARD, { variables: { postId: String(router.query.detail) } })
+  console.log(boardData)
   const [deleteNonMembersQtBoard] = useMutation<
     Pick<IMutation, 'deleteNonMembersQtBoard'>,
     IMutationDeleteNonMembersQtBoardArgs
@@ -37,11 +37,6 @@ export default function BoardDetail(props) {
     Pick<IMutation, 'deleteQtBoard'>,
     IMutationDeleteQtBoardArgs
   >(DELETE_QT_BOARD)
-
-  const [selectBestComments] = useMutation<
-    Pick<IMutation, 'selectBestComments'>,
-    IMutationSelectBestCommentsArgs
-  >(SELECT_BEST_COMMENTS)
 
   const [likeBoard] = useMutation<
     Pick<IMutation, 'updateQtLike'>,
@@ -55,9 +50,16 @@ export default function BoardDetail(props) {
           postId: String(router.query.detail),
         },
       })
-      alert('게시글 좋아요.')
+      notification.success({
+        message: '게시글 좋아요!',
+        top: 80,
+      })
+      refetch()
+      // alert('게시글 좋아요.')
     } catch (error) {
-      alert(`${error.message}`)
+      if (error.message === 'Unauthorized')
+        notification.error({ message: `로그인이 필요합니다!`, top: 80 })
+      else notification.error({ message: `${error.message}`, top: 80 })
     }
   }
 
@@ -68,10 +70,10 @@ export default function BoardDetail(props) {
           postId: String(router.query.detail),
         },
       })
-      alert('게시글을 삭제했습니다.')
+      notification.success({ message: '게시글을 삭제했습니다.', top: 80 })
       router.push(`/boards`)
     } catch (error) {
-      alert(`${error.message}`)
+      notification.error({ message: `${error.message}`, top: 80 })
     }
   }
 
@@ -83,10 +85,10 @@ export default function BoardDetail(props) {
           password,
         },
       })
-      alert('게시글을 삭제했습니다.')
+      notification.success({ message: '게시글을 삭제했습니다.', top: 80 })
       router.push(`/boards`)
     } catch (error) {
-      alert(`${error.message}`)
+      notification.error({ message: `${error.message}`, top: 80 })
     }
   }
 
@@ -100,6 +102,7 @@ export default function BoardDetail(props) {
   return (
     <BoardDetailUI
       data={props.data}
+      refetch={refetch}
       boardData={boardData}
       deleteBoard={deleteBoard}
       deleteBoardNonMember={deleteBoardNonMember}

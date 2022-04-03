@@ -2,8 +2,12 @@ import styled from '@emotion/styled'
 import { breakPoints } from '../../../commons/styles/media'
 
 export const Wrapper = styled.div`
+  input {
+    display: none;
+  }
+
   #mainCategory {
-    padding: 40px 30px 30px;
+    padding: 30px;
     border: 1px solid #ffa24b;
     border-radius: 10px;
 
@@ -22,22 +26,6 @@ export const Wrapper = styled.div`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      @media ${breakPoints.tablet} {
-        > svg {
-          height: 8vw !important;
-        }
-        > span {
-          font-size: 0.5rem;
-        }
-      }
-      @media ${breakPoints.mobile} {
-        > svg {
-          height: 8vw !important;
-        }
-        > span {
-          font-size: 0.8rem !important;
-        }
-      }
       > svg {
         height: 60px;
       }
@@ -70,6 +58,29 @@ export const Wrapper = styled.div`
       > span {
         margin-top: 10px;
         font-size: 1rem;
+      }
+    }
+
+    @media ${breakPoints.tablet} {
+      .categoryColumn {
+        > svg {
+          height: 8vw !important;
+        }
+      }
+    }
+    @media ${breakPoints.mobile} {
+      padding: 35px 10px 30px;
+
+      .swiper-wrapper {
+        height: 70px;
+      }
+      .categoryColumn {
+        > svg {
+          /* height: 10vw !important; */
+        }
+        > span {
+          font-size: 0.8rem !important;
+        }
       }
     }
   }

@@ -2,33 +2,50 @@ import HomeUI from './Home.presenter'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import {
-  FETCH_LECTURE_RATING,
-  FETCH_MENTOR,
   FETCH_LIKE_POST,
-  FETCH_LECTURE_PRODUCTS,
+  FETCH_QT_BOARDS,
+  FETCH_POPULAR_CLASS,
+  FETCH_MOST_ANSWER_MENTOR,
+  FETCH_MOST_RECOMMEND_MENTOR,
+  FETCH_NEW_CLASSES,
 } from './Home.queries'
-import { MouseEvent } from 'react'
+import { MouseEvent, useContext, useEffect, useState } from 'react'
 import {
   IQuery,
   IQueryFetchLectureProductArgs,
+  IQueryFetchLectureReviewsArgs,
   IQueryFetchMentorArgs,
+  IQueryFetchQtBoardsArgs,
 } from '../../../commons/types/generated/types'
+import { GlobalContext } from '../../../../pages/_app'
 
 export default function Home() {
+  const { setCheckedCategory } = useContext(GlobalContext)
   const router = useRouter()
 
-  const { data: MentorListData } = useQuery<
-    Pick<IQuery, 'fetchMentor'>,
-    IQueryFetchMentorArgs
-  >(FETCH_MENTOR)
-  const { data: NewClassData } = useQuery<
-    Pick<IQuery, 'fetchlectureProducts'>,
-    IQueryFetchLectureProductArgs
-  >(FETCH_LECTURE_PRODUCTS)
+  useEffect(() => {
+    setCheckedCategory(null)
+  }, [])
+
+  const { data: MentorAnswerData } = useQuery(FETCH_MOST_ANSWER_MENTOR)
+  const { data: MentorRecommendData } = useQuery(FETCH_MOST_RECOMMEND_MENTOR)
+
+  console.log(MentorRecommendData)
+
+  const { data: NewClassData } = useQuery(FETCH_NEW_CLASSES)
   const { data: PopularClassData } =
-    useQuery<Pick<IQuery, 'fetchLectureRating'>>(FETCH_LECTURE_RATING)
+    useQuery<Pick<IQuery, 'fetchPopularClass'>>(FETCH_POPULAR_CLASS)
+
   const { data: LikeBoardsData } =
     useQuery<Pick<IQuery, 'fetchLikePost'>>(FETCH_LIKE_POST)
+  const { data: NewBoardsData } = useQuery<
+    Pick<IQuery, 'fetchQtBoards'>,
+    IQueryFetchQtBoardsArgs
+  >(FETCH_QT_BOARDS, {
+    variables: {
+      page: 1,
+    },
+  })
 
   const onClickMoveToMentorDetail = (e: MouseEvent<HTMLDivElement>) => {
     router.push(`/mentor/${e.currentTarget.id}`)
@@ -36,14 +53,19 @@ export default function Home() {
   const onClickMoveToClassDetail = (e: MouseEvent<HTMLDivElement>) => {
     router.push(`/class/${e.currentTarget.id}`)
   }
+
   return (
-    <HomeUI
-      MentorListData={MentorListData}
-      NewClassData={NewClassData}
-      PopularClassData={PopularClassData}
-      LikeBoardsData={LikeBoardsData}
-      onClickMoveToMentorDetail={onClickMoveToMentorDetail}
-      onClickMoveToClassDetail={onClickMoveToClassDetail}
-    />
+    <>
+      <HomeUI
+        MentorAnswerData={MentorAnswerData}
+        MentorRecommendData={MentorRecommendData}
+        NewClassData={NewClassData}
+        PopularClassData={PopularClassData}
+        NewBoardsData={NewBoardsData}
+        LikeBoardsData={LikeBoardsData}
+        onClickMoveToMentorDetail={onClickMoveToMentorDetail}
+        onClickMoveToClassDetail={onClickMoveToClassDetail}
+      />
+    </>
   )
 }

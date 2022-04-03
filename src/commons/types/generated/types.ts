@@ -144,7 +144,9 @@ export type ILectureOrder = {
 
 export type ILectureProduct = {
   __typename?: 'LectureProduct';
+
   aplliedUser?: Maybe<Scalars['Int']>;
+
   classCurriculum?: Maybe<Scalars['String']>;
   classDescription?: Maybe<Scalars['String']>;
   classMaxUser?: Maybe<Scalars['Int']>;
@@ -183,7 +185,9 @@ export type ILectureRegistration = {
   phoneNumber: Scalars['String'];
   preQuestion: Scalars['String'];
   product: ILectureProduct;
+
   registration?: Maybe<ILectureOrder>;
+
   selfIntroduction: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   user: IUser;
@@ -273,6 +277,7 @@ export type IMutation = {
   deleteQtBoard: Scalars['Boolean'];
   deleteUser: Scalars['Boolean'];
   deletelectureproductCategory: Scalars['Boolean'];
+  fetchMyFollower: Array<IFollow>;
   followToggle: IFollow;
   isLike: Scalars['Boolean'];
   login: Scalars['String'];

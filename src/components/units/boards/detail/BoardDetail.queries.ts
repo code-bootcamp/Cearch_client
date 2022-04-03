@@ -7,16 +7,28 @@ export const FETCH_QT_BOARD = gql`
       title
       contents
       name
-      point
       likescount
       createdAt
       updatedAt
-      deletedAt
-      user
-      comments
-      likes
-      images
-      qtTags
+      # comments {
+      #   id
+      #   contents
+      #   isPick
+      #   createdAt
+      #   user {
+      #     name
+      #   }
+      # }
+      qtTags {
+        tagname
+      }
+      # user {
+      #   qtBoard {
+      #     likes {
+      #       isLike
+      #     }
+      #   }
+      # }
     }
   }
 `
@@ -32,32 +44,13 @@ export const DELETE_NON_MEMBERS_QT_BOARD = gql`
     deleteNonMembersQtBoard(password: $password, postId: $postId)
   }
 `
-export const SELECT_BEST_COMMENTS = gql`
-  mutation selectBestComments($commentId: String!) {
-    selectBestComments(commentId: $commentId) {
-      id
-      contents
-      isPick
-      depth
-      parent
-      group
-      createdAt
-      updatedAt
-      deletedAt
-      qtBoard
-      user
-    }
-  }
-`
+
 export const UPDATE_QT_LIKE = gql`
   mutation updateQtLike($postId: String!) {
     updateQtLike(postId: $postId) {
       id
       isLike
-      qtBoard
-      user
       createdAt
-      deletedAt
     }
   }
 `

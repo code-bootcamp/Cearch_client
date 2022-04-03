@@ -13,8 +13,9 @@ export const Wrapper = styled.div`
     width: 90%;
     height: auto;
   }
+
   .contentHeader {
-    padding: 20px 0;
+    padding: 10px 0;
     border-bottom: 1px solid black;
     display: flex;
     flex-direction: row;
@@ -24,20 +25,35 @@ export const Wrapper = styled.div`
       width: 100%;
       height: auto;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      align-items: center;
     }
     div {
       font-size: 1.5rem;
       font-weight: 700;
     }
     span {
-      font-size: 1.125rem;
+      font-size: 1rem;
+      color: gray;
+    }
+    .LikeButtonWrapper {
+      width: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .boardLikeCount {
+        width: auto;
+        height: auto;
+        font-weight: 700;
+        font-size: 700;
+      }
+      @media ${breakPoints.mobile} {
+      }
     }
   }
   .contentBody {
     width: 90%;
-    margin: 30px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,6 +109,12 @@ export const Wrapper = styled.div`
         background-color: #ffa24b;
       }
     }
+  }
+  .writerDetail {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    font-weight: 600;
   }
 `
 

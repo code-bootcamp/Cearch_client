@@ -11,9 +11,14 @@ import { FETCH_NOTICE, DELETE_NOTICE } from './NoteDetail.queries'
 
 export default function NoteDetail(props) {
   const router = useRouter()
-  const { data } = useQuery<Pick<IQuery, 'fetchNotice'>, IQueryFetchNoticeArgs>(
-    FETCH_NOTICE
-  )
+  const { data: noticeData } = useQuery<
+    Pick<IQuery, 'fetchNotice'>,
+    IQueryFetchNoticeArgs
+  >(FETCH_NOTICE, {
+    variables: { postId: String(router.query.detail) },
+  })
+  console.log(router.query.detail)
+
   const [deleteNotice] = useMutation<
     Pick<IMutation, 'deleteNotice'>,
     IMutationDeleteNoticeArgs
@@ -27,9 +32,24 @@ export default function NoteDetail(props) {
         },
       })
       alert('삭제 완료')
+      router.push('/admin')
     } catch (error) {
       alert(`${error.message}`)
     }
   }
-  return <NoteDetailUI onClickNoteList={props.onClickNoteList} />
+  const onClickMoveToEditPage = () => {
+    router.push(`/admin/note/${String(router.query.detail)}/edit`)
+  }
+
+  const onClickBackToList = () => {
+    router.push('/admin')
+  }
+  return (
+    <NoteDetailUI
+      data={noticeData}
+      deleteNote={deleteNote}
+      onClickBackToList={onClickBackToList}
+      onClickMoveToEditPage={onClickMoveToEditPage}
+    />
+  )
 }
