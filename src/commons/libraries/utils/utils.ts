@@ -53,3 +53,9 @@ export const getMyDateTime = (myDate) => {
 export const getPrice = (price) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
+
+export function ratingRound(rating) {
+  let numb = rating
+  let rounded = Math.round((numb + Number.EPSILON) * 10) / 10
+  return rounded
+}
