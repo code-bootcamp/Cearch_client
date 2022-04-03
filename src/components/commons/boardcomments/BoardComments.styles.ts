@@ -1,12 +1,6 @@
 import styled from '@emotion/styled'
 import { breakPoints } from '../../../commons/styles/media'
 export const CommentsWrapper = styled.div`
-  .writerDetail {
-    width: 100%;
-    border-bottom: 1px solid gray;
-    padding-bottom: 10px;
-    font-weight: 600;
-  }
   .commentsWrite {
     display: flex;
     flex-direction: row;
@@ -47,10 +41,11 @@ export const CommentsWrapper = styled.div`
     }
   }
   .commentsList {
+    border-top: solid 2px #ffa24b;
     text-align: center;
     > div {
       padding: 10px;
-      border-bottom: 3px dotted gray;
+      border-bottom: 3px dotted #ffa24b;
     }
     .comment {
       display: flex;
@@ -76,7 +71,14 @@ export const CommentsWrapper = styled.div`
         }
         .buttonWrapper {
           .commentButton {
-            margin: 0 5px;
+            margin: 0 3px;
+          }
+          @media ${breakPoints.mobile} {
+            width: 130px;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
           }
         }
 

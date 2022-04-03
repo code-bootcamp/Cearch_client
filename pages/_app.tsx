@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
 
   const uploadLink = createUploadLink({
-    uri: 'http://api.localhost:3000/graphql',
+    uri: 'http://localhost:3000/graphql',
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: 'include',
   })
@@ -73,12 +73,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <ApolloProvider client={client}>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloProvider>
+      <GlobalContext.Provider value={value}>
+        <ApolloProvider client={client}>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </GlobalContext.Provider>
     </>
   )
 }

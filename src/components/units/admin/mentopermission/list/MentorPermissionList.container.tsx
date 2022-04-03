@@ -6,6 +6,8 @@ import { FETCH_AUTHOR_MENTOR } from './MentorPermissionList.queries'
 export default function MentorPermissionList(props) {
   const { data } =
     useQuery<Pick<IQuery, 'fetchAuthorMentor'>>(FETCH_AUTHOR_MENTOR)
+
+  console.log(data)
   return (
     <MentorPermissionListUI
       onClickMentorPermissionDetail={props.onClickMentorPermissionDetail}

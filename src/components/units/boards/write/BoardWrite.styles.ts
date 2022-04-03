@@ -43,6 +43,8 @@ export const ContentWrapper = styled.form`
         margin: 15px 0 5px !important;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
         > span {
           margin-bottom: 5px;

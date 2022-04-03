@@ -3,20 +3,27 @@ import { gql } from '@apollo/client'
 export const FETCH_QT_BOARDS = gql`
   query fetchQtBoards($page: Float!) {
     fetchQtBoards(page: $page) {
-      _id
+      id
       title
       contents
       name
-      point
       likescount
       createdAt
       updatedAt
-      deletedAt
-      user
-      comments
-      likes
-      image
-      qtTags
+      commentsCount
+      likes {
+        isLike
+        createdAt
+      }
+      qtTags {
+        tagname
+      }
     }
+  }
+`
+
+export const FETCH_ALL_POST_COUNT = gql`
+  query fetchAllPostCount {
+    fetchAllPostCount
   }
 `

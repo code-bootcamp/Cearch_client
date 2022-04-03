@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from 'react'
+import { ChangeEvent, useContext, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -11,7 +11,7 @@ import {
   CREATE_QT_BOARD,
   UPDATE_QT_BOARD,
 } from './BoardWrite.queries'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
 import {
   IMutation,
@@ -20,17 +20,26 @@ import {
   IMutationUpdateNonMembersQtBoardArgs,
   IMutationUpdateQtBoardArgs,
 } from '../../../../commons/types/generated/types'
+import { notification } from 'antd'
+import { GlobalContext } from '../../../../../pages/_app'
+
 const schema = yup.object().shape({
   title: yup
     .string()
     .min(2, '제목은 최소 2자 이상 입력해주세요')
-    .required('이메일은 필수 입력 사항입니다.'),
+    .required('제목은 필수 입력 사항입니다.'),
   writer: yup.string().required('작성자를 입력해 주세요.'),
   password: yup
     .string()
     .min(4, '비밀번호는 최소 4자 이상 입력해야 합니다.')
     .max(15, '비밀번호는 15자를 초과할 수 없습니다.')
     .required('비밀번호는 필수 입력 사항입니다.'),
+})
+const schema1 = yup.object().shape({
+  title: yup
+    .string()
+    .min(2, '제목은 최소 2자 이상 입력해주세요')
+    .required('제목은 필수 입력 사항입니다.'),
 })
 const categories = [
   'HTML',
@@ -81,6 +90,7 @@ const MenuProps = {
 
 export default function BoardWrite(props) {
   const router = useRouter()
+  const { accessToken } = useContext(GlobalContext)
   const [createQtBoard] = useMutation<
     Pick<IMutation, 'createQtBoard'>,
     IMutationCreateQtBoardArgs
@@ -102,7 +112,7 @@ export default function BoardWrite(props) {
   >(UPDATE_NON_MEMBERS_QT_BOARD)
 
   const { register, handleSubmit, formState, setValue } = useForm({
-    resolver: yupResolver(schema),
+    resolver: accessToken ? yupResolver(schema1) : yupResolver(schema),
     mode: 'onChange',
   })
   const [contents, setContents] = useState('')
@@ -116,7 +126,6 @@ export default function BoardWrite(props) {
       target: { value },
     } = event
     setCategory(typeof value === 'string' ? value.split(',') : value)
-    console.log(category)
   }
   const submitBoard = async (input) => {
     try {
@@ -129,10 +138,13 @@ export default function BoardWrite(props) {
           },
         },
       })
-      alert('게시글 작성을 완료했습니다.')
+      notification.success({
+        message: '게시글 작성을 완료했어요!',
+        top: 80,
+      })
       router.push(`/boards/${result?.data?.createQtBoard?.id}`)
     } catch (error) {
-      alert(`${error.message}`)
+      notification.error({ message: `${error.message}`, top: 80 })
     }
   }
   const updateBoard = async (input) => {
@@ -147,10 +159,13 @@ export default function BoardWrite(props) {
           },
         },
       })
-      alert('게시글 작성을 완료했습니다.')
+      notification.success({
+        message: '게시글 수정을 완료했어요!',
+        top: 80,
+      })
       router.push(`/boards/${result?.data?.updateQtBoard?.id}`)
     } catch (error) {
-      alert(`${error.message}`)
+      notification.error({ message: `${error.message}`, top: 80 })
     }
   }
   const submitBoardNonMember = async (input) => {
@@ -166,10 +181,13 @@ export default function BoardWrite(props) {
           },
         },
       })
-      alert('게시글 작성을 완료했습니다.')
+      notification.success({
+        message: '게시글 작성을 완료했어요!',
+        top: 80,
+      })
       router.push(`/boards/${result?.data?.createNonMembersQtBoard?.id}`)
     } catch (error) {
-      alert(`${error.message}`)
+      notification.error({ message: `${error.message}`, top: 80 })
     }
   }
   const onClickSubmit = () => {
@@ -190,21 +208,45 @@ export default function BoardWrite(props) {
           },
         },
       })
-      alert('게시글 수정을 완료했습니다.')
+      notification.success({
+        message: '게시글 수정을 완료했어요!',
+        top: 80,
+      })
       router.push(`/boards/${result?.data?.updateNonMembersQtBoard?.id}`)
     } catch (error) {
-      alert(`${error.message}`)
+      notification.error({ message: `${error.message}`, top: 80 })
     }
   }
 
+  const nonMemberWrite = (input) => {
+    if (accessToken && props.isEdit) {
+      updateBoard(input)
+      return
+    }
+    if (accessToken) {
+      submitBoard(input)
+      return
+    }
+    if (!accessToken && props.isEdit) {
+      updateBoardNonMember(input)
+      return
+    }
+
+    submitBoardNonMember(input)
+  }
   const onClickToList = () => {
     if (!props.isEdit) router.push('/boards')
-    else router.push('/boards/[datail]')
+    else router.push(`/boards/${String(router.query.detail)}`)
   }
 
+  useEffect(() => {
+    setValue('title', props.qtBoardEditData?.fetchQtBoard.title)
+    setValue('writer', props.qtBoardEditData?.fetchQtBoard.name)
+  }, [props.qtBoardEditData])
   return (
     <BoardWriteUI
-      data={props.data}
+      accessToken={accessToken}
+      qtBoardEditData={props.qtBoardEditData}
       isEdit={props.isEdit}
       theme={theme}
       register={register}
@@ -224,6 +266,7 @@ export default function BoardWrite(props) {
       onClickToList={onClickToList}
       buttonRef={buttonRef}
       onClickSubmit={onClickSubmit}
+      nonMemberWrite={nonMemberWrite}
     />
   )
 }

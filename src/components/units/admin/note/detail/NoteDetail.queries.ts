@@ -6,10 +6,8 @@ export const FETCH_NOTICE = gql`
       id
       title
       contents
-      isNotice
       createdAt
       updatedAt
-      deletedAt
     }
   }
 `

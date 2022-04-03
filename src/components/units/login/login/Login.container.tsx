@@ -42,6 +42,8 @@ export default function Login() {
       const accessToken = result.data?.login || ''
       if (setAccessToken) setAccessToken(accessToken)
 
+      alert('로그인 성공')
+      console.log(accessToken)
       router.push('/')
     } catch (error) {
       console.log(error.message)

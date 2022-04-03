@@ -54,8 +54,8 @@ export default function MentorDetailUI(props) {
       <CH.MentorCard>
         <div className="mentorTitle">
           <div>
-            <p>부서명</p>
-            <p>회사명</p>
+            <p>{props.data?.companyName}</p>
+            <p>{props.data?.department}</p>
           </div>
           <div>
             <p>팔로워수</p>
@@ -68,7 +68,11 @@ export default function MentorDetailUI(props) {
               <div>
                 <img src="/images/profile.png" />
               </div>
-              <div className="follow" onClick={props.onClickFollowMentor}>
+              <div
+                className="follow"
+                onClick={props.onClickFollowMentor}
+                id={props.data?.id}
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
                   <path d="M224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM616 200h-48v-48C568 138.8 557.3 128 544 128s-24 10.75-24 24v48h-48C458.8 200 448 210.8 448 224s10.75 24 24 24h48v48C520 309.3 530.8 320 544 320s24-10.75 24-24v-48h48C629.3 248 640 237.3 640 224S629.3 200 616 200z" />
                 </svg>
@@ -79,14 +83,14 @@ export default function MentorDetailUI(props) {
             <div className="mentorProfile">
               <p>업무파트</p>
               <div>
-                <p>◯◯◯ 멘토</p>
+                <p>{props.data?.user?.name} 멘토</p>
                 <div className="online"></div>
               </div>
               <p>remark</p>
             </div>
             <div className="mentorTime">
               <p>온라인 시간대</p>
-              <p>20:00 ~ 22:00</p>
+              <p>{props.data?.onlineTime}</p>
             </div>
             <div className="DMButton">
               <button>질문하기</button>
@@ -96,72 +100,7 @@ export default function MentorDetailUI(props) {
       </CH.MentorCard>
       <CH.MentorContent>
         <CH.ContentsText>
-          <div>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea?Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Laudantium eius corporis, harum
-            exercitationem veniam debitis? Quidem possimus voluptatum inventore
-            veritatis, deleniti facere commodi quasi vero alias obcaecati, sed
-            repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea?Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Laudantium eius corporis, harum
-            exercitationem veniam debitis? Quidem possimus voluptatum inventore
-            veritatis, deleniti facere commodi quasi vero alias obcaecati, sed
-            repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea?Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Laudantium eius corporis, harum
-            exercitationem veniam debitis? Quidem possimus voluptatum inventore
-            veritatis, deleniti facere commodi quasi vero alias obcaecati, sed
-            repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea?Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Laudantium eius corporis, harum
-            exercitationem veniam debitis? Quidem possimus voluptatum inventore
-            veritatis, deleniti facere commodi quasi vero alias obcaecati, sed
-            repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea?Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Laudantium eius corporis, harum
-            exercitationem veniam debitis? Quidem possimus voluptatum inventore
-            veritatis, deleniti facere commodi quasi vero alias obcaecati, sed
-            repudiandae ea? <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium
-            eius corporis, harum exercitationem veniam debitis? Quidem possimus
-            voluptatum inventore veritatis, deleniti facere commodi quasi vero
-            alias obcaecati, sed repudiandae ea?
-          </div>
+          <div>{props.data?.selfIntro}</div>
         </CH.ContentsText>
 
         <Accordion
@@ -169,7 +108,9 @@ export default function MentorDetailUI(props) {
           onChange={handleChange('panel1')}
         >
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography>수강가능 클래스 목록</Typography>
+            <Typography>
+              {props.data?.user?.name}멘토가 진행중인 클래스
+            </Typography>
           </AccordionSummary>
           <MuiAccordionDetails>
             <CH.ClassList>
@@ -213,7 +154,9 @@ export default function MentorDetailUI(props) {
           onChange={handleChange('panel2')}
         >
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography>멘토 이전 클래스</Typography>
+            <Typography>
+              {props.data?.user?.name}멘토가 진행했던 클래스
+            </Typography>
           </AccordionSummary>
           <MuiAccordionDetails>
             <CH.ClassList>

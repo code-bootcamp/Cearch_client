@@ -68,6 +68,14 @@ export const NoteDetailBody = styled.div`
       height: 35px;
       margin: 10px;
       background-color: white;
+      border: 1px gray solid;
+      cursor: pointer;
+      :hover {
+        color: white;
+        font-weight: 350;
+        background-color: #ffa24b;
+        border: none;
+      }
     }
   }
 `

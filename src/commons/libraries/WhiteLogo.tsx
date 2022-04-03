@@ -1,10 +1,15 @@
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
+import { breakPoints } from '../styles/media'
+
 export const Logo = styled.div`
   width: 170px;
   cursor: pointer;
   display: flex;
   align-items: center;
+  @media ${breakPoints.mobile} {
+    width: 120px;
+  }
   svg {
     width: 170px;
   }
