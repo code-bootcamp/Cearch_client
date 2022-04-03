@@ -63,6 +63,9 @@ export const PointButton = styled.button`
   width: 109px;
   height: 36px;
   margin: 13px 0px 0px 1%;
+  :hover {
+    cursor: pointer;
+  }
   @media ${breakPoints.tablet} {
     font-size: 15.5px;
   }
@@ -236,9 +239,16 @@ export const MobileButton = styled.button`
   font-weight: 700;
   background-color: #ffa24b;
   color: #ffffff;
+  :hover {
+    cursor: pointer;
+  }
 `
 
 export const Divider = styled.div`
   border-right: 1px solid #ffffff;
   height: 37px;
+`
+export const ModalWrapepr = styled.div`
+  border-radius: 20px;
+  overflow: auto;
 `

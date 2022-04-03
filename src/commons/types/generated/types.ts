@@ -144,6 +144,9 @@ export type ILectureOrder = {
 
 export type ILectureProduct = {
   __typename?: 'LectureProduct';
+
+  aplliedUser?: Maybe<Scalars['Int']>;
+
   classCurriculum?: Maybe<Scalars['String']>;
   classDescription?: Maybe<Scalars['String']>;
   classMaxUser?: Maybe<Scalars['Int']>;
@@ -182,7 +185,9 @@ export type ILectureRegistration = {
   phoneNumber: Scalars['String'];
   preQuestion: Scalars['String'];
   product: ILectureProduct;
-  registration: ILectureOrder;
+
+  registration?: Maybe<ILectureOrder>;
+
   selfIntroduction: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   user: IUser;
@@ -638,6 +643,7 @@ export type IQuery = {
   fetchMostAnswerMentor: Array<IMentoInfo>;
   fetchMostRecommendMentor: Array<IMentoInfo>;
   fetchMyComments: Array<IComments>;
+  fetchMyFollower: Array<IFollow>;
   fetchMyMinusWallet: Array<IWallet>;
   fetchMyPlusWallet: Array<IWallet>;
   fetchMyPointHistory: Array<IPoint>;

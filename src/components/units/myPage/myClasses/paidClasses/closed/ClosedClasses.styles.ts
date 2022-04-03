@@ -185,8 +185,34 @@ export const ClassButton = styled.button`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  color: #f2f2f2;
+  color: white;
   border: 0px none;
+  :hover {
+    cursor: pointer;
+  }
+  @media ${breakPoints.tablet} {
+    width: 80px;
+    font-size: 15px;
+  }
+  @media ${breakPoints.mobile} {
+    width: 80px;
+    height: 25px;
+    font-size: 14px;
+    margin: 0px 0px 0px 0px;
+  }
+`
+
+export const ReviewButton = styled.button`
+  border-radius: 31px;
+  width: 109px;
+  height: 36px;
+  color: #ffa24b;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: white;
+  border: 1px solid #ffa24b;
   :hover {
     cursor: pointer;
   }

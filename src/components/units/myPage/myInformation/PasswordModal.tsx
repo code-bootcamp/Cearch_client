@@ -2,6 +2,24 @@ import styled from '@emotion/styled'
 import { breakPoints } from '../../../../commons/styles/media'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 
+import { gql, useMutation } from '@apollo/client'
+import {
+  IMutation,
+  IMutationUpdatePasswordArgs,
+} from '../../../../commons/types/generated/types'
+import * as yup from 'yup'
+import { useState } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+const UPDATE_PASSWORD = gql`
+  mutation updatePassword($email: String!, $newPassword: String!) {
+    updatePassword(email: $email, newPassword: $newPassword) {
+      id
+      email
+    }
+  }
+`
+
 const Wrapper = styled.div`
   width: 957px;
   padding: 80px 0px 80px 0px;
@@ -58,10 +76,15 @@ const Input = styled.input`
   background-color: #ffffff;
   border: 1px solid #9d9d9d;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   @media ${breakPoints.mobile} {
     width: 100%;
+    height: 40px;
   }
+`
+
+const Row = styled.div`
+  height: 120px;
 `
 
 const Button = styled.button`
@@ -85,24 +108,82 @@ const CancelButton = styled.div`
   }
 `
 
+const Error = styled.div`
+  font-size: 14px;
+  color: #ffa24b;
+  text-align: center;
+`
+
+const schema = yup.object().shape({
+  newPassword: yup
+    .string()
+    .matches(
+      /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{1,8}$/,
+      '비밀번호는 영문, 숫자, 포함한 8자리 이내 입니다.'
+    )
+    .required('필수입력입니다.'),
+  checkPassword: yup
+    .string()
+    .oneOf([yup.ref('newPassword'), null], '비밀번호가 일치하지 않습니다')
+    .required('비밀번호가 일치하지 않습니다'),
+})
+
+// 임시로 이메일은 마이 인포메이션 페치유저에서 가져왔음. 수정후 프롭스 내려보낸 것 꼭 지울 것.
 export default function PasswordModal(props) {
+  const [updatePassword] = useMutation<
+    Pick<IMutation, 'updatePassword'>,
+    IMutationUpdatePasswordArgs
+  >(UPDATE_PASSWORD)
+
+  const { register, formState, handleSubmit } = useForm({
+    mode: 'onChange',
+    defaultValues: {},
+    resolver: yupResolver(schema),
+  })
+
+  const onClickUpdatePassword = async (data) => {
+    const { newPassword } = data
+
+    try {
+      await updatePassword({
+        variables: {
+          email: props.userInfoData.fetchUser.email,
+          newPassword,
+        },
+      })
+      alert('비밀번호 수정이 완료되었습니다.')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   return (
-    <Wrapper>
-      <Contents>
-        <TitleLabel>
-          <div>비밀번호 변경</div>
-          <CancelButton>
-            <CancelOutlinedIcon onClick={props.toggle} />
-          </CancelButton>
-        </TitleLabel>
-        <InputLabel>현재 비밀번호 입력</InputLabel>
-        <Input type="password" />
-        <InputLabel>새 비밀번호 입력</InputLabel>
-        <Input type="password" />
-        <InputLabel>새 비밀번호 확인</InputLabel>
-        <Input type="password" />
-        <Button>비밀번호 변경하기</Button>
-      </Contents>
-    </Wrapper>
+    <form onSubmit={handleSubmit(onClickUpdatePassword)}>
+      <Wrapper>
+        <Contents>
+          <TitleLabel>
+            <div>비밀번호 변경</div>
+            <CancelButton>
+              <CancelOutlinedIcon onClick={props.toggle} />
+            </CancelButton>
+          </TitleLabel>
+          <Row>
+            <InputLabel>현재 비밀번호 입력</InputLabel>
+            <Input type="password" />
+          </Row>
+          <Row>
+            <InputLabel>새 비밀번호 입력</InputLabel>
+            <Input type="password" {...register('newPassword')} />
+            <Error>{formState.errors.newPassword?.message}</Error>
+          </Row>
+          <Row>
+            <InputLabel>새 비밀번호 확인</InputLabel>
+            <Input type="password" {...register('checkPassword')} />
+            <Error>{formState.errors.checkPassword?.message}</Error>
+          </Row>
+          <Button>비밀번호 변경하기</Button>
+        </Contents>
+      </Wrapper>
+    </form>
   )
 }

@@ -1,4 +1,6 @@
 import { useQuery } from '@apollo/client'
+import { useRouter } from 'next/router'
+import { getMyDateTime } from '../../../../../commons/libraries/utils/utils'
 import {
   IQuery,
   IQueryFetchMyQtArgs,
@@ -7,25 +9,17 @@ import { FETCH_MY_QT } from '../MyQAs.queries'
 import * as CH from '../MyQAs.styles'
 
 export default function MyQuestions() {
+  const router = useRouter()
   const { data: MyQuestionData } = useQuery<
     Pick<IQuery, 'fetchMyQt'>,
     IQueryFetchMyQtArgs
   >(FETCH_MY_QT, { variables: { page: 1 } })
   console.log(MyQuestionData)
 
-  // prettier-ignore
-  const answer = [
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-    { division: '질문', title: '안녕하세요. 질문있습니다. 안녕하세요. 질문있습니다.', createAt: '2022-03-21' },
-  ]
+  const onClickBoardDetail = (event) => {
+    router.push(`/boards/${event.currentTarget.id}`)
+  }
+
   return (
     <CH.Table>
       <CH.TableHead>
@@ -33,12 +27,12 @@ export default function MyQuestions() {
         <CH.TableTitle>제목</CH.TableTitle>
         <CH.TableDate>일자</CH.TableDate>
       </CH.TableHead>
-      {answer.map((el: any, index: number) => {
+      {MyQuestionData?.fetchMyQt.map((el: any) => {
         return (
-          <CH.TableRow key={index}>
-            <CH.TableDivision>{el.division}</CH.TableDivision>
+          <CH.TableRow onClick={onClickBoardDetail} id={el.id} key={el.id}>
+            <CH.TableDivision>질문</CH.TableDivision>
             <CH.TableTitle>{el.title}</CH.TableTitle>
-            <CH.TableDate>{el.createAt}</CH.TableDate>
+            <CH.TableDate>{getMyDateTime(el.createdAt)}</CH.TableDate>
           </CH.TableRow>
         )
       })}
