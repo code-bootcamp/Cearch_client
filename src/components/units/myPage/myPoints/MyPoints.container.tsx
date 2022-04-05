@@ -83,7 +83,7 @@ export default function MyPoints(props) {
           Modal.success({
             content: '포인트를 성공적으로 충전했어요!',
           })
-          console.log(result)
+          console.log('결제성공:', result)
           props.userInfoRefetch()
           plusWalletRefetch()
         } else {

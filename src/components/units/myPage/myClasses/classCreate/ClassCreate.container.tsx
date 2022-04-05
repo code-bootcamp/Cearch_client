@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Theme, useTheme } from '@mui/material/styles'
 import { SelectChangeEvent } from '@mui/material/Select'
 import ClassCreateUI from './ClassCreate.presenter'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import {
   CREATE_LECTURE_PRODUCT,
   UPDATE_LECTURE_PRODUCT,
@@ -16,6 +16,9 @@ import {
   IMutationUpdateLectureProductArgs,
 } from '../../../../../commons/types/generated/types'
 import { useRouter } from 'next/router'
+import Editor from '@toast-ui/editor'
+import { FETCH_LECTURE_PRODUCT } from '../../../class/detail/ClassDetail.queries'
+import { Modal } from 'antd'
 
 // prettier-ignore
 const categories = [
@@ -41,7 +44,10 @@ const MenuProps = {
   },
 }
 
-export default function ClassCreate() {
+export default function ClassCreate(props) {
+  const { data: editLectureData } = useQuery(FETCH_LECTURE_PRODUCT, {
+    variables: { lectureproductId: String(props.selectedId), page: 1 },
+  })
   const router = useRouter()
   const [classTitle, setClassTitle] = useState('')
   const [classDescription, setClassDescription] = useState('')
@@ -56,15 +62,6 @@ export default function ClassCreate() {
     setClassTitle(event.target.value)
   }
 
-  const onChangeDescription = (event) => {
-    setClassDescription(event.target.value)
-    console.log(classDescription)
-  }
-
-  const onChangeCurriculum = (event) => {
-    setClassCurriculum(event.target.value)
-  }
-
   const onChangePrice = (event) => {
     setClassPrice(Number(event.target.value))
   }
@@ -74,9 +71,12 @@ export default function ClassCreate() {
   }
 
   const onChangeStartDate = (date, dateString) => {
-    setClassStartDate(dateString)
-    console.log(dateString)
+    const tempString = String(dateString)
+    console.log('원래클릭:', dateString)
+    console.log('임시변수저장:', tempString)
+    setClassStartDate(tempString)
   }
+  console.log('스테이트에저장된거:', classStartDate)
 
   const onChangeStartTime = (time, timeString) => {
     setClassStartTime(timeString)
@@ -108,13 +108,16 @@ export default function ClassCreate() {
             classMaxUser,
             classStartDate,
             classStartTime,
+            imageURL: '',
           },
         },
       })
-      console.log(createClassResult)
+      Modal.success({
+        content: '클래스 개설 신청이 정상적으로 접수되었습니다.',
+      })
       // router.push(`/class/${createClassResult?.data.createQtBoard?.id}`)
     } catch (error) {
-      alert(`${error.message}`)
+      Modal.error(error.message)
     }
   }
 
@@ -136,12 +139,18 @@ export default function ClassCreate() {
       theme={theme}
       submitClassCreate={submitClassCreate}
       onChangeTitle={onChangeTitle}
-      onChangeDescription={onChangeDescription}
-      onChangeCurriculum={onChangeCurriculum}
       onChangePrice={onChangePrice}
       onChangeMaxUser={onChangeMaxUser}
       onChangeStartDate={onChangeStartDate}
       onChangeStartTime={onChangeStartTime}
+      classDescription={classDescription}
+      setClassDescription={setClassDescription}
+      classCurriculum={classCurriculum}
+      setClassCurriculum={setClassCurriculum}
+      selectedId={props.selectedId}
+      isEdit={props.isEdit}
+      editLectureData={editLectureData}
+      updateLectureProduct={updateLectureProduct}
     />
   )
 }

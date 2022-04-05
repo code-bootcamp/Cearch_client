@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import MyInformation from './myInformation/MyInformation.container'
 import { ChakraProvider } from '@chakra-ui/react'
+import { getPrice } from '../../../commons/libraries/utils/utils'
 
 export default function MyPageUI(props: IMyPageUIProps) {
   return (
@@ -12,7 +13,13 @@ export default function MyPageUI(props: IMyPageUIProps) {
         <CH.HeadLeft onClick={() => props.selectMenuHandler(4)}>
           {/* <CH.HeadLeft onClick={props.onClickModal}> */}
           <CH.Avatar>
-            <img width={134} src="/avatar.png" />
+            <img
+              src={
+                `${props.userInfoData?.fetchUser.imageUrl}`
+                  ? `${props.userInfoData?.fetchUser.imageUrl}`
+                  : '/avatar.png'
+              }
+            />
           </CH.Avatar>
           <CH.NameAndSetting>
             <CH.Name>{props.userInfoData?.fetchUser.name}</CH.Name>
@@ -30,15 +37,15 @@ export default function MyPageUI(props: IMyPageUIProps) {
             </CH.HeadRightSectionLabel>
             <CH.HeadRightSectionContents1>
               {props.userInfoData?.fetchUser.role === 'MENTEE' ? (
-                <div>
+                <>
                   {props.userInterest[0] === undefined || null ? (
                     '관심분야를 설정해주세요'
                   ) : (
-                    <div>
+                    <>
                       {props.userInterest[0]} {props.userInterest[1]}
-                    </div>
+                    </>
                   )}
-                </div>
+                </>
               ) : (
                 '관심분야/직무'
               )}
@@ -47,7 +54,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
           <CH.HeadRightSection onClick={() => props.selectMenuHandler(3)}>
             <CH.HeadRightSectionLabel>나의 포인트 〉</CH.HeadRightSectionLabel>
             <CH.HeadRightSectionContents2>
-              {props.userInfoData?.fetchUser.point} 원
+              {getPrice(props.userInfoData?.fetchUser.point)} 원
             </CH.HeadRightSectionContents2>
           </CH.HeadRightSection>
           <CH.HeadRightSection>

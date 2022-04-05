@@ -1,38 +1,67 @@
 import {} from './MyFollowings.types'
 import * as CH from './MyFollwings.styles'
-
+import Tooltip from '@mui/material/Tooltip'
+import { useRouter } from 'next/router'
 export default function MyFollowingsUI(props) {
-  const newMentorList = props.mentorList.map((el, index) => {
-    return (
-      <div key={index} /* onClick={onClickMoveToMentorDetail} */>
-        <div className="profileImg">
-          <img src={el.profileImg} />
-        </div>
-        <CH.MentorInfo>
-          <div className="workPart">
-            <div>
-              <p>{el.company}</p>
-              <p>{el.department}</p>
-            </div>
-            <p>{el.part}</p>
-          </div>
-          <div className="blank"></div>
-          <div className="mentorName">
-            <p>{el.name}</p>
-            <div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z" />
-              </svg>
-            </div>
-          </div>
-        </CH.MentorInfo>
-      </div>
-    )
-  })
+  const router = useRouter()
+
+  const onClickMoveToMentorDetail = (event) => {
+    console.log(event.currentTarget.id)
+    // router.push(`/mentor/detail/${event.currentTarget.id}`)
+  }
   return (
     <div>
       <CH.HeadTitle>팔로우한 멘토</CH.HeadTitle>
-      <CH.Mentor>{newMentorList}</CH.Mentor>
+      {props.mentorList?.fetchMyFollower[0] || (
+        <div>아직 팔로우한 멘토가 없습니다.</div>
+      )}
+      <CH.Mentor>
+        {props.mentorList?.fetchMyFollower.map((el) => (
+          <div key={el.id}>
+            <div className="mentorCardFront">
+              <div className="profileImg">
+                <div>
+                  <img src="/images/profile.png" />
+                </div>
+              </div>
+              <CH.MentorInfo>
+                <div className="workPart">
+                  <div>
+                    <p>{el.followee.companyName}</p>
+                    <p>{el.followee.department}</p>
+                  </div>
+                  <div>
+                    {el.work?.slice(0, 2).map((categoryEl) => (
+                      <span key={el.id}>
+                        {categoryEl.category.categoryname}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="blank"></div>
+                <div className="mentorName">
+                  <p>{el.followee.user.name}</p>
+                </div>
+              </CH.MentorInfo>
+            </div>
+            <div
+              className="mentorCardBack"
+              id={el.id}
+              onClick={props.onClickMoveToMentorDetail}
+            >
+              <div className="badge">
+                <Tooltip title="30분이내 답변" placement="top">
+                  <img src="/images/medal1.png" />
+                </Tooltip>
+                <Tooltip title="답변률 90%" placement="top">
+                  <img src="/images/medal2.png" />
+                </Tooltip>
+              </div>
+              <div>{el.followee.selfIntro}</div>
+            </div>
+          </div>
+        ))}
+      </CH.Mentor>
     </div>
   )
 }

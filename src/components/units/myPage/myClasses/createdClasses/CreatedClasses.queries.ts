@@ -7,14 +7,15 @@ export const FETCH_LECTURE_WITH_MENTOR = gql`
       classTitle
       classStartDate
       classStartTime
+
       classMaxUser
-      # registration {
-      #   name
-      #   age
-      #   job
-      #   selfIntroduction
-      #   preQuestion
-      # }
+      registration {
+        name
+        age
+        job
+        selfIntroduction
+        preQuestion
+      }
     }
   }
 `

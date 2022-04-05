@@ -131,7 +131,7 @@ export const TableState = styled.div`
 `
 
 export const TableAge = styled.div`
-  width: 28%;
+  width: 38%;
   text-align: center;
   @media ${breakPoints.tablet} {
     font-size: 15px;
@@ -173,11 +173,11 @@ export const TableIntroduce = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   line-height: 1.5rem;
-  height: calc(1.5rem * 3);
+  height: calc(1.5rem * 2);
   @media ${breakPoints.tablet} {
     font-size: 15px;
   }
@@ -201,11 +201,11 @@ export const TableHeadIntroduce = styled.div`
 `
 export const TableHeadQuestion = styled.div`
   padding: 0px 10px 0px 0px;
-  width: 45%;
+  width: 65%;
 `
 export const TableQuestion = styled.div`
   padding: 0px 10px;
-  width: 45%;
+  width: 65%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

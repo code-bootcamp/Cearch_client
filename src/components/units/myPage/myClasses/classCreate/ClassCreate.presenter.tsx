@@ -10,21 +10,46 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Chip from '@mui/material/Chip'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { EditorProps } from '@toast-ui/react-editor'
+
 import dynamic from 'next/dynamic'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import { DatePicker, TimePicker } from 'antd'
 
-const Editor = dynamic<EditorProps>(
-  () => import('@toast-ui/react-editor').then((m) => m.Editor),
-  { ssr: false }
-)
+import { createRef, useRef, useState } from 'react'
+import { EditorProps } from '@toast-ui/react-editor'
+// import { Editor } from '@toast-ui/react-editor'
+
+// const ToastEditor = dynamic<EditorProps>(
+//   () => import('@toast-ui/react-editor').then((m) => m.Editor),
+//   { ssr: false }
+// )
+
+import ToastEditorPage from '.'
 
 export default function ClassCreateUI(props) {
+  const [description, setDescription] = useState('')
+  const [curriculum, setCurriculum] = useState('')
+
+  // const editorRef = useRef()
+  // const editorRef2 = useRef()
+
+  // const onChangeDescription = () => {
+  //   console.log(editorRef)
+  //   setDescription(editorRef.current.getInstance().getMarkdown())
+  // }
+  // const onChangeCurriculum = () => {
+  //   setCurriculum(editorRef2.current.getInstance().getMarkdown())
+  // }
+
+  props.setClassDescription(description)
+  props.setClassCurriculum(curriculum)
+
   return (
     <CH.Wrapper>
       <CH.BodyWrapper>
-        <CH.Title>클래스 개설하기</CH.Title>
+        <CH.Title>
+          {props.isEdit ? '클래스 수정하기' : '클래스 개설하기'}
+        </CH.Title>
         <CH.Row>
           <CH.RowLabel>카테고리</CH.RowLabel>
           <CH.InputBackground>
@@ -61,6 +86,7 @@ export default function ClassCreateUI(props) {
           <CH.RowLabel>클래스 제목</CH.RowLabel>
           <CH.DefaultInput
             onChange={props.onChangeTitle}
+            defaultValue={props.editLectureData?.fetchLectureProduct.classTitle}
             placeholder="제목을 입력하세요."
           ></CH.DefaultInput>
         </CH.Row>
@@ -68,6 +94,9 @@ export default function ClassCreateUI(props) {
           <CH.RowLabel>최대 수강 가능 인원</CH.RowLabel>
           <CH.DefaultInput
             onChange={props.onChangeMaxUser}
+            defaultValue={
+              props.editLectureData?.fetchLectureProduct.classMaxUser
+            }
             placeholder="수강 정원을 입력하세요."
           ></CH.DefaultInput>
         </CH.Row>
@@ -75,6 +104,9 @@ export default function ClassCreateUI(props) {
           <CH.RowLabel>클래스 시작일</CH.RowLabel>
           <CH.InputBackground>
             <DatePicker
+              defaultValue={
+                props.editLectureData?.fetchLectureProduct.classStartDate
+              }
               onChange={props.onChangeStartDate}
               style={{
                 width: '100%',
@@ -101,20 +133,33 @@ export default function ClassCreateUI(props) {
           <CH.RowLabel>수강료</CH.RowLabel>
           <CH.DefaultInput
             onChange={props.onChangePrice}
+            defaultValue={props.editLectureData?.fetchLectureProduct.classPrice}
             placeholder="수강료를 입력해주세요."
           ></CH.DefaultInput>
         </CH.Row>
-        <CH.RowLabel>강의 소개</CH.RowLabel>
+        <ToastEditorPage
+          description={description}
+          curriculum={curriculum}
+          setDescription={setDescription}
+          setCurriculum={setCurriculum}
+        />
+        {/* <CH.RowLabel>강의 소개</CH.RowLabel>
         <CH.EditorWrapper>
-          <Editor onChange={props.onChangeDescription} />
+          <ToastEditor onChange={onChangeDescription} ref={editorRef} />
         </CH.EditorWrapper>
         <CH.RowLabel>커리큘럼</CH.RowLabel>
         <CH.EditorWrapper>
-          <Editor onChange={props.onChangeCurriculum} />
-        </CH.EditorWrapper>
-        <CH.SubmitButton onClick={props.submitClassCreate}>
-          등록하기
-        </CH.SubmitButton>
+          <ToastEditor onChange={onChangeCurriculum} ref={editorRef2} />
+        </CH.EditorWrapper> */}
+        {props.isEdit ? (
+          <CH.SubmitButton onCTck={props.updateLectureProduct}>
+            수정하기
+          </CH.SubmitButton>
+        ) : (
+          <CH.SubmitButton onClick={props.submitClassCreate}>
+            등록하기
+          </CH.SubmitButton>
+        )}
       </CH.BodyWrapper>
     </CH.Wrapper>
   )
