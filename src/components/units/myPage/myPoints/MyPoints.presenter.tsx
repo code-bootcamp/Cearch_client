@@ -5,7 +5,10 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Head from 'next/head'
-import { getMyDateTime } from '../../../../commons/libraries/utils/utils'
+import {
+  getMyDateTime,
+  getPrice,
+} from '../../../../commons/libraries/utils/utils'
 import { Modal, Button } from 'antd'
 
 export default function MyPointsUI(props) {
@@ -116,7 +119,7 @@ export default function MyPointsUI(props) {
                   <CH.TableDate>{getMyDateTime(el.createdAt)}</CH.TableDate>
                   <CH.TableDivision>{el.division}</CH.TableDivision>
                   <CH.TableDetail>{el.description}</CH.TableDetail>
-                  <CH.TablePrice>{el.point}</CH.TablePrice>
+                  <CH.TablePrice>{getPrice(el.point)}</CH.TablePrice>
                 </CH.TableRow>
               )
             )}
@@ -136,7 +139,7 @@ export default function MyPointsUI(props) {
                 <CH.TableDate>{getMyDateTime(el.createdAt)}</CH.TableDate>
                 <CH.TableDivision>{el.division}</CH.TableDivision>
                 <CH.TableDetail>{el.description}</CH.TableDetail>
-                <CH.TablePrice>{el.point}</CH.TablePrice>
+                <CH.TablePrice>{getPrice(el.point)}</CH.TablePrice>
               </CH.TableRow>
             ))}
           </CH.Table>

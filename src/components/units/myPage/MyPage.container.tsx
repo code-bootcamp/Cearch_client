@@ -39,7 +39,15 @@ export default function MyPage() {
   }
   const menuArr = [
     { name: '나의 질문답변', content: <MyQAs /> },
-    { name: '나의 클래스', content: <MyClasses /> },
+    {
+      name: '나의 클래스',
+      content: (
+        <MyClasses
+          userInfoData={userInfoData}
+          userInfoRefetch={userInfoRefetch}
+        />
+      ),
+    },
     { name: '나의 팔로우', content: <MyFollowings /> },
     {
       name: '나의 포인트',

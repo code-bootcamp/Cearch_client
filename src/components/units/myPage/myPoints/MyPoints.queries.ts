@@ -15,6 +15,7 @@ export const FETCH_MY_PLUS_WALLET = gql`
 export const FETCH_MY_MINUS_WALLET = gql`
   query fetchMyMinusWallet {
     fetchMyMinusWallet {
+      id
       division
       description
       point

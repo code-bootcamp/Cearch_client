@@ -13,8 +13,7 @@ import { Modal } from 'antd'
 
 // prettier-ignore
 const categories = [
-  'Html','Css','JavaScript','React','TypeScript','Python','C#','Php','Node.js','MySQL','C','Docker','라이브러리',
-]
+  'HTML',  'CSS',  'JAVASCRIPT',  'REACT',  'TYPESCRIPT',  'PYTHON', 'C#', 'PHP', 'NODE.js', 'MYSQL', 'C', 'DOCKER', 'REACT-NATIVE', 'RUBY', 'MONGODB','VUE.js','GRAPHQL','RESTAPI','SERVICE','LIBRARY']
 
 function getStyles(name: string, personName: readonly string[], theme: Theme) {
   return {
@@ -152,7 +151,7 @@ export default function MyInformation(props) {
         },
       })
       Modal.success({ content: '회원정보를 수정했습니다.' })
-      console.log(updateMenteeResult)
+      console.log('멘티수정정보', updateMenteeResult)
       props.userInfoRefetch()
     } catch (error) {
       Modal.error(error.message)
@@ -184,6 +183,7 @@ export default function MyInformation(props) {
       })
       Modal.success({ content: '회원정보를 수정했습니다.' })
       props.userInfoRefetch()
+      console.log('멘토수정정보', updateMenteeResult, updateMentorResult)
     } catch (error) {
       Modal.error(error.message)
     }

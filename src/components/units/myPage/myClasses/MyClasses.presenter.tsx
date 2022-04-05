@@ -9,9 +9,13 @@ export default function MyClassesUI(props: IMyClassesUIProps) {
     <CH.Wrapper>
       <CH.Row>
         <CH.HeadTitle>나의 클래스</CH.HeadTitle>
-        <CH.CreateButton onClick={props.onClickModal}>
-          + 클래스 개설하기
-        </CH.CreateButton>
+        {props.userInfoData?.fetchUser.role === 'MENTEE' ? (
+          <></>
+        ) : (
+          <CH.CreateButton onClick={props.onClickModal}>
+            + 클래스 개설하기
+          </CH.CreateButton>
+        )}
       </CH.Row>
       {props.isModalOpen && <ClassCreate />}
       {props.isModalOpen || (

@@ -144,6 +144,7 @@ export type ILectureOrder = {
 
 export type ILectureProduct = {
   __typename?: 'LectureProduct';
+  aplliedUser?: Maybe<Scalars['Int']>;
   classCurriculum?: Maybe<Scalars['String']>;
   classDescription?: Maybe<Scalars['String']>;
   classMaxUser?: Maybe<Scalars['Int']>;

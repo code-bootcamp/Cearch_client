@@ -1,26 +1,43 @@
-import { useQuery } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
+import { Modal } from 'antd'
+import { useEffect, useState } from 'react'
 import {
   IQuery,
   IQueryFetchlectureRegistrationsArgs,
 } from '../../../../../commons/types/generated/types'
 import AppliedClassesUI from './AppliedClasses.presenter'
-import { FETCH_LECTURE_REGISTRATIONS } from './AppliedClasses.queries'
+import {
+  CREATE_LECTURE_PAYMENT,
+  FETCH_LECTURE_REGISTRATIONS,
+} from './AppliedClasses.queries'
 
-export default function AppliedClasses() {
-  const { data: AppliedClassesData } = useQuery<
-    Pick<IQuery, 'fetchlectureRegistrations'>,
-    IQueryFetchlectureRegistrationsArgs
-  >(FETCH_LECTURE_REGISTRATIONS)
-  console.log(AppliedClassesData)
+export default function AppliedClasses(props) {
+  const { data } = useQuery(FETCH_LECTURE_REGISTRATIONS)
+  console.log('수강신청한클래스:', data)
 
-  // prettier-ignore
-  const appliedClasses = [
-    { image: '', category: ['typescript', 'javascript','html'], title: '[7일 단기 특강] 쌩기초부터 시작하는 타입스크립트 단기 완성반', price: 150000, date: '2022.03.21'},
-    { image: '', category: ['typescript', 'javascript'], title: 'java부터 node.js까지 백엔드 개발의 A to Z', price: 150000, date: '2022.03.21'},
-    { image: '', category: ['typescript', 'javascript'], title: '[7일 단기 특강] 쌩기초부터 시작하는 타입스크립트 단기 완성반', price: 150000, date: '2022.03.21'},
-    { image: '', category: ['typescript', 'javascript'], title: '[7일 단기 특강] 쌩기초부터 시작하는 타입스크립트 단기 완성반', price: 150000, date: '2022.03.21'},
-    { image: '', category: ['typescript', 'javascript'], title: '[7일 단기 특강] 쌩기초부터 시작하는 타입스크립트 단기 완성반', price: 150000, date: '2022.03.21'},
-  ]
+  const [createlecturePayment] = useMutation(CREATE_LECTURE_PAYMENT)
 
-  return <AppliedClassesUI appliedClasses={appliedClasses} />
+  const [lectureId, setLectureId] = useState('')
+
+  const onClickPayment = async () => {
+    try {
+      const PaymentResult = await createlecturePayment({
+        variables: {
+          lectureRegistrationId: lectureId,
+        },
+      })
+      Modal.success({ content: '강의 결제를 성공하였습니다.' })
+      props.userInfoRefetch()
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  return (
+    <AppliedClassesUI
+      data={data}
+      setLectureId={setLectureId}
+      onClickPayment={onClickPayment}
+    />
+  )
 }

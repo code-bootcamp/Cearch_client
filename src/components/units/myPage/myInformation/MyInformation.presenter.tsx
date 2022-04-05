@@ -250,6 +250,9 @@ export default function MyInformationUI(props) {
                       />
                     </>
                   )}
+                  {/* <CH.SubmitButton onClick={props.submitUpdateMentee}>
+                    수정하기
+                  </CH.SubmitButton> */}
                   {props.userInfoData?.fetchUser.role === 'MENTEE' ? (
                     <CH.SubmitButton onClick={props.submitUpdateMentee}>
                       수정하기
