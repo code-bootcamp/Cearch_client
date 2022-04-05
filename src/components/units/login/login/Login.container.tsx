@@ -4,8 +4,8 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import { IFormValues } from './Login.types'
-import { useMutation } from '@apollo/client'
-import { LOGIN } from './Login.queries'
+import { useMutation, useQuery } from '@apollo/client'
+import { FETCH_USER, LOGIN } from './Login.queries'
 import { GlobalContext } from '../../../../../pages/_app'
 import { useContext } from 'react'
 import { message, Modal } from 'antd'
@@ -16,10 +16,12 @@ const schema = yup.object().shape({
 })
 
 export default function Login() {
+  const { setAccessToken } = useContext(GlobalContext)
+
   const router = useRouter()
 
   const [login] = useMutation(LOGIN)
-  const { setAccessToken } = useContext(GlobalContext)
+  const { data: userData } = useQuery(FETCH_USER)
 
   const { register, formState, handleSubmit } = useForm<IFormValues>({
     mode: 'onChange',
@@ -38,18 +40,16 @@ export default function Login() {
             password,
           },
         })
-
+        console.log(result)
         const accessToken = result.data?.login || ''
         if (setAccessToken) setAccessToken(accessToken)
 
-
-        message.success('This is a success message')
+        message.success(`${userData?.fetchUser.name}님 환영합니다`)
 
         router.push('/')
       } catch (error) {
         Modal.error({ content: error.message })
       }
-
     }
   }
 

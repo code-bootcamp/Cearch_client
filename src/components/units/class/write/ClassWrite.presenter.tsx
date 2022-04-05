@@ -1,6 +1,7 @@
+import { withAuth } from '../../../commons/hocs/withAuth'
 import * as CH from './ClassWrite.styles'
 
-export default function ClassWriteUI(props) {
+const ClassWriteUI = (props) => {
   return (
     <CH.Wrapper>
       <div className="write">
@@ -90,3 +91,5 @@ export default function ClassWriteUI(props) {
     </CH.Wrapper>
   )
 }
+
+export default withAuth(ClassWriteUI)

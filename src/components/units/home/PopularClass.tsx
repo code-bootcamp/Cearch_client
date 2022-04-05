@@ -20,7 +20,12 @@ export default function PopularClass(props) {
   return (
     <>
       <CH.ClassImg>
-        <img src="/images/mentor.jpeg" />
+        <img
+          src={props.el.imageURL}
+          onError={(e) => {
+            e.currentTarget.src = 'images/defaultClass.png'
+          }}
+        />
         <span>{props.el.mentor?.user?.name}</span>
         <span>{props.el.mentor?.companyName}</span>
       </CH.ClassImg>

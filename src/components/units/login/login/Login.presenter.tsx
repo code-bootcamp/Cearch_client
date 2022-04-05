@@ -2,8 +2,14 @@ import * as CH from '../Login.styles'
 import LockRoundedIcon from '@mui/icons-material/LockRounded'
 import MailRoundedIcon from '@mui/icons-material/MailRounded'
 import LoginImg from '../../../commons/loginimg/LoginImg'
+import GoogleLogin from 'react-google-login'
 
 export default function LoginUI(props) {
+  const responseGoogle = (response) => {
+    console.log(response)
+    console.log(response.profileObj)
+  }
+
   return (
     <CH.Wrapper>
       <CH.ImgWrapper>
@@ -83,10 +89,24 @@ export default function LoginUI(props) {
           </CH.InputBox>
           <p>{props.formState?.errors?.password?.message}</p>
           <div className="line"></div>
-          <CH.GoogleButton type="button">
-            <img className="socialIcon" src="/images/google.png" />
-            구글로 로그인하기
-          </CH.GoogleButton>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <CH.GoogleButton
+              type="button"
+              clientId="237557568181-nfsv7jfi69gkhspo3q0clor066h4pm0l.apps.googleusercontent.com"
+              buttonText="구글로 로그인하기"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={'single_host_origin'}
+            >
+              구글로 로그인하기
+            </CH.GoogleButton>
+          </div>
           <CH.LoginButton type="submit">LOGIN</CH.LoginButton>
           <CH.JoinButton>
             <button type="button" onClick={props.onClickJoin}>

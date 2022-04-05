@@ -67,6 +67,13 @@ export const getMyDate2 = (myDate) => {
 
   return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
 }
+export const Today = (classDate) => {
+  var today = new Date(classDate)
+  var dd = String(today.getDate()).padStart(2, '0')
+  var mm = String(today.getMonth() + 1).padStart(2, '0')
+  var yyyy = today.getFullYear()
+
+  return `${yyyy}-${mm}-${dd}`
 
 //splitMarkDown, writer: gun choi
 const splitMarkDown = (mdString: string) => {

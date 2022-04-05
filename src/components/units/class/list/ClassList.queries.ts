@@ -8,6 +8,7 @@ export const FETCH_LECTURE_PRODUCTS = gql`
       classDescription
       classStartDate
       rating
+      imageURL
       joinproductandproductcategory {
         lectureproductcategory {
           categoryname
@@ -47,6 +48,7 @@ export const FETCH_SELECTED_TAG_LECTURES = gql`
       classPrice
       classStartDate
       rating
+      imageURL
       reviews {
         id
       }

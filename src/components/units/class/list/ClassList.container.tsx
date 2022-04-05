@@ -16,14 +16,15 @@ export default function ClassList() {
   const { checkedCategory } = useContext(GlobalContext)
   const [data, setData] = useState([])
   const [fetchSelectedTagLectures] = useLazyQuery(FETCH_SELECTED_TAG_LECTURES)
-  const [fetchlectureProducts] = useLazyQuery(FETCH_LECTURE_PRODUCTS)
-
-  // const { data } = useQuery(FETCH_SELECTED_TAG_LECTURES)
-
-  console.log('checkedCategory : ', checkedCategory)
+  const [fetchlectureProducts, { refetch }] = useLazyQuery(
+    FETCH_LECTURE_PRODUCTS,
+    {
+      variables: { page: 1 },
+    }
+  )
 
   const router = useRouter()
-  const AAA = async () => {
+  const category = async () => {
     if (checkedCategory) {
       const classCategoryData = await fetchSelectedTagLectures({
         variables: { lectureproductcategoryname: checkedCategory, page: 1 },
@@ -40,21 +41,8 @@ export default function ClassList() {
   }
 
   useEffect(() => {
-    AAA()
+    category()
   }, [checkedCategory])
-  console.log('data')
-  console.log(data)
-  // const { data: ClassCategoryData } = useQuery(FETCH_SELECTED_TAG_LECTURES, {
-  //   variables: { lectureproductcategoryname: checkedCategory },
-  // })
-  // console.log(checkedCategory)
-
-  // console.log(ClassCategoryData)
-
-  // const { data } = useQuery<
-  //   Pick<IQuery, 'fetchlectureProducts'>,
-  //   IQueryFetchLectureProductArgs
-  // >(FETCH_LECTURE_PRODUCTS)
 
   const onClickMoveToClassDetail = (e: MouseEvent<HTMLDivElement>) => {
     router.push(`/class/${e.currentTarget.id}`)
@@ -62,6 +50,7 @@ export default function ClassList() {
   return (
     <ClassListUI
       data={data}
+      refetch={refetch}
       onClickMoveToClassDetail={onClickMoveToClassDetail}
     />
   )

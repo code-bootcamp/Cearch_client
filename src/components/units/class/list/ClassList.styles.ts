@@ -165,8 +165,8 @@ export const InfoTop = styled.div`
   .classState {
     border-radius: 5px;
     font-size: 0.875rem;
-    background: #f1f1f1;
-    color: #417294;
+    background: rgb(255, 255, 255);
+    color: #ff7b00;
     padding: 5px 7px 4px;
     @media ${breakPoints.tablet}, ${breakPoints.mobile} {
       position: absolute;

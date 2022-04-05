@@ -5,9 +5,7 @@ import { breakPoints } from '../../../../commons/styles/media'
 
 import {
   Button,
-  Menu,
   MenuButton,
-  MenuList,
   Input,
   MenuItem,
   Drawer,
@@ -21,8 +19,6 @@ import {
   ChakraProvider,
   extendTheme,
 } from '@chakra-ui/react'
-import { IconButton } from '@chakra-ui/react'
-import { HamburgerIcon } from '@chakra-ui/icons'
 import LogoPage from '../../../../commons/libraries/Logo'
 
 const Header = styled.header`
@@ -150,27 +146,6 @@ const Login = styled.div`
   }
 `
 
-const MenuButtonWrapper = styled(MenuButton)`
-  @media ${breakPoints.tablet} {
-    width: 90%;
-    height: auto;
-    display: block;
-  }
-`
-const MenuItems = styled(MenuItem)`
-  width: 8rem;
-  height: 2rem;
-  background-color: white;
-  border: 1px solid gray;
-  margin-bottom: 3px;
-  cursor: pointer;
-  padding-left: 5px;
-  :hover {
-    color: white;
-    background-color: #ffa24b;
-  }
-`
-
 const components = {
   Drawer: {
     variants: {
@@ -212,12 +187,6 @@ export default function LayoutHeader() {
   const onClickMoveToLogin = () => {
     router.push('/login/login')
   }
-  const onClickMenuOpen = () => {
-    setMenuOpen(true)
-  }
-  const onClickMenuClose = () => {
-    setMenuOpen(false)
-  }
 
   return (
     <Header>
@@ -245,27 +214,6 @@ export default function LayoutHeader() {
             <Login onClick={onClickMoveToLogin}>로그인</Login>
           </div>
           <div className="MenuWrapper">
-            {/* <Menu>
-              <MenuButtonWrapper
-                as={IconButton}
-                aria-label="Options"
-                icon={<HamburgerIcon w="2rem" h="2rem" />}
-                variant="outline"
-                color="black"
-                backgroundColor="#ffffff"
-                w={45}
-                h={30}
-                border="none"
-                cursor="pointer"
-                display="none"
-              />
-              <MenuList>
-                <MenuItems onClick={onClickMoveToHome}>홈</MenuItems>
-                <MenuItems onClick={onClickMoveToClass}>클래스</MenuItems>
-                <MenuItems onClick={onClickMoveToMentor}>멘토</MenuItems>
-                <MenuItems onClick={onClickMoveToBoards}>질문게시판</MenuItems>
-              </MenuList>
-            </Menu> */}
             <ChakraProvider theme={theme}>
               <Button ref={btnRef} bg="#FFA24B" color="white" onClick={onOpen}>
                 Open

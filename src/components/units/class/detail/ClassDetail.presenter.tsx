@@ -15,7 +15,12 @@ export default function classNameDetailUI(props) {
       <CH.ClassBanner>
         <CH.BannerWrapper>
           <CH.ClassImg>
-            <img src="/images/mentor.jpeg" />
+            <img
+              src={props.data?.fetchLectureProduct?.imageURL}
+              onError={(e) => {
+                e.currentTarget.src = '/images/defaultClass.png'
+              }}
+            />
           </CH.ClassImg>
           <CH.DetailTop>
             <div>
@@ -178,12 +183,17 @@ export default function classNameDetailUI(props) {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>멘토소개</span>
+            <span style={{ marginLeft: '5px' }}>멘토소개</span>
           </CH.FlexRow>
           <CH.FlexRow>
             <CH.MentorImg>
               <div>
-                <img src="/images/profile.png" />
+                <img
+                  src={props.data?.fetchLectureProduct?.mentor?.user?.imageUrl}
+                  onError={(e) => {
+                    e.currentTarget.src = '/images/profileDefault.png'
+                  }}
+                />
               </div>
               <div className="follow">
                 <PersonAddAlt1Icon />
@@ -257,7 +267,14 @@ export default function classNameDetailUI(props) {
               <CH.ReviewWrapper key={el.id}>
                 <CH.ReviewUser>
                   <div className="userImg">
-                    <img src="/images/profile.png" />
+                    <img
+                      src={
+                        props.data?.fetchLectureProduct?.reviews?.user?.imageUrl
+                      }
+                      onError={(e) => {
+                        e.currentTarget.src = '/images/profileDefault.png'
+                      }}
+                    />
                   </div>
                   <div className="userDetail">
                     <div className="profile">
@@ -371,7 +388,14 @@ export default function classNameDetailUI(props) {
             <CH.FlexRow>
               <CH.MentorImg>
                 <div>
-                  <img src="/images/profile.png" />
+                  <img
+                    src={
+                      props.data?.fetchLectureProduct?.mentor?.user?.imageUrl
+                    }
+                    onError={(e) => {
+                      e.currentTarget.src = '/images/profileDefault.png'
+                    }}
+                  />
                 </div>
                 <div className="follow">
                   <PersonAddAlt1Icon />

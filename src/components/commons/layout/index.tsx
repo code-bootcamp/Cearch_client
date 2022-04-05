@@ -1,11 +1,8 @@
 import styled from '@emotion/styled'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { ReactChild, Fragment } from 'react'
-import { breakPoints } from '../../../commons/styles/media'
+import { ReactChild, useContext } from 'react'
 import LayoutFooter from './footer'
+import { useRouter } from 'next/router'
 import LayoutHeader from './header/Header.container'
-import SideBarPage from './sidebar'
 
 const LayoutBody = styled.div`
   width: 100%;
@@ -20,7 +17,6 @@ export default function Layout(props: IProps) {
   const router = useRouter()
 
   const HIDDEN_HEADER = ['/admin']
-
   const HIDDEN_FOOTER = [
     '/login/join',
     '/login/login',
@@ -35,18 +31,7 @@ export default function Layout(props: IProps) {
   return (
     <div style={{ width: '100%' }}>
       {!isHiddenHeader && <LayoutHeader />}
-      <LayoutBody>
-        <Head>
-          <meta charSet="UTF-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          {/* <link rel="icon" href="/favicon.ico" /> */}
-        </Head>
-        {props.children}
-      </LayoutBody>
+      <LayoutBody>{props.children}</LayoutBody>
       {!isHiddenFooter && <LayoutFooter />}
       <SideBarPage />
     </div>

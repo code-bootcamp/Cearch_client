@@ -19,6 +19,7 @@ import {
   useEffect,
   useState,
 } from 'react'
+import Head from 'next/head'
 import { io } from 'socket.io-client'
 interface IGlobalContext {
   socket?: any
@@ -26,6 +27,12 @@ interface IGlobalContext {
   setAccessToken?: Dispatch<SetStateAction<string>>
   checkedCategory?: String
   setCheckedCategory?: Dispatch<SetStateAction<string>>
+  search?: String
+  setSearch?: Dispatch<SetStateAction<string>>
+  searchButton?: boolean
+  setSearchButton?: Dispatch<SetStateAction<boolean>>
+  keyword?: String
+  setKeyword?: Dispatch<SetStateAction<string>>
 }
 
 export const GlobalContext = createContext<IGlobalContext>({})
@@ -33,11 +40,20 @@ export const GlobalContext = createContext<IGlobalContext>({})
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
   const [checkedCategory, setCheckedCategory] = useState('')
+  const [search, setSearch] = useState('')
+  const [keyword, setKeyword] = useState('')
+
   const value = {
     accessToken,
     setAccessToken,
     checkedCategory,
     setCheckedCategory,
+    search,
+    setSearch,
+    searchButton,
+    setSearchButton,
+    keyword,
+    setKeyword,
   }
 
   useEffect(() => {
@@ -79,6 +95,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/cearch.ico" />
+        <title>CEARCH</title>
+      </Head>
       <GlobalContext.Provider value={value}>
         <ApolloProvider client={client}>
           <Global styles={globalStyles} />
