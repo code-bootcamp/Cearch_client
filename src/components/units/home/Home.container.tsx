@@ -9,12 +9,9 @@ import {
   FETCH_MOST_RECOMMEND_MENTOR,
   FETCH_NEW_CLASSES,
 } from './Home.queries'
-import { MouseEvent, useContext, useEffect, useState } from 'react'
+import { MouseEvent, useContext, useEffect } from 'react'
 import {
   IQuery,
-  IQueryFetchLectureProductArgs,
-  IQueryFetchLectureReviewsArgs,
-  IQueryFetchMentorArgs,
   IQueryFetchQtBoardsArgs,
 } from '../../../commons/types/generated/types'
 import { GlobalContext } from '../../../../pages/_app'
@@ -23,16 +20,15 @@ export default function Home() {
   const { setCheckedCategory } = useContext(GlobalContext)
   const router = useRouter()
 
-  useEffect(() => {
-    setCheckedCategory(null)
-  }, [])
+  const { data: MentorAnswerData } = useQuery<
+    Pick<IQuery, 'fetchMostAnswerMentor'>
+  >(FETCH_MOST_ANSWER_MENTOR)
+  const { data: MentorRecommendData } = useQuery<
+    Pick<IQuery, 'fetchMostRecommendMentor'>
+  >(FETCH_MOST_RECOMMEND_MENTOR)
 
-  const { data: MentorAnswerData } = useQuery(FETCH_MOST_ANSWER_MENTOR)
-  const { data: MentorRecommendData } = useQuery(FETCH_MOST_RECOMMEND_MENTOR)
-
-  console.log(MentorRecommendData)
-
-  const { data: NewClassData } = useQuery(FETCH_NEW_CLASSES)
+  const { data: NewClassData } =
+    useQuery<Pick<IQuery, 'fetchNewClasses'>>(FETCH_NEW_CLASSES)
   const { data: PopularClassData } =
     useQuery<Pick<IQuery, 'fetchPopularClass'>>(FETCH_POPULAR_CLASS)
 
@@ -46,6 +42,10 @@ export default function Home() {
       page: 1,
     },
   })
+
+  useEffect(() => {
+    setCheckedCategory(null)
+  }, [])
 
   const onClickMoveToMentorDetail = (e: MouseEvent<HTMLDivElement>) => {
     router.push(`/mentor/${e.currentTarget.id}`)

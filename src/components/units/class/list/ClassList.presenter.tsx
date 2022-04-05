@@ -4,6 +4,7 @@ import SwiperCategory from '../../../commons/category/Category'
 import { useContext } from 'react'
 import { GlobalContext } from '../../../../../pages/_app'
 import ClassList from './ClassList'
+import Pagination from '../../../commons/pagination/pagination'
 
 export default function ClassListUI(props) {
   const { checkedCategory } = useContext(GlobalContext)
@@ -41,20 +42,10 @@ export default function ClassListUI(props) {
           </CH.Class>
         </section>
 
-        {/* <div class="pagination">
-        <span><</span>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>5</span>
-        <span>6</span>
-        <span>7</span>
-        <span>8</span>
-        <span>9</span>
-        <span>10</span>
-        <span>></span>
-      </div> */}
+        <Pagination
+          refetch={props.refetch}
+          counts={props.mentorCount?.fetchAllMentorCount}
+        />
       </article>
     </CH.Wrapper>
   )

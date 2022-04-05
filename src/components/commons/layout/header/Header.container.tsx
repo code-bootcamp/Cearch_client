@@ -1,4 +1,10 @@
-import { useState, useRef, useEffect, useCallback, useContext } from 'react'
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  ChangeEvent,
+} from 'react'
 import { useRouter } from 'next/router'
 import LayoutHeaderUI from './Header.presenter'
 import { useMutation, useQuery } from '@apollo/client'
@@ -14,7 +20,8 @@ import { GlobalContext } from '../../../../../pages/_app'
 export default function LayoutHeader() {
   const router = useRouter()
   const [value, setValue] = useState(0)
-  const { accessToken } = useContext(GlobalContext)
+  const { accessToken, search, setSearch, setKeyword } =
+    useContext(GlobalContext)
   const [isTop, setIsTop] = useState(true)
   const [modalOpen, setModalOpen] = useState(false)
   const { data } = useQuery<Pick<IQuery, 'fetchUser'>>(FETCH_USER)
@@ -71,6 +78,14 @@ export default function LayoutHeader() {
     }
   }, [isTop])
 
+  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearch(event?.target.value)
+  }
+  const onClickSearch = () => {
+    setKeyword(String(search))
+    router.push('/search')
+  }
+
   return (
     <LayoutHeaderUI
       data={data}
@@ -88,6 +103,8 @@ export default function LayoutHeader() {
       onClickMoveToBoards={onClickMoveToBoards}
       onClickMoveToLogin={onClickMoveToLogin}
       onClickMoveToMyPage={onClickMoveToMyPage}
+      onChangeSearch={onChangeSearch}
+      onClickSearch={onClickSearch}
     />
   )
 }

@@ -50,6 +50,16 @@ export const Wrapper = styled.div`
   }
 `
 
+export const Banner = styled.div`
+  width: 100%;
+  img {
+    width: 100%;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
+`
+
 export const Mentor = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -66,7 +76,6 @@ export const Mentor = styled.div`
   > div {
     transform-style: preserve-3d;
     perspective: 1000px;
-    /* overflow: hidden; */
 
     cursor: pointer;
     position: relative;
@@ -105,6 +114,92 @@ export const Mentor = styled.div`
       transform: rotateY(180deg);
       transform-style: preserve-3d;
       padding: 20px;
+      height: 95% !important;
+
+      .mentorName {
+        font-weight: 600;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+      }
+      .backTop {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        @media ${breakPoints.mobile} {
+          margin-bottom: 5px;
+        }
+        .line {
+          border-left: 1px solid black;
+          padding-right: 5px;
+          margin-left: 5px;
+          width: 1px;
+          height: 12px;
+        }
+        > span:nth-of-type(1),
+        > span:nth-of-type(2) {
+          font-size: 0.8rem;
+        }
+      }
+
+      .backBottom {
+        width: 100%;
+        word-break: keep-all;
+        white-space: pre-line;
+        display: flex;
+        align-items: center;
+        @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+          display: block;
+        }
+        .answerWrapper,
+        .followerWrapper {
+          white-space: nowrap;
+          font-size: 0.8rem;
+          font-weight: 600;
+          @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+            width: 100%;
+          }
+          svg {
+            margin: 0 5px;
+          }
+          .orange {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #ff7b00;
+          }
+        }
+      }
+      > .line {
+        width: 100%;
+        height: 1px;
+        padding-bottom: 10px;
+        border-top: 1px solid black;
+        margin-top: 10px;
+      }
+
+      .selfIntro {
+        font-size: 0.875rem;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        line-height: 1.2rem;
+        height: calc(1.2rem * 9);
+      }
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        > .line {
+          margin-top: 5px;
+          padding-bottom: 5px;
+        }
+        .selfIntro {
+          -webkit-line-clamp: 4;
+          height: calc(1.2rem * 4);
+        }
+      }
     }
 
     &:hover .mentorCardBack {
@@ -450,8 +545,8 @@ export const InfoTop = styled.div`
   .classState {
     border-radius: 5px;
     font-size: 0.875rem;
-    background: #f1f1f1;
-    color: #417294;
+    background: rgb(255, 255, 255);
+    color: #ff7b00;
     padding: 5px 7px 4px;
     @media ${breakPoints.tablet}, ${breakPoints.mobile} {
       position: absolute;

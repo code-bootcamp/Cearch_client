@@ -9,12 +9,14 @@ export const FETCH_MOST_ANSWER_MENTOR = gql`
       selfIntro
       user {
         name
+        imageUrl
       }
       work {
         category {
           categoryname
         }
       }
+      follower
     }
   }
 `
@@ -26,6 +28,7 @@ export const FETCH_MOST_RECOMMEND_MENTOR = gql`
       department
       selfIntro
       user {
+        imageUrl
         name
       }
       work {
@@ -33,6 +36,7 @@ export const FETCH_MOST_RECOMMEND_MENTOR = gql`
           categoryname
         }
       }
+      follower
     }
   }
 `
@@ -49,6 +53,7 @@ export const FETCH_NEW_CLASSES = gql`
       classStartDate
       classStartTime
       rating
+      imageURL
       joinproductandproductcategory {
         id
         lectureproductcategory {
@@ -76,6 +81,7 @@ export const FETCH_POPULAR_CLASS = gql`
       classStartDate
       classStartTime
       rating
+      imageURL
       joinproductandproductcategory {
         id
         lectureproductcategory {
@@ -110,6 +116,9 @@ export const FETCH_QT_BOARDS = gql`
       likescount
       commentsCount
       createdAt
+      user {
+        imageUrl
+      }
     }
   }
 `
@@ -123,6 +132,35 @@ export const FETCH_LIKE_POST = gql`
       likescount
       commentsCount
       createdAt
+      user {
+        imageUrl
+      }
+    }
+  }
+`
+
+export const FETCH_HOME_SEARCH = gql`
+  query fetchHomeSearch($search: String!) {
+    fetchHomeSearch(search: $search) {
+      id
+      name
+      companyName
+      department
+      selfIntro
+    }
+  }
+`
+
+export const FETCH_LECTURE_SEARCH = gql`
+  query fetchLectureSearch($search: String!) {
+    fetchLectureSearch(search: $search) {
+      id
+      name
+      companyName
+      department
+      classTitle
+      classDescription
+      rating
     }
   }
 `

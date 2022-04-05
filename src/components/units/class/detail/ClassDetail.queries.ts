@@ -14,6 +14,7 @@ export const FETCH_LECTURE_PRODUCT = gql`
       classStartTime
       rating
       createdAt
+      imageURL
       reviews {
         id
         reviewContents
@@ -21,6 +22,7 @@ export const FETCH_LECTURE_PRODUCT = gql`
         createdAt
         user {
           name
+          imageUrl
         }
       }
       joinproductandproductcategory {
@@ -33,6 +35,7 @@ export const FETCH_LECTURE_PRODUCT = gql`
         department
         user {
           name
+          imageUrl
         }
         work {
           id

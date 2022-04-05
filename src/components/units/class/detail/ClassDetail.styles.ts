@@ -4,7 +4,8 @@ import { breakPoints } from '../../../../commons/styles/media'
 export const ClassBanner = styled.div`
   width: 100%;
   height: 380px;
-  background: #997655;
+  background-color: #222;
+  background: #ffa24b;
   display: flex;
   justify-content: center;
 
@@ -18,8 +19,8 @@ export const ClassBanner = styled.div`
     padding: 20px;
     background: linear-gradient(
       180deg,
-      #997655 0%,
-      #997655 50%,
+      #ffa24b 0%,
+      #ffa24b 50%,
       rgba(255, 255, 255, 1) 50%,
       rgba(255, 255, 255, 1) 100%
     );

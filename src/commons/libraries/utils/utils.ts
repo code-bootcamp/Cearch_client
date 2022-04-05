@@ -54,7 +54,6 @@ export const getPrice = (price) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-
 export function ratingRound(rating) {
   let numb = rating
   let rounded = Math.round((numb + Number.EPSILON) * 10) / 10
@@ -67,5 +66,13 @@ export const getMyDate2 = (myDate) => {
   const dd = aaa.getDate()
 
   return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
+}
 
+export const Today = (classDate) => {
+  var today = new Date(classDate)
+  var dd = String(today.getDate()).padStart(2, '0')
+  var mm = String(today.getMonth() + 1).padStart(2, '0')
+  var yyyy = today.getFullYear()
+
+  return `${yyyy}${mm}-${dd}-`
 }

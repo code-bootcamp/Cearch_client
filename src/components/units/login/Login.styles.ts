@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { breakPoints } from '../../../commons/styles/media'
+import GoogleLogin from 'react-google-login'
 
 interface IProps {
   isActive: boolean
@@ -106,7 +107,7 @@ export const ContentsWrapper = styled.div`
     .title {
       width: 100%;
       font-size: 1.2rem;
-      margin-top: 20px;
+      margin-top: 0px !important;
       margin-bottom: 10px;
     }
     > div {
@@ -114,7 +115,7 @@ export const ContentsWrapper = styled.div`
     }
     > form {
       width: 100%;
-      margin: 30px auto !important;
+      margin: 30px auto 0 !important;
     }
   }
   @media ${breakPoints.tablet} {
@@ -277,26 +278,36 @@ export const CreateButton = styled.button`
     height: 50px;
   }
 `
-export const GoogleButton = styled.button`
+export const GoogleButton = styled(GoogleLogin)`
   width: 300px;
   height: 45px;
   margin: 15px auto !important;
-  border-radius: 10px;
-  border: 1px solid gray;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  border: 1px solid gray !important;
   background: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   line-height: 50px;
+  opacity: 1 !important;
+  color: #222;
 
   :hover {
     background: #ffa24b;
-    color: #fff;
+    /* color: #fff; */
   }
   .socialIcon {
     width: 20px;
     margin-right: 10px;
+  }
+
+  > div {
+    background: none !important;
+    padding: 0 !important;
+    display: flex;
+    align-items: center;
   }
 
   @media ${breakPoints.mobile} {
