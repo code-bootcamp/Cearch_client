@@ -183,7 +183,7 @@ export type ILectureRegistration = {
   phoneNumber: Scalars['String'];
   preQuestion: Scalars['String'];
   product: ILectureProduct;
-  registration?: Maybe<ILectureOrder>;
+  registration: ILectureOrder;
   selfIntroduction: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   user: IUser;
@@ -260,6 +260,7 @@ export type IMutation = {
   createNotice: INotice;
   createQtBoard: IQtBoard;
   createReply: IComments;
+  createRoom: IChatRoom;
   createUser: IUser;
   createlecturePayment: ILectureOrder;
   createlectureproductCategory: ILectureProductCategory;
@@ -363,6 +364,11 @@ export type IMutationCreateQtBoardArgs = {
 export type IMutationCreateReplyArgs = {
   commentId: Scalars['String'];
   contents: Scalars['String'];
+};
+
+
+export type IMutationCreateRoomArgs = {
+  roomName: Scalars['String'];
 };
 
 
@@ -666,7 +672,7 @@ export type IQuery = {
   getSignedUrlCertificate: Array<Scalars['String']>;
   getSignedUrlLQt: Array<Scalars['String']>;
   getSignedUrlLecture: Array<Scalars['String']>;
-  getSignedUrlUser: Array<Scalars['String']>;
+  getSignedUrlUser: Scalars['String'];
   isCheckEmail: Scalars['Boolean'];
   makeRoom: Array<IChatRoom>;
   phoneCheckToken: Scalars['Boolean'];

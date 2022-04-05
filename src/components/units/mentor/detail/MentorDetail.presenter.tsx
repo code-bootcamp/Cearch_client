@@ -44,6 +44,9 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
 
 export default function MentorDetailUI(props) {
   const [expanded, setExpanded] = useState<string | false>('panel1')
+  const onClick = (e) => {
+    console.log(e.target.id)
+  }
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -93,7 +96,9 @@ export default function MentorDetailUI(props) {
               <p>{props.data?.onlineTime}</p>
             </div>
             <div className="DMButton">
-              <button>질문하기</button>
+              <button id={props.data?.id} onClick={onClick}>
+                질문하기
+              </button>
             </div>
           </div>
         </div>

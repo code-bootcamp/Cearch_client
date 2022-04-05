@@ -35,6 +35,7 @@ export const FETCH_MENTOR = gql`
       user {
         name
         imageUrl
+        email
       }
       onlineTime
       # lecture {
