@@ -1,5 +1,4 @@
 import * as CH from './Header.styles'
-import MuiBottomNavigationAction from '@mui/material/BottomNavigationAction'
 import Box from '@mui/material/Box'
 import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
@@ -22,26 +21,12 @@ import { styled } from '@mui/material/styles'
 
 const NavButton = styled(BottomNavigationAction)(`
   color: gray;
-  /* &.Mui-selected {
-    color: ${(props: { isSelected: boolean }) => props.isSelected && '#FFA24B'};
-  } */
   &.Mui-selected {
     color: #FFA24B;
   }
 `)
 
 export default function LayoutHeaderUI(props) {
-  // const [selected, setSelected] = useState(false)
-  // const router = useRouter()
-  // const currentPage = router.asPath
-  // useEffect(() => {
-  //   const A = () => {
-  //     if (currentPage === localStorage.getItem('class')) setSelected(true)
-  //     else setSelected(false)
-  //   }
-  //   A()
-  // }, [selected])
-  // console.log(selected)
   return (
     <CH.Header isTop={props.isTop}>
       <div>
@@ -144,6 +129,12 @@ export default function LayoutHeaderUI(props) {
                 </Typography>
               </CH.ModalStyle>
             </Modal>
+
+            {props.accessToken && (
+              <CH.Login onClick={props.onClickMoveToMyPage} isTop={props.isTop}>
+                mypage
+              </CH.Login>
+            )}
             <CH.Login
               onClick={
                 props.accessToken
@@ -152,7 +143,7 @@ export default function LayoutHeaderUI(props) {
               }
               isTop={props.isTop}
             >
-              {props.accessToken ? '로그아웃' : '로그인'}
+              {props.accessToken ? 'logout' : 'login'}
             </CH.Login>
           </div>
         </div>

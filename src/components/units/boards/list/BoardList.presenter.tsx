@@ -1,7 +1,11 @@
 import * as CH from './BoardList.styles'
 import { v4 as uuidv4 } from 'uuid'
-import { DateToString } from '../../../../commons/libraries/utils/utils'
+import {
+  DateToString,
+  getTextFromMD,
+} from '../../../../commons/libraries/utils/utils'
 import Pagination from '../../../commons/pagination/pagination'
+import ToastViewerPage from '../../../../commons/libraries/toasteditor/viewer/index'
 
 export default function BoardListUI(props) {
   return (
@@ -64,7 +68,12 @@ export default function BoardListUI(props) {
                   >
                     {el.title}
                   </div>
-                  <div className="ContentsBody">{el.contents}</div>
+                  <div className="ContentsBody">
+                    <ToastViewerPage
+                      contents={getTextFromMD(el.contents).value}
+                    />
+                    {/* {el.contents} */}
+                  </div>
                   <div className="RightWrapperFooter">
                     <div className="CategoriesWrapper">
                       {el.qtTags.map((el) => (

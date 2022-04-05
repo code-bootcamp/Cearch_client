@@ -54,7 +54,6 @@ export const getPrice = (price) => {
   return String(price).replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-
 export function ratingRound(rating) {
   let numb = rating
   let rounded = Math.round((numb + Number.EPSILON) * 10) / 10
@@ -67,5 +66,48 @@ export const getMyDate2 = (myDate) => {
   const dd = aaa.getDate()
 
   return `${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}`
+}
 
+//splitMarkDown, writer: gun choi
+const splitMarkDown = (mdString: string) => {
+  const splitArr = mdString.split(/!\[([-_.]?[0-9a-zA-Z])*\]\(/)
+  const gubunArr = []
+  let cnt = 0
+  for (let i = 0; i < splitArr.length; i++) {
+    if (!splitArr[i]) continue
+    if (splitArr[i].startsWith('https')) {
+      gubunArr.push({
+        gubun: 'image',
+        value: splitArr[i].split(')')[0],
+        index: cnt,
+      })
+      cnt++
+      if (splitArr[i].split(')')[1]) {
+        gubunArr.push({
+          gubun: 'text',
+          value: splitArr[i]
+            .split(')')
+            .filter((_, idx) => idx !== 0)
+            .join(')'),
+          index: cnt,
+        })
+        cnt++
+      }
+    } else {
+      gubunArr.push({ gubun: 'text', value: splitArr[i], index: cnt })
+      cnt++
+    }
+  }
+
+  return gubunArr
+}
+
+//getTextFromMD, writer: gun choi
+export const getTextFromMD = (mdString: string) => {
+  let text = mdString
+  while (text.indexOf('\n') >= 0 || text.indexOf('#') >= 0) {
+    text = text.replace(/\n+|#/, '')
+  }
+  const splitArr = splitMarkDown(mdString)
+  return splitArr.filter((el) => el.gubun === 'text')[0] ?? ''
 }

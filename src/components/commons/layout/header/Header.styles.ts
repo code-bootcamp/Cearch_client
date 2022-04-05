@@ -208,3 +208,16 @@ export const ModalStyle = styled(Box)`
     }
   }
 `
+
+export const ChattingSticker = styled.div`
+  position: sticky;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  .chattingSticker {
+    width: 50px;
+    height: 50px;
+    border-radius: 25%;
+    background-color: red;
+  }
+`

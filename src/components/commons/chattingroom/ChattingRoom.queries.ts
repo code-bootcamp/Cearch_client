@@ -36,7 +36,6 @@ export const FETCH_MY_ROOM_INFO = gql`
       roomId
       userId
       created
-      userName
     }
   }
 `

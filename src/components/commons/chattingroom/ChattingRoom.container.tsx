@@ -6,7 +6,7 @@ import {
   FETCH_MY_ROOM_INFO,
   FETCH_ROOMS,
   FETCH_USER,
-} from './Chatting.queries'
+} from './ChattingRoom.queries'
 import { notification } from 'antd'
 import { useRouter } from 'next/router'
 import {
@@ -17,11 +17,11 @@ import {
   useCallback,
   MouseEvent,
 } from 'react'
-import { GlobalContext } from '../../../../pages/_app'
+
 import { io } from 'socket.io-client'
 import dynamic from 'next/dynamic'
 
-const ChattingUI = dynamic(() => import('./Chatting.presenter'), {
+const ChattingUI = dynamic(() => import('./ChattingRoom.presenter'), {
   ssr: false,
 })
 
@@ -38,15 +38,14 @@ let socketOptions = {
 
 const socket = io('http://localhost:5000', socketOptions).connect()
 
-export default function Chatting() {
-  const { accessToken } = useContext(GlobalContext)
+export default function ChattingRoom() {
   const router = useRouter()
   const [createRoom] = useMutation(CREATE_ROOM)
 
   const { data: fetchChatRooms } = useQuery(FETCH_ROOMS)
   const { data: fetchUserData } = useQuery(FETCH_USER)
   const { data: fetchMyChatInfo } = useQuery(FETCH_MY_ROOM_INFO)
-
+  console.log(fetchMyChatInfo)
   const inputRef = useRef<HTMLInputElement>(null)
   const [connected, setConnected] = useState<boolean>(false)
   const [chat, setChat] = useState([])
@@ -54,23 +53,28 @@ export default function Chatting() {
   const [roomName, setRoomName] = useState('')
   const [roomId, setRoomId] = useState('')
   const [roomLog, setRoomLog] = useState([])
+  const [prevChat, setPrevChat] = useState(false)
   const onChangeRoomName = (e) => {
     setRoomName(e.target.value)
   }
 
   const joinChatRoom = (e: MouseEvent<HTMLDivElement>) => {
+    setRoomName(e.currentTarget.id)
+    console.log(roomName, '방이름')
     socket.emit('join room', {
       roomNum: e.currentTarget.id,
     })
+
     console.log(e.currentTarget.id, '에 입장')
   }
 
-  const sendMessage = async (e) => {
-    // build message obj
+  const sendMessage = () => {
+    console.log('sendMessage')
     const message = {
       message: msg,
       roomNum: roomName,
     }
+    console.log(chat, '<<<<')
     socket.emit('client message', {
       message: message.message,
       roomNum: message.roomNum,
@@ -116,6 +120,10 @@ export default function Chatting() {
 
   const nickName = fetchUserData?.fetchUser.name
 
+  const loadPrevChat = () => {
+    setPrevChat((prev) => !prev)
+  }
+
   return (
     <>
       <ChattingUI
@@ -131,7 +139,8 @@ export default function Chatting() {
         createChatRoom={createChatRoom}
         connected={connected}
         fetchChatRooms={fetchChatRooms}
-        fetchMyChatInfo={fetchMyChatInfo}
+        loadPrevChat={loadPrevChat}
+        prevChat={prevChat}
       />
     </>
   )

@@ -287,10 +287,6 @@ export const ListWrapper = styled.div`
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin: 10px 0;
-          :hover {
-            background-color: #f0db97;
-          }
           .userImg {
             width: 30px;
             height: 30px;

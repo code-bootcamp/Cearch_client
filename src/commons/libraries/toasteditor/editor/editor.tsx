@@ -26,9 +26,9 @@ export default function BoardWriteEditor(props) {
     const editorInstance = editorRef.current.getInstance()
     // const getContentMarkdown = editorInstance.getMarkdown()
     // const getContentHTML = editorInstance.getHTML()
-    props.setContents(editorInstance.getHTML())
+    props.setContents(editorInstance.getMarkdown())
 
-    if (props.defaultValue) props.setContents(editorInstance.getHTML())
+    if (props.defaultValue) props.setContents(editorInstance.getMarkdown())
   }
 
   return (
@@ -41,6 +41,7 @@ export default function BoardWriteEditor(props) {
           [codeSyntaxHighlight, { highlighter: Prism }],
         ]}
         onChange={onChangeContents}
+        placeholder="궁금한 내용이 무엇인가요?"
         ref={editorRef}
         initialValue={props.defaultValue}
       />

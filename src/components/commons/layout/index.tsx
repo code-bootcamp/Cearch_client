@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { ReactChild } from 'react'
+import { ReactChild, Fragment } from 'react'
 import { breakPoints } from '../../../commons/styles/media'
 import LayoutFooter from './footer'
 import LayoutHeader from './header/Header.container'
+import SideBarPage from './sidebar'
 
 const LayoutBody = styled.div`
   width: 100%;
@@ -32,7 +33,7 @@ export default function Layout(props: IProps) {
   const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath)
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       {!isHiddenHeader && <LayoutHeader />}
       <LayoutBody>
         <Head>
@@ -47,6 +48,7 @@ export default function Layout(props: IProps) {
         {props.children}
       </LayoutBody>
       {!isHiddenFooter && <LayoutFooter />}
-    </>
+      <SideBarPage />
+    </div>
   )
 }
