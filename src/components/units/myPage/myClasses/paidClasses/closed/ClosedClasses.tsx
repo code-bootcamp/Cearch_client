@@ -48,15 +48,24 @@ export default function ClosedClasses(props) {
         <CH.ClassContentsList>
           <CH.ClassContentsListTop>
             <CH.ClassCategory>
-              {props.el.category.map((el, index) => (
-                <span className="Categories" key={index}>
-                  {el}
+              <span className="Categories">
+                {
+                  props.el.joinproductandproductcategory[0]
+                    .lectureproductcategory.categoryname
+                }
+              </span>
+              {props.el.joinproductandproductcategory[1] && (
+                <span className="Categories">
+                  {
+                    props.el.joinproductandproductcategory[1]
+                      .lectureproductcategory.categoryname
+                  }
                 </span>
-              ))}
+              )}
             </CH.ClassCategory>
-            <CH.ClassTitle>{props.el.title}</CH.ClassTitle>
+            <CH.ClassTitle>{props.el.classTitle}</CH.ClassTitle>
           </CH.ClassContentsListTop>
-          <CH.ClassDate>{props.el.date}</CH.ClassDate>
+          <CH.ClassDate>{props.el.classStartDate}</CH.ClassDate>
         </CH.ClassContentsList>
       </CH.ClassContentsLeft>
       <Popover

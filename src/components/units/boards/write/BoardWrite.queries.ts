@@ -91,3 +91,13 @@ export const UPDATE_QT_BOARD = gql`
     }
   }
 `
+
+export const URL_TO_DB_QT = gql`
+  mutation urlToDbQt($filePaths: [String!]!, $qTId: String!) {
+    urlToDbQt(filePaths: $filePaths, qTId: $qTId) {
+      id
+      url
+      createdAt
+    }
+  }
+`

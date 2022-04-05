@@ -3,8 +3,6 @@ import { ReactChild, useContext } from 'react'
 import LayoutFooter from './footer'
 import { useRouter } from 'next/router'
 import LayoutHeader from './header/Header.container'
-import { gql, useQuery } from '@apollo/client'
-import { GlobalContext } from '../../../../pages/_app'
 
 const LayoutBody = styled.div`
   width: 100%;
@@ -31,10 +29,11 @@ export default function Layout(props: IProps) {
   const isHiddenFooter = HIDDEN_FOOTER.includes(router.asPath)
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       {!isHiddenHeader && <LayoutHeader />}
       <LayoutBody>{props.children}</LayoutBody>
       {!isHiddenFooter && <LayoutFooter />}
-    </>
+      <SideBarPage />
+    </div>
   )
 }

@@ -20,8 +20,9 @@ import {
   useState,
 } from 'react'
 import Head from 'next/head'
-
+import { io } from 'socket.io-client'
 interface IGlobalContext {
+  socket?: any
   accessToken?: String
   setAccessToken?: Dispatch<SetStateAction<string>>
   checkedCategory?: String
@@ -39,7 +40,6 @@ export const GlobalContext = createContext<IGlobalContext>({})
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState('')
   const [checkedCategory, setCheckedCategory] = useState('')
-  const [searchButton, setSearchButton] = useState(false)
   const [search, setSearch] = useState('')
   const [keyword, setKeyword] = useState('')
 

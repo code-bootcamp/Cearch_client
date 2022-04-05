@@ -193,6 +193,7 @@ export const BoardList = styled.div`
       }
       .ContentsWriter,
       .ContentsBody {
+        max-height: 150px;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;

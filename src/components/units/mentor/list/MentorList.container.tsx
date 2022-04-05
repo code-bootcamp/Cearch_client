@@ -11,6 +11,7 @@ import {
   FETCH_MENTOR,
   FETCH_SELECTED_TAG_MENTOR,
   FETCH_ALL_MENTOR_COUNT,
+  FETCH_MENTOR_USER,
 } from './MentorList.queries'
 
 export default function MentorList() {
@@ -19,7 +20,10 @@ export default function MentorList() {
     Pick<IQuery, 'fetchMentor'>,
     IQueryFetchMentorArgs
   >(FETCH_MENTOR, { variables: { page: 1 } })
+
+  const { data: fetchMentorUser } = useQuery(FETCH_MENTOR_USER)
   console.log(data)
+
   const { data: selectedTagMentor } = useQuery<
     Pick<IQuery, 'fetchSelectedTagMentor'>,
     IQueryFetchSelectedTagMentorArgs
@@ -27,7 +31,7 @@ export default function MentorList() {
   const { data: mentorCount } = useQuery(FETCH_ALL_MENTOR_COUNT)
 
   const onClickMoveToMentorDetail = (index) => () => {
-    router.push(`/mentor/${data?.fetchMentor[index].id}`)
+    router.push(`/mentor/${fetchMentorUser?.fetchMentorUser.id}`)
   }
 
   const mentorDetail = (e) => {
@@ -44,6 +48,7 @@ export default function MentorList() {
   return (
     <MentorListUI
       data={data}
+      fetchMentorUser={fetchMentorUser}
       refetch={refetch}
       mentorCount={mentorCount}
       onClickMoveToMentorDetail={onClickMoveToMentorDetail}

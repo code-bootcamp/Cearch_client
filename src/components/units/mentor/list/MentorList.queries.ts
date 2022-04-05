@@ -7,19 +7,32 @@ export const FETCH_MENTOR = gql`
       companyName
       department
       selfIntro
-      onlineTime
-      # certificate
       # work {
-      #   id
-      #   category
+      #   category {
+      #     categoryname
+      #   }
       # }
-      user {
-        name
-        imageUrl
-      }
+      # user {
+      #   name
+      #   imageUrl
+      # }
       onlineTime
-      # lecture {
-      #   classTitle
+    }
+  }
+`
+export const FETCH_MENTOR_USER = gql`
+  query fetchMentorUser {
+    fetchMentorUser {
+      id
+      name
+      email
+      role
+      # imageUrl
+      # mentor {
+      #   onlineTime
+      #   companyName
+      #   department
+      #   selfIntro
       # }
     }
   }

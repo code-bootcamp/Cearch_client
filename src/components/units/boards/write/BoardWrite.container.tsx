@@ -10,6 +10,7 @@ import {
   UPDATE_NON_MEMBERS_QT_BOARD,
   CREATE_QT_BOARD,
   UPDATE_QT_BOARD,
+  URL_TO_DB_QT,
 } from './BoardWrite.queries'
 import { useMutation, useQuery } from '@apollo/client'
 import { useRouter } from 'next/router'
@@ -19,6 +20,7 @@ import {
   IMutationCreateQtBoardArgs,
   IMutationUpdateNonMembersQtBoardArgs,
   IMutationUpdateQtBoardArgs,
+  IMutationUrlToDbQtArgs,
 } from '../../../../commons/types/generated/types'
 import { notification } from 'antd'
 import { GlobalContext } from '../../../../../pages/_app'
@@ -110,6 +112,28 @@ export default function BoardWrite(props) {
     Pick<IMutation, 'updateNonMembersQtBoard'>,
     IMutationUpdateNonMembersQtBoardArgs
   >(UPDATE_NON_MEMBERS_QT_BOARD)
+
+  const [urlToDbQt] = useMutation<
+    Pick<IMutation, 'urlToDbQt'>,
+    IMutationUrlToDbQtArgs
+  >(URL_TO_DB_QT)
+
+  // const onClickUploadImage = async () => {
+  //   try {
+  //     const result = await urlToDbQt({
+  //       variables: {
+  //         filePaths:,
+  //         qTId:,
+  //       },
+  //     })
+  //     notification.success({
+  //       message: '이미지 첨부를 완료했어요!',
+  //       top: 80,
+  //     })
+  //   } catch (error) {
+  //     notification.error({ message: `${error.message}`, top: 80 })
+  //   }
+  // }
 
   const { register, handleSubmit, formState, setValue } = useForm({
     resolver: accessToken ? yupResolver(schema1) : yupResolver(schema),

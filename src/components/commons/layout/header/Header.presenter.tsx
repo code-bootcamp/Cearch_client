@@ -83,7 +83,6 @@ export default function LayoutHeaderUI(props) {
               onChangeSearch={props.onChangeSearch}
               onClickSearch={props.onClickSearch}
             />
-
             <CH.Login
               onClick={
                 props.accessToken
@@ -92,7 +91,7 @@ export default function LayoutHeaderUI(props) {
               }
               isTop={props.isTop}
             >
-              {props.accessToken ? '로그아웃' : '로그인'}
+              {props.accessToken ? 'logout' : 'login'}
             </CH.Login>
           </div>
         </div>

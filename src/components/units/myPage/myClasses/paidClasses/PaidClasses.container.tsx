@@ -5,21 +5,24 @@ import {
   IQueryFetchlectureOrderArgs,
 } from '../../../../../commons/types/generated/types'
 import PaidClassesUI from './PaidClasses.presenter'
-import { FETCH_LECTURE_ORDERS } from './PaidClasses.queries'
+import {
+  FETCH_LECTURE_ORDERS,
+  FETCH_LECTURE_WITH_MENTEE,
+} from './PaidClasses.queries'
 
 export default function PaidClasses() {
   const { data: PaidClassesData } = useQuery<
     Pick<IQuery, 'fetchlectureOrders'>,
     IQueryFetchlectureOrderArgs
-  >(FETCH_LECTURE_ORDERS)
-  console.log(PaidClassesData)
+  >(FETCH_LECTURE_WITH_MENTEE)
+  console.log('결제한강의:', PaidClassesData?.fetchLectureWithMentee)
 
-  const inProgressClasses = PaidClassesData?.fetchlectureOrders.filter(
-    (el) => el.order.lecproduct.classOpen === false
-  )
-  const closedsClasses = PaidClassesData?.fetchlectureOrders.filter(
-    (el) => el.order.lecproduct.classOpen === true
-  )
+  // const inProgressClasses = PaidClassesData?.fetchlectureOrders.filter(
+  //   (el) => el.order.lecproduct.classOpen === false
+  // )
+  // const closedsClasses = PaidClassesData?.fetchlectureOrders.filter(
+  //   (el) => el.order.lecproduct.classOpen === true
+  // )
 
   const paidClasses = [
     {
@@ -61,5 +64,10 @@ export default function PaidClasses() {
     },
   ]
 
-  return <PaidClassesUI paidClasses={paidClasses} />
+  return (
+    <PaidClassesUI
+      paidClasses={paidClasses}
+      PaidClassesData={PaidClassesData}
+    />
+  )
 }
