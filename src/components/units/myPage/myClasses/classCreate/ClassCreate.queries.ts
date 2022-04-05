@@ -19,7 +19,9 @@ export const UPDATE_LECTURE_PRODUCT = gql`
     updateLectureProduct(
       lectureproductId: $lectureproductId
       updateLectrueProductInput: $UpdateLectureProductInput
-    )
+    ) {
+      id
+    }
   }
 `
 

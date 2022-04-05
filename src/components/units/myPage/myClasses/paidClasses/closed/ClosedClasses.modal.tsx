@@ -251,7 +251,7 @@ export default function ReviewModal(props) {
     <>
       {props.reviewId && isEdit === false ? (
         <Wrapper>
-          <Title>{props.el.title}</Title>
+          <Title>{props.el.classTitle}</Title>
           <Star>
             <Rate
               defaultValue={props.reviewData?.fetchLectureReview.starRating}
@@ -268,7 +268,7 @@ export default function ReviewModal(props) {
         </Wrapper>
       ) : (
         <Wrapper>
-          <Title>{props.el.title}</Title>
+          <Title>{props.el.classTitle}</Title>
           <Star>
             <Rate
               onChange={onChangeRating}

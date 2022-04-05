@@ -32,10 +32,22 @@ export const HeadWrapper = styled.div`
   justify-content: space-between;
   margin-bottom: 80px;
   @media ${breakPoints.tablet} {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 150px;
+    margin-bottom: 30px;
+    padding: 0px 30px 20px 30px;
+    border-bottom: 1px solid #bdbdbd;
   }
   @media ${breakPoints.mobile} {
-    display: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 110px;
+    margin-bottom: 10px;
+    padding: 0px 30px 10px 30px;
+    border-bottom: 1px solid;
   }
 `
 
@@ -48,6 +60,14 @@ export const HeadLeft = styled.div`
   :hover {
     cursor: pointer;
   }
+  @media ${breakPoints.tablet} {
+    width: 100px;
+    height: 140px;
+  }
+  @media ${breakPoints.mobile} {
+    width: 80px;
+    height: 100px;
+  }
 `
 
 export const Avatar = styled.div`
@@ -55,6 +75,29 @@ export const Avatar = styled.div`
   height: 134px;
   border-radius: 70%;
   overflow: hidden;
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @media ${breakPoints.tablet} {
+    width: 90px;
+    height: 90px;
+    border-radius: 100%;
+    overflow: hidden;
+    > img {
+      width: 90px;
+    }
+  }
+  @media ${breakPoints.mobile} {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    overflow: hidden;
+    > img {
+      width: 60px;
+    }
+  }
 `
 
 export const NameAndSetting = styled.div`
@@ -68,6 +111,9 @@ export const Name = styled.div`
   font-weight: 700;
   font-size: 32px;
   margin-right: 7px;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    font-size: 18px;
+  }
 `
 
 export const HeadRight = styled.div`
@@ -80,6 +126,23 @@ export const HeadRight = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 55px 60px 55px 60px;
+  @media ${breakPoints.tablet} {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 2% 4%;
+    background-color: white;
+    background-image: none;
+  }
+
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 2% 4%;
+    background-color: white;
+    background-image: none;
+  }
 `
 
 export const HeadRightSection = styled.div`
@@ -103,6 +166,12 @@ export const HeadRightSection = styled.div`
   @media (min-width: 1025px) and (max-width: 1200px) {
     width: 23%;
   }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    width: 100%;
+    color: black;
+    display: flex;
+    flex-direction: row;
+  }
 `
 
 export const HeadRightSectionLabel = styled.div`
@@ -110,28 +179,51 @@ export const HeadRightSectionLabel = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  line-height: 10px;
   text-transform: uppercase;
   /* color: #bdbdbd; */
   color: white;
+  @media ${breakPoints.tablet} {
+    font-size: 16px;
+    color: black;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 12px;
+    color: black;
+  }
 `
 
 export const HeadRightSectionContents1 = styled.div`
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 10px;
+  font-size: 15px;
+  margin-bottom: 5px;
+
   color: #f2f2f2;
+  @media ${breakPoints.tablet} {
+    font-size: 16px;
+    color: black;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 12px;
+    color: black;
+  }
 `
 
 export const HeadRightSectionContents2 = styled.div`
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 10px;
+  font-size: 30px;
   color: #f2f2f2;
+  @media ${breakPoints.tablet} {
+    font-size: 16px;
+    color: black;
+  }
+  @media ${breakPoints.mobile} {
+    font-size: 12px;
+    color: black;
+  }
 `
 
 export const BodyWrapper = styled.div`

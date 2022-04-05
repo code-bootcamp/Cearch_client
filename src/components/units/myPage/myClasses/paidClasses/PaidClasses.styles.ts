@@ -185,7 +185,7 @@ export const ClassButton = styled.button`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
-  color: #f2f2f2;
+  color: #fff;
   border: 0px none;
   :hover {
     cursor: pointer;
