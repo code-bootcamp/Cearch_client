@@ -16,21 +16,25 @@ export const ChattingSticker = styled.div`
     right: 20px;
     bottom: 70px;
     .chattingSticker {
+
       width: 45px;
       height: 45px;
       svg {
         font-size: 26px;
+
       }
     }
   }
   .chattingSticker {
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     width: 70px;
     height: 70px;
-    border-radius: 50%;
-    border: none;
+    border-radius: 50% !important;
+    border: none !important;
     background-color: #ffa24b;
 
     @media ${breakPoints.mobile} {
@@ -69,14 +73,18 @@ export default function SideBarPage() {
 
             <ChatIcon
               type="button"
-              style={{ fontSize: '30px', color: 'white' }}
+              style={{
+                color: 'white',
+              }}
               onClick={onClickOpenChat}
             />
           </>
         ) : (
           <ChatIcon
             type="button"
-            style={{ fontSize: '30px', color: 'white' }}
+            style={{
+              color: 'white',
+            }}
             onClick={onClickOpenChat}
           />
         )}
