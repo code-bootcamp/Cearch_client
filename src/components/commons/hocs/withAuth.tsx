@@ -14,7 +14,7 @@ export const withAuth = (Component) => (props) => {
         const newAccessToken = await getAccessToken()
         if (!newAccessToken) {
           Modal.error({ content: '로그인이 필요합니다.' })
-          router.push('/login')
+          router.push('/login/login')
         }
       }
     }

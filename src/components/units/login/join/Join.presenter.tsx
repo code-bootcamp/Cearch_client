@@ -105,6 +105,7 @@ export default function JoinUI(props) {
                     style={{ marginRight: '10px', width: '10px' }}
                     value="M"
                     {...props.register('gender')}
+                    defaultChecked
                   />
                   남자
                 </label>

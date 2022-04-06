@@ -3,6 +3,7 @@ import { ReactChild, useContext } from 'react'
 import LayoutFooter from './footer'
 import { useRouter } from 'next/router'
 import LayoutHeader from './header/Header.container'
+import SideBarPage from './sidebar'
 
 const LayoutBody = styled.div`
   width: 100%;

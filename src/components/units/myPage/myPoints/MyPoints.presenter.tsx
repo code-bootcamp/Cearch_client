@@ -37,7 +37,6 @@ export default function MyPointsUI(props) {
                   onChange={props.onChangeDeposit}
                   label="금액을 선택해주세요."
                 >
-                  <MenuItem value={200}>200원</MenuItem>
                   <MenuItem value={10000}>10,000원</MenuItem>
                   <MenuItem value={50000}>50,000원</MenuItem>
                   <MenuItem value={100000}>100,000원</MenuItem>
@@ -90,7 +89,6 @@ export default function MyPointsUI(props) {
                   onChange={props.onChangeDeposit}
                   label="금액을 선택해주세요."
                 >
-                  <MenuItem value={200}>200원</MenuItem>
                   <MenuItem value={10000}>10,000원</MenuItem>
                   <MenuItem value={50000}>50,000원</MenuItem>
                   <MenuItem value={100000}>100,000원</MenuItem>

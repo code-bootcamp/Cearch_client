@@ -49,13 +49,13 @@ const Contents = styled.div`
     .logo {
       svg {
         width: 120px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
     }
 
     .introduce,
     .apply {
-      width: 100%;
+      width: 100% !important;
       font-size: 0.875rem;
     }
   }

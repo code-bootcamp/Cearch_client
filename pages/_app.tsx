@@ -50,8 +50,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     setCheckedCategory,
     search,
     setSearch,
-    searchButton,
-    setSearchButton,
     keyword,
     setKeyword,
   }

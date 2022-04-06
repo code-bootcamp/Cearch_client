@@ -127,16 +127,8 @@ export default function HomeUI(props) {
                         </div>
                       </div>
                       <div className="line"></div>
-                      {/* <div>
-                    {el.work?.slice(0, 1).map((categoryEl) => (
-                      <span key={el.id}>
-                        {categoryEl.category.categoryname}
-                      </span>
-                    ))}
-                  </div> */}
                       <div className="selfIntro">
                         {'"'}
-                        zxcvzxcvzxczvzxvzxcvzxcvxzcvzxvxczxxcvzxcvzxcvvxccxvcvxxcvjkhsdhjksdfhjasdfhdfshjascdfhjksecrahjkaecrthjklaefrhjnklegrvhjnklvgserhnuitvysehnulsetvyhjusegrvhinusegrvhlnuergvhnulergvnulhsegrvnukhsegrvnuhls
                         {el.selfIntro}
                         {'"'}
                       </div>
@@ -332,12 +324,7 @@ export default function HomeUI(props) {
                   <SwiperSlide key={el.id}>
                     <CH.BoardTop>
                       <div>
-                        <img
-                          src={el.user?.imageUrl}
-                          onError={(e) => {
-                            e.currentTarget.src = '/images/profileDefault.png'
-                          }}
-                        />
+                        <img src={'/images/profileDefault.png'} />
                       </div>
                       <span>{el.name}</span>
                     </CH.BoardTop>
@@ -402,12 +389,7 @@ export default function HomeUI(props) {
                   <SwiperSlide key={el.id}>
                     <CH.BoardTop>
                       <div>
-                        <img
-                          src={el.user?.imageUrl}
-                          onError={(e) => {
-                            e.currentTarget.src = '/images/profileDefault.png'
-                          }}
-                        />
+                        <img src={'/images/profileDefault.png'} />
                       </div>
                       <span>{el.name}</span>
                     </CH.BoardTop>
