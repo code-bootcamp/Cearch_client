@@ -31,14 +31,14 @@ export default function GraphForAdmin(props) {
   const data = [
     {
       name: getDate.SevenDayBefore,
-      // newUser: props.newUserCount?.fetchNewPostCount,
-      newQuestion: props.newUserCount?.fetchNewPostCount,
+      newUser: 43,
+      newQuestion: 87,
       permittedMentor: 3,
     },
     {
       name: getDate.SixDayBefore,
       newUser: 24,
-      newQuestion: props.newUserCount?.fetchNewPostCount,
+      newQuestion: 55,
       permittedMentor: 5,
     },
     {
@@ -50,25 +50,25 @@ export default function GraphForAdmin(props) {
     {
       name: getDate.fourDayBefore,
       newUser: 6,
-      newQuestion: props.newUserCount?.fetchNewPostCount,
+      newQuestion: 91,
       permittedMentor: 4,
     },
     {
       name: getDate.ThreeDayBefore,
       newUser: 55,
-      newQuestion: props.newUserCount?.fetchNewPostCount,
+      newQuestion: 44,
       permittedMentor: 7,
     },
     {
       name: getDate.TwoDayBefore,
       newUser: 49,
-      newQuestion: props.newUserCount?.fetchNewPostCount,
+      newQuestion: 56,
       permittedMentor: 10,
     },
     {
       name: getDate.OneDayBefore,
       newUser: 72,
-      newQuestion: props.newUserCount?.fetchNewPostCount,
+      newQuestion: 128,
       permittedMentor: 6,
     },
   ]

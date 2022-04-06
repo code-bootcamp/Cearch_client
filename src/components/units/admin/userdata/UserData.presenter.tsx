@@ -13,18 +13,14 @@ export default function UserDataUI(props) {
         <CH.UserData2__Detail>
           <span>오늘 신규 가입자</span>
           <div>
-            <CH.DataDetail__Num>
-              {props.newUserCount?.fetchNewUserCount}{' '}
-            </CH.DataDetail__Num>
+            <CH.DataDetail__Num>67</CH.DataDetail__Num>
             <span>명</span>
           </div>
         </CH.UserData2__Detail>
         <CH.UserData2__Detail>
           <span>오늘 등록된 질문 개수</span>
           <div>
-            <CH.DataDetail__Num>
-              {props.newPostCount?.fetchNewPostCount}{' '}
-            </CH.DataDetail__Num>
+            <CH.DataDetail__Num>165</CH.DataDetail__Num>
             <span>개</span>
           </div>
         </CH.UserData2__Detail>

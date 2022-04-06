@@ -8,6 +8,7 @@ export const Kkang = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     border-radius: 15px;
     overflow: hidden;
 
@@ -67,7 +68,7 @@ export const Kkang = styled.div`
     .chatContainer {
       width: 100%;
       height: 100%;
-      padding: 10px 0;
+      padding: 10px 0 0px;
       position: relative;
       overflow-x: hidden;
       overflow-y: auto;
@@ -75,6 +76,7 @@ export const Kkang = styled.div`
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      background-color: white;
 
       .command,
       .applied {
@@ -86,7 +88,8 @@ export const Kkang = styled.div`
         .commandText {
           position: relative;
           display: flex;
-          align-items: flex-end;
+          flex-direction: column;
+          align-items: flex-start;
           .speechBubble {
             padding: 5px 10px;
             border-radius: 10px;
@@ -160,34 +163,34 @@ export const Kkang = styled.div`
           object-fit: cover;
         }
       }
-    }
 
-    .chatSendBox {
-      width: 100%;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 15px;
-      background: #ffa24b37;
-      overflow: hidden;
+      .chatSendBox {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        background: #ffa24b37;
+        /* overflow: hidden; */
 
-      .chatInput {
-        width: 75%;
-        outline: 0;
-        border: 0;
-        background: transparent;
-      }
+        .chatInput {
+          width: 75%;
+          outline: 0;
+          border: 0;
+          background: transparent;
+        }
 
-      .sendButton {
-        width: 50px;
-        height: 25px;
-        border-radius: 15px;
-        border: 0;
-        background: none;
-        color: #fff;
-        background: #ffa24b;
-        border: 1px solid #ffa24b;
+        .sendButton {
+          width: 50px;
+          height: 25px;
+          border-radius: 15px;
+          border: 0;
+          background: none;
+          color: #fff;
+          background: #ffa24b;
+          border: 1px solid #ffa24b;
+        }
       }
     }
   }

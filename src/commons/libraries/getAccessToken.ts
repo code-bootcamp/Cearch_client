@@ -20,3 +20,5 @@ export async function getAccessToken() {
     console.log(error.message)
   }
 }
+
+export const A = getAccessToken()

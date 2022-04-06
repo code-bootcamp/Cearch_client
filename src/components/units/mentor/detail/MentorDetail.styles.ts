@@ -284,6 +284,9 @@ export const ClassImg = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    @media ${breakPoints.mobile} {
+      height: 80%;
+    }
   }
   p {
     z-index: 99;
@@ -318,6 +321,10 @@ export const InfoTop = styled.div`
   .checked {
     font-size: 15px;
     color: orange;
+  }
+  @media ${breakPoints.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
 export const InfoBottom = styled.div`

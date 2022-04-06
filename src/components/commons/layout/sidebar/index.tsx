@@ -9,17 +9,28 @@ import { textAlign } from '@mui/system'
 import ChattingRoom from '../../chattingroom/ChattingRoom.container'
 
 export const ChattingSticker = styled.div`
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  position: sticky;
-  margin-right: 25px;
-  bottom: 80px;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    right: 20px;
+    bottom: 70px;
+    .chattingSticker {
+      width: 45px !important;
+      height: 45px !important;
+      svg {
+        font-size: 26px !important;
+      }
+    }
+  }
   .chattingSticker {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     width: 70px;
     height: 70px;
-    border-radius: 50%;
-    border: none;
+    border-radius: 50% !important;
+    border: none !important;
     background-color: #ffa24b;
 
     @media ${breakPoints.mobile} {
@@ -58,14 +69,18 @@ export default function SideBarPage() {
 
             <ChatIcon
               type="button"
-              style={{ fontSize: '30px', color: 'white' }}
+              style={{
+                color: 'white',
+              }}
               onClick={onClickOpenChat}
             />
           </>
         ) : (
           <ChatIcon
             type="button"
-            style={{ fontSize: '30px', color: 'white' }}
+            style={{
+              color: 'white',
+            }}
             onClick={onClickOpenChat}
           />
         )}

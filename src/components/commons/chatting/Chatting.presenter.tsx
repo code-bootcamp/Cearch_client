@@ -1,7 +1,24 @@
 import * as CH from './Chatting.styles'
 import { v4 as uuidv4 } from 'uuid'
+import { useState } from 'react'
 export default function ChattingUI(props) {
-  console.log(props.chat)
+  const yourMsg = (el) => {
+    if (el.includes(props.nickName)) return
+
+    if (!el.includes(props.nickName)) return el
+  }
+  const myMsg = (el) => {
+    if (!el.includes(props.nickName)) return
+
+    if (el.includes(props.nickName)) return el
+  }
+  const AA = (el) => {
+    let B
+    B = JSON.parse(el)
+    console.log(B)
+    return B
+  }
+
   return (
     <>
       <CH.ListWrapper>
@@ -50,11 +67,7 @@ export default function ChattingUI(props) {
       <CH.Kkang>
         <div className="wrapper">
           <div className="headerWrapper">
-            <div className="chatHeader">
-              <button onClick={props.loadPrevChat}>
-                이전 대화내역 불러오기
-              </button>
-            </div>
+            <div className="chatHeader"></div>
             <div className="menu">
               <span></span>
               <span></span>
@@ -64,31 +77,28 @@ export default function ChattingUI(props) {
           <div className="chatContainer">
             <div className="date">2022년 04월 05일</div>
 
-            {props.chat?.map((el, i) => (
-              <div className="command" key={'msg' + i}>
-                <div className="commandUser">
-                  <img src="/images/profileDefault.png" />
-                </div>
-
-                <div className="commandText">
-                  <div className="speechBubble">
-                    <div>{el}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {props.chat
-              ?.map((el, i) => (
+            {props.chat?.map((el, i) =>
+              AA(el).userName !== props.nickName ? (
                 <div className="applied" key={i + 'asd'}>
                   <div className="appliedText">
-                    <div className="speechBubble">{el}</div>
+                    <div className="speechBubble">{AA(el).message}</div>
                   </div>
                 </div>
-              ))
-              .filter((el) => {
-                if (el.includes(props.nickName)) return el
-              })}
+              ) : (
+                <div className="command" key={'msg' + i}>
+                  <div className="commandUser">
+                    <img src="/images/profileDefault.png" />
+                  </div>
+
+                  <div className="commandText">
+                    <span>{AA(el).userName}</span>
+                    <div className="speechBubble">
+                      <div>{AA(el).message}</div>
+                    </div>
+                  </div>
+                </div>
+              )
+            )}
 
             <div className="chatSendBox">
               <input
@@ -106,7 +116,13 @@ export default function ChattingUI(props) {
                   }
                 }}
               />
-              <button className="sendButton" onClick={props.sendMessage}>
+              <button
+                className="sendButton"
+                onClick={() => {
+                  props.sendMessage()
+                  props.setMsg('')
+                }}
+              >
                 전송
               </button>
             </div>

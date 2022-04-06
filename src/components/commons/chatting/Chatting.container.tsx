@@ -20,17 +20,17 @@ import {
 import { GlobalContext } from '../../../../pages/_app'
 import { io } from 'socket.io-client'
 import dynamic from 'next/dynamic'
+import { A } from '../../../commons/libraries/getAccessToken'
 
 const ChattingUI = dynamic(() => import('./Chatting.presenter'), {
   ssr: false,
 })
 
-const refreshToken = document.cookie
 let socketOptions = {
   transportOptions: {
     polling: {
       extraHeaders: {
-        Authorization: `${refreshToken}`,
+        Authorization: `${A}`,
       },
     },
   },
@@ -46,6 +46,9 @@ export default function Chatting() {
   const { data: fetchChatRooms } = useQuery(FETCH_ROOMS)
   const { data: fetchUserData } = useQuery(FETCH_USER)
   const { data: fetchMyChatInfo } = useQuery(FETCH_MY_ROOM_INFO)
+
+  const [getCookie, setGetCookie] = useState('')
+  const cookies = () => {}
 
   const inputRef = useRef<HTMLInputElement>(null)
   const [connected, setConnected] = useState<boolean>(false)
@@ -79,6 +82,7 @@ export default function Chatting() {
   }
 
   useEffect((): any => {
+    const refreshToken = document.cookie
     if (socket.connected) setConnected(true)
     let message = {}
     socket.on('server message', (msg) => {

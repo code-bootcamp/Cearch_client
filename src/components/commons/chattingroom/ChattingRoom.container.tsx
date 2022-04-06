@@ -45,7 +45,7 @@ export default function ChattingRoom() {
   const { data: fetchChatRooms } = useQuery(FETCH_ROOMS)
   const { data: fetchUserData } = useQuery(FETCH_USER)
   const { data: fetchMyChatInfo } = useQuery(FETCH_MY_ROOM_INFO)
-  console.log(fetchMyChatInfo)
+
   const inputRef = useRef<HTMLInputElement>(null)
   const [connected, setConnected] = useState<boolean>(false)
   const [chat, setChat] = useState([])
@@ -60,26 +60,24 @@ export default function ChattingRoom() {
 
   const joinChatRoom = (e: MouseEvent<HTMLDivElement>) => {
     setRoomName(e.currentTarget.id)
-    console.log(roomName, '방이름')
     socket.emit('join room', {
       roomNum: e.currentTarget.id,
     })
-
-    console.log(e.currentTarget.id, '에 입장')
   }
-
+  const inputTag = () => {
+    setMsg('')
+  }
   const sendMessage = () => {
-    console.log('sendMessage')
     const message = {
       message: msg,
       roomNum: roomName,
     }
-    console.log(chat, '<<<<')
+    setMsg('')
     socket.emit('client message', {
       message: message.message,
       roomNum: message.roomNum,
     })
-    inputRef?.current?.focus()
+    inputRef?.current?.focus
   }
 
   useEffect((): any => {
@@ -141,6 +139,7 @@ export default function ChattingRoom() {
         fetchChatRooms={fetchChatRooms}
         loadPrevChat={loadPrevChat}
         prevChat={prevChat}
+        inputTag={inputTag}
       />
     </>
   )
