@@ -390,7 +390,11 @@ export default function classNameDetailUI(props) {
                 <div>
                   <img
                     src={
-                      props.data?.fetchLectureProduct?.mentor?.user?.imageUrl
+                      props.data?.fetchLectureProduct?.mentor?.user
+                        ?.imageUrl === null
+                        ? '/images/profileDefault.png'
+                        : props.data?.fetchLectureProduct?.mentor?.user
+                            ?.imageUrl
                     }
                     onError={(e) => {
                       e.currentTarget.src = '/images/profileDefault.png'

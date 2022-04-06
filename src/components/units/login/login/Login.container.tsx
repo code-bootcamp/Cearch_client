@@ -40,7 +40,7 @@ export default function Login() {
             password,
           },
         })
-        console.log(result)
+
         const accessToken = result.data?.login || ''
         if (setAccessToken) setAccessToken(accessToken)
 

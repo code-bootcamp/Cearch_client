@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
   }
   @media ${breakPoints.mobile}, ${breakPoints.tablet} {
     width: 90%;
+    padding: 30px 0 50px;
     display: flex;
     flex-direction: column;
   }
@@ -295,6 +296,7 @@ export const ClassImg = styled.div`
     left: 15px;
     font-weight: 700;
     color: #fff;
+    margin-bottom: 0;
   }
   > p:first-of-type {
     bottom: 40px;
@@ -303,10 +305,20 @@ export const ClassImg = styled.div`
   > p:last-of-type {
     font-size: 1rem;
   }
+
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    height: 140px;
+    &:after {
+      height: 140px;
+    }
+  }
 `
 export const ClassInfo = styled.div`
   width: 100%;
   padding: 15px;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    padding: 10px 5px;
+  }
 `
 export const InfoTop = styled.div`
   display: flex;
@@ -337,7 +349,8 @@ export const InfoBottom = styled.div`
   .classCategory {
     margin: 15px 0;
     span {
-      background: #eee;
+      background: #ffa24b;
+      color: #fff;
       padding: 5px 10px;
       border-radius: 15px;
     }
@@ -352,5 +365,10 @@ export const InfoBottom = styled.div`
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 3px;
+  }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    .classCategory {
+      margin: 10px 0 !important;
+    }
   }
 `

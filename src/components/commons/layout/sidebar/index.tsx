@@ -16,17 +16,21 @@ export const ChattingSticker = styled.div`
     right: 20px;
     bottom: 70px;
     .chattingSticker {
-      width: 45px !important;
-      height: 45px !important;
+
+      width: 45px;
+      height: 45px;
       svg {
-        font-size: 26px !important;
+        font-size: 26px;
+
       }
     }
   }
   .chattingSticker {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 70px;
     height: 70px;
     border-radius: 50% !important;

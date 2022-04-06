@@ -76,6 +76,7 @@ export const Today = (classDate) => {
   return `${yyyy}-${mm}-${dd}`
 }
 
+
 //getTextFromMD, writer: gun choi
 export const getTextFromMD = (mdString: string) => {
   //splitMarkDown, writer: gun choi

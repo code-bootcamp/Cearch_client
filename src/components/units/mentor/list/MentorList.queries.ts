@@ -7,19 +7,20 @@ export const FETCH_MENTOR = gql`
       companyName
       department
       selfIntro
-      # work {
-      #   category {
-      #     categoryname
-      #   }
-      # }
-      # user {
-      #   name
-      #   imageUrl
-      # }
-      onlineTime
+      user {
+        name
+        imageUrl
+      }
+      work {
+        category {
+          categoryname
+        }
+      }
+      follower
     }
   }
 `
+
 export const FETCH_MENTOR_USER = gql`
   query fetchMentorUser {
     fetchMentorUser {

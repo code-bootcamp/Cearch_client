@@ -79,7 +79,9 @@ export default function LoginUI(props) {
               <input type="email" {...props.register('email')} />
             </div>
           </CH.InputBox>
-          <p>{props.formState?.errors?.email?.message}</p>
+          <CH.ErrorMessage>
+            {props.formState?.errors?.email?.message}
+          </CH.ErrorMessage>
           <CH.InputBox>
             <span>비밀번호</span>
             <div>
@@ -87,7 +89,9 @@ export default function LoginUI(props) {
               <input type="password" {...props.register('password')} />
             </div>
           </CH.InputBox>
-          <p>{props.formState?.errors?.password?.message}</p>
+          <CH.ErrorMessage>
+            {props.formState?.errors?.password?.message}
+          </CH.ErrorMessage>
           <div className="line"></div>
           <div
             style={{

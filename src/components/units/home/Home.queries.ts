@@ -116,9 +116,9 @@ export const FETCH_QT_BOARDS = gql`
       likescount
       commentsCount
       createdAt
-      user {
-        imageUrl
-      }
+      # user {
+      #   imageUrl
+      # }
     }
   }
 `
@@ -132,9 +132,9 @@ export const FETCH_LIKE_POST = gql`
       likescount
       commentsCount
       createdAt
-      user {
-        imageUrl
-      }
+      # user {
+      #   imageUrl
+      # }
     }
   }
 `
