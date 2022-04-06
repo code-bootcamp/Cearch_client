@@ -56,8 +56,10 @@ export const Mentor = styled.div`
   > div {
     transform-style: preserve-3d;
     perspective: 1000px;
+
     cursor: pointer;
     position: relative;
+
     .mentorCardFront,
     .mentorCardBack {
       overflow: hidden;
@@ -66,6 +68,7 @@ export const Mentor = styled.div`
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
       backface-visibility: hidden;
     }
+
     .mentorCardFront {
       display: flex;
       flex-direction: column;
@@ -82,6 +85,7 @@ export const Mentor = styled.div`
         border-radius: 10px;
       }
     }
+
     .mentorCardBack {
       position: absolute;
       top: 0;
@@ -89,7 +93,95 @@ export const Mentor = styled.div`
       width: 100%;
       transform: rotateY(180deg);
       transform-style: preserve-3d;
+      padding: 20px;
+      height: 95% !important;
+
+      .mentorName {
+        font-weight: 600;
+        margin-bottom: 0;
+        font-size: 0.9rem;
+      }
+      .backTop {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        @media ${breakPoints.mobile} {
+          margin-bottom: 5px;
+        }
+        .line {
+          border-left: 1px solid black;
+          padding-right: 5px;
+          margin-left: 5px;
+          width: 1px;
+          height: 12px;
+        }
+        > span:nth-of-type(1),
+        > span:nth-of-type(2) {
+          font-size: 0.8rem;
+        }
+      }
+
+      .backBottom {
+        width: 100%;
+        word-break: keep-all;
+        white-space: pre-line;
+        display: flex;
+        align-items: center;
+        @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+          display: block;
+        }
+        .answerWrapper,
+        .followerWrapper {
+          white-space: nowrap;
+          font-size: 0.8rem;
+          font-weight: 600;
+          @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+            width: 100%;
+          }
+          svg {
+            margin: 0 5px;
+          }
+          .orange {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #ff7b00;
+          }
+        }
+      }
+      > .line {
+        width: 100%;
+        height: 1px;
+        padding-bottom: 10px;
+        border-top: 1px solid black;
+        margin-top: 10px;
+      }
+
+      .selfIntro {
+        font-size: 0.875rem;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word;
+        line-height: 1.2rem;
+        height: calc(1.2rem * 9);
+      }
+      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+        > .line {
+          margin-top: 5px;
+          padding-bottom: 5px;
+        }
+        .selfIntro {
+          -webkit-line-clamp: 4;
+          height: calc(1.2rem * 4);
+        }
+      }
     }
+
     &:hover .mentorCardBack {
       transform: rotateY(0deg);
       transform-style: preserve-3d;
@@ -98,10 +190,12 @@ export const Mentor = styled.div`
       transform: rotateY(-180deg);
       transform-style: preserve-3d;
     }
+
     &:hover .mentorCardFront,
     &:hover .mentorCardBack {
       transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
     }
+
     .badge {
       margin-bottom: 10px;
       display: flex;
@@ -113,12 +207,6 @@ export const Mentor = styled.div`
         width: 25px;
         margin-right: 5px;
       }
-      @media ${breakPoints.tablet}, ${breakPoints.mobile} {
-        margin-bottom: 1vw !important;
-        img {
-          width: 20px;
-        }
-      }
     }
     > * {
       margin: 5px auto;
@@ -129,31 +217,44 @@ export const Mentor = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      @media ${breakPoints.tablet} {
-        padding: 2.5vw 0;
-      }
-      @media ${breakPoints.mobile} {
-        padding: 5vw 0;
-      }
       > div {
         width: 120px;
         height: 120px;
         margin: auto;
         border-radius: 50%;
         overflow: hidden;
+
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
+      }
+    }
 
-        @media ${breakPoints.tablet} {
+    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+      .badge {
+        margin-bottom: 1vw !important;
+        img {
+          width: 20px;
+        }
+      }
+    }
+    @media ${breakPoints.tablet} {
+      .profileImg {
+        padding: 2vw 0;
+        > div {
           width: 11vw;
           height: 11vw;
         }
-        @media ${breakPoints.mobile} {
-          width: 20vw;
-          height: 20vw;
+      }
+    }
+    @media ${breakPoints.mobile} {
+      .profileImg {
+        padding: 4vw 0;
+        > div {
+          width: 18vw;
+          height: 18vw;
         }
       }
     }
@@ -172,6 +273,7 @@ export const MentorInfo = styled.div`
       margin-bottom: 8px;
       p {
         font-size: 0.875rem;
+        margin-bottom: 0;
         line-height: 18px;
         text-transform: uppercase;
         white-space: nowrap;
@@ -213,7 +315,30 @@ export const MentorInfo = styled.div`
         margin-right: 0px;
       }
     }
-    @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+  }
+  .blank {
+    height: 30px;
+  }
+  .mentorName {
+    text-align: end;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-bottom: 5px;
+
+    > p {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    svg {
+      width: 13px;
+      margin-left: 5px;
+      fill: blue;
+    }
+  }
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    .workPart {
       > div:first-of-type {
         flex-direction: column;
         align-items: flex-start;
@@ -234,15 +359,28 @@ export const MentorInfo = styled.div`
         height: 25px;
       }
     }
-    @media ${breakPoints.mobile} {
+    .blank {
+      height: 1.5vw;
+    }
+    .mentorName {
+      margin-bottom: 0;
+      > p {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  @media ${breakPoints.mobile} {
+    padding-bottom: 2vw;
+
+    .workPart {
       > div:first-of-type {
         p {
-          font-size: 1rem !important;
+          font-size: 0.875rem !important;
           margin-bottom: 0px !important;
           line-height: 20px;
         }
         p:nth-of-type(2) {
-          font-size: 0.9rem !important;
+          font-size: 0.8rem !important;
         }
       }
       span {
@@ -250,35 +388,11 @@ export const MentorInfo = styled.div`
         padding: 3px 7px 2px;
       }
     }
-  }
-  .blank {
-    height: 30px;
-    @media ${breakPoints.tablet} {
-      height: 2vw;
-    }
-    @media ${breakPoints.mobile} {
+    .blank {
       height: 5vw;
     }
-  }
-  .mentorName {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    margin-bottom: 5px;
-    > p {
-      font-size: 1.1rem;
-      font-weight: 700;
-      @media ${breakPoints.tablet} {
-        font-size: 0.875rem;
-      }
-      @media ${breakPoints.mobile} {
-        font-size: 0.9rem;
-      }
-    }
-    svg {
-      width: 13px;
-      margin-left: 5px;
-      fill: blue;
+    .mentorName {
+      margin-bottom: 0;
     }
   }
 `

@@ -20,7 +20,6 @@ export default function MentorList() {
     Pick<IQuery, 'fetchMentor'>,
     IQueryFetchMentorArgs
   >(FETCH_MENTOR, { variables: { page: 1 } })
-
   const { data: fetchMentorUser } = useQuery(FETCH_MENTOR_USER)
   console.log(data)
 
@@ -30,8 +29,8 @@ export default function MentorList() {
   >(FETCH_SELECTED_TAG_MENTOR)
   const { data: mentorCount } = useQuery(FETCH_ALL_MENTOR_COUNT)
 
-  const onClickMoveToMentorDetail = (index) => () => {
-    router.push(`/mentor/${fetchMentorUser?.fetchMentorUser.id}`)
+  const onClickMoveToMentorDetail = (e: MouseEvent<HTMLDivElement>) => {
+    router.push(`/mentor/${e.currentTarget.id}`)
   }
 
   const mentorDetail = (e) => {

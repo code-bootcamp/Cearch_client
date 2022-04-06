@@ -9,13 +9,24 @@ import { textAlign } from '@mui/system'
 import ChattingRoom from '../../chattingroom/ChattingRoom.container'
 
 export const ChattingSticker = styled.div`
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  position: sticky;
-  margin-right: 25px;
-  bottom: 80px;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  @media ${breakPoints.tablet}, ${breakPoints.mobile} {
+    right: 20px;
+    bottom: 70px;
+    .chattingSticker {
+      width: 45px;
+      height: 45px;
+      svg {
+        font-size: 26px;
+      }
+    }
+  }
   .chattingSticker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 70px;
     height: 70px;
     border-radius: 50%;
