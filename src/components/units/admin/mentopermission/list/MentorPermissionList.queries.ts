@@ -8,21 +8,21 @@ export const FETCH_AUTHOR_MENTOR = gql`
       department
       mentoStatus
       selfIntro
-      certificate {
-        id
-        url
-      }
-      work {
-        category {
-          categoryname
-        }
-      }
-      user {
-        name
-        email
-        imageUrl
-      }
-      onlineTime
+      # certificate {
+      #   id
+      #   url
+      # }
+      # work {
+      #   category {
+      #     categoryname
+      #   }
+      # }
+      # user {
+      #   name
+      #   email
+      #   imageUrl
+      # }
+      # onlineTime
     }
   }
 `

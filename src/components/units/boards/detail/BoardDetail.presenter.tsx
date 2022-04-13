@@ -55,6 +55,7 @@ export default function BoardDetailUI(props) {
         <BoardComments
           refetch={props.refetch}
           boardData={props.boardData?.fetchQtBoard}
+          commentsCount={props.boardData?.fetchQtBoard.commentsCount}
         />
       </CH.ContentWrapper>
     </CH.Wrapper>

@@ -181,6 +181,7 @@ export const BoardList = styled.div`
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      cursor: pointer;
 
       .ContentsTitle {
         width: 100%;

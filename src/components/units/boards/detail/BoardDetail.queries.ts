@@ -7,6 +7,7 @@ export const FETCH_QT_BOARD = gql`
       title
       contents
       name
+      commentsCount
       likescount
       createdAt
       updatedAt
