@@ -28,7 +28,7 @@ export default function ChakraModal(props) {
       return
     }
 
-    props.deleteBoardNonMember()
+    if (!props.data && !props.isEdit) props.deleteBoardNonMember()
   }
 
   return (

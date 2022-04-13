@@ -27,7 +27,7 @@ export default function BoardDetail(props) {
     Pick<IQuery, 'fetchQtBoard'>,
     IQueryFetchQtBoardArgs
   >(FETCH_QT_BOARD, { variables: { postId: String(router.query.detail) } })
-  console.log(boardData)
+
   const [deleteNonMembersQtBoard] = useMutation<
     Pick<IMutation, 'deleteNonMembersQtBoard'>,
     IMutationDeleteNonMembersQtBoardArgs

@@ -27,3 +27,13 @@ export const FETCH_ALL_POST_COUNT = gql`
     fetchAllPostCount
   }
 `
+export const SEARCH_QT = gql`
+  query searchQt($search: String!) {
+    searchQt(search: $search) {
+      id
+      title
+      contents
+      name
+    }
+  }
+`

@@ -60,7 +60,7 @@ export const ContentWrapper = styled.form`
         }
       }
       .Contents {
-        height: 400px !important;
+        height: 600px !important;
       }
       > span {
         text-align: left;
@@ -100,7 +100,7 @@ export const ContentWrapper = styled.form`
 
     .Contents {
       width: 100%;
-      height: 400px;
+      height: 600px;
       margin: 15px 0;
     }
     > div {
@@ -122,7 +122,7 @@ export const ContentWrapper = styled.form`
         height: auto;
       }
       > div {
-        height: 400px;
+        height: 600px;
       }
     }
     > span {

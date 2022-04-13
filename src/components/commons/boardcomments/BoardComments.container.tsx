@@ -51,7 +51,6 @@ export default function BoardComments(props) {
   }
   const onChangeEditComments = (e) => {
     contentsRef.current = String(e.target.value)
-    console.log(contentsRef.current)
   }
 
   const submitComment = async () => {
@@ -139,9 +138,10 @@ export default function BoardComments(props) {
       notification.error({ message: `${error.message}`, top: 80 })
     }
   }
-  console.log(commentsData)
+
   return (
     <BoardCommentsUI
+      refetch={refetch}
       commentsData={commentsData}
       setContents={setContents}
       onChangeEditComments={onChangeEditComments}
@@ -151,6 +151,7 @@ export default function BoardComments(props) {
       onChangeCommentContents={onChangeCommentContents}
       commentEdit={commentEdit}
       selectComment={selectComment}
+      commentsCount={props.commentsCount}
     />
   )
 }

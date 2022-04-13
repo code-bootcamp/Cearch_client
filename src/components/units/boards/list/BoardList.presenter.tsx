@@ -29,8 +29,12 @@ export default function BoardListUI(props) {
           질문 게시판
         </p>
         <CH.SearchBar>
-          <input type="text" placeholder="게시판 내 검색" />
-          <button>
+          <input
+            type="text"
+            onChange={props.onChangeSearch}
+            placeholder="게시판 내 검색"
+          />
+          <button onClick={props.onClickSearchedBoard}>
             <div className="search icon"></div>
           </button>
         </CH.SearchBar>
@@ -51,46 +55,85 @@ export default function BoardListUI(props) {
           </div>
         </CH.InnerBodyHeader>
         <CH.BoardList>
-          <div>
-            {props.data?.fetchQtBoards?.map((el, index) => (
-              <div key={uuidv4()} className="Contents">
-                <div className="ContentsLeftWrapper">
-                  <div>No.{index + 1}</div>
-                  <div>
-                    <span>{el.commentsCount}</span> answers
+          {props.search ? (
+            <div>
+              {props.searchedBoard?.searchQt?.map((el, index) => (
+                <div key={uuidv4()} className="Contents">
+                  <div className="ContentsLeftWrapper">
+                    <div>No.{index + 1}</div>
+                    <div>{/* <span>{el.commentsCount}</span> answers */}</div>
                   </div>
-                </div>
-                <div className="ContentsRightWrapper">
                   <div
-                    className="ContentsTitle"
-                    onClick={props.onClickBoardDetail}
+                    className="ContentsRightWrapper"
                     id={el.id}
+                    onClick={props.onClickBoardDetail}
                   >
-                    {el.title}
-                  </div>
-                  <div className="ContentsBody">
-                    <ToastViewerPage
-                      contents={getTextFromMD(el.contents).value}
-                    />
-                    {/* {el.contents} */}
-                  </div>
-                  <div className="RightWrapperFooter">
-                    <div className="CategoriesWrapper">
+                    <div className="ContentsTitle">{el.title}</div>
+                    <div
+                      className="ContentsBody"
+                      onClick={props.onClickBoardDetail}
+                    >
+                      <ToastViewerPage
+                        contents={getTextFromMD(el.contents).value}
+                      />
+                      {/* {el.contents} */}
+                    </div>
+                    <div className="RightWrapperFooter">
+                      {/* <div className="CategoriesWrapper">
                       {el.qtTags.map((el) => (
                         <span key={uuidv4()}>{el.tagname}</span>
                       ))}
-                    </div>
-                    <div>
-                      <span className="ContentsWriter">{el.name}</span>
-                      <span className="CreatedAt">
+                    </div> */}
+                      <div>
+                        <span className="ContentsWriter">{el.name}</span>
+                        {/* <span className="CreatedAt">
                         {DateToString(el.createdAt)}
-                      </span>
+                      </span> */}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div>
+              {props.data?.fetchQtBoards?.map((el, index) => (
+                <div key={uuidv4()} className="Contents">
+                  <div className="ContentsLeftWrapper">
+                    <div>No.{index + 1}</div>
+                    <div>
+                      <span>{el.commentsCount}</span> answers
+                    </div>
+                  </div>
+                  <div
+                    className="ContentsRightWrapper"
+                    onClick={props.onClickBoardDetail}
+                    id={el.id}
+                  >
+                    <div className="ContentsTitle">{el.title}</div>
+                    <div className="ContentsBody">
+                      <ToastViewerPage
+                        contents={getTextFromMD(el.contents).value}
+                      />
+                    </div>
+                    <div className="RightWrapperFooter">
+                      <div className="CategoriesWrapper">
+                        {el.qtTags.map((el) => (
+                          <span key={uuidv4()}>{el.tagname}</span>
+                        ))}
+                      </div>
+                      <div>
+                        <span className="ContentsWriter">{el.name}</span>
+                        <span className="CreatedAt">
+                          {DateToString(el.createdAt)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </CH.BoardList>
       </CH.BoardListWrapper>
       <Pagination

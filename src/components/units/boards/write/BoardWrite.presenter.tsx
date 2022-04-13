@@ -78,19 +78,21 @@ export default function BoardWriteUI(props) {
           {props.accessToken ? (
             <></>
           ) : (
-            <div>
-              <span>
-                작성자 <span style={{ color: 'red' }}>*</span>
-              </span>
-              <input
-                type="test"
-                placeholder="작성자를 입력해주세요"
-                {...props.register('writer')}
-              />
+            <>
+              <div>
+                <span>
+                  작성자 <span style={{ color: 'red' }}>*</span>
+                </span>
+                <input
+                  type="test"
+                  placeholder="작성자를 입력해주세요"
+                  {...props.register('writer')}
+                />
+              </div>
               <span className="errorMessage">
                 {props.formState.errors?.writer?.message}
               </span>
-            </div>
+            </>
           )}
 
           {props.accessToken ? (
