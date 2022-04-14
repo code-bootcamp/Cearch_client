@@ -1,7 +1,16 @@
-export default function MentorPermissionList() {
+import { useQuery } from '@apollo/client'
+import { IQuery } from '../../../../../commons/types/generated/types'
+import MentorPermissionListUI from './MentorPermissionList.presenter'
+import { FETCH_AUTHOR_MENTOR } from './MentorPermissionList.queries'
+
+export default function MentorPermissionList(props) {
+  const { data } =
+    useQuery<Pick<IQuery, 'fetchAuthorMentor'>>(FETCH_AUTHOR_MENTOR)
+
+  console.log(data)
   return (
-    <div>
-      <h1>MentorPermissionListPage</h1>
-    </div>
+    <MentorPermissionListUI
+      onClickMentorPermissionDetail={props.onClickMentorPermissionDetail}
+    />
   )
 }

@@ -1,56 +1,56 @@
 import AppliedClasses from './appliedClasses/AppliedClasses.container'
 import CreatedClasses from './createdClasses/CreatedClasses.container'
 import MyClassesUI from './MyClasses.presenter'
-import {} from './MyClasses.queries'
 import PaidClasses from './paidClasses/PaidClasses.container'
-import styled from '@emotion/styled' // 이따 뺄것
+
 import { useState } from 'react'
 
-const BodyWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const TabMenu = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-const Menu = styled.div`
-  border: 1px solid black;
-`
-const Contents = styled.div`
-  width: 100%;
-  border-top: 1px solid black;
-`
-
-export default function MyClasses() {
+export default function MyClasses(props) {
   const [currentTab, setCurrentTab] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const menuArr = [
-    { name: '수강신청한 클래스', content: <AppliedClasses /> },
+  let menuArr = [
+    {
+      name: '수강신청한 클래스',
+      content: <AppliedClasses userInfoRefetch={props.userInfoRefetch} />,
+    },
     { name: '수강중인 클래스', content: <PaidClasses /> },
-    { name: '내가 개설한 클래스', content: <CreatedClasses /> },
   ]
+  if (props.userInfoData?.fetchUser.role === 'MENTOR') {
+    menuArr.push({ name: '내가 개설한 클래스', content: <CreatedClasses /> })
+  }
+
+  // if (props.userInfoData?.fetchUser.role === 'MENTEE') {
+  //   const menuArr = [
+  //     { name: '수강신청한 클래스', content: <AppliedClasses /> },
+  //     { name: '수강중인 클래스', content: <PaidClasses /> },
+  //   ]
+  // }
+  // if (props.userInfoData?.fetchUser.role === 'MENTOR') {
+  //   const menuArr = [
+  //     { name: '수강신청한 클래스', content: <AppliedClasses /> },
+  //     { name: '수강중인 클래스', content: <PaidClasses /> },
+  //     { name: '내가 개설한 클래스', content: <CreatedClasses /> },
+  //   ]
+  // }
 
   const selectMenuHandler = (index: number) => {
     setCurrentTab(index)
   }
 
+  const onClickModal = () => {
+    setIsModalOpen((prev) => !prev)
+    console.log(isModalOpen)
+  }
+
   return (
-    <>
-      <BodyWrapper>
-        <TabMenu>
-          {menuArr.map((el, index) => {
-            return (
-              <Menu key={index} onClick={() => selectMenuHandler(index)}>
-                {el.name}
-              </Menu>
-            )
-          })}
-        </TabMenu>
-        <Contents>{menuArr[currentTab].content}</Contents>
-      </BodyWrapper>
-      <MyClassesUI />
-    </>
+    <MyClassesUI
+      menuArr={menuArr}
+      currentTab={currentTab}
+      selectMenuHandler={selectMenuHandler}
+      onClickModal={onClickModal}
+      isModalOpen={isModalOpen}
+      userInfoData={props.userInfoData}
+    />
   )
 }

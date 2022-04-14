@@ -1,7 +1,9 @@
-export default function ClassPermissionList() {
+import ClassPermissionListUI from './ClassPermissionList.presenter'
+
+export default function ClassPermissionList(props) {
   return (
-    <div>
-      <h1>ClassPermissionListPage</h1>
-    </div>
+    <ClassPermissionListUI
+      onClickClassPermissionDetail={props.onClickClassPermissionDetail}
+    />
   )
 }
